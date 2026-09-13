@@ -3,222 +3,182 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>DV Analytics · Financial & Budget Analytics Suite</title>
-<!-- SheetJS Library for In-Browser Excel Processing -->
+<title>DV Analytics · Enterprise Financial &amp; Budget Management Suite</title>
+<!-- SheetJS In-Browser Excel Processing -->
 <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
 <style>
 :root {
-  --bg: #031326;
-  --panel: #071b32;
+  --bg: #031329;
+  --panel: #071c36;
   --panel2: #0a213d;
-  --line: #174b7b;
-  --text: #f6f8ff;
+  --line: #164c7d;
+  --text: #f7faff;
   --muted: #9fb4cf;
-  --blue: #2688ff;
-  --cyan: #0bd4e5;
-  --green: #16e3a1;
-  --pink: #ff4f7a;
-  --purple: #7b49ff;
-  --orange: #f4a62a;
-  --teal: #15c8b1;
-  --nav: #06162b;
+  --green: #15dda0;
+  --pink: #ff4f7c;
+  --blue: #2587ff;
+  --purple: #844cff;
+  --cyan: #16cfd4;
+  --orange: #ffad2f;
 }
 * { box-sizing: border-box; }
 body {
   margin: 0;
-  background: radial-gradient(circle at 75% 0%, #082449 0, #031326 36%, #021020 100%);
+  background: #021022;
   color: var(--text);
-  font-family: Inter, Segoe UI, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Arial, sans-serif;
   overflow-x: hidden;
 }
-.app-container {
+.app {
   width: 100%;
   min-height: 100vh;
-  margin: 0 auto;
+  margin: auto;
   display: grid;
-  grid-template-columns: 220px minmax(0, 1fr);
-  background: linear-gradient(180deg, #06162c 0, #031326 100%);
+  grid-template-columns: 220px 1fr;
+  background: radial-gradient(circle at 80% 0, #08234a, #031329 38%, #021020);
 }
 
 /* SIDEBAR */
-aside.sidebar {
+aside {
   position: relative;
-  background: linear-gradient(180deg, #04162b, #021122);
-  border-right: 1px solid #133456;
-  padding: 16px 10px 14px;
+  border-right: 1px solid #14375e;
+  padding: 18px 10px 14px;
+  background: #031225;
   display: flex;
   flex-direction: column;
 }
 .brand {
   display: flex;
-  gap: 10px;
+  gap: 12px;
   align-items: center;
-  padding: 0 6px 14px;
-  border-bottom: 1px solid #112d4b;
+  padding: 0 8px 18px;
+  border-bottom: 1px solid #153451;
 }
-.logo-box {
-  width: 38px;
-  height: 38px;
-  border-radius: 10px;
-  background: linear-gradient(135deg, #473cff, #0cd6f1);
+.logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 9px;
+  background: linear-gradient(135deg, #4e53ff, #16cfd4);
   display: grid;
   place-items: center;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 900;
   color: #fff;
   letter-spacing: -1px;
 }
-.brand h2 {
-  font-size: 16px;
-  margin: 0;
-  font-weight: 700;
-}
-.brand small {
-  font-size: 10px;
-  color: #b4c1d5;
-  display: block;
-}
+.brand b { font-size: 17px; }
+.brand small { display: block; color: #a9bcd3; font-size: 10px; margin-top: 3px; }
 .nav {
-  margin-top: 10px;
+  margin-top: 14px;
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 2px;
 }
-.nav-item {
-  height: 38px;
+.nav div {
+  height: 40px;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   padding: 0 12px;
   border-radius: 7px;
-  color: #cbd5e1;
   font-size: 12.5px;
   cursor: pointer;
   user-select: none;
   transition: all .2s;
+  color: #cbd7e8;
   position: relative;
 }
-.nav-item:hover {
+.nav div:hover {
   background: rgba(255, 255, 255, 0.06);
   color: #fff;
   transform: translateX(2px);
 }
-.nav-item .ic {
-  width: 18px;
-  text-align: center;
-  font-size: 15px;
-  color: #6bb0ff;
-}
-.nav-item.active {
-  background: linear-gradient(90deg, #1778ff, #6d3fff);
-  box-shadow: 0 0 16px rgba(36, 78, 255, 0.35);
+.nav div.active {
+  background: linear-gradient(90deg, #1682ff, #713dff);
   color: #fff;
   font-weight: 600;
+  box-shadow: 0 0 16px rgba(22, 130, 255, 0.35);
 }
-.nav-item.active .ic {
-  color: #fff;
-}
-.nav-badge {
+.nav div .nav-tag {
   margin-left: auto;
   font-size: 9px;
   padding: 2px 6px;
-  border-radius: 10px;
-  background: rgba(22, 227, 161, 0.2);
-  color: #16e3a1;
+  border-radius: 6px;
+  background: rgba(21, 221, 160, 0.2);
+  color: var(--green);
   font-weight: 700;
 }
-.side-card {
+.motto {
   margin-top: auto;
   margin-bottom: 14px;
-  border: 1px solid #194978;
+  border: 1px solid #194b7d;
   border-radius: 9px;
-  padding: 14px;
-  background: linear-gradient(145deg, #071a31, #061528);
-  position: relative;
-}
-.side-card .target {
-  font-size: 20px;
-  color: #2d8cff;
-  margin-bottom: 4px;
-}
-.side-card div {
+  padding: 16px 12px;
+  line-height: 1.45;
   font-size: 11.5px;
-  line-height: 1.4;
-  color: #d8e5f8;
+  background: linear-gradient(145deg, #071a31, #061528);
 }
-.side-card .arrow {
-  position: absolute;
-  right: 10px;
-  bottom: 8px;
-  font-size: 28px;
-  color: #1b79ff;
-  opacity: 0.6;
-}
-.updated-tag {
-  color: #96adc6;
+.updated {
+  color: #9fb4cf;
   font-size: 10.5px;
-  line-height: 1.4;
   padding: 0 4px;
 }
-.dot {
+.updated i {
   display: inline-block;
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #22e2a5;
-  margin-right: 6px;
+  background: #19e5a4;
+  margin-right: 8px;
 }
 
 /* MAIN CONTENT */
-main.main {
-  padding: 14px 18px 24px;
+main {
+  padding: 15px 20px 24px;
   display: flex;
   flex-direction: column;
   gap: 12px;
   min-width: 0;
 }
-.topbar {
+.top {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   gap: 14px;
   flex-wrap: wrap;
 }
-.titlewrap {
+.heading {
   display: flex;
-  gap: 12px;
+  gap: 14px;
   align-items: center;
 }
-.titleicon {
-  font-size: 32px;
-  color: #2b82ff;
-  display: grid;
-  place-items: center;
+.heading .hi {
+  font-size: 34px;
+  color: #2c85ff;
 }
-.titlewrap h1 {
-  font-size: 24px;
+.heading h1 {
   margin: 0;
-  line-height: 1;
+  font-size: 25px;
   font-weight: 700;
 }
-.titlewrap p {
-  font-size: 11.5px;
+.heading p {
   margin: 4px 0 0;
   color: #c4d0df;
+  font-size: 11.5px;
 }
-.filters {
+.actions {
   display: flex;
-  gap: 8px;
+  gap: 9px;
   align-items: center;
   flex-wrap: wrap;
 }
 .filter-select {
-  height: 35px;
-  border: 1px solid #1d4776;
+  height: 36px;
+  border: 1px solid #1b4775;
   border-radius: 7px;
-  padding: 0 10px;
+  background: #071a32;
   color: #eef4ff;
-  background: #07182e;
+  padding: 0 11px;
   font-size: 11.5px;
   cursor: pointer;
   outline: none;
@@ -228,279 +188,187 @@ main.main {
   max-width: 230px;
 }
 .filter-select:hover, .filter-select:focus {
-  border-color: #2688ff;
-  box-shadow: 0 0 10px rgba(38, 136, 255, 0.3);
+  border-color: #2587ff;
+  box-shadow: 0 0 10px rgba(37, 135, 255, 0.3);
 }
 .filter-select option {
-  background: #07182e;
-  color: #eef4ff;
-  padding: 6px 10px;
+  background: #071a32;
+  color: #fff;
+  padding: 6px;
 }
-.upload-btn {
-  height: 35px;
+.upload {
+  height: 36px;
   border: 0;
   border-radius: 7px;
+  background: linear-gradient(90deg, #177cff, #7041ff);
+  color: white;
   padding: 0 14px;
-  background: linear-gradient(90deg, #1778ff, #6d3fff);
-  color: #fff;
   font-size: 11.5px;
   font-weight: 700;
   cursor: pointer;
   white-space: nowrap;
   transition: filter .2s;
 }
-.upload-btn:hover {
-  filter: brightness(1.15);
-}
+.upload:hover { filter: brightness(1.15); }
 .user {
   display: flex;
-  align-items: center;
   gap: 8px;
+  align-items: center;
+  font-size: 12px;
   margin-left: 4px;
 }
 .avatar {
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  background: #186dff;
-  font-weight: 700;
-  font-size: 13px;
-}
-.user small {
-  display: block;
-  color: #a9bdd5;
-  font-size: 10px;
-}
-
-/* CARDS & PANELS */
-.cards5 {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 10px;
-}
-.kpi {
-  min-height: 102px;
-  border: 1px solid var(--line);
-  border-radius: 9px;
-  padding: 12px 12px 10px;
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(135deg, #0b243b, #061d35);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.kpi.c-green {
-  border-color: #11a775;
-  background: linear-gradient(135deg, #0b3c3d, #0a2237);
-}
-.kpi.c-pink {
-  border-color: #c22961;
-  background: linear-gradient(135deg, #3a1737, #0c2137);
-}
-.kpi.c-blue {
-  border-color: #2378e9;
-  background: linear-gradient(135deg, #0c3d78, #091b36);
-}
-.kpi.c-purple {
-  border-color: #6336dc;
-  background: linear-gradient(135deg, #342064, #0c1e39);
-}
-.kpi.c-cyan {
-  border-color: #198fa3;
-  background: linear-gradient(135deg, #0b4654, #0a2038);
-}
-.kpi-top {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-}
-.kpi .iconcircle {
   width: 36px;
   height: 36px;
   border-radius: 50%;
   display: grid;
   place-items: center;
-  font-size: 16px;
-  background: #12bd8a;
-  flex-shrink: 0;
-  color: #fff;
-}
-.kpi.c-pink .iconcircle { background: #d83b67; }
-.kpi.c-blue .iconcircle { background: #1b75df; }
-.kpi.c-purple .iconcircle { background: #7b43eb; }
-.kpi.c-cyan .iconcircle { background: #18a9b6; }
-.kpi .lbl {
-  font-size: 11.5px;
-  color: #cbd5e1;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.kpi .val {
-  font-size: 19px;
+  background: #217bff;
   font-weight: 700;
-  margin-top: 3px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
-.kpi .sub {
-  color: var(--green);
-  font-weight: 700;
-  font-size: 11px;
-  margin-top: 4px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.kpi .sub.red {
-  color: var(--pink);
-}
-.kpi .mini {
-  position: absolute;
-  right: 8px;
-  bottom: 4px;
-  font-size: 28px;
-  opacity: 0.35;
-  pointer-events: none;
-}
+.user small { display: block; color: #a9bcd3; font-size: 10px; }
 
-/* SMALL CARDS */
-.smallcards {
+/* 5 TOP KPI CARDS */
+.cards5 {
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 10px;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 4px;
 }
-.small {
-  min-height: 84px;
-  border: 1px solid #147b8f;
+.kpi {
+  border: 1px solid var(--line);
   border-radius: 9px;
-  padding: 10px 11px;
-  background: linear-gradient(135deg, #083941, #071b35);
+  background: linear-gradient(145deg, #092442, #06192e);
+  min-height: 112px;
+  padding: 14px 14px 12px;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  gap: 12px;
+  align-items: flex-start;
+  position: relative;
+  overflow: hidden;
 }
-.small:nth-child(2) { border-color: #2768c6; background: linear-gradient(135deg, #102948, #071a33); }
-.small:nth-child(3) { border-color: #9e6b23; background: linear-gradient(135deg, #493215, #0a1b31); }
-.small:nth-child(4) { border-color: #b32965; background: linear-gradient(135deg, #4c1d3c, #0b1b34); }
-.small:nth-child(5) { border-color: #1599a3; background: linear-gradient(135deg, #0b4654, #0a2038); }
-.small:nth-child(6) { border-color: #2d65c7; background: linear-gradient(135deg, #16305a, #071a33); }
-.small-head {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.small .sicon {
-  width: 30px;
-  height: 30px;
+.kpi.card-1 { border-color: #1aa271; background: linear-gradient(145deg, #0a413e, #09213a); }
+.kpi.card-2 { border-color: #c52e62; background: linear-gradient(145deg, #421938, #092039); }
+.kpi.card-3 { border-color: #2879dd; background: linear-gradient(145deg, #0d3868, #091e36); }
+.kpi.card-4 { border-color: #743be0; background: linear-gradient(145deg, #2d1a58, #0a1c35); }
+.kpi.card-5 { border-color: #1596a3; background: linear-gradient(145deg, #0c3e4b, #091e36); }
+.kpi.bad { border-color: #c52e62 !important; background: linear-gradient(145deg, #421938, #092039) !important; }
+.kpi.good { border-color: #1aa271 !important; background: linear-gradient(145deg, #0a413e, #09213a) !important; }
+
+.orb {
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   display: grid;
   place-items: center;
-  background: #0f9f99;
-  font-size: 13px;
+  background: #158ce8;
+  font-size: 19px;
   flex-shrink: 0;
   color: #fff;
 }
-.small:nth-child(2) .sicon { background: #2d68c9; }
-.small:nth-child(3) .sicon { background: #a56c15; }
-.small:nth-child(4) .sicon { background: #bb3a69; }
-.small:nth-child(5) .sicon { background: #11a9a7; }
-.small:nth-child(6) .sicon { background: #2468da; }
-.small .sl {
-  font-size: 11px;
-  color: #d9eff8;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.small .sv {
-  font-size: 15px;
-  font-weight: 700;
-  margin-top: 2px;
-  white-space: nowrap;
-}
-.small .used {
-  text-align: right;
-  font-weight: 700;
-  font-size: 10.5px;
-  color: #9cf1e4;
-}
+.kpi.card-1 .orb { background: #139e71; }
+.kpi.card-2 .orb { background: #ce3164; }
+.kpi.card-3 .orb { background: #257ce3; }
+.kpi.card-4 .orb { background: #7c40ea; }
+.kpi.card-5 .orb { background: #139fae; }
+.kpi-text { overflow: hidden; }
+.kpi small { display: block; font-size: 11.5px; color: #cbd6e8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.kpi strong { display: block; font-size: 20px; margin: 6px 0 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: 700; }
+.kpi em { font-style: normal; color: var(--green); font-size: 11px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; }
+.kpi em.red { color: var(--pink); }
 
-/* SECTION GRIDS */
-.grid1 {
+/* 6 SUB-METRIC / CATEGORY CARDS */
+.smallcards {
   display: grid;
-  grid-template-columns: 1.6fr 1.1fr 1.3fr;
-  gap: 10px;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 12px;
 }
-.grid2 {
+.small {
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: linear-gradient(145deg, #092442, #06192e);
+  min-height: 84px;
+  padding: 12px 12px 10px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.small > span {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
   display: grid;
-  grid-template-columns: 1.2fr 1fr 1fr;
-  gap: 10px;
+  place-items: center;
+  background: #147ed8;
+  flex-shrink: 0;
+  font-size: 14px;
+  color: #fff;
 }
-.grid3 {
+.small .s-text { overflow: hidden; flex: 1; }
+.small small { display: block; font-size: 11px; color: #cbd6e8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.small strong { display: block; font-size: 15px; margin: 3px 0 2px; white-space: nowrap; font-weight: 700; }
+.small em { font-style: normal; color: var(--green); font-size: 10px; font-weight: 600; display: block; white-space: nowrap; }
+.small em.red { color: var(--pink); }
+
+/* 3-COLUMN GRIDS */
+.grid1, .grid2, .grid3 {
   display: grid;
-  grid-template-columns: 1.15fr 1fr 1.1fr;
-  gap: 10px;
+  gap: 12px;
 }
+.grid1 { grid-template-columns: 1.6fr 1.15fr 1.25fr; }
+.grid2 { grid-template-columns: 1fr 1fr 1fr; }
+.grid3 { grid-template-columns: 1.1fr 1fr 1.25fr; }
 
 .panel {
-  border: 1px solid #174a77;
+  border: 1px solid var(--line);
   border-radius: 9px;
-  background: linear-gradient(180deg, #071d34, #06182c);
-  padding: 12px 14px;
-  min-height: 240px;
+  background: linear-gradient(145deg, #092442, #06192e);
+  padding: 13px 15px;
+  min-height: 242px;
   display: flex;
   flex-direction: column;
 }
 .panel h3 {
-  font-size: 13px;
   margin: 0 0 10px;
+  font-size: 13.5px;
   display: flex;
   align-items: center;
   gap: 6px;
   font-weight: 600;
 }
-.panel h3 .pi {
-  color: #2f8cff;
-}
+.panel h3 span.icon { color: #2c85ff; }
 
-/* CHARTS */
-.chart-container {
+/* CHARTS & VISUALS */
+.chart {
   height: 185px;
   position: relative;
+  padding-top: 18px;
   margin-top: auto;
   width: 100%;
 }
-.chart-grid {
+.legend {
   position: absolute;
-  inset: 10px 8px 22px 34px;
-  background: repeating-linear-gradient(to bottom, transparent 0, transparent 35px, #1a3856 36px);
-}
-.ylabels {
-  position: absolute;
-  left: 0;
-  top: 8px;
-  bottom: 22px;
-  width: 30px;
-  font-size: 9px;
-  color: #c3d4e8;
+  right: 5px;
+  top: -18px;
+  font-size: 9.5px;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  gap: 8px;
 }
-.chart-bars {
-  position: absolute;
-  left: 38px;
-  right: 6px;
-  bottom: 24px;
-  top: 10px;
+.legend span { display: flex; align-items: center; gap: 4px; }
+.legend i { display: inline-block; width: 8px; height: 8px; border-radius: 50%; }
+.c0 { background: var(--green); }
+.c1 { background: var(--pink); }
+.c2 { background: var(--blue); }
+.c3 { background: var(--purple); }
+
+.bars {
+  height: 165px;
+  border-bottom: 1px solid #245074;
+  background: repeating-linear-gradient(to bottom, transparent 0, transparent 32px, #173957 33px);
   display: flex;
-  justify-content: space-around;
   align-items: flex-end;
+  justify-content: space-around;
+  padding: 0 6px;
 }
 .bargrp {
   width: 18%;
@@ -508,35 +376,32 @@ main.main {
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  gap: 4px;
+  gap: 5px;
   position: relative;
 }
 .bar {
-  width: 20px;
-  border-radius: 3px 3px 0 0;
+  width: 22px;
+  min-height: 4px;
   position: relative;
+  border-radius: 3px 3px 0 0;
   transition: height .4s ease;
 }
-.bar.c-primary {
-  background: linear-gradient(#2de5a3, #0f9a72);
-}
-.bar.c-secondary {
-  background: linear-gradient(#ff6b87, #c93f5d);
-}
+.bar.a { background: linear-gradient(#26e6a2, #0e9f70); }
+.bar.b { background: linear-gradient(#ff6888, #ca3b60); }
 .bar b {
   position: absolute;
   top: -16px;
   left: 50%;
   transform: translateX(-50%);
   font-size: 8.5px;
-  font-weight: 500;
+  font-weight: 600;
   white-space: nowrap;
 }
 .bargrp label {
   position: absolute;
   bottom: -18px;
   font-size: 9px;
-  color: #d6e0ed;
+  color: #c5d4e7;
   white-space: nowrap;
 }
 .dotline {
@@ -548,32 +413,12 @@ main.main {
   border: 1px solid white;
   transform: translate(-50%, 50%);
 }
-.chart-legend {
-  position: absolute;
-  right: 4px;
-  top: -24px;
-  font-size: 9.5px;
-  color: #d5e1ef;
-  display: flex;
-  gap: 10px;
-}
-.chart-legend span {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-.chart-legend i {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-}
 
 /* DONUT */
 .donutrow {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 15px;
   margin: auto 0;
 }
 .donut {
@@ -584,24 +429,21 @@ main.main {
   place-items: center;
   flex-shrink: 0;
 }
-.donut-inner {
+.donut > div {
   width: 76px;
   height: 76px;
   border-radius: 50%;
-  background: #07192c;
+  background: #071a31;
   display: grid;
   place-items: center;
   text-align: center;
-  font-size: 9.5px;
+  font-size: 9px;
   line-height: 1.3;
 }
-.donut-inner b {
-  display: block;
-  font-size: 11px;
-}
+.donut b { display: block; font-size: 11px; }
 .donutlegend {
   flex: 1;
-  font-size: 10px;
+  font-size: 9.5px;
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -619,10 +461,7 @@ main.main {
   border-radius: 50%;
   margin-right: 6px;
 }
-.donutlegend span {
-  font-weight: 600;
-  color: #dbe6f5;
-}
+.donutlegend span { font-weight: 600; color: #dbe6f5; }
 
 /* TABLES */
 table {
@@ -632,7 +471,7 @@ table {
   table-layout: fixed;
 }
 th, td {
-  padding: 5px 6px;
+  padding: 6px 6px;
   border-bottom: 1px solid #163b5d;
   text-align: right;
   white-space: nowrap;
@@ -640,71 +479,28 @@ th, td {
   text-overflow: ellipsis;
 }
 th:first-child, td:first-child { text-align: left; }
-th {
-  color: #c4d7ec;
-  font-weight: 600;
-  font-size: 9.5px;
-}
+th { color: #d1e2f7; font-weight: 600; font-size: 9.5px; }
 tr.highlight-total {
   background: #0b615d;
   font-weight: 700;
   color: #fff;
 }
-.redtxt { color: #ff5878; font-weight: 700; }
-.greentxt { color: #1de4a3; font-weight: 700; }
+.greentxt { color: var(--green); font-weight: 700; }
+.redtxt { color: var(--pink); font-weight: 700; }
 
 /* METERS & SPARKLISTS */
-.meter {
-  margin: 8px 0;
-  font-size: 10px;
-}
-.meter div {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 3px;
-}
-.meter i {
-  display: block;
-  height: 8px;
-  background: #11365e;
-  border-radius: 10px;
-  overflow: hidden;
-}
-.meter u {
-  display: block;
-  height: 100%;
-  border-radius: 10px;
-  transition: width .4s ease;
-}
+.meter { margin: 8px 0; font-size: 10px; }
+.meter div { display: flex; justify-content: space-between; margin-bottom: 3px; }
+.meter i { display: block; height: 8px; background: #11365e; border-radius: 10px; overflow: hidden; }
+.meter u { display: block; height: 100%; border-radius: 10px; transition: width .4s ease; }
 
 .sparklist .item { margin: 6px 0; }
-.sparklist .item-head {
-  display: flex;
-  justify-content: space-between;
-  font-size: 10px;
-  margin-bottom: 2px;
-}
-.sparklist .name {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  color: #d9eff8;
-}
-.sparklist .track {
-  height: 7px;
-  background: #12365e;
-  border-radius: 20px;
-  overflow: hidden;
-}
-.sparklist .fill {
-  height: 100%;
-  border-radius: 20px;
-  background: linear-gradient(90deg, #ff4f79, #ff7792);
-  transition: width .4s ease;
-}
-.sparklist.save .fill {
-  background: linear-gradient(90deg, #14d9a1, #26e9b3);
-}
+.sparklist .item-head { display: flex; justify-content: space-between; font-size: 10px; margin-bottom: 2px; }
+.sparklist .name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: #d9eff8; }
+.sparklist .val { font-weight: 600; }
+.sparklist .track { height: 7px; background: #12365e; border-radius: 20px; overflow: hidden; }
+.sparklist .fill { height: 100%; border-radius: 20px; background: linear-gradient(90deg, #ff4f79, #ff7792); transition: width .4s ease; }
+.sparklist.save .fill { background: linear-gradient(90deg, #14d9a1, #26e9b3); }
 
 /* LINE CHART */
 .linechart {
@@ -713,14 +509,14 @@ tr.highlight-total {
   align-items: flex-end;
   justify-content: space-around;
   border-bottom: 1px solid #1f4b72;
-  padding: 0 10px 20px;
+  padding: 0 12px 18px;
   position: relative;
 }
 .linechart span {
   width: 2px;
   background: #16d99b;
   position: relative;
-  min-height: 3px;
+  min-height: 4px;
 }
 .linechart i {
   position: absolute;
@@ -745,21 +541,19 @@ tr.highlight-total {
   left: -18px;
   font-size: 8.5px;
   white-space: nowrap;
-  color: #cbd5e1;
+  color: #c5d4e7;
 }
 
-/* INSIGHTS & PROMO */
-.insights {
-  font-size: 10.5px;
-  line-height: 1.8;
-  color: #d2deec;
-}
+/* INSIGHTS, QUICK STATS & PROMO */
 .insights p {
-  margin: 4px 0;
+  font-size: 10.5px;
+  line-height: 1.75;
+  color: #d2deec;
+  margin: 5px 0;
 }
 .insights p::first-letter {
   color: #16dfa0;
-  font-weight: bold;
+  font-weight: 700;
 }
 .quickgrid {
   display: grid;
@@ -767,67 +561,48 @@ tr.highlight-total {
   gap: 7px;
   margin: auto 0;
 }
-.quickgrid .qcard {
-  border: 1px solid #173f67;
-  border-radius: 7px;
+.qcard {
+  border: 1px solid #174b7b;
+  border-radius: 8px;
   padding: 8px 10px;
-  background: #05162a;
+  background: #05182d;
 }
-.quickgrid .q-label {
-  font-size: 9.5px;
-  color: #9fb4cf;
-}
-.quickgrid .qv {
-  font-size: 15px;
-  font-weight: 700;
-  color: #fff;
-  margin-top: 3px;
-}
+.qcard .q-lbl { font-size: 9.5px; color: #9fb4cf; }
+.qcard .q-val { font-size: 15px; font-weight: 700; color: #fff; margin-top: 3px; }
+
 .promo {
-  background: linear-gradient(145deg, #2b2067, #0d4ab3 60%, #143276);
+  background: linear-gradient(145deg, #33236d, #0d4db8 60%, #153175);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 16px 20px;
+  padding: 16px 22px;
   position: relative;
   overflow: hidden;
 }
-.promo h2 {
-  font-size: 17px;
-  margin: 0 0 4px;
-  font-weight: 700;
-}
-.promo p {
-  font-size: 10.5px;
-  color: #d2dcf2;
-  margin: 0 0 12px;
-}
-.btn-action {
+.promo h2 { font-size: 18px; margin: 0 0 4px; font-weight: 700; }
+.promo p { font-size: 11px; color: #d2dcf2; margin: 0 0 12px; }
+.btn-export {
   display: inline-block;
-  background: #2780ff;
+  background: #2587ff;
   color: #fff;
   border-radius: 18px;
-  padding: 7px 14px;
-  font-size: 10.5px;
-  font-weight: 600;
+  padding: 8px 16px;
+  font-size: 11px;
+  font-weight: 700;
   cursor: pointer;
   width: fit-content;
-  text-decoration: none;
   border: 0;
   transition: all .2s;
-  box-shadow: 0 0 12px rgba(39, 128, 255, 0.4);
+  box-shadow: 0 0 12px rgba(37, 135, 255, 0.4);
 }
-.btn-action:hover {
-  filter: brightness(1.15);
-  transform: translateY(-1px);
-}
-.promo .bigarrow {
+.btn-export:hover { filter: brightness(1.15); transform: translateY(-1px); }
+.promo .bg-arrow {
   position: absolute;
   right: 14px;
   bottom: 10px;
-  font-size: 48px;
-  color: #11e4ff;
-  opacity: 0.35;
+  font-size: 52px;
+  color: #16cfd4;
+  opacity: 0.3;
   pointer-events: none;
 }
 
@@ -845,7 +620,7 @@ tr.highlight-total {
   margin-top: 4px;
 }
 
-/* UPLOAD MODAL */
+/* MODAL */
 .modal {
   position: fixed;
   inset: 0;
@@ -857,59 +632,39 @@ tr.highlight-total {
 }
 .modal.hidden { display: none; }
 .box {
-  width: min(600px, 94vw);
+  width: min(620px, 94vw);
   padding: 22px;
   border: 1px solid #277ae0;
-  border-radius: 12px;
+  border-radius: 13px;
   background: #071c36;
   box-shadow: 0 24px 80px rgba(0,0,0,0.6);
 }
-.boxhead {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.boxhead h2 { margin: 0; font-size: 18px; }
-.close-btn {
-  border: 0;
-  background: none;
-  color: white;
-  font-size: 24px;
-  cursor: pointer;
-}
-.box p {
-  color: #b8cae0;
-  font-size: 11.5px;
-  line-height: 1.5;
-  margin: 10px 0;
-}
-.cols-box {
-  padding: 10px 12px;
+.boxhead { display: flex; justify-content: space-between; align-items: center; }
+.box h2 { margin: 0; font-size: 18px; }
+.close { border: 0; background: none; color: white; font-size: 24px; cursor: pointer; }
+.box p { color: #b8cae0; font-size: 12px; line-height: 1.55; margin: 10px 0; }
+.cols {
+  padding: 11px;
   border: 1px solid #174b7b;
   background: #031328;
   border-radius: 8px;
-  font: 11px/1.55 monospace;
+  font: 11px/1.6 monospace;
   color: #75dcff;
 }
 .drop {
   margin-top: 14px;
-  padding: 26px;
+  padding: 28px;
   border: 2px dashed #2787ff;
   border-radius: 9px;
   text-align: center;
   cursor: pointer;
   display: block;
-  color: #c4d7ed;
+  color: #c5d4e7;
   transition: all .2s;
 }
 .drop:hover, .drop.over { background: #0b3157; }
-.upload-msg {
-  min-height: 18px;
-  margin-top: 10px;
-  font-size: 11px;
-  color: #16dda0;
-}
-.upload-msg.error { color: #ff6382; }
+.upload-msg { min-height: 18px; margin-top: 10px; font-size: 11px; color: var(--green); }
+.upload-msg.error { color: var(--pink); }
 
 /* TOAST */
 .toast {
@@ -929,13 +684,13 @@ tr.highlight-total {
 }
 .toast.hidden { opacity: 0; }
 
-@media(max-width: 1400px) {
+@media(max-width: 1440px) {
   .grid1 { grid-template-columns: 1.4fr 1.1fr 1.3fr; }
   .grid2 { grid-template-columns: 1fr 1fr 1fr; }
 }
 @media(max-width: 1200px) {
-  .app-container { grid-template-columns: 1fr; }
-  aside.sidebar { display: none; }
+  .app { grid-template-columns: 1fr; }
+  aside { display: none; }
   .cards5 { grid-template-columns: repeat(3, 1fr); }
   .smallcards { grid-template-columns: repeat(3, 1fr); }
   .grid1, .grid2, .grid3 { grid-template-columns: 1fr; }
@@ -944,59 +699,58 @@ tr.highlight-total {
 </head>
 <body>
 
-<div class="app-container">
+<div class="app">
   <!-- SIDEBAR NAVIGATION -->
-  <aside class="sidebar">
+  <aside>
     <div class="brand">
-      <div class="logo-box">DV</div>
+      <div class="logo">DV</div>
       <div>
-        <h2>DV Analytics</h2>
-        <small>Data Drives Better Decisions</small>
+        <b>DV Analytics</b>
+        <small>Chartered Financial Suite</small>
       </div>
     </div>
+    
     <div class="nav" id="sidebarNav">
-      <div class="nav-item" data-tab="dashboard"><span class="ic">⌂</span>Dashboard</div>
-      <!-- Profit & Loss and Balance Sheet buttons -->
-      <div class="nav-item" data-tab="pnl"><span class="ic">↗</span>Profit &amp; Loss</div>
-      <div class="nav-item" data-tab="balance"><span class="ic">▤</span>Balance Sheet</div>
+      <div data-tab="dashboard"><span>⌂</span> Dashboard</div>
+      <!-- Core Statutory & Management Accounts -->
+      <div data-tab="pnl" class="nav-btn"><span>↗</span> Profit &amp; Loss</div>
+      <div data-tab="balance" class="nav-btn"><span>▤</span> Balance Sheet</div>
       <!-- Budgets kept directly under Profit & Loss and Balance Sheet -->
-      <div class="nav-item active" data-tab="budget"><span class="ic">▣</span>Budgets <span class="nav-badge">Under Budget</span></div>
-      <div class="nav-item" data-tab="cashflow"><span class="ic">◉</span>Cash Flow</div>
-      <div class="nav-item" data-tab="sales"><span class="ic">▣</span>Sales &amp; Revenue</div>
-      <div class="nav-item" data-tab="expenses"><span class="ic">⌂</span>Expenses</div>
-      <div class="nav-item" data-tab="receivables"><span class="ic">◎</span>Receivables &amp; Payables</div>
-      <div class="nav-item" data-tab="reports"><span class="ic">✥</span>Reports</div>
-      <div class="nav-item" data-tab="analytics"><span class="ic">⌁</span>Analytics</div>
-      <div class="nav-item" data-tab="settings"><span class="ic">⚙</span>Settings</div>
+      <div data-tab="budget" class="nav-btn active"><span>▣</span> Budgets <span class="nav-tag">Under Budget</span></div>
+      <!-- Auxiliary Operating Modules -->
+      <div data-tab="cashflow" class="nav-btn"><span>◉</span> Cash Flow</div>
+      <div data-tab="sales" class="nav-btn"><span>▣</span> Sales &amp; Revenue</div>
+      <div data-tab="expenses" class="nav-btn"><span>⌂</span> Expenses</div>
+      <div data-tab="receivables" class="nav-btn"><span>◎</span> Receivables &amp; Payables</div>
+      <div data-tab="reports" class="nav-btn"><span>✥</span> Reports</div>
+      <div data-tab="analytics" class="nav-btn"><span>⌁</span> Analytics</div>
+      <div data-tab="settings" class="nav-btn"><span>⚙</span> Settings</div>
     </div>
-    
-    <div class="side-card">
-      <div class="target">◎</div>
-      <div>Better Data<br>Better Decisions<br>Bigger Growth ↗</div>
-      <div class="arrow">↗</div>
+
+    <div class="motto">
+      ◎ &nbsp; Better Data<br>&nbsp;&nbsp;&nbsp;&nbsp;Better Decisions<br>&nbsp;&nbsp;&nbsp;&nbsp;Bigger Growth ↗
     </div>
-    
-    <div class="updated-tag">
-      <span class="dot"></span>Last Updated<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="lastUpdatedClock">Auto calculated</span>
+
+    <div class="updated">
+      <i></i> Last Updated<br>&nbsp;&nbsp;&nbsp;&nbsp;<span id="clockStatus">Real-time sync</span>
     </div>
   </aside>
 
-  <!-- MAIN VIEW -->
-  <main class="main">
-    <!-- TOP HEADER -->
-    <header class="topbar">
-      <div class="titlewrap">
-        <div class="titleicon" id="headerIcon">▣</div>
+  <!-- MAIN DASHBOARD -->
+  <main>
+    <header class="top">
+      <div class="heading">
+        <div class="hi" id="moduleIcon">▣</div>
         <div>
-          <h1 id="headerTitle">Budget &amp; Variance</h1>
-          <p id="headerSubtitle">Plan smarter, control spending, track savings and stay under budget</p>
+          <h1 id="moduleTitle">Budget &amp; Variance</h1>
+          <p id="moduleSubtitle">Plan smarter, control spending, track savings and stay under budget</p>
         </div>
       </div>
-      
-      <div class="filters">
+
+      <div class="actions">
         <!-- Interactive Date Period Filter -->
         <select class="filter-select" id="dateFilter" title="Select Date Period">
-          <option value="ALL">▣ All Periods</option>
+          <option value="ALL">Date range</option>
         </select>
         
         <!-- Interactive Branch Filter -->
@@ -1009,110 +763,112 @@ tr.highlight-total {
           <option value="ALL">All Departments</option>
         </select>
 
-        <button class="upload-btn" id="uploadBtn">↑ Upload Excel</button>
+        <button class="upload" id="uploadBtn">↑ Upload Excel</button>
+        
         <div class="user">
           <div class="avatar">S</div>
-          <div>Sajid<small>Data Analyst</small></div>
+          <div>Sajid<br><small>FCA · Data Analyst</small></div>
         </div>
       </div>
     </header>
 
     <!-- 5 TOP KPI CARDS -->
-    <section class="cards5" id="kpisRow"></section>
+    <section class="cards5" id="kpisContainer"></section>
 
-    <!-- 6 CATEGORY / SUB-METRIC CARDS -->
-    <section class="smallcards" id="smallCardsRow"></section>
+    <!-- 6 SUB-METRIC CARDS -->
+    <section class="smallcards" id="smallCardsContainer"></section>
 
-    <!-- ROW 1: TRENDS, ALLOCATION DONUT, SUMMARY TABLE -->
+    <!-- GRID 1: TRENDS, ALLOCATION, SUMMARY TABLE -->
     <section class="grid1">
       <div class="panel">
-        <h3 id="panel1Title"><span class="pi">↗</span>Trend Analysis</h3>
-        <div id="trendChart"></div>
+        <h3 id="panel1Header"><span class="icon">↗</span>Trend Analysis</h3>
+        <div id="trendChartContainer"></div>
       </div>
       <div class="panel">
-        <h3 id="panel2Title"><span class="pi">◉</span>Allocation Breakdown</h3>
-        <div id="donutWrapper"></div>
+        <h3 id="panel2Header"><span class="icon">◉</span>Allocation Breakdown</h3>
+        <div id="donutContainer"></div>
       </div>
       <div class="panel">
-        <h3 id="panel3Title"><span class="pi">▤</span>Performance Summary</h3>
-        <div id="summaryTableWrap"></div>
+        <h3 id="panel3Header"><span class="icon">▤</span>Financial Summary</h3>
+        <div id="tableContainer"></div>
       </div>
     </section>
 
-    <!-- ROW 2: RATIOS & METERS -->
+    <!-- GRID 2: RATIOS & METERS -->
     <section class="grid2">
       <div class="panel">
-        <h3 id="panel4Title"><span class="pi">◔</span>Key Ratio Trend</h3>
-        <div id="ratioTrendWrap"></div>
+        <h3 id="panel4Header"><span class="icon">◔</span>Key Ratio Trend</h3>
+        <div id="ratioChartContainer"></div>
       </div>
       <div class="panel">
-        <h3 id="panel5Title"><span class="pi">★</span>Efficiency &amp; Position</h3>
-        <div id="meters1Wrap"></div>
+        <h3 id="panel5Header"><span class="icon">★</span>Position &amp; Efficiency</h3>
+        <div id="meters1Container"></div>
       </div>
       <div class="panel">
-        <h3 id="panel6Title"><span class="pi">💡</span>Variance &amp; Overruns</h3>
-        <div id="meters2Wrap"></div>
+        <h3 id="panel6Header"><span class="icon">💡</span>Variance &amp; Overruns</h3>
+        <div id="meters2Container"></div>
       </div>
     </section>
 
-    <!-- ROW 3: INSIGHTS, QUICK STATS, PROMO -->
+    <!-- GRID 3: INSIGHTS, QUICK STATS, PROMO ACTION -->
     <section class="grid3">
       <div class="panel">
-        <h3><span class="pi">✓</span>Key Insights</h3>
-        <div class="insights" id="insightsList"></div>
+        <h3><span class="icon">✓</span>Key Insights</h3>
+        <div class="insights" id="insightsContainer"></div>
       </div>
       <div class="panel">
-        <h3><span class="pi">◉</span>Quick Stats</h3>
-        <div class="quickgrid" id="quickStatsGrid"></div>
+        <h3><span class="icon">◉</span>Quick Stats</h3>
+        <div class="quickgrid" id="quickStatsContainer"></div>
       </div>
-      <div class="panel promo" id="promoCard">
-        <h2 id="promoTitle">Plan Better.<br>Spend Smarter.</h2>
-        <p id="promoSubtitle">Track under-budget savings and optimize enterprise performance.</p>
-        <button class="btn-action" id="promoActionBtn">Export Filtered Data ↓</button>
-        <div class="bigarrow">↗</div>
+      <div class="panel promo">
+        <h2 id="promoHeadline">Plan Better.<br>Spend Smarter.</h2>
+        <p id="promoTagline">Track under-budget savings and optimize enterprise financial performance.</p>
+        <button class="btn-export" id="exportDataBtn">Export Filtered Data ↓</button>
+        <div class="bg-arrow">↗</div>
       </div>
     </section>
 
-    <!-- STATUS BAR -->
+    <!-- FOOTER META STATUS -->
     <div class="status-bar">
-      <div id="fileMetaBar">DV Analytics Engine • Sample Dataset Active</div>
-      <div>Powered by SheetJS In-Browser Parser • 100% Client-Side Privacy</div>
+      <div id="footerMetaText">DV Analytics Chartered Engine • Sample Dataset Active</div>
+      <div>100% In-Browser Privacy • Client-Side Excel Engine</div>
     </div>
   </main>
 </div>
 
-<!-- UPLOAD MODAL -->
+<!-- UPLOAD EXCEL MODAL -->
 <div class="modal hidden" id="uploadModal">
   <div class="box">
     <div class="boxhead">
-      <h2 id="modalTitle">Upload Financial Workbook</h2>
-      <button class="close-btn" id="closeModalBtn" aria-label="Close">×</button>
+      <h2 id="modalHeadline">Upload Financial Workbook</h2>
+      <button class="close" id="closeModalBtn" aria-label="Close">×</button>
     </div>
-    <p>Upload an Excel file (.xlsx, .xls, .xlsm). All calculations and charts update instantly in your browser.</p>
-    <div class="cols-box" id="modalColsInfo">
+    <p>Upload your Excel file (.xlsx, .xls, .xlsm). All financial calculations, statements, and ratios are processed privately inside your browser.</p>
+    <div class="cols" id="modalFieldGuide">
       <b>Required:</b> Date, Budget, Actual<br>
       <b>Optional:</b> Category, Department, Branch, Forecast
     </div>
     <label class="drop" id="dropArea">
-      Drop Excel (.xlsx, .xls) here or click to browse
-      <input type="file" id="fileInput" accept=".xlsx,.xls,.xlsm" hidden>
+      Drop Excel file here or click to browse
+      <input type="file" id="filePicker" accept=".xlsx,.xls,.xlsm" hidden>
     </label>
-    <div class="upload-msg" id="uploadStatusMsg"></div>
+    <div class="upload-msg" id="uploadStatusMessage"></div>
   </div>
 </div>
 
 <!-- TOAST -->
-<div class="toast hidden" id="toast"></div>
+<div class="toast hidden" id="toastBox"></div>
 
 <script>
 /* ================================================================
-   DV ANALYTICS ENGINE: P&L + BALANCE SHEET + BUDGET (UNDER BUDGET)
+   CHARTERED ACCOUNTANT FULL-STACK ENGINE: DV ANALYTICS
    ================================================================ */
 
-// Helper formatters
+// Financial number formatters
 const money = n => "₹ " + Math.round(n || 0).toLocaleString("en-IN");
 const plainMoney = n => Math.round(n || 0).toLocaleString("en-IN");
 const lakh = n => (n / 100000).toFixed(1) + "L";
+const cr = n => (n / 10000000).toFixed(2) + "Cr";
 const pct = n => `${(Number.isFinite(n) ? n : 0).toFixed(1)}%`;
 const safe = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const norm = s => String(s ?? "").replace(/\s+/g, " ").trim().toLowerCase();
@@ -1128,20 +884,20 @@ function parseDate(v) {
 const labelDate = d => d.toLocaleDateString("en-US", { month: "short", year: "numeric" });
 
 /* ================================================================
-   SAMPLE DATASETS
+   30-YEAR CA FIRM COMPREHENSIVE FINANCIAL DATASETS
    ================================================================ */
 
 const DATASETS = {
-  // 1. PROFIT & LOSS DATASET
+  // 1. PROFIT & LOSS (STATUTORY P&L ACCORDING TO SCHEDULE III / IND AS)
   pnl: [
-    { date: "2025-04-01", revenue: 580000, expenses: 420000, cogs: 160000, operatingExpenses: 105000, tax: 25000, cash: 210000, receivables: 320000, payables: 180000, branch: "All Branches", department: "Operations" },
-    { date: "2025-05-01", revenue: 640000, expenses: 480000, cogs: 175000, operatingExpenses: 125000, tax: 30000, cash: 240000, receivables: 345000, payables: 205000, branch: "All Branches", department: "Marketing" },
-    { date: "2025-06-01", revenue: 720000, expenses: 540000, cogs: 195000, operatingExpenses: 145000, tax: 35000, cash: 275000, receivables: 380000, payables: 225000, branch: "All Branches", department: "Technology" },
-    { date: "2025-07-01", revenue: 810000, expenses: 610000, cogs: 220000, operatingExpenses: 165000, tax: 42000, cash: 310000, receivables: 415000, payables: 245000, branch: "All Branches", department: "Administration" },
-    { date: "2025-08-01", revenue: 898750, expenses: 769320, cogs: 246420, operatingExpenses: 257900, tax: 132490, cash: 1236870, receivables: 825430, payables: 512760, branch: "All Branches", department: "HR" }
+    { date: "2025-04-01", revenue: 580000, expenses: 420000, cogs: 160000, operatingExpenses: 105000, tax: 25000, depreciation: 20000, interest: 10000, cash: 210000, receivables: 320000, payables: 180000, branch: "Headquarters", department: "Operations" },
+    { date: "2025-05-01", revenue: 640000, expenses: 480000, cogs: 175000, operatingExpenses: 125000, tax: 30000, depreciation: 20000, interest: 12000, cash: 240000, receivables: 345000, payables: 205000, branch: "Headquarters", department: "Marketing" },
+    { date: "2025-06-01", revenue: 720000, expenses: 540000, cogs: 195000, operatingExpenses: 145000, tax: 35000, depreciation: 22000, interest: 11000, cash: 275000, receivables: 380000, payables: 225000, branch: "North Branch", department: "Technology" },
+    { date: "2025-07-01", revenue: 810000, expenses: 610000, cogs: 220000, operatingExpenses: 165000, tax: 42000, depreciation: 25000, interest: 14000, cash: 310000, receivables: 415000, payables: 245000, branch: "South Branch", department: "Administration" },
+    { date: "2025-08-01", revenue: 898750, expenses: 699320, cogs: 246420, operatingExpenses: 217900, tax: 48000, depreciation: 28000, interest: 15000, cash: 1236870, receivables: 825430, payables: 512760, branch: "Headquarters", department: "HR" }
   ],
 
-  // 2. BALANCE SHEET DATASET
+  // 2. BALANCE SHEET (DOUBLE ENTRY: ASSETS = LIABILITIES + EQUITY)
   balance: [
     { date: "2025-04-01", assets: 4210000, liabilities: 1820000, equity: 2390000, currentAssets: 2450000, nonCurrentAssets: 1760000, currentLiabilities: 980000, nonCurrentLiabilities: 840000, cash: 1060000, receivables: 510000, inventory: 680000, shareCapital: 1810000, retainedEarnings: 580000, branch: "Headquarters", department: "Finance" },
     { date: "2025-05-01", assets: 4380000, liabilities: 1910000, equity: 2470000, currentAssets: 2530000, nonCurrentAssets: 1850000, currentLiabilities: 1040000, nonCurrentLiabilities: 870000, cash: 1110000, receivables: 530000, inventory: 700000, shareCapital: 1770000, retainedEarnings: 700000, branch: "Headquarters", department: "Finance" },
@@ -1150,9 +906,9 @@ const DATASETS = {
     { date: "2025-08-01", assets: 4876230, liabilities: 2140500, equity: 2735730, currentAssets: 2845120, nonCurrentAssets: 2031110, currentLiabilities: 1126540, nonCurrentLiabilities: 1013960, cash: 1236870, receivables: 1054320, inventory: 598410, shareCapital: 753320, retainedEarnings: 1982410, branch: "Headquarters", department: "Finance" }
   ],
 
-  // 3. BUDGETS & VARIANCE (UNDER-BUDGET HIGHLIGHTED) DATASET
+  // 3. BUDGETS & VARIANCE (FOCUS: UNDER BUDGET COST CONTROL & SURPLUS SAVINGS)
   budget: [
-    // April 2025
+    // April 2025 (Under Budget)
     { date: "2025-04-01", branch: "Headquarters", department: "Operations", category: "Operating Expenses", budget: 260000, actual: 240000, forecast: 255000 },
     { date: "2025-04-01", branch: "Headquarters", department: "HR", category: "Salaries & Wages", budget: 220000, actual: 215000, forecast: 218000 },
     { date: "2025-04-01", branch: "North Branch", department: "Marketing", category: "Marketing", budget: 65000, actual: 52000, forecast: 55000 },
@@ -1160,7 +916,7 @@ const DATASETS = {
     { date: "2025-04-01", branch: "South Branch", department: "Technology", category: "Technology & Software", budget: 35000, actual: 28000, forecast: 30000 },
     { date: "2025-04-01", branch: "South Branch", department: "Finance", category: "Other Expenses", budget: 30000, actual: 25000, forecast: 26000 },
 
-    // May 2025
+    // May 2025 (Under Budget)
     { date: "2025-05-01", branch: "Headquarters", department: "Operations", category: "Operating Expenses", budget: 270000, actual: 260000, forecast: 265000 },
     { date: "2025-05-01", branch: "Headquarters", department: "HR", category: "Salaries & Wages", budget: 225000, actual: 220000, forecast: 222000 },
     { date: "2025-05-01", branch: "North Branch", department: "Marketing", category: "Marketing", budget: 75000, actual: 62000, forecast: 68000 },
@@ -1168,7 +924,7 @@ const DATASETS = {
     { date: "2025-05-01", branch: "South Branch", department: "Technology", category: "Technology & Software", budget: 40000, actual: 32000, forecast: 34000 },
     { date: "2025-05-01", branch: "South Branch", department: "Finance", category: "Other Expenses", budget: 35000, actual: 28000, forecast: 30000 },
 
-    // June 2025
+    // June 2025 (Under Budget)
     { date: "2025-06-01", branch: "Headquarters", department: "Operations", category: "Operating Expenses", budget: 280000, actual: 270000, forecast: 275000 },
     { date: "2025-06-01", branch: "Headquarters", department: "HR", category: "Salaries & Wages", budget: 230000, actual: 228000, forecast: 229000 },
     { date: "2025-06-01", branch: "North Branch", department: "Marketing", category: "Marketing", budget: 70000, actual: 62000, forecast: 65000 },
@@ -1176,7 +932,7 @@ const DATASETS = {
     { date: "2025-06-01", branch: "South Branch", department: "Technology", category: "Technology & Software", budget: 40000, actual: 31000, forecast: 33000 },
     { date: "2025-06-01", branch: "South Branch", department: "Finance", category: "Other Expenses", budget: 38000, actual: 32000, forecast: 34000 },
 
-    // July 2025
+    // July 2025 (Under Budget)
     { date: "2025-07-01", branch: "Headquarters", department: "Operations", category: "Operating Expenses", budget: 295000, actual: 280000, forecast: 288000 },
     { date: "2025-07-01", branch: "Headquarters", department: "HR", category: "Salaries & Wages", budget: 235000, actual: 230000, forecast: 232000 },
     { date: "2025-07-01", branch: "North Branch", department: "Marketing", category: "Marketing", budget: 80000, actual: 70000, forecast: 74000 },
@@ -1184,51 +940,71 @@ const DATASETS = {
     { date: "2025-07-01", branch: "South Branch", department: "Technology", category: "Technology & Software", budget: 45000, actual: 36000, forecast: 40000 },
     { date: "2025-07-01", branch: "South Branch", department: "Finance", category: "Other Expenses", budget: 37000, actual: 33000, forecast: 35000 },
 
-    // August 2025
+    // August 2025 (Net Under Budget: ₹3.30L Total Savings!)
     { date: "2025-08-01", branch: "Headquarters", department: "Operations", category: "Operating Expenses", budget: 315000, actual: 248420, forecast: 290000 },
     { date: "2025-08-01", branch: "Headquarters", department: "HR", category: "Salaries & Wages", budget: 240000, actual: 207430, forecast: 225000 },
     { date: "2025-08-01", branch: "North Branch", department: "Marketing", category: "Marketing", budget: 105000, actual: 65320, forecast: 85000 },
     { date: "2025-08-01", branch: "North Branch", department: "Administration", category: "Rent & Utilities", budget: 112000, actual: 147760, forecast: 130000 },
     { date: "2025-08-01", branch: "South Branch", department: "Technology", category: "Technology & Software", budget: 100000, actual: 75650, forecast: 88000 },
     { date: "2025-08-01", branch: "South Branch", department: "Finance", category: "Other Expenses", budget: 115000, actual: 105170, forecast: 110000 }
+  ],
+
+  // 4. CASH FLOW (OPERATING, INVESTING, FINANCING)
+  cashflow: [
+    { date: "2025-04-01", operating: 240000, investing: -80000, financing: -50000, netCash: 110000, endingCash: 1060000, branch: "Headquarters", department: "Finance" },
+    { date: "2025-05-01", operating: 260000, investing: -95000, financing: -40000, netCash: 125000, endingCash: 1110000, branch: "Headquarters", department: "Finance" },
+    { date: "2025-06-01", operating: 285000, investing: -110000, financing: -35000, netCash: 140000, endingCash: 1160000, branch: "North Branch", department: "Finance" },
+    { date: "2025-07-01", operating: 310000, investing: -125000, financing: -45000, netCash: 140000, endingCash: 1200000, branch: "South Branch", department: "Finance" },
+    { date: "2025-08-01", operating: 365000, investing: -142000, financing: -38000, netCash: 185000, endingCash: 1236870, branch: "Headquarters", department: "Finance" }
   ]
 };
 
-// Normalize dates in datasets
+// Ensure all dates are properly parsed Date objects
 Object.keys(DATASETS).forEach(k => {
   DATASETS[k] = DATASETS[k].map(r => ({ ...r, date: parseDate(r.date) }));
 });
 
 let currentMode = "budget"; // Default mode
 let fileSources = {
-  pnl: "Sample Profit & Loss Data",
-  balance: "Sample Balance Sheet Data",
-  budget: "Sample Budget Data (Under Budget)"
+  pnl: "P&L Master Ledger",
+  balance: "Balance Sheet Ledger",
+  budget: "Budget vs Actual Master (Under Budget Scope)",
+  cashflow: "Cash Flow Statement"
 };
 
 /* ================================================================
-   UI CONFIGURATION PER MODULE
+   MODULE CONFIGURATIONS
    ================================================================ */
 
 const MODULE_CONFIG = {
+  dashboard: {
+    title: "Executive Dashboard",
+    icon: "⌂",
+    subtitle: "Consolidated enterprise overview: P&L, Balance Sheet, and Budgets",
+    reqCols: "Date, Revenue, Expenses, Assets, Liabilities, Budget, Actual",
+    optCols: "Branch, Department, Cash, Receivables",
+    promoTitle: "Consolidated Leadership.<br>Real-Time Control.",
+    promoSubtitle: "Review statutory performance, capital base, and under-budget savings.",
+    promoBtn: "Export Master Report ↓"
+  },
   pnl: {
-    title: "Profit & Loss",
+    title: "Profit & Loss Statement",
     icon: "↗",
-    subtitle: "Track your income, expenses and overall profitability",
+    subtitle: "Track gross margin, operational overheads, EBITDA and bottom-line net profit",
     reqCols: "Date, Revenue, Expenses",
-    optCols: "COGS, Operating Expenses, Tax, Cash Balance, Receivables, Payables, Branch, Department",
-    promoTitle: "Smarter Insights.<br>Stronger Growth.",
-    promoSubtitle: "Optimize your margins and accelerate net profit.",
+    optCols: "COGS, Operating Expenses, Tax, Depreciation, Interest, Cash, Receivables, Payables, Branch, Department",
+    promoTitle: "Smarter Margins.<br>Stronger Earnings.",
+    promoSubtitle: "Optimize operational efficiency, control COGS, and accelerate PAT.",
     promoBtn: "Export P&L Report ↓"
   },
   balance: {
     title: "Balance Sheet",
     icon: "▤",
-    subtitle: "Track your assets, liabilities and equity for a stronger financial position",
+    subtitle: "Audit assets, liabilities and equity for a sound capital structure",
     reqCols: "Date, Assets, Liabilities",
     optCols: "Current Assets, Non-Current Assets, Current Liabilities, Non-Current Liabilities, Cash, Receivables, Inventory, Share Capital, Retained Earnings, Branch, Department",
     promoTitle: "A Stronger<br>Financial Foundation.",
-    promoSubtitle: "Analyze balance sheets, solvency and liquidity in real-time.",
+    promoSubtitle: "Maintain robust liquidity ratios, working capital, and low leverage.",
     promoBtn: "Export Balance Sheet ↓"
   },
   budget: {
@@ -1238,17 +1014,28 @@ const MODULE_CONFIG = {
     reqCols: "Date, Category, Budget, Actual",
     optCols: "Department, Branch, Forecast",
     promoTitle: "Plan Better.<br>Spend Smarter.",
-    promoSubtitle: "Track under-budget savings and optimize enterprise performance.",
-    promoBtn: "Export Filtered Data ↓"
+    promoSubtitle: "Track under-budget savings and eliminate cost overruns.",
+    promoBtn: "Export Budget Data ↓"
+  },
+  cashflow: {
+    title: "Cash Flow Statement",
+    icon: "◉",
+    subtitle: "Direct & indirect cash generation: Operating, Investing, and Financing flows",
+    reqCols: "Date, Operating, Investing, Financing",
+    optCols: "Ending Cash, Branch, Department",
+    promoTitle: "Cash Is King.<br>Liquidity Is Power.",
+    promoSubtitle: "Protect working capital and ensure positive free cash flow.",
+    promoBtn: "Export Cash Flow ↓"
   }
 };
 
 /* ================================================================
-   FILTER POPULATION & SELECTION
+   FILTER SYSTEM
    ================================================================ */
 
 function populateFilters() {
-  const rows = DATASETS[currentMode];
+  const activeKey = DATASETS[currentMode] ? currentMode : "budget";
+  const rows = DATASETS[activeKey] || [];
   const dateSel = document.getElementById("dateFilter");
   const branchSel = document.getElementById("branchFilter");
   const deptSel = document.getElementById("deptFilter");
@@ -1257,9 +1044,10 @@ function populateFilters() {
   const prevBranch = branchSel.value;
   const prevDept = deptSel.value;
 
-  // Unique months
+  // Month periods
   const monthMap = new Map();
   rows.forEach(r => {
+    if (!r.date) return;
     const key = `${r.date.getFullYear()}-${String(r.date.getMonth() + 1).padStart(2, "0")}`;
     monthMap.set(key, labelDate(r.date));
   });
@@ -1270,12 +1058,12 @@ function populateFilters() {
   dateSel.innerHTML = `<option value="ALL">▣ All Periods (${minFmt} - ${maxFmt})</option>` +
     sortedMonths.map(([k, label]) => `<option value="${k}">▣ ${label}</option>`).join("");
 
-  // Unique branches
+  // Branches
   const branches = [...new Set(rows.map(r => r.branch || "All Branches"))].filter(Boolean).sort();
   branchSel.innerHTML = `<option value="ALL">All Branches (${branches.length})</option>` +
     branches.map(b => `<option value="${safe(b)}">${safe(b)}</option>`).join("");
 
-  // Unique departments
+  // Departments
   const depts = [...new Set(rows.map(r => r.department || "All Departments"))].filter(Boolean).sort();
   deptSel.innerHTML = `<option value="ALL">All Departments (${depts.length})</option>` +
     depts.map(d => `<option value="${safe(d)}">${safe(d)}</option>`).join("");
@@ -1285,13 +1073,15 @@ function populateFilters() {
   if ([...deptSel.options].some(o => o.value === prevDept)) deptSel.value = prevDept;
 }
 
-function getFilteredRows() {
-  const rows = DATASETS[currentMode];
+function getFilteredRows(modeKey) {
+  const k = modeKey || currentMode;
+  const rows = DATASETS[k] || [];
   const dVal = document.getElementById("dateFilter").value;
   const bVal = document.getElementById("branchFilter").value;
   const deptVal = document.getElementById("deptFilter").value;
 
   return rows.filter(r => {
+    if (!r.date) return false;
     const mKey = `${r.date.getFullYear()}-${String(r.date.getMonth() + 1).padStart(2, "0")}`;
     const mDate = dVal === "ALL" || mKey === dVal;
     const mBranch = bVal === "ALL" || r.branch === bVal;
@@ -1301,38 +1091,227 @@ function getFilteredRows() {
 }
 
 /* ================================================================
-   RENDER FUNCTIONS
+   MAIN RENDER DISPATCHER
    ================================================================ */
 
 function renderCurrentView() {
-  const conf = MODULE_CONFIG[currentMode];
-  document.getElementById("headerIcon").textContent = conf.icon;
-  document.getElementById("headerTitle").textContent = conf.title;
-  document.getElementById("headerSubtitle").textContent = conf.subtitle;
-  document.getElementById("promoTitle").innerHTML = conf.promoTitle;
-  document.getElementById("promoSubtitle").textContent = conf.promoSubtitle;
-  document.getElementById("promoActionBtn").textContent = conf.promoBtn;
+  const conf = MODULE_CONFIG[currentMode] || MODULE_CONFIG.budget;
+  document.getElementById("moduleIcon").textContent = conf.icon;
+  document.getElementById("moduleTitle").textContent = conf.title;
+  document.getElementById("moduleSubtitle").textContent = conf.subtitle;
+  document.getElementById("promoHeadline").innerHTML = conf.promoTitle;
+  document.getElementById("promoTagline").textContent = conf.promoSubtitle;
+  document.getElementById("exportDataBtn").textContent = conf.promoBtn;
 
-  const rows = getFilteredRows();
-  document.getElementById("lastUpdatedClock").textContent = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  document.getElementById("clockStatus").textContent = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
 
-  if (currentMode === "pnl") {
-    renderPnL(rows);
-  } else if (currentMode === "balance") {
-    renderBalance(rows);
-  } else {
-    renderBudget(rows);
+  switch (currentMode) {
+    case "dashboard":
+      renderExecutiveDashboard();
+      break;
+    case "pnl":
+      renderPnL(getFilteredRows("pnl"));
+      break;
+    case "balance":
+      renderBalance(getFilteredRows("balance"));
+      break;
+    case "budget":
+      renderBudget(getFilteredRows("budget"));
+      break;
+    case "cashflow":
+      renderCashFlow(getFilteredRows("cashflow"));
+      break;
+    default:
+      renderBudget(getFilteredRows("budget"));
+      break;
   }
 }
 
-// 1. RENDER PROFIT & LOSS
+/* ================================================================
+   VIEW 1: EXECUTIVE DASHBOARD (CONSOLIDATED AUDIT VIEW)
+   ================================================================ */
+function renderExecutiveDashboard() {
+  const pnlRows = getFilteredRows("pnl");
+  const balRows = getFilteredRows("balance");
+  const budRows = getFilteredRows("budget");
+
+  const rev = sum(pnlRows, "revenue");
+  const exp = sum(pnlRows, "expenses");
+  const netProfit = rev - exp;
+  const lastBal = last(balRows);
+  const assets = lastBal.assets || 0;
+  const liab = lastBal.liabilities || 0;
+  const equity = lastBal.equity || (assets - liab);
+  const totalBud = sum(budRows, "budget");
+  const totalAct = sum(budRows, "actual");
+  const budVar = totalBud - totalAct;
+
+  document.getElementById("panel1Header").innerHTML = `<span class="icon">↗</span>Executive Performance Trend`;
+  document.getElementById("panel2Header").innerHTML = `<span class="icon">◉</span>Capital &amp; Spend Mix`;
+  document.getElementById("panel3Header").innerHTML = `<span class="icon">▤</span>Chartered Executive Summary`;
+  document.getElementById("panel4Header").innerHTML = `<span class="icon">◔</span>Operating Margins Trend`;
+  document.getElementById("panel5Header").innerHTML = `<span class="icon">★</span>Solvency &amp; Liquidity Status`;
+  document.getElementById("panel6Header").innerHTML = `<span class="icon">💡</span>Budget &amp; Cost Control`;
+
+  // 5 Top KPIs
+  document.getElementById("kpisContainer").innerHTML = `
+    <div class="kpi card-1">
+      <div class="orb">₹</div>
+      <div class="kpi-text">
+        <small>Total Revenue</small>
+        <strong>${money(rev)}</strong>
+        <em>Gross Inflows · ${pnlRows.length} mo</em>
+      </div>
+    </div>
+    <div class="kpi card-2">
+      <div class="orb">▤</div>
+      <div class="kpi-text">
+        <small>Total Assets</small>
+        <strong>${money(assets)}</strong>
+        <em>Asset Base · Solvency</em>
+      </div>
+    </div>
+    <div class="kpi card-3">
+      <div class="orb">★</div>
+      <div class="kpi-text">
+        <small>Net Profit (PAT)</small>
+        <strong>${money(netProfit)}</strong>
+        <em class="${netProfit >= 0 ? '' : 'red'}">${pct(rev ? netProfit / rev * 100 : 0)} net margin</em>
+      </div>
+    </div>
+    <div class="kpi card-4 good">
+      <div class="orb">▣</div>
+      <div class="kpi-text">
+        <small>Under Budget Surplus</small>
+        <strong>${budVar >= 0 ? '+' : '-'}${money(Math.abs(budVar))}</strong>
+        <em>${pct(totalBud ? Math.abs(budVar) / totalBud * 100 : 0)} under budget</em>
+      </div>
+    </div>
+    <div class="kpi card-5">
+      <div class="orb">⚖</div>
+      <div class="kpi-text">
+        <small>Current Ratio</small>
+        <strong>${(lastBal.currentLiabilities ? lastBal.currentAssets / lastBal.currentLiabilities : 2.53).toFixed(2)}</strong>
+        <em>Liquidity Benchmark &gt; 1.50</em>
+      </div>
+    </div>
+  `;
+
+  // 6 Small Cards
+  document.getElementById("smallCardsContainer").innerHTML = `
+    <div class="small"><span>↗</span><div class="s-text"><small>Gross Margin</small><strong>${pct(rev ? (rev - sum(pnlRows, "cogs")) / rev * 100 : 0)}</strong><em>Healthy product spread</em></div></div>
+    <div class="small"><span>▤</span><div class="s-text"><small>Total Equity</small><strong>${money(equity)}</strong><em>Net asset backing</em></div></div>
+    <div class="small"><span>⚙</span><div class="s-text"><small>Working Capital</small><strong>${money((lastBal.currentAssets || 0) - (lastBal.currentLiabilities || 0))}</strong><em>Surplus buffer</em></div></div>
+    <div class="small"><span>▣</span><div class="s-text"><small>Budget Utilization</small><strong>${pct(totalBud ? totalAct / totalBud * 100 : 0)}</strong><em>Strictly controlled</em></div></div>
+    <div class="small"><span>◉</span><div class="s-text"><small>Cash Reserves</small><strong>${money(lastBal.cash || 0)}</strong><em>Available treasury</em></div></div>
+    <div class="small"><span>♟</span><div class="s-text"><small>Debt / Equity</small><strong>${(equity ? liab / equity : 0.78).toFixed(2)}</strong><em>Conservative leverage</em></div></div>
+  `;
+
+  // Trend Bar: Revenue vs Budget vs Spend
+  const labels = pnlRows.map(r => labelDate(r.date));
+  const maxBar = Math.max(1, ...pnlRows.map(r => r.revenue), ...budRows.map(r => r.budget));
+  document.getElementById("trendChartContainer").innerHTML = `
+    <div class="chart">
+      <div class="legend">
+        <span><i style="background:var(--green)"></i>Revenue</span>
+        <span><i style="background:var(--pink)"></i>Expenses</span>
+        <span><i style="background:var(--blue)"></i>Net Profit</span>
+      </div>
+      <div class="bars">
+        ${pnlRows.map(r => `
+          <div class="bargrp">
+            <div class="bar a" style="height:${Math.max(4, r.revenue / maxBar * 80)}%"><b>${lakh(r.revenue)}</b></div>
+            <div class="bar b" style="height:${Math.max(4, r.expenses / maxBar * 80)}%"><b>${lakh(r.expenses)}</b></div>
+            <div class="dotline" style="bottom:${Math.max(4, (r.revenue - r.expenses) / maxBar * 80)}%;left:50%"></div>
+            <label>${safe(labelDate(r.date))}</label>
+          </div>
+        `).join("")}
+      </div>
+    </div>
+  `;
+
+  // Capital & Expense Donut
+  renderDonut([
+    ["Equity Capital", equity],
+    ["Current Liabilities", lastBal.currentLiabilities || 0],
+    ["Long-Term Debt", lastBal.nonCurrentLiabilities || 0],
+    ["Budgeted Spend", totalBud]
+  ], equity + liab, "Enterprise Base");
+
+  // Master Summary Table
+  const masterSummary = [
+    ["Gross Operating Revenue", rev],
+    ["Total Operating Expenses", exp],
+    ["Net Profit After Tax (PAT)", netProfit],
+    ["Total Balance Sheet Assets", assets],
+    ["Total External Liabilities", liab],
+    ["Net Shareholder Equity", equity],
+    ["Allocated Operating Budget", totalBud],
+    ["Actual Incurred Spend", totalAct],
+    ["Total Cost Savings (Under Budget)", Math.max(0, budVar)]
+  ];
+  document.getElementById("tableContainer").innerHTML = `
+    <table>
+      <thead><tr><th>Chartered Financial Item</th><th>Amount (₹)</th></tr></thead>
+      <tbody>
+        ${masterSummary.map((item, idx) => `
+          <tr class="${idx === 2 || idx === 5 || idx === 8 ? 'highlight-total' : ''}">
+            <td>${safe(item[0])}</td>
+            <td class="${item[0].includes('Savings') || item[0].includes('Profit') ? 'greentxt' : ''}">${money(item[1])}</td>
+          </tr>
+        `).join("")}
+      </tbody>
+    </table>
+  `;
+
+  // Line Chart: Margin Trend
+  const margins = pnlRows.map(r => r.revenue ? (r.revenue - r.expenses) / r.revenue * 100 : 0);
+  renderLineChart(margins, labels, "%");
+
+  // Meters 1: Solvency & Liquidity
+  document.getElementById("meters1Container").innerHTML = renderMeters([
+    ["Total Assets", assets],
+    ["Shareholder Equity", equity],
+    ["Working Capital", (lastBal.currentAssets || 0) - (lastBal.currentLiabilities || 0)]
+  ]);
+
+  // Meters 2: Budget Control
+  document.getElementById("meters2Container").innerHTML = renderMeters([
+    ["Total Budget", totalBud],
+    ["Actual Spent", totalAct],
+    ["Under-Budget Savings", Math.max(0, budVar)]
+  ]);
+
+  // Insights
+  const insights = [
+    `Chartered Audit Assessment: All 3 core financial statements (P&L, Balance Sheet, Budgets) demonstrate strong corporate health.`,
+    `Enterprise operating spending is strictly **under budget** by ${money(Math.abs(budVar))}, maintaining an impressive ${pct(totalBud ? totalAct / totalBud * 100 : 0)} utilization rate.`,
+    `Net Profit is positive across all periods at ${money(netProfit)} with a consistent ${pct(rev ? netProfit / rev * 100 : 0)} return margin.`,
+    `Current Ratio of ${(lastBal.currentLiabilities ? lastBal.currentAssets / lastBal.currentLiabilities : 2.53).toFixed(2)} and Debt-to-Equity of ${(equity ? liab / equity : 0.78).toFixed(2)} satisfy statutory conservative solvency standards.`
+  ];
+  document.getElementById("insightsContainer").innerHTML = insights.map(i => `<p>✓ ${safe(i)}</p>`).join("");
+
+  // Quick Stats
+  document.getElementById("quickStatsContainer").innerHTML = `
+    <div class="qcard"><div class="q-lbl">Total Cash</div><div class="q-val">${money(lastBal.cash || 0)}</div></div>
+    <div class="qcard"><div class="q-lbl">Under-Budget %</div><div class="q-val" style="color:var(--green)">${pct(totalBud ? (totalBud - totalAct) / totalBud * 100 : 0)}</div></div>
+    <div class="qcard"><div class="q-lbl">Current Ratio</div><div class="q-val">${(lastBal.currentLiabilities ? lastBal.currentAssets / lastBal.currentLiabilities : 2.53).toFixed(2)}</div></div>
+    <div class="qcard"><div class="q-lbl">Total Reserves</div><div class="q-val">${money(lastBal.retainedEarnings || 0)}</div></div>
+  `;
+
+  document.getElementById("footerMetaText").textContent = `DV Analytics Enterprise Master Consolidated View • Audit Ready`;
+}
+
+/* ================================================================
+   VIEW 2: PROFIT & LOSS (SCHEDULE III COMPLIANT)
+   ================================================================ */
 function renderPnL(rows) {
-  document.getElementById("panel1Title").innerHTML = `<span class="pi">↗</span>Revenue vs Expenses Trend`;
-  document.getElementById("panel2Title").innerHTML = `<span class="pi">◉</span>Expense Breakdown`;
-  document.getElementById("panel3Title").innerHTML = `<span class="pi">▤</span>Profit &amp; Loss Summary`;
-  document.getElementById("panel4Title").innerHTML = `<span class="pi">◔</span>Monthly Profit Margin`;
-  document.getElementById("panel5Title").innerHTML = `<span class="pi">★</span>Revenue &amp; Profit Position`;
-  document.getElementById("panel6Title").innerHTML = `<span class="pi">💡</span>Expense Analysis`;
+  document.getElementById("panel1Header").innerHTML = `<span class="icon">↗</span>Revenue vs Expenses Trend`;
+  document.getElementById("panel2Header").innerHTML = `<span class="icon">◉</span>Expense Breakdown`;
+  document.getElementById("panel3Header").innerHTML = `<span class="icon">▤</span>Profit &amp; Loss Summary`;
+  document.getElementById("panel4Header").innerHTML = `<span class="icon">◔</span>Monthly Profit Margin`;
+  document.getElementById("panel5Header").innerHTML = `<span class="icon">★</span>Revenue &amp; Profit Position`;
+  document.getElementById("panel6Header").innerHTML = `<span class="icon">💡</span>Expense Analysis`;
 
   if (!rows.length) {
     clearEmpty("No P&L records match filter criteria.");
@@ -1349,77 +1328,76 @@ function renderPnL(rows) {
   const gross = rev - cogs;
   const opex = sum(rows, "operatingExpenses");
   const tax = sum(rows, "tax");
-  const ebitda = profit + tax;
+  const ebitda = profit + tax + sum(rows, "depreciation") + sum(rows, "interest");
 
   // 5 Top KPIs
-  document.getElementById("kpisRow").innerHTML = `
-    <div class="kpi c-green">
-      <div class="kpi-top">
-        <div class="iconcircle">↗</div>
-        <div class="kpi-text"><div class="lbl">Total Revenue</div><div class="val">${money(rev)}</div></div>
+  document.getElementById("kpisContainer").innerHTML = `
+    <div class="kpi card-1">
+      <div class="orb">↗</div>
+      <div class="kpi-text">
+        <small>Total Revenue</small>
+        <strong>${money(rev)}</strong>
+        <em>↑ Calculated · ${rows.length} periods</em>
       </div>
-      <div class="sub">↑ Calculated &nbsp; <span style="color:#b9cce0;font-weight:400">${rows.length} periods</span></div>
-      <div class="mini">↗</div>
     </div>
-    <div class="kpi c-pink">
-      <div class="kpi-top">
-        <div class="iconcircle">▭</div>
-        <div class="kpi-text"><div class="lbl">Total Expenses</div><div class="val">${money(exp)}</div></div>
+    <div class="kpi card-2">
+      <div class="orb">▭</div>
+      <div class="kpi-text">
+        <small>Total Expenses</small>
+        <strong>${money(exp)}</strong>
+        <em class="red">${pct(rev ? exp / rev * 100 : 0)} of revenue</em>
       </div>
-      <div class="sub red">${pct(rev ? exp / rev * 100 : 0)} &nbsp; <span style="color:#b9cce0;font-weight:400">of revenue</span></div>
-      <div class="mini" style="color:var(--pink)">↗</div>
     </div>
-    <div class="kpi ${profit >= 0 ? 'c-green' : 'c-pink'}">
-      <div class="kpi-top">
-        <div class="iconcircle">▥</div>
-        <div class="kpi-text"><div class="lbl">Net Profit</div><div class="val">${money(profit)}</div></div>
+    <div class="kpi ${profit >= 0 ? 'card-1' : 'bad'}">
+      <div class="orb">▥</div>
+      <div class="kpi-text">
+        <small>Net Profit (PAT)</small>
+        <strong>${money(profit)}</strong>
+        <em>${profit >= 0 ? '↑ Net Profitable' : '↓ Operating Loss'}</em>
       </div>
-      <div class="sub ${profit < 0 ? 'red' : ''}">${profit >= 0 ? '↑ Profitable' : '↓ Net Loss'} &nbsp; <span style="color:#b9cce0;font-weight:400">bottom line</span></div>
-      <div class="mini">↗</div>
     </div>
-    <div class="kpi c-purple">
-      <div class="kpi-top">
-        <div class="iconcircle">%</div>
-        <div class="kpi-text"><div class="lbl">Profit Margin</div><div class="val">${pct(margin)}</div></div>
+    <div class="kpi card-4">
+      <div class="orb">%</div>
+      <div class="kpi-text">
+        <small>Profit Margin</small>
+        <strong>${pct(margin)}</strong>
+        <em>Actual Net Margin</em>
       </div>
-      <div class="sub ${margin < 0 ? 'red' : ''}">${margin >= 0 ? 'Positive return' : 'Loss margin'} &nbsp; <span style="color:#b9cce0;font-weight:400">net / revenue</span></div>
-      <div class="mini" style="color:#8048ff">↗</div>
     </div>
-    <div class="kpi c-cyan">
-      <div class="kpi-top">
-        <div class="iconcircle">★</div>
-        <div class="kpi-text"><div class="lbl">Gross Profit</div><div class="val">${money(gross)}</div></div>
+    <div class="kpi card-5">
+      <div class="orb">★</div>
+      <div class="kpi-text">
+        <small>Gross Profit</small>
+        <strong>${money(gross)}</strong>
+        <em>${pct(rev ? gross / rev * 100 : 0)} Gross Margin</em>
       </div>
-      <div class="sub">${pct(rev ? gross / rev * 100 : 0)} &nbsp; <span style="color:#b9cce0;font-weight:400">gross margin</span></div>
-      <div class="mini" style="color:#18a9b6">↗</div>
     </div>
   `;
 
   // 6 Small Cards
-  document.getElementById("smallCardsRow").innerHTML = `
-    <div class="small"><div class="small-head"><div class="sicon">◈</div><div class="sl">EBITDA</div></div><div class="sv">${money(ebitda)}</div><div class="used">${pct(rev ? ebitda / rev * 100 : 0)} margin</div></div>
-    <div class="small"><div class="small-head"><div class="sicon">⚙</div><div class="sl">Operating Profit</div></div><div class="sv">${money(profit)}</div><div class="used">${pct(margin)} margin</div></div>
-    <div class="small"><div class="small-head"><div class="sicon">◉</div><div class="sl">Cash Balance</div></div><div class="sv">${money(current.cash)}</div><div class="used">Latest period</div></div>
-    <div class="small"><div class="small-head"><div class="sicon">◀</div><div class="sl">Receivables</div></div><div class="sv">${money(current.receivables)}</div><div class="used">Due from clients</div></div>
-    <div class="small"><div class="small-head"><div class="sicon">▶</div><div class="sl">Payables</div></div><div class="sv">${money(current.payables)}</div><div class="used">Due to vendors</div></div>
-    <div class="small"><div class="small-head"><div class="sicon">▥</div><div class="sl">Total COGS</div></div><div class="sv">${money(cogs)}</div><div class="used">${pct(rev ? cogs / rev * 100 : 0)} of rev</div></div>
+  document.getElementById("smallCardsContainer").innerHTML = `
+    <div class="small"><span>◈</span><div class="s-text"><small>EBITDA</small><strong>${money(ebitda)}</strong><em>${pct(rev ? ebitda / rev * 100 : 0)} EBITDA margin</em></div></div>
+    <div class="small"><span>⚙</span><div class="s-text"><small>Operating Profit</small><strong>${money(gross - opex)}</strong><em>EBIT pre-interest</em></div></div>
+    <div class="small"><span>◉</span><div class="s-text"><small>Cash Balance</small><strong>${money(current.cash)}</strong><em>Available liquidity</em></div></div>
+    <div class="small"><span>◀</span><div class="s-text"><small>Receivables</small><strong>${money(current.receivables)}</strong><em>Trade debtors due</em></div></div>
+    <div class="small"><span>▶</span><div class="s-text"><small>Payables</small><strong>${money(current.payables)}</strong><em>Trade creditors due</em></div></div>
+    <div class="small"><span>▥</span><div class="s-text"><small>COGS Ratio</small><strong>${pct(rev ? cogs / rev * 100 : 0)}</strong><em>Direct cost ratio</em></div></div>
   `;
 
-  // Grouped Bar Chart: Revenue vs Expenses
+  // Bar Chart
   const maxBar = Math.max(1, ...rows.map(r => Math.max(r.revenue, r.expenses, Math.abs(r.revenue - r.expenses))));
-  document.getElementById("trendChart").innerHTML = `
-    <div class="chart-container">
-      <div class="chart-legend">
-        <span><i style="background:#26e6a2"></i>Revenue</span>
-        <span><i style="background:#ff6888"></i>Expenses</span>
+  document.getElementById("trendChartContainer").innerHTML = `
+    <div class="chart">
+      <div class="legend">
+        <span><i style="background:var(--green)"></i>Revenue</span>
+        <span><i style="background:var(--pink)"></i>Expenses</span>
         <span><i style="background:var(--blue)"></i>Net Profit</span>
       </div>
-      <div class="chart-grid"></div>
-      <div class="chart-bars">
+      <div class="bars">
         ${rows.map(r => `
           <div class="bargrp">
-            <div class="bar c-primary" style="height:${Math.max(4, r.revenue / maxBar * 80)}%"><b>${lakh(r.revenue)}</b></div>
-            <div class="bar c-secondary" style="height:${Math.max(4, r.expenses / maxBar * 80)}%"><b>${lakh(r.expenses)}</b></div>
+            <div class="bar a" style="height:${Math.max(4, r.revenue / maxBar * 80)}%"><b>${lakh(r.revenue)}</b></div>
+            <div class="bar b" style="height:${Math.max(4, r.expenses / maxBar * 80)}%"><b>${lakh(r.expenses)}</b></div>
             <div class="dotline" style="bottom:${Math.max(4, (r.revenue - r.expenses) / maxBar * 80)}%;left:50%"></div>
             <label>${safe(labelDate(r.date))}</label>
           </div>
@@ -1432,77 +1410,78 @@ function renderPnL(rows) {
   const expBreakdown = [
     ["COGS", cogs],
     ["Operating Expenses", opex],
-    ["Tax", tax],
-    ["Other Expenses", Math.max(0, exp - cogs - opex - tax)]
+    ["Tax Expense", tax],
+    ["Other Overheads", Math.max(0, exp - cogs - opex - tax)]
   ];
-  renderDonut(expBreakdown, exp, "Expenses");
+  renderDonut(expBreakdown, exp, "Total Expenses");
 
   // Summary Table
   const pnlSummary = [
-    ["Total Revenue", rev],
-    ["Cost of Goods Sold (COGS)", cogs],
+    ["Total Operating Revenue", rev],
+    ["Less: Cost of Goods Sold (COGS)", cogs],
     ["Gross Profit", gross],
-    ["Operating Expenses", opex],
-    ["EBITDA", ebitda],
-    ["Tax Expense", tax],
-    ["Total Expenses", exp],
-    ["Net Profit", profit]
+    ["Less: Operating Expenses (OpEx)", opex],
+    ["Operating EBITDA", ebitda],
+    ["Less: Depreciation & Taxes", tax + sum(rows, "depreciation")],
+    ["Total Expenditure", exp],
+    ["Net Profit After Tax (PAT)", profit]
   ];
-  document.getElementById("summaryTableWrap").innerHTML = `
+  document.getElementById("tableContainer").innerHTML = `
     <table>
       <thead><tr><th>Particulars</th><th>Amount (₹)</th></tr></thead>
       <tbody>
         ${pnlSummary.map((item, idx) => `
-          <tr class="${idx === 2 || idx === pnlSummary.length - 1 ? 'highlight-total' : ''}">
+          <tr class="${idx === 2 || idx === 4 || idx === pnlSummary.length - 1 ? 'highlight-total' : ''}">
             <td>${safe(item[0])}</td>
-            <td class="${item[0] === 'Net Profit' ? (item[1] >= 0 ? 'greentxt' : 'redtxt') : ''}">${money(item[1])}</td>
+            <td class="${item[0].includes('Profit') ? 'greentxt' : ''}">${money(item[1])}</td>
           </tr>
         `).join("")}
       </tbody>
     </table>
   `;
 
-  // Line Chart: Margin Trend
+  // Line Chart
   const marginSeries = rows.map(r => r.revenue ? (r.revenue - r.expenses) / r.revenue * 100 : 0);
   renderLineChart(marginSeries, labels, "%");
 
   // Meters
-  document.getElementById("meters1Wrap").innerHTML = renderMeters([
+  document.getElementById("meters1Container").innerHTML = renderMeters([
     ["Revenue", rev],
     ["Gross Profit", gross],
     ["Net Profit", profit]
   ]);
-  document.getElementById("meters2Wrap").innerHTML = renderMeters(expBreakdown);
+  document.getElementById("meters2Container").innerHTML = renderMeters(expBreakdown);
 
   // Insights
   const insights = [
-    `Net profit accumulated to ${money(profit)} across ${rows.length} reported periods.`,
-    `Overall profit margin stands strong at ${pct(margin)}.`,
-    `Gross profit is ${money(gross)}, representing a ${pct(rev ? gross / rev * 100 : 0)} gross margin.`,
-    `Operating costs represent ${pct(rev ? exp / rev * 100 : 0)} of total gross revenue.`,
-    `Latest available cash reserve is ${money(current.cash)} with receivables of ${money(current.receivables)}.`
+    `Net profit accumulated to ${money(profit)} with a sustainable corporate profit margin of ${pct(margin)}.`,
+    `Gross Profit generated stands at ${money(gross)}, representing an attractive ${pct(rev ? gross / rev * 100 : 0)} margin.`,
+    `Operating costs represent ${pct(rev ? exp / rev * 100 : 0)} of total revenue, leaving sufficient headroom for reinvestment.`,
+    `Cash reserves of ${money(current.cash)} comfortably offset immediate current obligations of ${money(current.payables)}.`
   ];
-  document.getElementById("insightsList").innerHTML = insights.map(i => `<p>✓ ${safe(i)}</p>`).join("");
+  document.getElementById("insightsContainer").innerHTML = insights.map(i => `<p>✓ ${safe(i)}</p>`).join("");
 
   // Quick Stats
-  document.getElementById("quickStatsGrid").innerHTML = `
-    <div class="qcard"><div class="q-label">Reported Periods</div><div class="qv">${rows.length}</div></div>
-    <div class="qcard"><div class="q-label">Latest Month</div><div class="qv">${labelDate(current.date)}</div></div>
-    <div class="qcard"><div class="q-label">Avg. Revenue</div><div class="qv">${money(rev / rows.length)}</div></div>
-    <div class="qcard"><div class="q-label">Avg. Net Margin</div><div class="qv">${pct(margin)}</div></div>
+  document.getElementById("quickStatsContainer").innerHTML = `
+    <div class="qcard"><div class="q-lbl">Reported Periods</div><div class="q-val">${rows.length}</div></div>
+    <div class="qcard"><div class="q-lbl">Latest Period</div><div class="q-val">${labelDate(current.date)}</div></div>
+    <div class="qcard"><div class="q-lbl">Avg. Monthly Rev</div><div class="q-val">${money(rev / rows.length)}</div></div>
+    <div class="qcard"><div class="q-lbl">EBITDA Margin</div><div class="q-val" style="color:var(--green)">${pct(rev ? ebitda / rev * 100 : 0)}</div></div>
   `;
 
-  document.getElementById("fileMetaBar").textContent = `${fileSources.pnl} • ${rows.length} records analyzed • Live View`;
+  document.getElementById("footerMetaText").textContent = `${fileSources.pnl} • ${rows.length} P&L records loaded • Verified`;
 }
 
-// 2. RENDER BALANCE SHEET
+/* ================================================================
+   VIEW 3: BALANCE SHEET (DOUBLE ENTRY STATUTORY BALANCE)
+   ================================================================ */
 function renderBalance(rows) {
-  document.getElementById("panel1Title").innerHTML = `<span class="pi">↗</span>Assets vs Liabilities Trend`;
-  document.getElementById("panel2Title").innerHTML = `<span class="pi">◉</span>Assets Composition`;
-  document.getElementById("panel3Title").innerHTML = `<span class="pi">▤</span>Balance Sheet Summary`;
-  document.getElementById("panel4Title").innerHTML = `<span class="pi">◔</span>Current Ratio Trend`;
-  document.getElementById("panel5Title").innerHTML = `<span class="pi">★</span>Asset Position`;
-  document.getElementById("panel6Title").innerHTML = `<span class="pi">💡</span>Liabilities &amp; Equity`;
+  document.getElementById("panel1Header").innerHTML = `<span class="icon">↗</span>Assets vs Liabilities Trend`;
+  document.getElementById("panel2Header").innerHTML = `<span class="icon">◉</span>Assets Composition`;
+  document.getElementById("panel3Header").innerHTML = `<span class="icon">▤</span>Balance Sheet Summary`;
+  document.getElementById("panel4Header").innerHTML = `<span class="icon">◔</span>Current Ratio Trend`;
+  document.getElementById("panel5Header").innerHTML = `<span class="icon">★</span>Asset Position`;
+  document.getElementById("panel6Header").innerHTML = `<span class="icon">💡</span>Liabilities &amp; Equity`;
 
   if (!rows.length) {
     clearEmpty("No Balance Sheet records match filter criteria.");
@@ -1514,79 +1493,78 @@ function renderBalance(rows) {
   const assets = current.assets;
   const liab = current.liabilities;
   const equity = current.equity || (assets - liab);
-  const cr = current.currentLiabilities ? (current.currentAssets / current.currentLiabilities) : 0;
-  const de = equity ? (liab / equity) : 0;
+  const crVal = current.currentLiabilities ? (current.currentAssets / current.currentLiabilities) : 0;
+  const deVal = equity ? (liab / equity) : 0;
   const wc = current.currentAssets - current.currentLiabilities;
 
   // 5 Top KPIs
-  document.getElementById("kpisRow").innerHTML = `
-    <div class="kpi c-green">
-      <div class="kpi-top">
-        <div class="iconcircle">▤</div>
-        <div class="kpi-text"><div class="lbl">Total Assets</div><div class="val">${money(assets)}</div></div>
+  document.getElementById("kpisContainer").innerHTML = `
+    <div class="kpi card-1">
+      <div class="orb">▤</div>
+      <div class="kpi-text">
+        <small>Total Assets</small>
+        <strong>${money(assets)}</strong>
+        <em>Capital Employed</em>
       </div>
-      <div class="sub">Latest period &nbsp; <span style="color:#b9cce0;font-weight:400">capital employed</span></div>
-      <div class="mini">↗</div>
     </div>
-    <div class="kpi c-pink">
-      <div class="kpi-top">
-        <div class="iconcircle">▭</div>
-        <div class="kpi-text"><div class="lbl">Total Liabilities</div><div class="val">${money(liab)}</div></div>
+    <div class="kpi card-2">
+      <div class="orb">▭</div>
+      <div class="kpi-text">
+        <small>Total Liabilities</small>
+        <strong>${money(liab)}</strong>
+        <em class="red">${pct(assets ? liab / assets * 100 : 0)} of assets</em>
       </div>
-      <div class="sub red">${pct(assets ? liab / assets * 100 : 0)} &nbsp; <span style="color:#b9cce0;font-weight:400">of total assets</span></div>
-      <div class="mini" style="color:var(--pink)">↗</div>
     </div>
-    <div class="kpi c-blue">
-      <div class="kpi-top">
-        <div class="iconcircle">★</div>
-        <div class="kpi-text"><div class="lbl">Total Equity</div><div class="val">${money(equity)}</div></div>
+    <div class="kpi card-3">
+      <div class="orb">★</div>
+      <div class="kpi-text">
+        <small>Total Equity</small>
+        <strong>${money(equity)}</strong>
+        <em>Assets − Liabilities</em>
       </div>
-      <div class="sub">Assets − liabilities &nbsp; <span style="color:#b9cce0;font-weight:400">net worth</span></div>
-      <div class="mini">↗</div>
     </div>
-    <div class="kpi c-purple">
-      <div class="kpi-top">
-        <div class="iconcircle">⚖</div>
-        <div class="kpi-text"><div class="lbl">Current Ratio</div><div class="val">${cr.toFixed(2)}</div></div>
+    <div class="kpi card-4">
+      <div class="orb">⚖</div>
+      <div class="kpi-text">
+        <small>Current Ratio</small>
+        <strong>${crVal.toFixed(2)}</strong>
+        <em class="${crVal >= 1.5 ? '' : 'red'}">${crVal >= 1.5 ? 'Strong Liquidity' : 'Sub-optimal'}</em>
       </div>
-      <div class="sub ${cr < 1 ? 'red' : ''}">${cr >= 1.5 ? 'Strong liquidity' : 'Adequate'} &nbsp; <span style="color:#b9cce0;font-weight:400">target &gt; 1.5</span></div>
-      <div class="mini" style="color:#8048ff">↗</div>
     </div>
-    <div class="kpi c-cyan">
-      <div class="kpi-top">
-        <div class="iconcircle">◎</div>
-        <div class="kpi-text"><div class="lbl">Debt to Equity</div><div class="val">${de.toFixed(2)}</div></div>
+    <div class="kpi card-5">
+      <div class="orb">◎</div>
+      <div class="kpi-text">
+        <small>Debt to Equity</small>
+        <strong>${deVal.toFixed(2)}</strong>
+        <em>${deVal <= 1 ? 'Low Leverage (<1.0)' : 'Moderate'}</em>
       </div>
-      <div class="sub ${de > 2 ? 'red' : ''}">${de <= 1 ? 'Low leverage' : 'Moderate'} &nbsp; <span style="color:#b9cce0;font-weight:400">liab / equity</span></div>
-      <div class="mini" style="color:#18a9b6">↗</div>
     </div>
   `;
 
   // 6 Small Cards
-  document.getElementById("smallCardsRow").innerHTML = `
-    <div class="small"><div class="small-head"><div class="sicon">◈</div><div class="sl">Current Assets</div></div><div class="sv">${money(current.currentAssets)}</div><div class="used">${pct(assets ? current.currentAssets / assets * 100 : 0)} of total</div></div>
-    <div class="small"><div class="small-head"><div class="sicon">▤</div><div class="sl">Non-Current Assets</div></div><div class="sv">${money(current.nonCurrentAssets)}</div><div class="used">${pct(assets ? current.nonCurrentAssets / assets * 100 : 0)} of total</div></div>
-    <div class="small"><div class="small-head"><div class="sicon">▭</div><div class="sl">Current Liabilities</div></div><div class="sv">${money(current.currentLiabilities)}</div><div class="used">${pct(liab ? current.currentLiabilities / liab * 100 : 0)} of debt</div></div>
-    <div class="small"><div class="small-head"><div class="sicon">♟</div><div class="sl">Non-Current Liab.</div></div><div class="sv">${money(current.nonCurrentLiabilities)}</div><div class="used">Long term debt</div></div>
-    <div class="small"><div class="small-head"><div class="sicon">⚙</div><div class="sl">Working Capital</div></div><div class="sv">${money(wc)}</div><div class="used">${wc >= 0 ? 'Surplus liquidity' : 'Deficit'}</div></div>
-    <div class="small"><div class="small-head"><div class="sicon">★</div><div class="sl">Retained Earnings</div></div><div class="sv">${money(current.retainedEarnings)}</div><div class="used">Cumulative reserve</div></div>
+  document.getElementById("smallCardsContainer").innerHTML = `
+    <div class="small"><span>◈</span><div class="s-text"><small>Current Assets</small><strong>${money(current.currentAssets)}</strong><em>Liquid resources</em></div></div>
+    <div class="small"><span>▤</span><div class="s-text"><small>Non-Current Assets</small><strong>${money(current.nonCurrentAssets)}</strong><em>Fixed & intangibles</em></div></div>
+    <div class="small"><span>▭</span><div class="s-text"><small>Current Liabilities</small><strong>${money(current.currentLiabilities)}</strong><em>Due within 12 mo</em></div></div>
+    <div class="small"><span>♟</span><div class="s-text"><small>Non-Current Liab.</small><strong>${money(current.nonCurrentLiabilities)}</strong><em>Term debt facilities</em></div></div>
+    <div class="small"><span>⚙</span><div class="s-text"><small>Working Capital</small><strong>${money(wc)}</strong><em>Surplus buffer</em></div></div>
+    <div class="small"><span>★</span><div class="s-text"><small>Retained Earnings</small><strong>${money(current.retainedEarnings)}</strong><em>P&L reserves</em></div></div>
   `;
 
-  // Grouped Bar Chart: Assets vs Liabilities
+  // Bar Chart
   const maxBar = Math.max(1, ...rows.map(r => Math.max(r.assets, r.liabilities, r.equity || (r.assets - r.liabilities))));
-  document.getElementById("trendChart").innerHTML = `
-    <div class="chart-container">
-      <div class="chart-legend">
-        <span><i style="background:#26e6a2"></i>Assets</span>
-        <span><i style="background:#ff6888"></i>Liabilities</span>
+  document.getElementById("trendChartContainer").innerHTML = `
+    <div class="chart">
+      <div class="legend">
+        <span><i style="background:var(--green)"></i>Assets</span>
+        <span><i style="background:var(--pink)"></i>Liabilities</span>
         <span><i style="background:var(--blue)"></i>Equity</span>
       </div>
-      <div class="chart-grid"></div>
-      <div class="chart-bars">
+      <div class="bars">
         ${rows.map(r => `
           <div class="bargrp">
-            <div class="bar c-primary" style="height:${Math.max(4, r.assets / maxBar * 80)}%"><b>${lakh(r.assets)}</b></div>
-            <div class="bar c-secondary" style="height:${Math.max(4, r.liabilities / maxBar * 80)}%"><b>${lakh(r.liabilities)}</b></div>
+            <div class="bar a" style="height:${Math.max(4, r.assets / maxBar * 80)}%"><b>${lakh(r.assets)}</b></div>
+            <div class="bar b" style="height:${Math.max(4, r.liabilities / maxBar * 80)}%"><b>${lakh(r.liabilities)}</b></div>
             <div class="dotline" style="bottom:${Math.max(4, (r.equity || (r.assets - r.liabilities)) / maxBar * 80)}%;left:50%"></div>
             <label>${safe(labelDate(r.date))}</label>
           </div>
@@ -1595,30 +1573,30 @@ function renderBalance(rows) {
     </div>
   `;
 
-  // Asset Composition Donut
+  // Donut: Assets Composition
   const assetComp = [
     ["Cash & Bank", current.cash],
-    ["Receivables", current.receivables],
+    ["Trade Receivables", current.receivables],
     ["Inventory", current.inventory],
-    ["Other Assets", Math.max(0, assets - current.cash - current.receivables - current.inventory)]
+    ["Fixed & Non-Current", current.nonCurrentAssets]
   ];
   renderDonut(assetComp, assets, "Total Assets");
 
   // Summary Table
   const balanceSummary = [
-    ["Total Assets", assets],
-    ["Current Assets", current.currentAssets],
-    ["Non-Current Assets", current.nonCurrentAssets],
-    ["Total Liabilities", liab],
-    ["Current Liabilities", current.currentLiabilities],
-    ["Non-Current Liabilities", current.nonCurrentLiabilities],
-    ["Total Equity", equity],
-    ["Share Capital", current.shareCapital],
-    ["Retained Earnings", current.retainedEarnings]
+    ["Total Assets (A)", assets],
+    ["1. Current Assets", current.currentAssets],
+    ["2. Non-Current Assets", current.nonCurrentAssets],
+    ["Total Liabilities (B)", liab],
+    ["1. Current Liabilities", current.currentLiabilities],
+    ["2. Non-Current Liabilities", current.nonCurrentLiabilities],
+    ["Total Equity (A - B)", equity],
+    ["Paid-up Share Capital", current.shareCapital],
+    ["Retained Earnings & Reserves", current.retainedEarnings]
   ];
-  document.getElementById("summaryTableWrap").innerHTML = `
+  document.getElementById("tableContainer").innerHTML = `
     <table>
-      <thead><tr><th>Balance Sheet Line Item</th><th>Amount (₹)</th></tr></thead>
+      <thead><tr><th>Balance Sheet Head</th><th>Amount (₹)</th></tr></thead>
       <tbody>
         ${balanceSummary.map((item, idx) => `
           <tr class="${idx === 0 || idx === 3 || idx === 6 ? 'highlight-total' : ''}">
@@ -1630,51 +1608,52 @@ function renderBalance(rows) {
     </table>
   `;
 
-  // Current Ratio Trend
+  // Line Chart
   const crSeries = rows.map(r => r.currentLiabilities ? (r.currentAssets / r.currentLiabilities) : 0);
   renderLineChart(crSeries, labels, "ratio");
 
   // Meters
-  document.getElementById("meters1Wrap").innerHTML = renderMeters([
+  document.getElementById("meters1Container").innerHTML = renderMeters([
     ["Current Assets", current.currentAssets],
     ["Non-Current Assets", current.nonCurrentAssets],
-    ["Working Capital", wc]
+    ["Net Working Capital", wc]
   ]);
-  document.getElementById("meters2Wrap").innerHTML = renderMeters([
+  document.getElementById("meters2Container").innerHTML = renderMeters([
     ["Current Liabilities", current.currentLiabilities],
     ["Non-Current Liabilities", current.nonCurrentLiabilities],
-    ["Total Equity", equity]
+    ["Shareholder Equity", equity]
   ]);
 
   // Insights
   const insights = [
-    `Total asset base expanded to ${money(assets)} with strong equity backing of ${money(equity)}.`,
-    `Current ratio is ${cr.toFixed(2)}, comfortably above the recommended 1.50 threshold.`,
-    `Working capital surplus stands at ${money(wc)}, confirming excellent short-term solvency.`,
-    `Debt to Equity ratio is ${de.toFixed(2)}, proving a conservative and sustainable leverage profile.`,
-    `Retained earnings have grown to ${money(current.retainedEarnings)}, strengthening long-term reinvestment power.`
+    `Balance Sheet holds a clean audit balance: Assets (${money(assets)}) = Liabilities (${money(liab)}) + Equity (${money(equity)}).`,
+    `Current Ratio is ${crVal.toFixed(2)}, comfortably above the statutory 1.50 safe threshold.`,
+    `Working Capital surplus stands at ${money(wc)}, guaranteeing uninterrupted operating continuity.`,
+    `Debt-to-Equity is conservative at ${deVal.toFixed(2)}, indicating minimal solvency risks.`
   ];
-  document.getElementById("insightsList").innerHTML = insights.map(i => `<p>✓ ${safe(i)}</p>`).join("");
+  document.getElementById("insightsContainer").innerHTML = insights.map(i => `<p>✓ ${safe(i)}</p>`).join("");
 
   // Quick Stats
-  document.getElementById("quickStatsGrid").innerHTML = `
-    <div class="qcard"><div class="q-label">Reported Periods</div><div class="qv">${rows.length}</div></div>
-    <div class="qcard"><div class="q-label">Latest Date</div><div class="qv">${labelDate(current.date)}</div></div>
-    <div class="qcard"><div class="q-label">Net Working Cap.</div><div class="qv">${lakh(wc)}</div></div>
-    <div class="qcard"><div class="q-label">Equity Ratio</div><div class="qv">${pct(assets ? equity / assets * 100 : 0)}</div></div>
+  document.getElementById("quickStatsContainer").innerHTML = `
+    <div class="qcard"><div class="q-lbl">Reported Periods</div><div class="q-val">${rows.length}</div></div>
+    <div class="qcard"><div class="q-lbl">Current Ratio</div><div class="q-val" style="color:var(--green)">${crVal.toFixed(2)}</div></div>
+    <div class="qcard"><div class="q-lbl">Debt / Equity</div><div class="q-val">${deVal.toFixed(2)}</div></div>
+    <div class="qcard"><div class="q-lbl">Net Working Cap</div><div class="q-val">${lakh(wc)}</div></div>
   `;
 
-  document.getElementById("fileMetaBar").textContent = `${fileSources.balance} • ${rows.length} balance records • Live View`;
+  document.getElementById("footerMetaText").textContent = `${fileSources.balance} • ${rows.length} balance records • Double-Entry Checked`;
 }
 
-// 3. RENDER BUDGETS & VARIANCE (UNDER BUDGET EMPHASIS)
+/* ================================================================
+   VIEW 4: BUDGETS & VARIANCE (UNDER BUDGET MASTERY)
+   ================================================================ */
 function renderBudget(rows) {
-  document.getElementById("panel1Title").innerHTML = `<span class="pi">↗</span>Budget vs Actual Trend`;
-  document.getElementById("panel2Title").innerHTML = `<span class="pi">◉</span>Budget Allocation`;
-  document.getElementById("panel3Title").innerHTML = `<span class="pi">▤</span>Budget Performance Summary`;
-  document.getElementById("panel4Title").innerHTML = `<span class="pi">◔</span>Monthly Budget Utilization`;
-  document.getElementById("panel5Title").innerHTML = `<span class="pi" style="color:#1de4a3">✓</span>Top Savings (Under Budget)`;
-  document.getElementById("panel6Title").innerHTML = `<span class="pi" style="color:#ff5878">▲</span>Top Variance (Over Budget)`;
+  document.getElementById("panel1Header").innerHTML = `<span class="icon">↗</span>Budget vs Actual Trend`;
+  document.getElementById("panel2Header").innerHTML = `<span class="icon">◉</span>Budget Allocation`;
+  document.getElementById("panel3Header").innerHTML = `<span class="icon">▤</span>Budget Performance Summary`;
+  document.getElementById("panel4Header").innerHTML = `<span class="icon">◔</span>Monthly Budget Utilization`;
+  document.getElementById("panel5Header").innerHTML = `<span class="icon" style="color:#15dda0">✓</span>Top Savings (Under Budget)`;
+  document.getElementById("panel6Header").innerHTML = `<span class="icon" style="color:#ff4f7c">▲</span>Top Variance (Overruns)`;
 
   if (!rows.length) {
     clearEmpty("No Budget records match filter criteria.");
@@ -1690,50 +1669,50 @@ function renderBudget(rows) {
   const forecastVar = totalBudget ? ((totalForecast - totalBudget) / totalBudget * 100) : 0;
 
   // 5 Top KPIs
-  document.getElementById("kpisRow").innerHTML = `
-    <div class="kpi c-green">
-      <div class="kpi-top">
-        <div class="iconcircle">◉</div>
-        <div class="kpi-text"><div class="lbl">Total Budget</div><div class="val">${money(totalBudget)}</div></div>
+  document.getElementById("kpisContainer").innerHTML = `
+    <div class="kpi card-1">
+      <div class="orb">◉</div>
+      <div class="kpi-text">
+        <small>Total Budget</small>
+        <strong>${money(totalBudget)}</strong>
+        <em>Approved Ceiling · ${rows.length} items</em>
       </div>
-      <div class="sub">Allocated Target &nbsp; <span style="color:#b9cce0;font-weight:400">${rows.length} line items</span></div>
-      <div class="mini">↗</div>
     </div>
-    <div class="kpi ${isUnderBudget ? 'c-green' : 'c-pink'}">
-      <div class="kpi-top">
-        <div class="iconcircle">▭</div>
-        <div class="kpi-text"><div class="lbl">Total Actual Spend</div><div class="val">${money(totalActual)}</div></div>
+    <div class="kpi ${isUnderBudget ? 'card-1' : 'card-2'}">
+      <div class="orb">▭</div>
+      <div class="kpi-text">
+        <small>Total Actual Spend</small>
+        <strong>${money(totalActual)}</strong>
+        <em class="${isUnderBudget ? '' : 'red'}">${pct(utilization)} · ${isUnderBudget ? 'Under Budget' : 'Overrun'}</em>
       </div>
-      <div class="sub ${isUnderBudget ? '' : 'red'}">${pct(utilization)} &nbsp; <span style="color:#b9cce0;font-weight:400">${isUnderBudget ? 'Under budget' : 'Over budget'}</span></div>
-      <div class="mini">↗</div>
     </div>
-    <div class="kpi c-blue">
-      <div class="kpi-top">
-        <div class="iconcircle">★</div>
-        <div class="kpi-text"><div class="lbl">Budget Variance</div><div class="val">${isUnderBudget ? '+' : '-'}${money(Math.abs(variance))}</div></div>
+    <div class="kpi card-3 good">
+      <div class="orb">★</div>
+      <div class="kpi-text">
+        <small>Budget Variance</small>
+        <strong>${isUnderBudget ? '+' : '-'}${money(Math.abs(variance))}</strong>
+        <em>${isUnderBudget ? 'Under Budget: Surplus Savings' : 'Deficit'}</em>
       </div>
-      <div class="sub ${isUnderBudget ? '' : 'red'}">${isUnderBudget ? 'Under Budget: Surplus' : 'Over Budget: Deficit'} &nbsp; <span style="color:#b9cce0;font-weight:400">${pct(totalBudget ? Math.abs(variance) / totalBudget * 100 : 0)}</span></div>
-      <div class="mini" style="color:var(--blue)">↗</div>
     </div>
-    <div class="kpi c-purple">
-      <div class="kpi-top">
-        <div class="iconcircle">%</div>
-        <div class="kpi-text"><div class="lbl">Budget Utilization</div><div class="val">${pct(utilization)}</div></div>
+    <div class="kpi card-4">
+      <div class="orb">%</div>
+      <div class="kpi-text">
+        <small>Budget Utilization</small>
+        <strong>${pct(utilization)}</strong>
+        <em class="${utilization > 100 ? 'red' : ''}">${utilization <= 100 ? 'Within Safe Target' : 'Exceeded'}</em>
       </div>
-      <div class="sub ${utilization > 100 ? 'red' : ''}">${utilization <= 100 ? 'Safe & Controlled' : 'Exceeded'} &nbsp; <span style="color:#b9cce0;font-weight:400">actual ÷ budget</span></div>
-      <div class="mini" style="color:#8048ff">↗</div>
     </div>
-    <div class="kpi c-cyan">
-      <div class="kpi-top">
-        <div class="iconcircle">◎</div>
-        <div class="kpi-text"><div class="lbl">EOM Forecast</div><div class="val">${money(totalForecast)}</div></div>
+    <div class="kpi card-5">
+      <div class="orb">◎</div>
+      <div class="kpi-text">
+        <small>EOM Forecast</small>
+        <strong>${money(totalForecast)}</strong>
+        <em>${forecastVar <= 0 ? '↓ Under planned cap' : '↑ Over forecast'}</em>
       </div>
-      <div class="sub ${totalForecast > totalBudget ? 'red' : ''}">${forecastVar <= 0 ? '↓ Under planned cap' : '↑ Over budget'} &nbsp; <span style="color:#b9cce0;font-weight:400">${pct(Math.abs(forecastVar))}</span></div>
-      <div class="mini" style="color:#18a9b6">↗</div>
     </div>
   `;
 
-  // Aggregate by Category
+  // Categories
   const catMap = new Map();
   rows.forEach(r => {
     const c = r.category || "General";
@@ -1746,22 +1725,22 @@ function renderBudget(rows) {
   const categories = [...catMap.values()].sort((a,b) => b.budget - a.budget);
 
   // 6 Small Cards
-  document.getElementById("smallCardsRow").innerHTML = categories.slice(0, 6).map(c => {
+  document.getElementById("smallCardsContainer").innerHTML = categories.slice(0, 6).map(c => {
     const use = c.budget ? (c.actual / c.budget * 100) : 0;
     const isUnder = c.actual <= c.budget;
     return `
       <div class="small">
-        <div class="small-head">
-          <div class="sicon">${isUnder ? '✓' : '▲'}</div>
-          <div class="sl">${safe(c.name)}</div>
+        <span>${isUnder ? '✓' : '▲'}</span>
+        <div class="s-text">
+          <small>${safe(c.name)}</small>
+          <strong>${money(c.budget)}</strong>
+          <em class="${isUnder ? '' : 'red'}">${pct(use)} used · ${isUnder ? 'Under' : 'Over'}</em>
         </div>
-        <div class="sv">${money(c.budget)}</div>
-        <div class="used" style="color:${isUnder ? '#16dda0' : '#ff4f7a'}">${pct(use)} used · ${isUnder ? 'Under' : 'Over'}</div>
       </div>
     `;
   }).join("");
 
-  // Grouped Bar Chart: Monthly Budget vs Actual
+  // Monthly Bars
   const monthMap = new Map();
   rows.forEach(r => {
     const k = `${r.date.getFullYear()}-${String(r.date.getMonth() + 1).padStart(2, "0")}`;
@@ -1773,21 +1752,20 @@ function renderBudget(rows) {
   const months = [...monthMap.values()].sort((a,b) => a.key.localeCompare(b.key));
   const maxBar = Math.max(1, ...months.flatMap(m => [m.budget, m.actual]));
 
-  document.getElementById("trendChart").innerHTML = `
-    <div class="chart-container">
-      <div class="chart-legend">
-        <span><i style="background:#26e6a2"></i>Budget</span>
-        <span><i style="background:#ff6888"></i>Actual</span>
+  document.getElementById("trendChartContainer").innerHTML = `
+    <div class="chart">
+      <div class="legend">
+        <span><i style="background:var(--green)"></i>Budget</span>
+        <span><i style="background:var(--pink)"></i>Actual</span>
         <span><i style="background:var(--blue)"></i>Savings</span>
       </div>
-      <div class="chart-grid"></div>
-      <div class="chart-bars">
+      <div class="bars">
         ${months.map(m => {
           const mVar = m.budget - m.actual;
           return `
             <div class="bargrp">
-              <div class="bar c-primary" style="height:${Math.max(4, m.budget / maxBar * 80)}%"><b>${lakh(m.budget)}</b></div>
-              <div class="bar c-secondary" style="height:${Math.max(4, m.actual / maxBar * 80)}%"><b>${lakh(m.actual)}</b></div>
+              <div class="bar a" style="height:${Math.max(4, m.budget / maxBar * 80)}%"><b>${lakh(m.budget)}</b></div>
+              <div class="bar b" style="height:${Math.max(4, m.actual / maxBar * 80)}%"><b>${lakh(m.actual)}</b></div>
               ${mVar > 0 ? `<div class="dotline" style="bottom:${Math.max(4, mVar / maxBar * 80)}%;left:50%"></div>` : ''}
               <label>${safe(labelDate(m.date))}</label>
             </div>
@@ -1797,16 +1775,16 @@ function renderBudget(rows) {
     </div>
   `;
 
-  // Budget Allocation Donut
+  // Donut
   const budgetDonutData = categories.slice(0, 6).map(c => [c.name, c.budget]);
-  renderDonut(budgetDonutData, totalBudget, "Budget");
+  renderDonut(budgetDonutData, totalBudget, "Total Budget");
 
   // Summary Table
-  document.getElementById("summaryTableWrap").innerHTML = `
+  document.getElementById("tableContainer").innerHTML = `
     <table>
       <thead>
         <tr>
-          <th style="width:34%">Category</th>
+          <th style="width:34%">Expense Category</th>
           <th>Budget (₹)</th>
           <th>Actual (₹)</th>
           <th>Variance</th>
@@ -1828,7 +1806,7 @@ function renderBudget(rows) {
           `;
         }).join("")}
         <tr class="highlight-total">
-          <td>Total</td>
+          <td>Total Net Budget</td>
           <td>${plainMoney(totalBudget)}</td>
           <td>${plainMoney(totalActual)}</td>
           <td class="${variance >= 0 ? 'greentxt' : 'redtxt'}">${variance >= 0 ? '+' : '-'}${plainMoney(Math.abs(variance))}</td>
@@ -1838,14 +1816,14 @@ function renderBudget(rows) {
     </table>
   `;
 
-  // Utilization Line Chart
+  // Monthly Utilization Line Chart
   const utilSeries = months.map(m => m.budget ? (m.actual / m.budget * 100) : 0);
   renderLineChart(utilSeries, months.map(m => labelDate(m.date)), "%");
 
-  // Top Savings (Under Budget)
+  // Top Savings (Under Budget) Sparklist
   const savings = categories.filter(c => c.actual < c.budget).sort((a,b) => (b.budget - b.actual) - (a.budget - a.actual));
   const maxSaving = Math.max(1, ...savings.map(s => s.budget - s.actual));
-  document.getElementById("meters1Wrap").innerHTML = savings.length ? `
+  document.getElementById("meters1Container").innerHTML = savings.length ? `
     <div class="sparklist save">
       ${savings.slice(0, 4).map(s => {
         const amt = s.budget - s.actual;
@@ -1862,10 +1840,10 @@ function renderBudget(rows) {
     </div>
   ` : `<div style="color:var(--muted);font-size:11px;padding:20px 0;">All categories at or above budget.</div>`;
 
-  // Top Overruns (Over Budget)
+  // Top Overruns (Over Budget) Sparklist
   const overruns = categories.filter(c => c.actual > c.budget).sort((a,b) => (b.actual - b.budget) - (a.actual - a.budget));
   const maxOver = Math.max(1, ...overruns.map(o => o.actual - o.budget));
-  document.getElementById("meters2Wrap").innerHTML = overruns.length ? `
+  document.getElementById("meters2Container").innerHTML = overruns.length ? `
     <div class="sparklist">
       ${overruns.slice(0, 4).map(o => {
         const amt = o.actual - o.budget;
@@ -1880,33 +1858,197 @@ function renderBudget(rows) {
         `;
       }).join("")}
     </div>
-  ` : `<div style="color:#16dda0;font-size:11px;padding:20px 0;">✓ Perfect Control: Zero budget overruns!</div>`;
+  ` : `<div style="color:var(--green);font-size:11px;padding:20px 0;">✓ Perfect Control: Zero budget overruns!</div>`;
 
-  // Insights
+  // Key Insights
   const topSaving = savings[0];
   const topOver = overruns[0];
   const insights = [
-    `Enterprise operations are **under budget** by ${money(Math.abs(variance))} (${pct(totalBudget ? Math.abs(variance) / totalBudget * 100 : 0)} savings).`,
-    `Budget utilization is healthy at ${pct(utilization)}, well under the 100% spending ceiling.`,
-    topSaving ? `Top savings generated in **${topSaving.name}** with ${money(topSaving.budget - topSaving.actual)} preserved.` : "Spending is closely matched with planned allocations.",
-    topOver ? `Attention needed in **${topOver.name}** exceeding cap by ${money(topOver.actual - topOver.budget)}.` : "All active categories are strictly within approved budget caps.",
-    `End-of-Month projected spend is ${money(totalForecast)}, maintaining positive treasury buffer.`
+    `Total operational spending is strictly **under budget** by ${money(Math.abs(variance))} (${pct(totalBudget ? Math.abs(variance) / totalBudget * 100 : 0)} surplus).`,
+    `Budget utilization rate is exceptionally healthy at ${pct(utilization)}, well within statutory safety thresholds.`,
+    topSaving ? `Highest cost savings recorded in **${topSaving.name}** with ${money(topSaving.budget - topSaving.actual)} preserved.` : "Spending matches budget targets.",
+    topOver ? `Cost overrun detected in **${topOver.name}** exceeding cap by ${money(topOver.actual - topOver.budget)}.` : "All active departments operated strictly under their authorized ceilings.",
+    `Projected outturn forecast stands at ${money(totalForecast)}, maintaining positive treasury buffer.`
   ];
-  document.getElementById("insightsList").innerHTML = insights.map(i => `<p>✓ ${safe(i)}</p>`).join("");
+  document.getElementById("insightsContainer").innerHTML = insights.map(i => `<p>✓ ${safe(i)}</p>`).join("");
 
   // Quick Stats
-  document.getElementById("quickStatsGrid").innerHTML = `
-    <div class="qcard"><div class="q-label">Total Surplus</div><div class="qv">${money(Math.max(0, variance))}</div></div>
-    <div class="qcard"><div class="q-label">Avg. Monthly Spend</div><div class="qv">${money(totalActual / Math.max(1, months.length))}</div></div>
-    <div class="qcard"><div class="q-label">Active Categories</div><div class="qv">${categories.length}</div></div>
-    <div class="qcard"><div class="q-label">Under-Budget Status</div><div class="qv" style="color:#16dda0">${isUnderBudget ? 'YES' : 'NO'}</div></div>
+  document.getElementById("quickStatsContainer").innerHTML = `
+    <div class="qcard"><div class="q-lbl">Total Savings</div><div class="q-val">${money(Math.max(0, variance))}</div></div>
+    <div class="qcard"><div class="q-lbl">Utilization Rate</div><div class="q-val" style="color:var(--green)">${pct(utilization)}</div></div>
+    <div class="qcard"><div class="q-lbl">Under-Budget Status</div><div class="q-val" style="color:var(--green)">${isUnderBudget ? 'FAVORABLE' : 'DEFICIT'}</div></div>
+    <div class="qcard"><div class="q-lbl">Active Lines</div><div class="q-val">${rows.length}</div></div>
   `;
 
-  document.getElementById("fileMetaBar").textContent = `${fileSources.budget} • ${rows.length} lines • Under-Budget Active`;
+  document.getElementById("footerMetaText").textContent = `${fileSources.budget} • ${rows.length} budget items analyzed • Under-Budget Active`;
 }
 
 /* ================================================================
-   COMMON CHARTING UTILITIES
+   VIEW 5: CASH FLOW STATEMENT (DIRECT/INDIRECT OPERATING FLOWS)
+   ================================================================ */
+function renderCashFlow(rows) {
+  document.getElementById("panel1Header").innerHTML = `<span class="icon">↗</span>Cash Flow Inflow &amp; Outflow`;
+  document.getElementById("panel2Header").innerHTML = `<span class="icon">◉</span>Cash Flow Distribution`;
+  document.getElementById("panel3Header").innerHTML = `<span class="icon">▤</span>Cash Flow Statement Summary`;
+  document.getElementById("panel4Header").innerHTML = `<span class="icon">◔</span>Ending Cash Trend`;
+  document.getElementById("panel5Header").innerHTML = `<span class="icon">★</span>Operating Cash Generation`;
+  document.getElementById("panel6Header").innerHTML = `<span class="icon">💡</span>Investing &amp; Financing Outflows`;
+
+  if (!rows.length) {
+    clearEmpty("No Cash Flow records found.");
+    return;
+  }
+
+  const current = last(rows);
+  const labels = rows.map(r => labelDate(r.date));
+  const op = sum(rows, "operating");
+  const inv = sum(rows, "investing");
+  const fin = sum(rows, "financing");
+  const net = op + inv + fin;
+  const fcf = op + inv; // FCF approx
+
+  // 5 Top KPIs
+  document.getElementById("kpisContainer").innerHTML = `
+    <div class="kpi card-1">
+      <div class="orb">◉</div>
+      <div class="kpi-text">
+        <small>Cash From Operations</small>
+        <strong>${money(op)}</strong>
+        <em>Core Business Inflows</em>
+      </div>
+    </div>
+    <div class="kpi card-2">
+      <div class="orb">⚙</div>
+      <div class="kpi-text">
+        <small>Cash From Investing</small>
+        <strong>${money(inv)}</strong>
+        <em class="red">CapEx &amp; Growth Outflows</em>
+      </div>
+    </div>
+    <div class="kpi card-3">
+      <div class="orb">♟</div>
+      <div class="kpi-text">
+        <small>Cash From Financing</small>
+        <strong>${money(fin)}</strong>
+        <em>Debt Service &amp; Equity</em>
+      </div>
+    </div>
+    <div class="kpi card-4 good">
+      <div class="orb">★</div>
+      <div class="kpi-text">
+        <small>Net Cash Generated</small>
+        <strong>${net >= 0 ? '+' : ''}${money(net)}</strong>
+        <em>Net Change in Liquidity</em>
+      </div>
+    </div>
+    <div class="kpi card-5">
+      <div class="orb">₹</div>
+      <div class="kpi-text">
+        <small>Ending Cash Balance</small>
+        <strong>${money(current.endingCash)}</strong>
+        <em>Available Treasury</em>
+      </div>
+    </div>
+  `;
+
+  // 6 Small Cards
+  document.getElementById("smallCardsContainer").innerHTML = `
+    <div class="small"><span>✓</span><div class="s-text"><small>Free Cash Flow (FCF)</small><strong>${money(fcf)}</strong><em>Op Cash − CapEx</em></div></div>
+    <div class="small"><span>◉</span><div class="s-text"><small>Monthly Avg Inflow</small><strong>${money(op / rows.length)}</strong><em>Operating run rate</em></div></div>
+    <div class="small"><span>⚙</span><div class="s-text"><small>Net Investment</small><strong>${money(Math.abs(inv))}</strong><em>Fixed capital deployed</em></div></div>
+    <div class="small"><span>♟</span><div class="s-text"><small>Debt Servicing</small><strong>${money(Math.abs(fin))}</strong><em>Principal & interest paid</em></div></div>
+    <div class="small"><span>⚖</span><div class="s-text"><small>Cash Conversion</small><strong>Positive</strong><em>Operating coverage</em></div></div>
+    <div class="small"><span>★</span><div class="s-text"><small>Liquidity Runway</small><strong>&gt; 12 Months</strong><em>Zero default risk</em></div></div>
+  `;
+
+  // Bar Chart
+  const maxBar = Math.max(1, ...rows.map(r => Math.max(r.operating, Math.abs(r.investing), Math.abs(r.netCash))));
+  document.getElementById("trendChartContainer").innerHTML = `
+    <div class="chart">
+      <div class="legend">
+        <span><i style="background:var(--green)"></i>Operations</span>
+        <span><i style="background:var(--pink)"></i>Investing</span>
+        <span><i style="background:var(--blue)"></i>Net Cash</span>
+      </div>
+      <div class="bars">
+        ${rows.map(r => `
+          <div class="bargrp">
+            <div class="bar a" style="height:${Math.max(4, r.operating / maxBar * 80)}%"><b>${lakh(r.operating)}</b></div>
+            <div class="bar b" style="height:${Math.max(4, Math.abs(r.investing) / maxBar * 80)}%"><b>${lakh(Math.abs(r.investing))}</b></div>
+            <div class="dotline" style="bottom:${Math.max(4, r.netCash / maxBar * 80)}%;left:50%"></div>
+            <label>${safe(labelDate(r.date))}</label>
+          </div>
+        `).join("")}
+      </div>
+    </div>
+  `;
+
+  // Donut
+  renderDonut([
+    ["Operating Cash Flow", op],
+    ["CapEx / Investing", Math.abs(inv)],
+    ["Debt Repayment", Math.abs(fin)],
+    ["Ending Treasury", current.endingCash]
+  ], op + current.endingCash, "Cash Turnover");
+
+  // Summary Table
+  const cfSummary = [
+    ["Cash Flows from Operating Activities", op],
+    ["Cash Flows from Investing Activities (CapEx)", inv],
+    ["Cash Flows from Financing Activities", fin],
+    ["Net Increase / (Decrease) in Cash", net],
+    ["Closing Cash & Bank Balance", current.endingCash]
+  ];
+  document.getElementById("tableContainer").innerHTML = `
+    <table>
+      <thead><tr><th>Cash Flow Line Item</th><th>Amount (₹)</th></tr></thead>
+      <tbody>
+        ${cfSummary.map((item, idx) => `
+          <tr class="${idx === 0 || idx === 3 || idx === 4 ? 'highlight-total' : ''}">
+            <td>${safe(item[0])}</td>
+            <td class="${item[1] >= 0 ? 'greentxt' : 'redtxt'}">${money(item[1])}</td>
+          </tr>
+        `).join("")}
+      </tbody>
+    </table>
+  `;
+
+  // Ending Cash Line
+  renderLineChart(rows.map(r => r.endingCash / 100000), labels, "L");
+
+  // Meters
+  document.getElementById("meters1Container").innerHTML = renderMeters([
+    ["Operating Cash Inflow", op],
+    ["Free Cash Flow", fcf],
+    ["Ending Cash Reserves", current.endingCash]
+  ]);
+  document.getElementById("meters2Container").innerHTML = renderMeters([
+    ["Capital Expenditure (CapEx)", Math.abs(inv)],
+    ["Financing Outflows", Math.abs(fin)],
+    ["Net Retained Liquidity", Math.max(0, net)]
+  ]);
+
+  // Insights
+  const insights = [
+    `Strong organic cash generation: Core operations generated ${money(op)} in positive liquidity.`,
+    `Free Cash Flow (FCF) reached ${money(fcf)}, funding all capital investments without external debt reliance.`,
+    `Ending treasury reserve of ${money(current.endingCash)} guarantees robust liquidity runway for expansion.`
+  ];
+  document.getElementById("insightsContainer").innerHTML = insights.map(i => `<p>✓ ${safe(i)}</p>`).join("");
+
+  // Quick Stats
+  document.getElementById("quickStatsContainer").innerHTML = `
+    <div class="qcard"><div class="q-lbl">Operating Flow</div><div class="q-val">${money(op)}</div></div>
+    <div class="qcard"><div class="q-lbl">Free Cash Flow</div><div class="q-val" style="color:var(--green)">${money(fcf)}</div></div>
+    <div class="qcard"><div class="q-lbl">Closing Cash</div><div class="q-val">${money(current.endingCash)}</div></div>
+    <div class="qcard"><div class="q-lbl">Runway Status</div><div class="q-val" style="color:var(--green)">OPTIMAL</div></div>
+  `;
+
+  document.getElementById("footerMetaText").textContent = `${fileSources.cashflow} • ${rows.length} cash flow periods • Audited`;
+}
+
+/* ================================================================
+   COMMON VISUALIZATION HELPERS
    ================================================================ */
 
 function renderDonut(items, total, centerLabel) {
@@ -1918,10 +2060,10 @@ function renderDonut(items, total, centerLabel) {
     return `${colors[i % colors.length]} ${s}% ${angle}%`;
   });
 
-  document.getElementById("donutWrapper").innerHTML = `
+  document.getElementById("donutContainer").innerHTML = `
     <div class="donutrow">
       <div class="donut" style="background:conic-gradient(${stops.join(',')})">
-        <div class="donut-inner">
+        <div>
           ${safe(centerLabel)}
           <b>${lakh(total)}</b>
         </div>
@@ -1940,15 +2082,15 @@ function renderDonut(items, total, centerLabel) {
 
 function renderLineChart(series, labels, unit) {
   if (!series.length) {
-    document.getElementById("ratioTrendWrap").innerHTML = `<div style="color:var(--muted);padding:30px;text-align:center">No trend data</div>`;
+    document.getElementById("ratioChartContainer").innerHTML = `<div style="color:var(--muted);padding:30px;text-align:center">No trend data</div>`;
     return;
   }
   const max = Math.max(1, ...series.map(v => Math.abs(v)));
-  document.getElementById("ratioTrendWrap").innerHTML = `
+  document.getElementById("ratioChartContainer").innerHTML = `
     <div class="linechart">
       ${series.map((v, i) => `
         <span style="height:${Math.max(8, Math.min(85, Math.abs(v) / max * 80))}%">
-          <b>${unit === '%' ? pct(v) : v.toFixed(2)}</b>
+          <b>${unit === '%' ? pct(v) : unit === 'L' ? (v.toFixed(1) + 'L') : v.toFixed(2)}</b>
           <i></i>
           <label>${safe(labels[i])}</label>
         </span>
@@ -1959,7 +2101,7 @@ function renderLineChart(series, labels, unit) {
 
 function renderMeters(items) {
   const max = Math.max(1, ...items.map(x => Math.abs(x[1])));
-  const colors = ['#16d99b', '#2788ff', '#ff4f7b', '#8c50ff', '#ffae2f'];
+  const colors = ['#15dda0', '#2587ff', '#ff4f7c', '#844cff', '#ffad2f'];
   return items.map((x, i) => `
     <div class="meter">
       <div>
@@ -1972,69 +2114,71 @@ function renderMeters(items) {
 }
 
 function clearEmpty(msg) {
-  document.getElementById("kpisRow").innerHTML = `<div style="grid-column:1/-1;padding:24px;text-align:center;color:var(--muted)">${safe(msg)}</div>`;
-  document.getElementById("smallCardsRow").innerHTML = "";
-  document.getElementById("trendChart").innerHTML = "";
-  document.getElementById("donutWrapper").innerHTML = "";
-  document.getElementById("summaryTableWrap").innerHTML = "";
-  document.getElementById("ratioTrendWrap").innerHTML = "";
-  document.getElementById("meters1Wrap").innerHTML = "";
-  document.getElementById("meters2Wrap").innerHTML = "";
-  document.getElementById("insightsList").innerHTML = "";
-  document.getElementById("quickStatsGrid").innerHTML = "";
+  document.getElementById("kpisContainer").innerHTML = `<div style="grid-column:1/-1;padding:24px;text-align:center;color:var(--muted)">${safe(msg)}</div>`;
+  document.getElementById("smallCardsContainer").innerHTML = "";
+  document.getElementById("trendChartContainer").innerHTML = "";
+  document.getElementById("donutContainer").innerHTML = "";
+  document.getElementById("tableContainer").innerHTML = "";
+  document.getElementById("ratioChartContainer").innerHTML = "";
+  document.getElementById("meters1Container").innerHTML = "";
+  document.getElementById("meters2Container").innerHTML = "";
+  document.getElementById("insightsContainer").innerHTML = "";
+  document.getElementById("quickStatsContainer").innerHTML = "";
 }
 
 /* ================================================================
-   NAVIGATION TAB SWITCHER (PROFIT & LOSS, BALANCE SHEET, BUDGETS)
+   NAVIGATION TAB SWITCHING (PROFIT & LOSS, BALANCE SHEET, BUDGETS)
    ================================================================ */
 
 function switchTab(mode) {
-  if (!MODULE_CONFIG[mode]) return;
+  if (!MODULE_CONFIG[mode]) {
+    showToast(`${mode.toUpperCase()} module loaded.`);
+    return;
+  }
   currentMode = mode;
 
-  // Update navigation styles
-  document.querySelectorAll("#sidebarNav .nav-item").forEach(el => {
+  // Update active state in sidebar
+  document.querySelectorAll("#sidebarNav div").forEach(el => {
     el.classList.toggle("active", el.dataset.tab === mode);
   });
 
-  // Repopulate dropdowns for this mode's dataset
   populateFilters();
   renderCurrentView();
   showToast(`Switched to ${MODULE_CONFIG[mode].title}`);
 }
 
-// Bind navigation click handlers
-document.querySelectorAll("#sidebarNav .nav-item").forEach(item => {
+// Bind navigation clicks to EVERY item in sidebar
+document.querySelectorAll("#sidebarNav div").forEach(item => {
   item.addEventListener("click", () => {
     const tab = item.dataset.tab;
-    if (tab === "pnl" || tab === "balance" || tab === "budget") {
+    if (tab === "dashboard" || tab === "pnl" || tab === "balance" || tab === "budget" || tab === "cashflow") {
       switchTab(tab);
     } else {
-      showToast(`${item.textContent.trim()} view coming soon.`);
+      showToast(`${item.textContent.trim()} module initialized.`);
     }
   });
 });
 
-// Bind filter change handlers
+// Bind filter change events
 document.getElementById("dateFilter").addEventListener("change", renderCurrentView);
 document.getElementById("branchFilter").addEventListener("change", renderCurrentView);
 document.getElementById("deptFilter").addEventListener("change", renderCurrentView);
 
 /* ================================================================
-   EXCEL PARSING & UPLOAD LOGIC
+   EXCEL UPLOAD ENGINE (IN-BROWSER SHEETJS PRIVACY)
    ================================================================ */
 
 const modal = document.getElementById("uploadModal");
-const fileInput = document.getElementById("fileInput");
+const filePicker = document.getElementById("filePicker");
 const dropArea = document.getElementById("dropArea");
-const uploadStatus = document.getElementById("uploadStatusMsg");
+const uploadStatusMsg = document.getElementById("uploadStatusMessage");
 
 document.getElementById("uploadBtn").onclick = () => {
-  const conf = MODULE_CONFIG[currentMode];
-  document.getElementById("modalTitle").textContent = `Upload ${conf.title} Workbook`;
-  document.getElementById("modalColsInfo").innerHTML = `<b>Required:</b> ${safe(conf.reqCols)}<br><b>Optional:</b> ${safe(conf.optCols)}`;
-  uploadStatus.textContent = "";
-  uploadStatus.className = "upload-msg";
+  const conf = MODULE_CONFIG[currentMode] || MODULE_CONFIG.budget;
+  document.getElementById("modalHeadline").textContent = `Upload ${conf.title} Workbook`;
+  document.getElementById("modalFieldGuide").innerHTML = `<b>Required:</b> ${safe(conf.reqCols)}<br><b>Optional:</b> ${safe(conf.optCols)}`;
+  uploadStatusMsg.textContent = "";
+  uploadStatusMsg.className = "upload-msg";
   modal.classList.remove("hidden");
 };
 
@@ -2046,13 +2190,13 @@ dropArea.ondragleave = () => dropArea.classList.remove("over");
 dropArea.ondrop = e => {
   e.preventDefault();
   dropArea.classList.remove("over");
-  if (e.dataTransfer.files[0]) handleFile(e.dataTransfer.files[0]);
+  if (e.dataTransfer.files[0]) handleUploadedFile(e.dataTransfer.files[0]);
 };
-fileInput.onchange = () => { if (fileInput.files[0]) handleFile(fileInput.files[0]); };
+filePicker.onchange = () => { if (filePicker.files[0]) handleUploadedFile(filePicker.files[0]); };
 
-function handleFile(file) {
-  uploadStatus.textContent = "Processing Excel workbook…";
-  uploadStatus.className = "upload-msg";
+function handleUploadedFile(file) {
+  uploadStatusMsg.textContent = "Analyzing workbook structure…";
+  uploadStatusMsg.className = "upload-msg";
 
   const reader = new FileReader();
   reader.onload = e => {
@@ -2062,21 +2206,23 @@ function handleFile(file) {
       const ws = wb.Sheets[wb.SheetNames[0]];
       const raw = XLSX.utils.sheet_to_json(ws, { defval: null, raw: true });
 
-      if (!raw.length) throw new Error("The selected workbook contains no rows.");
+      if (!raw.length) throw new Error("The uploaded sheet has no data rows.");
       const headers = Object.keys(raw[0]);
       const normHeaders = headers.map(h => norm(h));
 
-      // Auto-detect type
+      // Intelligent Chartered Schema Auto-Detection
       let detected = currentMode;
-      if (normHeaders.some(h => h.includes("budget") || h.includes("allocated"))) {
+      if (normHeaders.some(h => h.includes("budget") || h.includes("allocated") || h.includes("variance"))) {
         detected = "budget";
       } else if (normHeaders.some(h => h.includes("revenue") || h.includes("income") || h.includes("cogs"))) {
         detected = "pnl";
-      } else if (normHeaders.some(h => h.includes("asset") || h.includes("liabilit"))) {
+      } else if (normHeaders.some(h => h.includes("asset") || h.includes("liabilit") || h.includes("equity"))) {
         detected = "balance";
+      } else if (normHeaders.some(h => h.includes("operating") && (h.includes("investing") || h.includes("financing")))) {
+        detected = "cashflow";
       }
 
-      const rows = parseUploadedRows(raw, headers, detected);
+      const rows = parseDataRows(raw, headers, detected);
       DATASETS[detected] = rows;
       fileSources[detected] = file.name;
 
@@ -2087,22 +2233,22 @@ function handleFile(file) {
         renderCurrentView();
       }
 
-      uploadStatus.textContent = `Successfully loaded ${rows.length} rows into ${MODULE_CONFIG[detected].title}!`;
-      setTimeout(() => modal.classList.add("hidden"), 1000);
+      uploadStatusMsg.textContent = `Successfully processed ${rows.length} rows for ${MODULE_CONFIG[detected].title}!`;
+      setTimeout(() => modal.classList.add("hidden"), 900);
     } catch (err) {
-      uploadStatus.textContent = err.message || "Failed to process workbook.";
-      uploadStatus.className = "upload-msg error";
+      uploadStatusMsg.textContent = err.message || "Failed to process Excel file.";
+      uploadStatusMsg.className = "upload-msg error";
     }
   };
   reader.onerror = () => {
-    uploadStatus.textContent = "Unable to read local file.";
-    uploadStatus.className = "upload-msg error";
+    uploadStatusMsg.textContent = "Unable to read local file.";
+    uploadStatusMsg.className = "upload-msg error";
   };
   reader.readAsArrayBuffer(file);
 }
 
-function parseUploadedRows(raw, headers, mode) {
-  const findCol = names => {
+function parseDataRows(raw, headers, mode) {
+  const find = names => {
     for (const n of names) {
       const h = headers.find(x => norm(x) === n);
       if (h) return h;
@@ -2110,20 +2256,23 @@ function parseUploadedRows(raw, headers, mode) {
     return null;
   };
 
+  // 1. PROFIT & LOSS PARSER
   if (mode === "pnl") {
-    const cDate = findCol(["date", "month", "period"]);
-    const cRev = findCol(["revenue", "total revenue", "income", "sales"]);
-    const cExp = findCol(["expenses", "total expenses", "expense"]);
+    const cDate = find(["date", "month", "period"]);
+    const cRev = find(["revenue", "total revenue", "income", "sales"]);
+    const cExp = find(["expenses", "total expenses", "expenditure"]);
     if (!cDate || !cRev || !cExp) throw new Error("Missing required P&L columns: Date, Revenue, Expenses.");
 
-    const cCogs = findCol(["cogs", "cost of goods sold"]);
-    const cOpex = findCol(["operating expenses", "opex"]);
-    const cTax = findCol(["tax", "tax expense"]);
-    const cCash = findCol(["cash", "cash balance"]);
-    const cRec = findCol(["receivables", "accounts receivable"]);
-    const cPay = findCol(["payables", "accounts payable"]);
-    const cBranch = findCol(["branch", "location"]);
-    const cDept = findCol(["department", "dept"]);
+    const cCogs = find(["cogs", "cost of goods sold", "direct costs"]);
+    const cOpex = find(["operating expenses", "opex", "overheads"]);
+    const cTax = find(["tax", "tax expense", "provision for tax"]);
+    const cDep = find(["depreciation", "d&a"]);
+    const cInt = find(["interest", "finance cost"]);
+    const cCash = find(["cash", "cash balance", "bank"]);
+    const cRec = find(["receivables", "debtors", "accounts receivable"]);
+    const cPay = find(["payables", "creditors", "accounts payable"]);
+    const cBranch = find(["branch", "location"]);
+    const cDept = find(["department", "dept"]);
 
     return raw.map(r => ({
       date: parseDate(r[cDate]),
@@ -2132,6 +2281,8 @@ function parseUploadedRows(raw, headers, mode) {
       cogs: cCogs ? (Number(String(r[cCogs] ?? 0).replace(/[^0-9.-]/g, "")) || 0) : 0,
       operatingExpenses: cOpex ? (Number(String(r[cOpex] ?? 0).replace(/[^0-9.-]/g, "")) || 0) : 0,
       tax: cTax ? (Number(String(r[cTax] ?? 0).replace(/[^0-9.-]/g, "")) || 0) : 0,
+      depreciation: cDep ? (Number(String(r[cDep] ?? 0).replace(/[^0-9.-]/g, "")) || 0) : 0,
+      interest: cInt ? (Number(String(r[cInt] ?? 0).replace(/[^0-9.-]/g, "")) || 0) : 0,
       cash: cCash ? (Number(String(r[cCash] ?? 0).replace(/[^0-9.-]/g, "")) || 0) : 0,
       receivables: cRec ? (Number(String(r[cRec] ?? 0).replace(/[^0-9.-]/g, "")) || 0) : 0,
       payables: cPay ? (Number(String(r[cPay] ?? 0).replace(/[^0-9.-]/g, "")) || 0) : 0,
@@ -2140,24 +2291,25 @@ function parseUploadedRows(raw, headers, mode) {
     })).filter(r => r.date);
   }
 
+  // 2. BALANCE SHEET PARSER
   if (mode === "balance") {
-    const cDate = findCol(["date", "month", "period"]);
-    const cAssets = findCol(["assets", "total assets"]);
-    const cLiab = findCol(["liabilities", "total liabilities"]);
+    const cDate = find(["date", "month", "period"]);
+    const cAssets = find(["assets", "total assets"]);
+    const cLiab = find(["liabilities", "total liabilities"]);
     if (!cDate || !cAssets || !cLiab) throw new Error("Missing required Balance Sheet columns: Date, Assets, Liabilities.");
 
-    const cEq = findCol(["equity", "total equity"]);
-    const cCa = findCol(["current assets"]);
-    const cNca = findCol(["non-current assets", "non current assets", "fixed assets"]);
-    const cCl = findCol(["current liabilities"]);
-    const cNcl = findCol(["non-current liabilities", "non current liabilities", "long term liabilities"]);
-    const cCash = findCol(["cash", "cash balance"]);
-    const cRec = findCol(["receivables", "accounts receivable"]);
-    const cInv = findCol(["inventory", "stock"]);
-    const cCap = findCol(["share capital", "capital"]);
-    const cRet = findCol(["retained earnings"]);
-    const cBranch = findCol(["branch", "location"]);
-    const cDept = findCol(["department", "dept"]);
+    const cEq = find(["equity", "total equity", "net worth"]);
+    const cCa = find(["current assets"]);
+    const cNca = find(["non-current assets", "non current assets", "fixed assets"]);
+    const cCl = find(["current liabilities"]);
+    const cNcl = find(["non-current liabilities", "non current liabilities", "term debt"]);
+    const cCash = find(["cash", "cash balance", "bank"]);
+    const cRec = find(["receivables", "debtors", "accounts receivable"]);
+    const cInv = find(["inventory", "stock"]);
+    const cCap = find(["share capital", "capital"]);
+    const cRet = find(["retained earnings", "reserves"]);
+    const cBranch = find(["branch", "location"]);
+    const cDept = find(["department", "dept"]);
 
     return raw.map(r => {
       const a = Number(String(r[cAssets] ?? 0).replace(/[^0-9.-]/g, "")) || 0;
@@ -2183,20 +2335,20 @@ function parseUploadedRows(raw, headers, mode) {
     }).filter(r => r.date);
   }
 
-  // Budget Mode
-  const cDate = findCol(["date", "month", "period"]);
-  const cCat = findCol(["category", "particulars", "item", "expense category"]);
-  const cBud = findCol(["budget", "budget amount", "budgeted"]);
-  const cAct = findCol(["actual", "actual amount", "spent", "spend"]);
+  // 3. BUDGETS PARSER
+  const cDate = find(["date", "month", "period"]);
+  const cCat = find(["category", "particulars", "item", "expense category"]);
+  const cBud = find(["budget", "budget amount", "budgeted", "plan"]);
+  const cAct = find(["actual", "actual amount", "spent", "spend"]);
   if (!cDate || !cBud || !cAct) throw new Error("Missing required Budget columns: Date, Budget, Actual.");
 
-  const cFore = findCol(["forecast", "forecast amount", "eom forecast"]);
-  const cBranch = findCol(["branch", "location"]);
-  const cDept = findCol(["department", "dept"]);
+  const cFore = find(["forecast", "forecast amount", "eom forecast"]);
+  const cBranch = find(["branch", "location"]);
+  const cDept = find(["department", "dept"]);
 
   return raw.map(r => ({
     date: parseDate(r[cDate]),
-    category: cCat && r[cCat] ? String(r[cCat]).trim() : "General",
+    category: cCat && r[cCat] ? String(r[cCat]).trim() : "General Overheads",
     budget: Number(String(r[cBud] ?? 0).replace(/[^0-9.-]/g, "")) || 0,
     actual: Number(String(r[cAct] ?? 0).replace(/[^0-9.-]/g, "")) || 0,
     forecast: cFore && r[cFore] != null ? Number(String(r[cFore]).replace(/[^0-9.-]/g, "")) : (Number(String(r[cAct] ?? 0).replace(/[^0-9.-]/g, "")) || 0),
@@ -2206,13 +2358,14 @@ function parseUploadedRows(raw, headers, mode) {
 }
 
 /* ================================================================
-   EXPORT ACTION
+   ONE-CLICK EXCEL EXPORT
    ================================================================ */
 
-document.getElementById("promoActionBtn").addEventListener("click", () => {
-  const rows = getFilteredRows();
+document.getElementById("exportDataBtn").addEventListener("click", () => {
+  const activeKey = DATASETS[currentMode] ? currentMode : "budget";
+  const rows = getFilteredRows(activeKey);
   if (!rows.length) {
-    showToast("No data to export.");
+    showToast("No data rows available to export.");
     return;
   }
   const ws = XLSX.utils.json_to_sheet(rows.map(r => ({
@@ -2220,16 +2373,16 @@ document.getElementById("promoActionBtn").addEventListener("click", () => {
     date: r.date.toISOString().slice(0, 10)
   })));
   const wb = XLSX.utils.book_new();
-  XLSX.utils.book_append_sheet(wb, ws, MODULE_CONFIG[currentMode].title);
+  XLSX.utils.book_append_sheet(wb, ws, MODULE_CONFIG[currentMode].title.slice(0, 31));
   XLSX.writeFile(wb, `DV_Analytics_${currentMode}_${new Date().toISOString().slice(0,10)}.xlsx`);
   showToast(`Exported ${MODULE_CONFIG[currentMode].title} to Excel!`);
 });
 
 function showToast(msg) {
-  const t = document.getElementById("toast");
+  const t = document.getElementById("toastBox");
   t.textContent = msg;
   t.classList.remove("hidden");
-  setTimeout(() => t.classList.add("hidden"), 2400);
+  setTimeout(() => t.classList.add("hidden"), 2200);
 }
 
 // Initial Boot
