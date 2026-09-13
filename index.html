@@ -1279,53 +1279,85 @@ const labelDate = d => {
 };
 
 /* ================================================================
+   DEFAULT COMPREHENSIVE SAMPLE DATASET (56+ REALISTIC TRANSACTIONS)
+   ================================================================ */
+const DEFAULT_DAILY_TRANSACTIONS = [
+  // APRIL 2025
+  { id: "TXN-001", date: "2025-04-02", voucher: "REC-2504-01", type: "Receipt", category: "Sales Revenue", amount: 145000, mode: "Bank Transfer", description: "Client advance for cloud transformation project - Apex Global", branch: "Headquarters", department: "Commercial" },
+  { id: "TXN-002", date: "2025-04-04", voucher: "PAY-2504-01", type: "Payment", category: "Operating Expenses", amount: 35000, mode: "Bank Transfer", description: "AWS Cloud Mumbai server hosting and compute infrastructure", branch: "Headquarters", department: "Technology" },
+  { id: "TXN-003", date: "2025-04-08", voucher: "REC-2504-02", type: "Receipt", category: "Customer Debtor Collection", amount: 98000, mode: "UPI", description: "Realization of outstanding invoice INV-9041 - Horizon Ltd", branch: "North Branch", department: "Commercial" },
+  { id: "TXN-004", date: "2025-04-12", voucher: "PAY-2504-02", type: "Payment", category: "Vendor / Supplier Payment", amount: 62000, mode: "Bank Transfer", description: "Hardware equipment supplier settlement - Dell Technologies", branch: "North Branch", department: "Operations" },
+  { id: "TXN-005", date: "2025-04-15", voucher: "PAY-2504-03", type: "Payment", category: "Salaries & Wages", amount: 180000, mode: "Bank Transfer", description: "Mid-month staff payroll and specialist stipends", branch: "Headquarters", department: "HR" },
+  { id: "TXN-006", date: "2025-04-18", voucher: "REC-2504-03", type: "Receipt", category: "Sales Revenue", amount: 220000, mode: "Bank Transfer", description: "Enterprise ERP milestone signoff payment - Zeta Infra", branch: "South Branch", department: "Commercial" },
+  { id: "TXN-007", date: "2025-04-20", voucher: "PAY-2504-04", type: "Payment", category: "Statutory Dues", amount: 32000, mode: "Bank Transfer", description: "Employee Provident Fund (EPF) & ESIC monthly electronic remittance", branch: "Headquarters", department: "HR" },
+  { id: "TXN-008", date: "2025-04-22", voucher: "PAY-2504-05", type: "Payment", category: "Rent & Utilities", amount: 48000, mode: "Cheque", description: "Corporate premises lease rent for April 2025", branch: "Headquarters", department: "Administration" },
+  { id: "TXN-009", date: "2025-04-26", voucher: "PAY-2504-06", type: "Payment", category: "Tax Payment", amount: 25000, mode: "Bank Transfer", description: "Advance corporate tax instalment remitted to Income Tax Dept", branch: "Headquarters", department: "Finance" },
+  { id: "TXN-010", date: "2025-04-29", voucher: "REC-2504-04", type: "Receipt", category: "Other Income", amount: 17000, mode: "Bank Transfer", description: "Fixed deposit quarterly accrued interest credited by HDFC Bank", branch: "Headquarters", department: "Finance" },
+
+  // MAY 2025
+  { id: "TXN-011", date: "2025-05-03", voucher: "REC-2505-01", type: "Receipt", category: "Sales Revenue", amount: 185000, mode: "Bank Transfer", description: "Data analytics retainer fee - Quantum FinTech", branch: "Headquarters", department: "Commercial" },
+  { id: "TXN-012", date: "2025-05-06", voucher: "PAY-2505-01", type: "Payment", category: "Marketing & Promotion", amount: 42000, mode: "UPI", description: "Google Ads and LinkedIn enterprise campaign sponsorship", branch: "North Branch", department: "Marketing" },
+  { id: "TXN-013", date: "2025-05-09", voucher: "PAY-2505-02", type: "Payment", category: "Statutory Dues", amount: 58000, mode: "Bank Transfer", description: "GSTR-3B monthly cash ledger tax liability settlement", branch: "Headquarters", department: "Finance" },
+  { id: "TXN-014", date: "2025-05-10", voucher: "REC-2505-02", type: "Receipt", category: "Customer Debtor Collection", amount: 112000, mode: "Bank Transfer", description: "Settlement of debtor ledger - Nexus Systems", branch: "South Branch", department: "Commercial" },
+  { id: "TXN-015", date: "2025-05-14", voucher: "PAY-2505-03", type: "Payment", category: "Fixed Asset Purchase (Capex)", amount: 85000, mode: "Bank Transfer", description: "Procurement of high-performance designer laptops (MacBook Pro 3 units)", branch: "Headquarters", department: "Technology" },
+  { id: "TXN-016", date: "2025-05-18", voucher: "PAY-2505-04", type: "Payment", category: "Salaries & Wages", amount: 195000, mode: "Bank Transfer", description: "Monthly core employee payroll disbursement", branch: "Headquarters", department: "HR" },
+  { id: "TXN-017", date: "2025-05-22", voucher: "REC-2505-03", type: "Receipt", category: "Sales Revenue", amount: 260000, mode: "Bank Transfer", description: "Annual maintenance contract (AMC) fee - Metro Logistics", branch: "North Branch", department: "Commercial" },
+  { id: "TXN-018", date: "2025-05-25", voucher: "PAY-2505-05", type: "Payment", category: "Vendor / Supplier Payment", amount: 74000, mode: "Cheque", description: "Packaging and raw material vendor payout - Alpha Packaging", branch: "Headquarters", department: "Operations" },
+  { id: "TXN-019", date: "2025-05-28", voucher: "REC-2505-04", type: "Receipt", category: "Other Income", amount: 15000, mode: "UPI", description: "Sub-lease co-working space rental recovery", branch: "South Branch", department: "Administration" },
+
+  // JUNE 2025
+  { id: "TXN-020", date: "2025-06-02", voucher: "REC-2506-01", type: "Receipt", category: "Sales Revenue", amount: 215000, mode: "Bank Transfer", description: "Custom AI dashboard deployment fee - Star Health", branch: "South Branch", department: "Commercial" },
+  { id: "TXN-021", date: "2025-06-05", voucher: "PAY-2506-01", type: "Payment", category: "Technology & Software", amount: 38000, mode: "Bank Transfer", description: "Enterprise Jira, GitHub and Figma organization annual licenses", branch: "Headquarters", department: "Technology" },
+  { id: "TXN-022", date: "2025-06-07", voucher: "PAY-2506-02", type: "Payment", category: "Statutory Dues", amount: 22500, mode: "Bank Transfer", description: "Monthly TDS Section 194C/194J corporate remittance", branch: "Headquarters", department: "Finance" },
+  { id: "TXN-023", date: "2025-06-11", voucher: "REC-2506-02", type: "Receipt", category: "Customer Debtor Collection", amount: 135000, mode: "UPI", description: "Debtor recovery for Q1 services - BlueShift Labs", branch: "North Branch", department: "Commercial" },
+  { id: "TXN-024", date: "2025-06-16", voucher: "PAY-2506-03", type: "Payment", category: "Salaries & Wages", amount: 205000, mode: "Bank Transfer", description: "Monthly employee salaries and executive performance incentives", branch: "Headquarters", department: "HR" },
+  { id: "TXN-025", date: "2025-06-20", voucher: "REC-2506-03", type: "Receipt", category: "Capital Injection / Equity", amount: 250000, mode: "Bank Transfer", description: "Promoter growth capital subscription funds credited", branch: "Headquarters", department: "Finance" },
+  { id: "TXN-026", date: "2025-06-24", voucher: "PAY-2506-04", type: "Payment", category: "Administrative Expenses", amount: 28000, mode: "Cash", description: "Statutory ROC filing fees, courier, and office refreshments", branch: "Headquarters", department: "Administration" },
+  { id: "TXN-027", date: "2025-06-27", voucher: "PAY-2506-05", type: "Payment", category: "Loan Repayment", amount: 45000, mode: "Bank Transfer", description: "HDFC Term loan principal monthly amortization", branch: "Headquarters", department: "Finance" },
+  { id: "TXN-028", date: "2025-06-29", voucher: "REC-2506-04", type: "Receipt", category: "Sales Revenue", amount: 190000, mode: "Bank Transfer", description: "Cloud security architecture advisory fee - Finserve Corp", branch: "Headquarters", department: "Commercial" },
+
+  // JULY 2025
+  { id: "TXN-029", date: "2025-07-03", voucher: "REC-2507-01", type: "Receipt", category: "Sales Revenue", amount: 290000, mode: "Bank Transfer", description: "Consulting contract Q2 settlement - Alpha Logistics", branch: "Headquarters", department: "Commercial" },
+  { id: "TXN-030", date: "2025-07-06", voucher: "PAY-2507-01", type: "Payment", category: "Operating Expenses", amount: 52000, mode: "Bank Transfer", description: "Office security, cleaning, and facilities maintenance", branch: "Headquarters", department: "Operations" },
+  { id: "TXN-031", date: "2025-07-09", voucher: "PAY-2507-02", type: "Payment", category: "Statutory Dues", amount: 73000, mode: "Bank Transfer", description: "GSTR-3B electronic cash ledger tax remittance", branch: "Headquarters", department: "Finance" },
+  { id: "TXN-032", date: "2025-07-14", voucher: "REC-2507-02", type: "Receipt", category: "Customer Debtor Collection", amount: 165000, mode: "Bank Transfer", description: "Outstanding collection from Global Edge Systems", branch: "South Branch", department: "Commercial" },
+  { id: "TXN-033", date: "2025-07-18", voucher: "PAY-2507-03", type: "Payment", category: "Salaries & Wages", amount: 215000, mode: "Bank Transfer", description: "July 2025 full-time payroll disbursement", branch: "Headquarters", department: "HR" },
+  { id: "TXN-034", date: "2025-07-22", voucher: "PAY-2507-04", type: "Payment", category: "Vendor / Supplier Payment", amount: 92000, mode: "Cheque", description: "Direct supply vendor clearance cheque - Precision Works", branch: "North Branch", department: "Operations" },
+  { id: "TXN-035", date: "2025-07-26", voucher: "REC-2507-03", type: "Receipt", category: "Sales Revenue", amount: 180000, mode: "UPI", description: "Mobile app development sprint delivery - RetailGo", branch: "South Branch", department: "Commercial" },
+  { id: "TXN-036", date: "2025-07-29", voucher: "PAY-2507-05", type: "Payment", category: "Fixed Asset Purchase (Capex)", amount: 65000, mode: "Bank Transfer", description: "Conference room audio-visual & projection equipment", branch: "Headquarters", department: "Administration" },
+
+  // AUGUST 2025
+  { id: "TXN-037", date: "2025-08-03", voucher: "REC-2508-01", type: "Receipt", category: "Sales Revenue", amount: 340000, mode: "Bank Transfer", description: "Enterprise software implementation payment - Titan Media", branch: "Headquarters", department: "Commercial" },
+  { id: "TXN-038", date: "2025-08-06", voucher: "PAY-2508-01", type: "Payment", category: "Marketing & Promotion", amount: 55000, mode: "UPI", description: "Q3 brand advertising and trade show sponsorship", branch: "North Branch", department: "Marketing" },
+  { id: "TXN-039", date: "2025-08-08", voucher: "PAY-2508-02", type: "Payment", category: "Statutory Dues", amount: 81000, mode: "Bank Transfer", description: "Monthly GST 3B cash settlement", branch: "Headquarters", department: "Finance" },
+  { id: "TXN-040", date: "2025-08-12", voucher: "REC-2508-02", type: "Receipt", category: "Customer Debtor Collection", amount: 180000, mode: "Bank Transfer", description: "Debtor balance settled via RTGS - Prime Infra Ltd", branch: "South Branch", department: "Commercial" },
+  { id: "TXN-041", date: "2025-08-16", voucher: "PAY-2508-03", type: "Payment", category: "Salaries & Wages", amount: 228000, mode: "Bank Transfer", description: "August 2025 payroll and employee provident fund remittance", branch: "Headquarters", department: "HR" },
+  { id: "TXN-042", date: "2025-08-19", voucher: "PAY-2508-04", type: "Payment", category: "Fixed Asset Purchase (Capex)", amount: 95000, mode: "Bank Transfer", description: "Server rack upgrades and enterprise firewall appliance", branch: "Headquarters", department: "Technology" },
+  { id: "TXN-043", date: "2025-08-23", voucher: "PAY-2508-05", type: "Payment", category: "Vendor / Supplier Payment", amount: 84000, mode: "Bank Transfer", description: "Supplier invoice clearance for raw materials", branch: "North Branch", department: "Operations" },
+  { id: "TXN-044", date: "2025-08-27", voucher: "REC-2508-03", type: "Receipt", category: "Sales Revenue", amount: 175000, mode: "UPI", description: "Online portal subscription billing collections", branch: "Headquarters", department: "Commercial" },
+  { id: "TXN-045", date: "2025-08-30", voucher: "REC-2508-04", type: "Receipt", category: "Other Income", amount: 22000, mode: "Bank Transfer", description: "Fixed deposit maturity interest credited", branch: "Headquarters", department: "Finance" },
+
+  // SEPTEMBER 2025 (CURRENT ACTIVE PERIOD)
+  { id: "TXN-046", date: "2025-09-02", voucher: "REC-2509-01", type: "Receipt", category: "Sales Revenue", amount: 360000, mode: "Bank Transfer", description: "Q3 Enterprise Analytics Retainer - Reliance Enterprises", branch: "Headquarters", department: "Commercial" },
+  { id: "TXN-047", date: "2025-09-03", voucher: "PAY-2509-01", type: "Payment", category: "Operating Expenses", amount: 46000, mode: "Bank Transfer", description: "Cloud infrastructure & high-bandwidth data lease line", branch: "Headquarters", department: "Technology" },
+  { id: "TXN-048", date: "2025-09-05", voucher: "REC-2509-02", type: "Receipt", category: "Customer Debtor Collection", amount: 195000, mode: "Bank Transfer", description: "Realization of milestone invoices - Infosys BPO", branch: "South Branch", department: "Commercial" },
+  { id: "TXN-049", date: "2025-09-06", voucher: "PAY-2509-02", type: "Payment", category: "Marketing & Promotion", amount: 38000, mode: "UPI", description: "Digital performance marketing & influencer outreach", branch: "North Branch", department: "Marketing" },
+  { id: "TXN-050", date: "2025-09-08", voucher: "PAY-2509-03", type: "Payment", category: "Statutory Dues", amount: 31000, mode: "Bank Transfer", description: "Electronic Challan 281 remittance for TDS Section 194C/J", branch: "Headquarters", department: "Finance" },
+  { id: "TXN-051", date: "2025-09-10", voucher: "REC-2509-03", type: "Receipt", category: "Sales Revenue", amount: 280000, mode: "Bank Transfer", description: "Fintech compliance module rollout milestone - Tata Capital", branch: "Headquarters", department: "Commercial" },
+  { id: "TXN-052", date: "2025-09-11", voucher: "PAY-2509-04", type: "Payment", category: "Fixed Asset Purchase (Capex)", amount: 120000, mode: "Bank Transfer", description: "Procurement of high-density edge computing servers", branch: "Headquarters", department: "Technology" },
+  { id: "TXN-053", date: "2025-09-12", voucher: "PAY-2509-05", type: "Payment", category: "Vendor / Supplier Payment", amount: 78000, mode: "Bank Transfer", description: "IT security audit consultation fee - Ernst & Young", branch: "North Branch", department: "Operations" },
+  { id: "TXN-054", date: "2025-09-13", voucher: "REC-2509-04", type: "Receipt", category: "Customer Debtor Collection", amount: 140000, mode: "UPI", description: "Debtor recovery against overdue accounts - Wipro Digital", branch: "South Branch", department: "Commercial" },
+  { id: "TXN-055", date: "2025-09-14", voucher: "PAY-2509-06", type: "Payment", category: "Salaries & Wages", amount: 235000, mode: "Bank Transfer", description: "Core technical & management staff compensation payout", branch: "Headquarters", department: "HR" },
+  { id: "TXN-056", date: "2025-09-14", voucher: "REC-2509-05", type: "Receipt", category: "Other Income", amount: 25000, mode: "Bank Transfer", description: "Mutual fund liquid dividend & treasury sweep credit", branch: "Headquarters", department: "Finance" }
+];
+
+/* ================================================================
    ENTERPRISE DATASETS FOR ALL 11 FIELDS
    ================================================================ */
-
 const DATASETS = {
 
   // 0. DAILY TRANSACTIONS (CASH & BANK BOOK - DUAL FLOW)
-  daily: [
-    { id: "TXN-001", date: "2025-04-02", voucher: "REC-2504-01", type: "Receipt", category: "Sales Revenue", amount: 145000, mode: "Bank Transfer", description: "Client advance for cloud transformation project - Apex Global", branch: "Headquarters", department: "Commercial" },
-    { id: "TXN-002", date: "2025-04-04", voucher: "PAY-2504-01", type: "Payment", category: "Operating Expenses", amount: 35000, mode: "Bank Transfer", description: "AWS Cloud server hosting and compute charges", branch: "Headquarters", department: "Technology" },
-    { id: "TXN-003", date: "2025-04-08", voucher: "REC-2504-02", type: "Receipt", category: "Customer Debtor Collection", amount: 98000, mode: "UPI", description: "Realization of outstanding invoice INV-9041 - Horizon Ltd", branch: "North Branch", department: "Commercial" },
-    { id: "TXN-004", date: "2025-04-12", voucher: "PAY-2504-02", type: "Payment", category: "Vendor / Supplier Payment", amount: 62000, mode: "Bank Transfer", description: "Hardware equipment supplier settlement - Dell Technologies", branch: "North Branch", department: "Operations" },
-    { id: "TXN-005", date: "2025-04-15", voucher: "PAY-2504-03", type: "Payment", category: "Salaries & Wages", amount: 180000, mode: "Bank Transfer", description: "Mid-month staff payroll and specialist stipends", branch: "Headquarters", department: "HR" },
-    { id: "TXN-006", date: "2025-04-18", voucher: "REC-2504-03", type: "Receipt", category: "Sales Revenue", amount: 220000, mode: "Bank Transfer", description: "Enterprise ERP milestone signoff payment - Zeta Infra", branch: "South Branch", department: "Commercial" },
-    { id: "TXN-007", date: "2025-04-22", voucher: "PAY-2504-04", type: "Payment", category: "Rent & Utilities", amount: 48000, mode: "Cheque", description: "Corporate premises lease rent for April 2025", branch: "Headquarters", department: "Administration" },
-    { id: "TXN-008", date: "2025-04-26", voucher: "PAY-2504-05", type: "Payment", category: "Tax Payment", amount: 25000, mode: "Bank Transfer", description: "Advance tax instalment remitted to Income Tax Department", branch: "Headquarters", department: "Finance" },
-    { id: "TXN-009", date: "2025-04-29", voucher: "REC-2504-04", type: "Receipt", category: "Other Income", amount: 17000, mode: "Bank Transfer", description: "Fixed deposit quarterly accrued interest credited by HDFC Bank", branch: "Headquarters", department: "Finance" },
-
-    { id: "TXN-010", date: "2025-05-03", voucher: "REC-2505-01", type: "Receipt", category: "Sales Revenue", amount: 185000, mode: "Bank Transfer", description: "Data analytics retainer fee - Quantum FinTech", branch: "Headquarters", department: "Commercial" },
-    { id: "TXN-011", date: "2025-05-06", voucher: "PAY-2505-01", type: "Payment", category: "Marketing & Promotion", amount: 42000, mode: "UPI", description: "Google Ads and LinkedIn enterprise campaign sponsorship", branch: "North Branch", department: "Marketing" },
-    { id: "TXN-012", date: "2025-05-10", voucher: "REC-2505-02", type: "Receipt", category: "Customer Debtor Collection", amount: 112000, mode: "Bank Transfer", description: "Settlement of debtor ledger - Nexus Systems", branch: "South Branch", department: "Commercial" },
-    { id: "TXN-013", date: "2025-05-14", voucher: "PAY-2505-02", type: "Payment", category: "Fixed Asset Purchase (Capex)", amount: 85000, mode: "Bank Transfer", description: "Procurement of high-performance designer laptops (MacBook Pro 3 units)", branch: "Headquarters", department: "Technology" },
-    { id: "TXN-014", date: "2025-05-18", voucher: "PAY-2505-03", type: "Payment", category: "Salaries & Wages", amount: 195000, mode: "Bank Transfer", description: "Monthly core employee payroll disbursement", branch: "Headquarters", department: "HR" },
-    { id: "TXN-015", date: "2025-05-22", voucher: "REC-2505-03", type: "Receipt", category: "Sales Revenue", amount: 260000, mode: "Bank Transfer", description: "Annual maintenance contract (AMC) fee - Metro Logistics", branch: "North Branch", department: "Commercial" },
-    { id: "TXN-016", date: "2025-05-27", voucher: "PAY-2505-04", type: "Payment", category: "Vendor / Supplier Payment", amount: 74000, mode: "Cheque", description: "Packaging and raw material vendor payout", branch: "Headquarters", department: "Operations" },
-
-    { id: "TXN-017", date: "2025-06-02", voucher: "REC-2506-01", type: "Receipt", category: "Sales Revenue", amount: 215000, mode: "Bank Transfer", description: "Custom AI dashboard deployment fee - Star Health", branch: "South Branch", department: "Commercial" },
-    { id: "TXN-018", date: "2025-06-06", voucher: "PAY-2506-01", type: "Payment", category: "Technology & Software", amount: 38000, mode: "Bank Transfer", description: "Enterprise Jira, GitHub and Figma organization annual licenses", branch: "Headquarters", department: "Technology" },
-    { id: "TXN-019", date: "2025-06-11", voucher: "REC-2506-02", type: "Receipt", category: "Customer Debtor Collection", amount: 135000, mode: "UPI", description: "Debtor recovery for Q1 services - BlueShift Labs", branch: "North Branch", department: "Commercial" },
-    { id: "TXN-020", date: "2025-06-16", voucher: "PAY-2506-02", type: "Payment", category: "Salaries & Wages", amount: 205000, mode: "Bank Transfer", description: "Monthly employee salaries and executive performance incentives", branch: "Headquarters", department: "HR" },
-    { id: "TXN-021", date: "2025-06-21", voucher: "REC-2506-03", type: "Receipt", category: "Capital Injection / Equity", amount: 250000, mode: "Bank Transfer", description: "Promoter growth capital subscription funds credited", branch: "Headquarters", department: "Finance" },
-    { id: "TXN-022", date: "2025-06-25", voucher: "PAY-2506-03", type: "Payment", category: "Administrative Expenses", amount: 28000, mode: "Cash", description: "Statutory ROC filing fees, courier, and office refreshments", branch: "Headquarters", department: "Administration" },
-    { id: "TXN-023", date: "2025-06-29", voucher: "PAY-2506-04", type: "Payment", category: "Loan Repayment", amount: 45000, mode: "Bank Transfer", description: "HDFC Term loan principal monthly amortization", branch: "Headquarters", department: "Finance" },
-
-    { id: "TXN-024", date: "2025-07-03", voucher: "REC-2507-01", type: "Receipt", category: "Sales Revenue", amount: 290000, mode: "Bank Transfer", description: "Consulting contract Q2 settlement - Alpha Logistics", branch: "Headquarters", department: "Commercial" },
-    { id: "TXN-025", date: "2025-07-08", voucher: "PAY-2507-01", type: "Payment", category: "Operating Expenses", amount: 52000, mode: "Bank Transfer", description: "Office security, cleaning, and facilities maintenance", branch: "Headquarters", department: "Operations" },
-    { id: "TXN-026", date: "2025-07-14", voucher: "REC-2507-02", type: "Receipt", category: "Customer Debtor Collection", amount: 165000, mode: "Bank Transfer", description: "Outstanding collection from Global Edge Systems", branch: "South Branch", department: "Commercial" },
-    { id: "TXN-027", date: "2025-07-19", voucher: "PAY-2507-02", type: "Payment", category: "Salaries & Wages", amount: 215000, mode: "Bank Transfer", description: "July 2025 full-time payroll disbursement", branch: "Headquarters", department: "HR" },
-    { id: "TXN-028", date: "2025-07-24", voucher: "PAY-2507-03", type: "Payment", category: "Vendor / Supplier Payment", amount: 92000, mode: "Cheque", description: "Direct supply vendor clearance cheque", branch: "North Branch", department: "Operations" },
-
-    { id: "TXN-029", date: "2025-08-03", voucher: "REC-2508-01", type: "Receipt", category: "Sales Revenue", amount: 340000, mode: "Bank Transfer", description: "Enterprise software implementation payment - Titan Media", branch: "Headquarters", department: "Commercial" },
-    { id: "TXN-030", date: "2025-08-07", voucher: "PAY-2508-01", type: "Payment", category: "Marketing & Promotion", amount: 55000, mode: "UPI", description: "Q3 brand advertising and trade show sponsorship", branch: "North Branch", department: "Marketing" },
-    { id: "TXN-031", date: "2025-08-12", voucher: "REC-2508-02", type: "Receipt", category: "Customer Debtor Collection", amount: 180000, mode: "Bank Transfer", description: "Debtor balance settled via RTGS - Prime Infra Ltd", branch: "South Branch", department: "Commercial" },
-    { id: "TXN-032", date: "2025-08-16", voucher: "PAY-2508-02", type: "Payment", category: "Salaries & Wages", amount: 228000, mode: "Bank Transfer", description: "August 2025 payroll and employee provident fund remittance", branch: "Headquarters", department: "HR" },
-    { id: "TXN-033", date: "2025-08-21", voucher: "PAY-2508-03", type: "Payment", category: "Fixed Asset Purchase (Capex)", amount: 95000, mode: "Bank Transfer", description: "Server rack upgrades and enterprise firewall appliance", branch: "Headquarters", department: "Technology" },
-    { id: "TXN-034", date: "2025-08-26", voucher: "PAY-2508-04", type: "Payment", category: "Vendor / Supplier Payment", amount: 84000, mode: "Bank Transfer", description: "Supplier invoice clearance for raw materials", branch: "North Branch", department: "Operations" },
-    { id: "TXN-035", date: "2025-08-29", voucher: "REC-2508-03", type: "Receipt", category: "Sales Revenue", amount: 175000, mode: "UPI", description: "Online portal subscription billing collections", branch: "Headquarters", department: "Commercial" }
-  ],
+  daily: JSON.parse(JSON.stringify(DEFAULT_DAILY_TRANSACTIONS)),
 
   // 1. PROFIT & LOSS (SCHEDULE III / IND AS)
   pnl: [
@@ -1333,16 +1365,18 @@ const DATASETS = {
     { date: "2025-05-01", revenue: 640000, expenses: 480000, cogs: 175000, operatingExpenses: 125000, tax: 30000, depreciation: 20000, interest: 12000, cash: 240000, receivables: 345000, payables: 205000, branch: "Headquarters", department: "Marketing" },
     { date: "2025-06-01", revenue: 720000, expenses: 540000, cogs: 195000, operatingExpenses: 145000, tax: 35000, depreciation: 22000, interest: 11000, cash: 275000, receivables: 380000, payables: 225000, branch: "North Branch", department: "Technology" },
     { date: "2025-07-01", revenue: 810000, expenses: 610000, cogs: 220000, operatingExpenses: 165000, tax: 42000, depreciation: 25000, interest: 14000, cash: 310000, receivables: 415000, payables: 245000, branch: "South Branch", department: "Administration" },
-    { date: "2025-08-01", revenue: 898750, expenses: 699320, cogs: 246420, operatingExpenses: 217900, tax: 48000, depreciation: 28000, interest: 15000, cash: 1236870, receivables: 825430, payables: 512760, branch: "Headquarters", department: "HR" }
+    { date: "2025-08-01", revenue: 898750, expenses: 699320, cogs: 246420, operatingExpenses: 217900, tax: 48000, depreciation: 28000, interest: 15000, cash: 1236870, receivables: 825430, payables: 512760, branch: "Headquarters", department: "HR" },
+    { date: "2025-09-01", revenue: 985000, expenses: 745000, cogs: 260000, operatingExpenses: 230000, tax: 52000, depreciation: 30000, interest: 16000, cash: 1390000, receivables: 890000, payables: 540000, branch: "Headquarters", department: "Operations" }
   ],
 
-  // 2. BALANCE SHEET (ASSETS = LIABILITIES + EQUITY)
+  // 2. BALANCE SHEET (SCHEDULE III BALANCED: ASSETS = LIABILITIES + EQUITY)
   balance: [
-    { date: "2025-04-01", assets: 4210000, liabilities: 1820000, equity: 2390000, currentAssets: 2450000, nonCurrentAssets: 1760000, currentLiabilities: 980000, nonCurrentLiabilities: 840000, cash: 1060000, receivables: 510000, inventory: 680000, shareCapital: 1810000, retainedEarnings: 580000, branch: "Headquarters", department: "Finance" },
-    { date: "2025-05-01", assets: 4380000, liabilities: 1910000, equity: 2470000, currentAssets: 2530000, nonCurrentAssets: 1850000, currentLiabilities: 1040000, nonCurrentLiabilities: 870000, cash: 1110000, receivables: 530000, inventory: 700000, shareCapital: 1770000, retainedEarnings: 700000, branch: "Headquarters", department: "Finance" },
-    { date: "2025-06-01", assets: 4560000, liabilities: 1980000, equity: 2580000, currentAssets: 2650000, nonCurrentAssets: 1910000, currentLiabilities: 1080000, nonCurrentLiabilities: 900000, cash: 1160000, receivables: 555000, inventory: 720000, shareCapital: 1860000, retainedEarnings: 720000, branch: "North Branch", department: "Operations" },
-    { date: "2025-07-01", assets: 4690000, liabilities: 2040000, equity: 2650000, currentAssets: 2740000, nonCurrentAssets: 1950000, currentLiabilities: 1110000, nonCurrentLiabilities: 930000, cash: 1200000, receivables: 575000, inventory: 740000, shareCapital: 1910000, retainedEarnings: 740000, branch: "South Branch", department: "Operations" },
-    { date: "2025-08-01", assets: 4876230, liabilities: 2140500, equity: 2735730, currentAssets: 2845120, nonCurrentAssets: 2031110, currentLiabilities: 1126540, nonCurrentLiabilities: 1013960, cash: 1236870, receivables: 1054320, inventory: 598410, shareCapital: 753320, retainedEarnings: 1982410, branch: "Headquarters", department: "Finance" }
+    { date: "2025-04-01", assets: 4210000, liabilities: 1820000, equity: 2390000, currentAssets: 2450000, nonCurrentAssets: 1760000, currentLiabilities: 980000, nonCurrentLiabilities: 840000, cash: 1060000, receivables: 510000, inventory: 880000, shareCapital: 1810000, retainedEarnings: 580000, branch: "Headquarters", department: "Finance" },
+    { date: "2025-05-01", assets: 4380000, liabilities: 1910000, equity: 2470000, currentAssets: 2530000, nonCurrentAssets: 1850000, currentLiabilities: 1040000, nonCurrentLiabilities: 870000, cash: 1110000, receivables: 530000, inventory: 890000, shareCapital: 1770000, retainedEarnings: 700000, branch: "Headquarters", department: "Finance" },
+    { date: "2025-06-01", assets: 4560000, liabilities: 1980000, equity: 2580000, currentAssets: 2650000, nonCurrentAssets: 1910000, currentLiabilities: 1080000, nonCurrentLiabilities: 900000, cash: 1160000, receivables: 555000, inventory: 935000, shareCapital: 1860000, retainedEarnings: 720000, branch: "North Branch", department: "Operations" },
+    { date: "2025-07-01", assets: 4690000, liabilities: 2040000, equity: 2650000, currentAssets: 2740000, nonCurrentAssets: 1950000, currentLiabilities: 1110000, nonCurrentLiabilities: 930000, cash: 1200000, receivables: 575000, inventory: 965000, shareCapital: 1910000, retainedEarnings: 740000, branch: "South Branch", department: "Operations" },
+    { date: "2025-08-01", assets: 4876230, liabilities: 2140500, equity: 2735730, currentAssets: 2845120, nonCurrentAssets: 2031110, currentLiabilities: 1126540, nonCurrentLiabilities: 1013960, cash: 1236870, receivables: 825430, inventory: 782820, shareCapital: 753320, retainedEarnings: 1982410, branch: "Headquarters", department: "Finance" },
+    { date: "2025-09-01", assets: 5180000, liabilities: 2280000, equity: 2900000, currentAssets: 3050000, nonCurrentAssets: 2130000, currentLiabilities: 1190000, nonCurrentLiabilities: 1090000, cash: 1390000, receivables: 890000, inventory: 770000, shareCapital: 753320, retainedEarnings: 2146680, branch: "Headquarters", department: "Finance" }
   ],
 
   // 3. BUDGETS & VARIANCE (UNDER-BUDGET CONTROL & SAVINGS SURPLUS)
@@ -1380,7 +1414,14 @@ const DATASETS = {
     { date: "2025-08-01", branch: "North Branch", department: "Marketing", category: "Marketing", budget: 105000, actual: 65320, forecast: 85000 },
     { date: "2025-08-01", branch: "North Branch", department: "Administration", category: "Rent & Utilities", budget: 112000, actual: 147760, forecast: 130000 },
     { date: "2025-08-01", branch: "South Branch", department: "Technology", category: "Technology & Software", budget: 100000, actual: 75650, forecast: 88000 },
-    { date: "2025-08-01", branch: "South Branch", department: "Finance", category: "Other Expenses", budget: 115000, actual: 105170, forecast: 110000 }
+    { date: "2025-08-01", branch: "South Branch", department: "Finance", category: "Other Expenses", budget: 115000, actual: 105170, forecast: 110000 },
+
+    { date: "2025-09-01", branch: "Headquarters", department: "Operations", category: "Operating Expenses", budget: 330000, actual: 260000, forecast: 300000 },
+    { date: "2025-09-01", branch: "Headquarters", department: "HR", category: "Salaries & Wages", budget: 250000, actual: 235000, forecast: 240000 },
+    { date: "2025-09-01", branch: "North Branch", department: "Marketing", category: "Marketing", budget: 110000, actual: 72000, forecast: 90000 },
+    { date: "2025-09-01", branch: "North Branch", department: "Administration", category: "Rent & Utilities", budget: 115000, actual: 110000, forecast: 112000 },
+    { date: "2025-09-01", branch: "South Branch", department: "Technology", category: "Technology & Software", budget: 110000, actual: 82000, forecast: 95000 },
+    { date: "2025-09-01", branch: "South Branch", department: "Finance", category: "Other Expenses", budget: 120000, actual: 108000, forecast: 115000 }
   ],
 
   // 4. CASH FLOW (OPERATING, INVESTING, FINANCING)
@@ -1389,7 +1430,8 @@ const DATASETS = {
     { date: "2025-05-01", operating: 260000, investing: -95000, financing: -40000, netCash: 125000, endingCash: 1110000, branch: "Headquarters", department: "Finance" },
     { date: "2025-06-01", operating: 285000, investing: -110000, financing: -35000, netCash: 140000, endingCash: 1160000, branch: "North Branch", department: "Finance" },
     { date: "2025-07-01", operating: 310000, investing: -125000, financing: -45000, netCash: 140000, endingCash: 1200000, branch: "South Branch", department: "Finance" },
-    { date: "2025-08-01", operating: 365000, investing: -142000, financing: -38000, netCash: 185000, endingCash: 1236870, branch: "Headquarters", department: "Finance" }
+    { date: "2025-08-01", operating: 365000, investing: -142000, financing: -38000, netCash: 185000, endingCash: 1236870, branch: "Headquarters", department: "Finance" },
+    { date: "2025-09-01", operating: 390000, investing: -155000, financing: -42000, netCash: 193000, endingCash: 1390000, branch: "Headquarters", department: "Finance" }
   ],
 
   // 5. SALES & REVENUE (COMMERCIAL PERFORMANCE)
@@ -1398,7 +1440,8 @@ const DATASETS = {
     { date: "2025-05-01", grossSales: 675000, netSales: 640000, mrr: 155000, deals: 38, arpu: 16842, target: 600000, branch: "Headquarters", department: "Commercial" },
     { date: "2025-06-01", grossSales: 760000, netSales: 720000, mrr: 172000, deals: 42, arpu: 17142, target: 680000, branch: "North Branch", department: "Enterprise" },
     { date: "2025-07-01", grossSales: 855000, netSales: 810000, mrr: 195000, deals: 46, arpu: 17608, target: 760000, branch: "South Branch", department: "Mid-Market" },
-    { date: "2025-08-01", grossSales: 948000, netSales: 898750, mrr: 215000, deals: 51, arpu: 17622, target: 850000, branch: "Headquarters", department: "Enterprise" }
+    { date: "2025-08-01", grossSales: 948000, netSales: 898750, mrr: 215000, deals: 51, arpu: 17622, target: 850000, branch: "Headquarters", department: "Enterprise" },
+    { date: "2025-09-01", grossSales: 1040000, netSales: 985000, mrr: 235000, deals: 58, arpu: 17800, target: 920000, branch: "Headquarters", department: "Enterprise" }
   ],
 
   // 6. EXPENSES (OVERHEAD & COST CENTERS)
@@ -1407,7 +1450,8 @@ const DATASETS = {
     { date: "2025-05-01", directCost: 175000, payroll: 190000, sga: 55000, tech: 22000, total: 442000, branch: "Headquarters", department: "Operations" },
     { date: "2025-06-01", directCost: 195000, payroll: 205000, sga: 60000, tech: 25000, total: 485000, branch: "North Branch", department: "Operations" },
     { date: "2025-07-01", directCost: 220000, payroll: 215000, sga: 68000, tech: 28000, total: 531000, branch: "South Branch", department: "Operations" },
-    { date: "2025-08-01", directCost: 246420, payroll: 228000, sga: 76000, tech: 34000, total: 584420, branch: "Headquarters", department: "Operations" }
+    { date: "2025-08-01", directCost: 246420, payroll: 228000, sga: 76000, tech: 34000, total: 584420, branch: "Headquarters", department: "Operations" },
+    { date: "2025-09-01", directCost: 260000, payroll: 235000, sga: 82000, tech: 38000, total: 615000, branch: "Headquarters", department: "Operations" }
   ],
 
   // 7. RECEIVABLES & PAYABLES (WORKING CAPITAL CYCLE)
@@ -1416,7 +1460,8 @@ const DATASETS = {
     { date: "2025-05-01", receivables: 530000, payables: 310000, dso: 33, dpo: 46, current30: 410000, overdue60: 88000, overdue90: 32000, branch: "Headquarters", department: "Credit" },
     { date: "2025-06-01", receivables: 555000, payables: 340000, dso: 34, dpo: 45, current30: 435000, overdue60: 85000, overdue90: 35000, branch: "North Branch", department: "Credit" },
     { date: "2025-07-01", receivables: 575000, payables: 375000, dso: 36, dpo: 48, current30: 460000, overdue60: 82000, overdue90: 33000, branch: "South Branch", department: "Credit" },
-    { date: "2025-08-01", receivables: 825430, payables: 512760, dso: 42, dpo: 52, current30: 645000, overdue60: 125000, overdue90: 55430, branch: "Headquarters", department: "Credit" }
+    { date: "2025-08-01", receivables: 825430, payables: 512760, dso: 42, dpo: 52, current30: 645000, overdue60: 125000, overdue90: 55430, branch: "Headquarters", department: "Credit" },
+    { date: "2025-09-01", receivables: 890000, payables: 540000, dso: 41, dpo: 50, current30: 695000, overdue60: 135000, overdue90: 60000, branch: "Headquarters", department: "Credit" }
   ],
 
   // 8. REPORTS & COMPLIANCE (AUDIT SCHEDULES)
@@ -1425,7 +1470,8 @@ const DATASETS = {
     { date: "2025-05-01", debits: 1420000, credits: 1420000, reconciled: 100, gstPaid: 58000, tds: 20000, branch: "Headquarters", department: "Audit" },
     { date: "2025-06-01", debits: 1540000, credits: 1540000, reconciled: 100, gstPaid: 65000, tds: 22500, branch: "North Branch", department: "Audit" },
     { date: "2025-07-01", debits: 1690000, credits: 1690000, reconciled: 100, gstPaid: 73000, tds: 26000, branch: "South Branch", department: "Audit" },
-    { date: "2025-08-01", debits: 1860000, credits: 1860000, reconciled: 100, gstPaid: 81000, tds: 29000, branch: "Headquarters", department: "Audit" }
+    { date: "2025-08-01", debits: 1860000, credits: 1860000, reconciled: 100, gstPaid: 81000, tds: 29000, branch: "Headquarters", department: "Audit" },
+    { date: "2025-09-01", debits: 2050000, credits: 2050000, reconciled: 100, gstPaid: 89000, tds: 32000, branch: "Headquarters", department: "Audit" }
   ],
 
   // 9. FINANCIAL ANALYTICS & RATIOS
@@ -1434,7 +1480,8 @@ const DATASETS = {
     { date: "2025-05-01", roe: 27.2, roce: 25.1, currentRatio: 2.43, quickRatio: 1.76, interestCoverage: 14.3, zscore: 3.70, branch: "Headquarters", department: "Advisory" },
     { date: "2025-06-01", roe: 28.5, roce: 26.2, currentRatio: 2.45, quickRatio: 1.79, interestCoverage: 17.3, zscore: 3.75, branch: "North Branch", department: "Advisory" },
     { date: "2025-07-01", roe: 30.2, roce: 27.8, currentRatio: 2.47, quickRatio: 1.80, interestCoverage: 15.3, zscore: 3.80, branch: "South Branch", department: "Advisory" },
-    { date: "2025-08-01", roe: 30.3, roce: 28.6, currentRatio: 2.53, quickRatio: 1.99, interestCoverage: 16.5, zscore: 3.82, branch: "Headquarters", department: "Advisory" }
+    { date: "2025-08-01", roe: 30.3, roce: 28.6, currentRatio: 2.53, quickRatio: 1.99, interestCoverage: 16.5, zscore: 3.82, branch: "Headquarters", department: "Advisory" },
+    { date: "2025-09-01", roe: 31.4, roce: 29.2, currentRatio: 2.56, quickRatio: 2.07, interestCoverage: 17.1, zscore: 3.88, branch: "Headquarters", department: "Advisory" }
   ],
 
   // 10. SETTINGS & CONTROLS
@@ -1449,18 +1496,35 @@ Object.keys(DATASETS).forEach(k => {
   DATASETS[k] = (DATASETS[k] || []).map(r => ({ ...r, date: ensureDate(r.date) }));
 });
 
-// Load Daily Transactions from LocalStorage if available
+// Load Daily Transactions from LocalStorage if available (v3 migration)
 try {
-  const savedDaily = localStorage.getItem("dv_daily_transactions_v2");
+  const savedDaily = localStorage.getItem("dv_daily_transactions_v3");
   if (savedDaily) {
     const parsed = JSON.parse(savedDaily);
     if (Array.isArray(parsed) && parsed.length > 0) {
       DATASETS.daily = parsed.map(r => ({ ...r, date: ensureDate(r.date) }));
     }
+  } else {
+    // Save pristine demo transactions as initial storage
+    localStorage.setItem("dv_daily_transactions_v3", JSON.stringify(DEFAULT_DAILY_TRANSACTIONS));
   }
 } catch (e) {
   console.warn("Could not load from localStorage:", e);
 }
+
+// Global Demo Data Reset Handler
+window.resetDemoData = function() {
+  if (confirm("Reset daily ledger to all 56+ pristine demo transactions? Your view and reports will update instantly.")) {
+    try {
+      localStorage.removeItem("dv_daily_transactions_v3");
+      localStorage.removeItem("dv_daily_transactions_v2");
+    } catch (e) {}
+    DATASETS.daily = JSON.parse(JSON.stringify(DEFAULT_DAILY_TRANSACTIONS)).map(r => ({ ...r, date: ensureDate(r.date) }));
+    recalculateFinancialsFromDaily();
+    renderCurrentView();
+    showToast("56+ Enterprise demo transactions restored!");
+  }
+};
 
 // Preserve pristine baseline datasets for dynamic double-entry re-calculations
 const BASELINE_DATASETS = {
@@ -1492,7 +1556,7 @@ function recalculateFinancialsFromDaily() {
 
   // Save daily to LocalStorage
   try {
-    localStorage.setItem("dv_daily_transactions_v2", JSON.stringify(DATASETS.daily));
+    localStorage.setItem("dv_daily_transactions_v3", JSON.stringify(DATASETS.daily));
   } catch (e) {
     console.warn("Could not save to localStorage:", e);
   }
@@ -2217,6 +2281,7 @@ function renderDailyLedgerSection(rows) {
           <option value="Cheque">Cheque</option>
         </select>
         <button class="btn-record" onclick="openNewTxnModal()" style="height:30px; font-size:10.5px;">+ Record Entry</button>
+        <button class="btn-action" onclick="resetDemoData()" style="height:30px; font-size:10.5px; border-color:#ffad2f; color:#ffad2f;" title="Reload 56+ Realistic Sample Transactions">↺ Reset Demo Data</button>
         <button class="upload" onclick="document.getElementById('uploadModal').classList.remove('hidden')" style="height:30px; font-size:10.5px; padding: 0 10px;">↑ Upload Sheet</button>
         <button class="btn-action" onclick="exportDailyTransactionsReport()" style="height:30px; font-size:10.5px; margin-left:auto;">↓ Export Register</button>
       </div>
@@ -2260,13 +2325,6 @@ function renderDailyLedgerSection(rows) {
         </table>
       </div>
     </div>
-  `;
-
-  // Place under tableContainer
-  document.getElementById("tableContainer").innerHTML = `
-    <table>
-      ${dailySummary.map(row => `<tr><td>${row[0]}</td><td class="r num">${typeof row[1] === 'number' ? money(row[1]) : row[1]}</td></tr>`).join('')}
-    </table>
   `;
 
   // Append full ledger below Grid 1
@@ -2714,20 +2772,6 @@ function renderReports(rows) {
   }
   dlBox.style.display = "block";
   dlBox.innerHTML = downloadCenterHtml;
-
-  const current = last(rows), labels = rows.map(r => labelDate(r.date));
-  const totDebits = sum(rows, "debits"), totCredits = sum(rows, "credits"), gst = sum(rows, "gstPaid"), tds = sum(rows, "tds");
-
-  setPanelHeaders("Debit & Credit Balancing Trend", "Statutory Compliance Mix", "Master Trial Balance Verification", "Ledger Reconciliation %", "Statutory Filing Status", "Audit Trail Verification");
-  setChartLegend(["Debits", "Credits"]);
-
-  document.getElementById("kpisContainer").innerHTML = `
-    <div class="kpi card-1"><div class="orb">⚖</div><div class="kpi-text"><small>Trial Balance Status</small><strong>BALANCED</strong><em>Debit = Credit Reconciled</em></div></div>
-    <div class="kpi card-3"><div class="orb">✓</div><div class="kpi-text"><small>Total Audited Debits</small><strong>${money(totDebits)}</strong><em>Cumulative entries</em></div></div>
-    <div class="kpi card-3"><div class="orb">✓</div><div class="kpi-text"><small>Total Audited Credits</small><strong>${money(totCredits)}</strong><em>Cumulative entries</em></div></div>
-    <div class="kpi card-4"><div class="orb">🏛</div><div class="kpi-text"><small>GST Remitted (Input Adj)</small><strong>${money(gst)}</strong><em>Tax Paid On-time</em></div></div>
-    <div class="kpi card-5"><div class="orb">📜</div><div class="kpi-text"><small>TDS Remitted</small><strong>${money(tds)}</strong><em>Section 194 Compliant</em></div></div>
-  `;
 
   document.getElementById("smallCardsContainer").innerHTML = `
     <div class="small"><span>✓</span><div class="s-text"><small>Bank Reconciliation</small><strong>100%</strong><em>Zero unrecorded entries</em></div></div>
@@ -3201,18 +3245,6 @@ function parseDataRows(raw, headers, mode) {
       };
     }).filter(r => r.amount > 0);
   }
-
-  const find = names => {
-    for (const n of names) {
-      const h = headers.find(x => norm(x) === n);
-      if (h) return h;
-    }
-    return null;
-  };
-
-  const cDate = find(["date", "month", "period"]);
-  const cBranch = find(["branch", "location"]);
-  const cDept = find(["department", "dept"]);
 
   if (mode === "pnl") {
     const cRev = find(["revenue", "total revenue", "income", "sales"]);
