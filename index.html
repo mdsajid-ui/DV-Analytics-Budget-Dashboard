@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>DV Analytics - Budget Dashboard</title>
+<style>
+:root{
+  --bg:#031326; --panel:#071b32; --panel2:#0a213d; --line:#174b7b; --text:#f6f8ff;
+  --muted:#9fb4cf; --blue:#2688ff; --cyan:#0bd4e5; --green:#16e3a1; --pink:#ff4f7a;
+  --purple:#7b49ff; --orange:#f4a62a; --teal:#15c8b1; --nav:#06162b;
+}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at 72% 0%,#082449 0,#031326 33%,#021020 100%);color:var(--text);font-family:Inter,Segoe UI,Arial,sans-serif}
+.dashboard{width:1536px;min-height:1024px;margin:0 auto;display:grid;grid-template-columns:222px 1fr;background:linear-gradient(180deg,#06162c 0,#031326 100%)}
+.sidebar{position:relative;background:linear-gradient(180deg,#04162b,#021122);border-right:1px solid #133456;padding:18px 10px 14px}
+.brand{display:flex;gap:12px;align-items:center;padding:0 8px 16px;border-bottom:1px solid #112d4b}
+.logo{width:42px;height:42px;border-radius:10px;background:linear-gradient(135deg,#473cff,#0cd6f1);clip-path:polygon(0 8%,45% 8%,62% 48%,77% 8%,100% 8%,82% 90%,50% 90%,34% 52%,20% 90%,0 90%)}
+.brand h2{font-size:18px;margin:0}.brand small{font-size:10px;color:#b4c1d5}
+.nav{margin-top:10px}.nav-item{height:42px;display:flex;align-items:center;gap:14px;padding:0 12px;border-radius:7px;color:#eaf1fb;font-size:13px;margin:1px 0}
+.nav-item .ic{width:20px;text-align:center;font-size:18px}.nav-item.active{background:linear-gradient(90deg,#1778ff,#6d3fff);box-shadow:0 0 20px #244eff55}
+.side-card{position:absolute;left:14px;right:14px;bottom:110px;border:1px solid #194978;border-radius:9px;padding:18px;background:linear-gradient(145deg,#071a31,#061528)}
+.side-card .target{font-size:31px;color:#2d8cff}.side-card div{font-size:14px;line-height:1.45}.side-card .arrow{position:absolute;right:12px;bottom:16px;font-size:48px;color:#1b79ff}
+.updated{position:absolute;left:24px;bottom:50px;color:#96adc6;font-size:11px}.dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:#22e2a5;margin-right:10px}
+.main{padding:14px 14px 28px}
+.topbar{height:58px;display:flex;align-items:flex-start;justify-content:space-between}
+.titlewrap{display:flex;gap:16px;align-items:center}.titleicon{font-size:38px;color:#2b82ff}.titlewrap h1{font-size:28px;margin:0;line-height:1}.titlewrap p{font-size:12px;margin:7px 0;color:#c4d0df}
+.filters{display:flex;gap:10px;align-items:center;flex-wrap:nowrap}
+.filter-select{
+  height:38px;border:1px solid #1d4776;border-radius:7px;padding:0 10px;display:flex;align-items:center;
+  color:#eef4ff;background:#07182e;font-size:12px;cursor:pointer;outline:none;font-family:inherit;
+  transition:border-color .2s,box-shadow .2s;
+}
+.filter-select:hover,.filter-select:focus{border-color:#2688ff;box-shadow:0 0 10px rgba(38,136,255,0.3)}
+.filter-select option{background:#07182e;color:#eef4ff;padding:6px 10px}
+.user{display:flex;align-items:center;gap:10px;margin-left:4px}.avatar{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:#186dff;font-weight:700}.user small{display:block;color:#a9bdd5}
+.cards5{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:14px}
+.kpi{height:118px;border:1px solid;border-radius:10px;padding:17px 16px;position:relative;overflow:hidden;background:linear-gradient(135deg,#0b243b,#061d35)}
+.kpi.green{border-color:#11a775;background:linear-gradient(135deg,#0b3c3d,#0a2237)}
+.kpi.pink{border-color:#c22961;background:linear-gradient(135deg,#3a1737,#0c2137)}
+.kpi.blue{border-color:#2378e9;background:linear-gradient(135deg,#0c3d78,#091b36)}
+.kpi.purple{border-color:#6336dc;background:linear-gradient(135deg,#342064,#0c1e39)}
+.kpi.cyan{border-color:#198fa3;background:linear-gradient(135deg,#0b4654,#0a2038)}
+.kpi .iconcircle{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;position:absolute;left:14px;top:16px;font-size:22px;background:#12bd8a}
+.kpi.pink .iconcircle{background:#d83b67}.kpi.blue .iconcircle{background:#1b75df}.kpi.purple .iconcircle{background:#7b43eb}.kpi.cyan .iconcircle{background:#18a9b6}
+.kpi .lbl{margin-left:64px;font-size:13px;margin-top:10px}.kpi .val{margin-left:64px;font-size:24px;font-weight:700;margin-top:8px}.kpi .sub{position:absolute;left:16px;bottom:16px;color:#18e2a0;font-weight:700;font-size:13px}.kpi .sub.red{color:#ff5a79}.kpi .mini{position:absolute;right:15px;bottom:13px;font-size:46px;color:#17dc9a}
+.smallcards{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:13px}.small{height:95px;border:1px solid #147b8f;border-radius:10px;padding:16px;background:linear-gradient(135deg,#083941,#071b35);position:relative}.small:nth-child(2){border-color:#2768c6;background:linear-gradient(135deg,#102948,#071a33)}.small:nth-child(3){border-color:#9e6b23;background:linear-gradient(135deg,#493215,#0a1b31)}.small:nth-child(4){border-color:#b32965;background:linear-gradient(135deg,#4c1d3c,#0b1b34)}.small:nth-child(5){border-color:#1599a3}.small:nth-child(6){border-color:#2d65c7}
+.small .sicon{float:left;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:#0f9f99;font-size:20px;margin-right:12px}.small:nth-child(2) .sicon{background:#2d68c9}.small:nth-child(3) .sicon{background:#a56c15}.small:nth-child(4) .sicon{background:#bb3a69}.small:nth-child(5) .sicon{background:#11a9a7}.small:nth-child(6) .sicon{background:#2468da}
+.small .sl{font-size:12px;color:#d9eff8}.small .sv{font-size:18px;font-weight:700;margin-top:8px}.small .used{text-align:center;margin-top:12px;font-weight:700;font-size:12px;color:#9cf1e4}
+.row1{display:grid;grid-template-columns:1.7fr 1fr 1fr;gap:12px;margin-top:13px}.row2{display:grid;grid-template-columns:1fr 1.15fr 1.15fr 1.2fr;gap:12px;margin-top:13px}.row3{display:grid;grid-template-columns:1.1fr 1fr 1.2fr 1.2fr;gap:12px;margin-top:13px}
+.panel{border:1px solid #174a77;border-radius:9px;background:linear-gradient(180deg,#071d34,#06182c);padding:12px 13px;min-height:255px}.panel h3{font-size:14px;margin:0 0 12px;display:flex;align-items:center;gap:8px}.panel h3 .pi{color:#2f8cff}
+.chart{height:205px;position:relative}.gridlines{position:absolute;inset:15px 8px 25px 36px;background:repeating-linear-gradient(to bottom,transparent 0,transparent 39px,#1a3856 40px)}
+.ylabels{position:absolute;left:0;top:10px;bottom:28px;width:32px;font-size:10px;color:#c3d4e8;display:flex;flex-direction:column;justify-content:space-between}
+.bars{position:absolute;left:44px;right:10px;bottom:28px;top:15px;display:flex;justify-content:space-around;align-items:flex-end}.month{width:17%;height:100%;display:flex;align-items:flex-end;justify-content:center;gap:6px;position:relative}.bar{width:28px;border-radius:3px 3px 0 0;box-shadow:0 0 18px #00ffa822}.bar.g{background:linear-gradient(#2de5a3,#0f9a72)}.bar.r{background:linear-gradient(#ff6b87,#c93f5d)}.barlabel{position:absolute;color:#fff;font-size:10px;transform:translateY(-6px)}.months{position:absolute;left:42px;right:8px;bottom:0;display:flex;justify-content:space-around;font-size:10px;color:#d6e0ed}
+.line{position:absolute;left:43px;right:10px;bottom:60px;height:40px}.line svg{width:100%;height:100%}
+.legend{position:absolute;right:8px;top:-32px;font-size:10px;color:#d5e1ef}.legend span{margin-left:12px}.legend i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:4px}
+.donutwrap{display:flex;align-items:center;gap:12px}.donut{width:150px;height:150px;border-radius:50%;background:conic-gradient(#1987ff 0 32.9%,#18cf99 32.9% 73.5%,#ffa926 73.5% 82.6%,#9b4fff 82.6% 90.6%,#3ee0cf 90.6% 95.7%,#8898b0 95.7%);display:grid;place-items:center}.donut:after{content:"Total Budget\A ₹ 35,00,000";white-space:pre;text-align:center;display:grid;place-items:center;width:86px;height:86px;border-radius:50%;background:#07192c;font-size:11px;line-height:1.5}.dlegend{font-size:10px;line-height:2}.dlegend b{float:right;margin-left:14px;color:#dbe6f5}
+table{width:100%;border-collapse:collapse;font-size:10px}th,td{padding:6px;border-bottom:1px solid #173956;text-align:right}th:first-child,td:first-child{text-align:left}th{color:#dbe8f5;font-weight:600}tr.total{background:#0a6c61;color:#fff;font-weight:700}.redtxt{color:#ff5878;font-weight:700}.greentxt{color:#1de4a3;font-weight:700}
+.sparklist .item{margin:8px 0}.sparklist .name{font-size:10px}.sparklist .val{float:right;font-size:10px}.track{height:9px;background:#12365e;border-radius:20px;margin-top:4px;overflow:hidden}.fill{height:100%;border-radius:20px;background:linear-gradient(90deg,#ff4f79,#ff7792)}.save .fill{background:linear-gradient(90deg,#14d9a1,#26e9b3)}
+.linechart{height:175px;position:relative}.linechart svg{position:absolute;left:36px;right:10px;bottom:28px;width:calc(100% - 46px);height:130px}.insights{font-size:10px;line-height:2.35}.insights div:before{content:"✓";display:inline-grid;place-items:center;width:16px;height:16px;border-radius:50%;background:#21d999;color:#fff;margin-right:10px}.quickgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.q{border:1px solid #173f67;border-radius:8px;padding:8px 10px;height:72px}.q .qv{font-size:18px;font-weight:700}.q .up{color:#1de4a3;font-size:12px;margin-top:5px}.promo{background:linear-gradient(145deg,#2b2067,#0d4ab3 62%,#143276);position:relative;overflow:hidden}.promo h2{font-size:18px;margin:10px 0 5px}.promo p{font-size:11px;color:#d3dbf3}.btn{display:inline-block;margin-top:12px;background:#2780ff;border-radius:18px;padding:11px 18px;font-size:11px;cursor:pointer}.promo .bigarrow{position:absolute;right:22px;bottom:22px;font-size:72px;color:#11e4ff}
+.upload-btn{height:38px;border:0;border-radius:7px;padding:0 15px;background:linear-gradient(90deg,#1778ff,#6d3fff);color:#fff;font-weight:700;cursor:pointer;white-space:nowrap}.upload-btn:hover{filter:brightness(1.12)}
+.upload-modal{position:fixed;inset:0;z-index:1000;background:#010916dd;display:grid;place-items:center;padding:20px}.upload-modal.hidden{display:none}.upload-box{width:min(620px,95vw);border:1px solid #2378e9;border-radius:14px;background:#071b32;padding:22px;box-shadow:0 24px 80px #0009}.upload-head{display:flex;justify-content:space-between;align-items:center}.upload-head h2{margin:0;font-size:20px}.close-btn{border:0;background:transparent;color:#fff;font-size:22px;cursor:pointer}.upload-copy{color:#b9cce0;font-size:13px;line-height:1.55}.columns{background:#041426;border:1px solid #174b7b;border-radius:8px;padding:11px;color:#79dcff;font:12px/1.6 monospace}.dropzone{margin-top:14px;border:2px dashed #2688ff;border-radius:10px;padding:28px;text-align:center;color:#c9d8ec;cursor:pointer}.dropzone:hover,.dropzone.drag{background:#0a2a50}.upload-status{min-height:20px;margin-top:12px;font-size:12px;color:#16e3a1}.upload-status.error{color:#ff6485}.file-meta{position:fixed;right:16px;bottom:14px;z-index:20;background:#071b32dd;border:1px solid #174b7b;border-radius:8px;padding:7px 10px;color:#9fb4cf;font-size:10px}
+@media(max-width:1200px){.dashboard{transform-origin:top left;transform:scale(calc(100vw / 1536));}}
+</style>
+<script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
+</head>
+<body>
+<div class="dashboard">
+<aside class="sidebar">
+  <div class="brand"><div class="logo"></div><div><h2>DV Analytics</h2><small>Data Drives Better Decisions</small></div></div>
+  <div class="nav">
+    <div class="nav-item"><span class="ic">⌂</span>Dashboard</div>
+    <div class="nav-item"><span class="ic">▥</span>Profit &amp; Loss</div>
+    <div class="nav-item"><span class="ic">▤</span>Balance Sheet</div>
+    <div class="nav-item"><span class="ic">♻</span>Cash Flow</div>
+    <div class="nav-item"><span class="ic">▣</span>Sales &amp; Revenue</div>
+    <div class="nav-item"><span class="ic">⌂</span>Expenses</div>
+    <div class="nav-item"><span class="ic">♙</span>Receivables &amp; Payables</div>
+    <div class="nav-item active"><span class="ic">▣</span>Budgets</div>
+    <div class="nav-item"><span class="ic">✥</span>Reports</div>
+    <div class="nav-item"><span class="ic">⌁</span>Analytics</div>
+    <div class="nav-item"><span class="ic">⚙</span>Settings</div>
+  </div>
+  <div class="side-card"><div class="target">◎</div><div>Better Data<br>Better Decisions<br>Bigger Growth</div><div class="arrow">↗</div></div>
+  <div class="updated"><span class="dot"></span>Last Updated<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;14 Sep 2026, 10:24 AM</div>
+</aside>
+
+<main class="main">
+  <div class="topbar">
+    <div class="titlewrap"><div class="titleicon">▣</div><div><h1>Budget</h1><p>Plan smarter, control spending and achieve your financial goals</p></div></div>
+    <div class="filters">
+      <!-- Interactive Date Period Filter -->
+      <select class="filter-select" id="dateFilter" title="Select Date Period">
+        <option value="ALL">▣ All Periods (Apr 2025 - Aug 2025)</option>
+        <option value="2025-04">▣ Apr 2025</option>
+        <option value="2025-05">▣ May 2025</option>
+        <option value="2025-06">▣ Jun 2025</option>
+        <option value="2025-07">▣ Jul 2025</option>
+        <option value="2025-08">▣ Aug 2025</option>
+      </select>
+      
+      <!-- Interactive Branch Filter -->
+      <select class="filter-select" id="branchFilter" title="Select Branch">
+        <option value="ALL">All Branches</option>
+      </select>
+
+      <!-- Interactive Department Filter -->
+      <select class="filter-select" id="deptFilter" title="Select Department">
+        <option value="ALL">All Departments</option>
+      </select>
+
+      <button class="upload-btn" id="uploadBtn">↑ Upload Excel</button>
+      <div class="user"><div class="avatar">S</div><div>Sajid<small>Data Analyst</small></div>⌄</div>
+    </div>
+  </div>
+
+  <section class="cards5">
+    <div class="kpi green"><div class="iconcircle">◉</div><div class="lbl">Total Budget</div><div class="val">₹ 35,00,000</div><div class="sub">↑ 8.2% &nbsp; <span style="color:#b9cce0;font-weight:400">vs. previous period</span></div><div class="mini">↗</div></div>
+    <div class="kpi pink"><div class="iconcircle">▭</div><div class="lbl">Total Actual</div><div class="val">₹ 32,48,750</div><div class="sub red">↑ 12.5% &nbsp; <span style="color:#b9cce0;font-weight:400">vs. previous period</span></div><div class="mini" style="color:#ff4e77">↗</div></div>
+    <div class="kpi blue"><div class="iconcircle">▥</div><div class="lbl">Variance</div><div class="val">₹ 2,51,250</div><div class="sub">↑ 35.6% &nbsp; <span style="color:#b9cce0;font-weight:400">vs. previous period</span></div><div class="mini" style="color:#2084ff">↗</div></div>
+    <div class="kpi purple"><div class="iconcircle">%</div><div class="lbl">Budget Utilization</div><div class="val">92.8%</div><div class="sub">↑ 4.1% &nbsp; <span style="color:#b9cce0;font-weight:400">vs. previous period</span></div><div class="mini" style="color:#8048ff">↗</div></div>
+    <div class="kpi cyan"><div class="iconcircle">◎</div><div class="lbl">Forecast (EOM)</div><div class="val">₹ 38,20,000</div><div class="sub red">↑ 9.7% &nbsp; <span style="color:#b9cce0;font-weight:400">vs. budget</span></div></div>
+  </section>
+
+  <section class="smallcards">
+    <div class="small"><div class="sicon">⚙</div><div class="sl">Operating Expenses</div><div class="sv">₹ 14,20,000</div><div class="used">91.4% used</div></div>
+    <div class="small"><div class="sicon">♟</div><div class="sl">Salaries &amp; Wages</div><div class="sv">₹ 11,50,000</div><div class="used">95.6% used</div></div>
+    <div class="small"><div class="sicon">◁</div><div class="sl">Marketing</div><div class="sv">₹ 3,20,000</div><div class="used" style="color:#f6bd52">78.1% used</div></div>
+    <div class="small"><div class="sicon">⌂</div><div class="sl">Rent &amp; Utilities</div><div class="sv">₹ 2,80,000</div><div class="used" style="color:#ff7794">88.7% used</div></div>
+    <div class="small"><div class="sicon">▭</div><div class="sl">Technology &amp; Software</div><div class="sv">₹ 1,80,000</div><div class="used">76.9% used</div></div>
+    <div class="small"><div class="sicon">•••</div><div class="sl">Other Expenses</div><div class="sv">₹ 1,50,000</div><div class="used">89.3% used</div></div>
+  </section>
+
+  <section class="row1">
+    <div class="panel">
+      <h3><span class="pi">↗</span>Budget vs Actual Trend</h3>
+      <div class="chart"><div class="legend"><span><i style="background:#26dda2"></i>Budget</span><span><i style="background:#ff4e75"></i>Actual</span></div>
+        <div class="gridlines"></div><div class="ylabels"><span>15L</span><span>12L</span><span>9L</span><span>6L</span><span>3L</span><span>0</span></div>
+        <div class="bars"></div>
+        <div class="months"></div>
+      </div>
+    </div>
+
+    <div class="panel"><h3><span class="pi">◉</span>Budget Allocation</h3><div class="donutwrap"><div class="donut"></div><div class="dlegend"></div></div></div>
+
+    <div class="panel"><h3><span class="pi">▤</span>Budget Performance Summary</h3><table>
+      <tr><th>Particulars</th><th>Budget (₹)</th><th>Actual (₹)</th><th>Variance (₹)</th><th>Utilization</th></tr>
+    </table></div>
+  </section>
+
+  <section class="row2">
+    <div class="panel"><h3><span class="pi">◔</span>Monthly Budget Utilization</h3><div class="linechart"></div></div>
+    <div class="panel sparklist"><h3><span class="pi" style="color:#ff5375">▲</span>Top Variance (Over Budget)</h3></div>
+    <div class="panel sparklist save"><h3><span class="pi" style="color:#19e0a1">👍</span>Top Savings (Under Budget)</h3></div>
+    <div class="panel"><h3><span class="pi">💡</span>Forecast vs Budget</h3><div class="chart"><div class="gridlines"></div><div class="ylabels"><span>15L</span><span>12L</span><span>9L</span><span>6L</span><span>3L</span><span>0</span></div><div class="bars"></div><div class="months"></div></div></div>
+  </section>
+
+  <section class="row3">
+    <div class="panel" style="min-height:170px"><h3><span class="pi">💡</span>Key Insights</h3><div class="insights"></div></div>
+    <div class="panel" style="min-height:170px"><h3><span class="pi">◉</span>Quick Stats</h3><div class="quickgrid"></div></div>
+    <div class="panel" style="min-height:170px"><h3><span class="pi">♟</span>Recent Budget Changes <span style="margin-left:auto;font-size:9px;color:#6bb4ff">View All →</span></h3><table id="changesTable"><tr><th>Date</th><th>Particulars</th><th>Type</th><th>Amount (₹)</th></tr></table></div>
+    <div class="panel promo" style="min-height:170px"><h2>Plan Better.<br>Spend Smarter.</h2><p>Turn your budget into<br>bigger possibilities.</p><span class="btn" onclick="exportFilteredData()">Export Filtered Data ↓</span><div class="bigarrow">↗</div></div>
+  </section>
+</main>
+</div>
+
+<div class="upload-modal hidden" id="uploadModal">
+  <div class="upload-box">
+    <div class="upload-head"><h2>Upload Budget Workbook</h2><button class="close-btn" id="closeUpload" aria-label="Close">×</button></div>
+    <p class="upload-copy">Choose an Excel file. The dashboard recalculates and populates all filters completely in your browser.</p>
+    <div class="columns"><b>Required columns:</b> Date, Category, Budget, Actual<br><b>Optional columns:</b> Branch, Department, Forecast</div>
+    <label class="dropzone" id="dropzone">Drop .xlsx/.xls here or click to browse<input type="file" id="fileInput" accept=".xlsx,.xls,.xlsm" hidden></label>
+    <div class="upload-status" id="uploadStatus"></div>
+  </div>
+</div>
+<div class="file-meta" id="fileMeta">Sample budget data</div>
+
+<script>
+/* ================================================================
+   SAMPLE BUDGET DATA WITH MULTI-DEPARTMENT & MULTI-BRANCH SUPPORT
+   ================================================================ */
+const SAMPLE_BUDGET_ROWS = [
+  // April 2025
+  {date:"2025-04-01", branch:"Headquarters", department:"Operations", category:"Operating Expenses", budget:260000, actual:240000, forecast:270000},
+  {date:"2025-04-01", branch:"Headquarters", department:"HR", category:"Salaries & Wages", budget:220000, actual:215000, forecast:225000},
+  {date:"2025-04-01", branch:"North Branch", department:"Marketing", category:"Marketing", budget:65000, actual:52000, forecast:68000},
+  {date:"2025-04-01", branch:"North Branch", department:"Administration", category:"Rent & Utilities", budget:55000, actual:50000, forecast:56000},
+  {date:"2025-04-01", branch:"South Branch", department:"Technology", category:"Technology & Software", budget:35000, actual:28000, forecast:38000},
+  {date:"2025-04-01", branch:"South Branch", department:"Finance", category:"Other Expenses", budget:30000, actual:25000, forecast:32000},
+
+  // May 2025
+  {date:"2025-05-01", branch:"Headquarters", department:"Operations", category:"Operating Expenses", budget:270000, actual:260000, forecast:280000},
+  {date:"2025-05-01", branch:"Headquarters", department:"HR", category:"Salaries & Wages", budget:225000, actual:220000, forecast:230000},
+  {date:"2025-05-01", branch:"North Branch", department:"Marketing", category:"Marketing", budget:75000, actual:62000, forecast:80000},
+  {date:"2025-05-01", branch:"North Branch", department:"Administration", category:"Rent & Utilities", budget:55000, actual:51000, forecast:57000},
+  {date:"2025-05-01", branch:"South Branch", department:"Technology", category:"Technology & Software", budget:40000, actual:32000, forecast:42000},
+  {date:"2025-05-01", branch:"South Branch", department:"Finance", category:"Other Expenses", budget:35000, actual:28000, forecast:36000},
+
+  // June 2025
+  {date:"2025-06-01", branch:"Headquarters", department:"Operations", category:"Operating Expenses", budget:280000, actual:270000, forecast:300000},
+  {date:"2025-06-01", branch:"Headquarters", department:"HR", category:"Salaries & Wages", budget:230000, actual:228000, forecast:238000},
+  {date:"2025-06-01", branch:"North Branch", department:"Marketing", category:"Marketing", budget:70000, actual:62000, forecast:76000},
+  {date:"2025-06-01", branch:"North Branch", department:"Administration", category:"Rent & Utilities", budget:58000, actual:52000, forecast:59000},
+  {date:"2025-06-01", branch:"South Branch", department:"Technology", category:"Technology & Software", budget:40000, actual:31000, forecast:43000},
+  {date:"2025-06-01", branch:"South Branch", department:"Finance", category:"Other Expenses", budget:38000, actual:32000, forecast:40000},
+
+  // July 2025
+  {date:"2025-07-01", branch:"Headquarters", department:"Operations", category:"Operating Expenses", budget:295000, actual:280000, forecast:320000},
+  {date:"2025-07-01", branch:"Headquarters", department:"HR", category:"Salaries & Wages", budget:235000, actual:230000, forecast:245000},
+  {date:"2025-07-01", branch:"North Branch", department:"Marketing", category:"Marketing", budget:80000, actual:70000, forecast:92000},
+  {date:"2025-07-01", branch:"North Branch", department:"Administration", category:"Rent & Utilities", budget:58000, actual:51000, forecast:60000},
+  {date:"2025-07-01", branch:"South Branch", department:"Technology", category:"Technology & Software", budget:45000, actual:36000, forecast:48000},
+  {date:"2025-07-01", branch:"South Branch", department:"Finance", category:"Other Expenses", budget:37000, actual:33000, forecast:40000},
+
+  // August 2025
+  {date:"2025-08-01", branch:"Headquarters", department:"Operations", category:"Operating Expenses", budget:315000, actual:248420, forecast:350000},
+  {date:"2025-08-01", branch:"Headquarters", department:"HR", category:"Salaries & Wages", budget:240000, actual:207430, forecast:260000},
+  {date:"2025-08-01", branch:"North Branch", department:"Marketing", category:"Marketing", budget:105000, actual:65320, forecast:115000},
+  {date:"2025-08-01", branch:"North Branch", department:"Administration", category:"Rent & Utilities", budget:112000, actual:147760, forecast:118000},
+  {date:"2025-08-01", branch:"South Branch", department:"Technology", category:"Technology & Software", budget:100000, actual:75650, forecast:105000},
+  {date:"2025-08-01", branch:"South Branch", department:"Finance", category:"Other Expenses", budget:115000, actual:105170, forecast:125000}
+];
+
+const SAMPLE_CHANGES = [
+  { date:"14 Sep 2026", particular:"Marketing Expansion", type:"Increase", amount:50000, dept:"Marketing" },
+  { date:"10 Sep 2026", particular:"Software Subscription", type:"Decrease", amount:26000, dept:"Technology" },
+  { date:"08 Sep 2026", particular:"Office Lease Adjustment", type:"No Change", amount:0, dept:"Administration" },
+  { date:"05 Sep 2026", particular:"Operations Overtime", type:"Increase", amount:30000, dept:"Operations" },
+  { date:"02 Sep 2026", particular:"HR Training Tools", type:"Decrease", amount:15000, dept:"HR" }
+];
+
+let currentDataset = SAMPLE_BUDGET_ROWS.map(r => ({...r, date: new Date(r.date)}));
+let currentFileName = "Sample budget data";
+
+const money = n => "₹ " + Math.round(n || 0).toLocaleString("en-IN");
+const plainMoney = n => Math.round(n || 0).toLocaleString("en-IN");
+const pct = n => `${(Number.isFinite(n) ? n : 0).toFixed(1)}%`;
+const safe = value => String(value ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const normal = value => String(value ?? "").replace(/\s+/g," ").trim().toLowerCase();
+
+function parseDate(value) {
+  if (value instanceof Date && !isNaN(value)) return value;
+  if (typeof value === "number") return new Date(Math.round((value - 25569) * 86400 * 1000));
+  const d = new Date(value);
+  return isNaN(d) ? null : d;
+}
+
+function populateFilterDropdowns(rows) {
+  const dateSelect = document.getElementById("dateFilter");
+  const branchSelect = document.getElementById("branchFilter");
+  const deptSelect = document.getElementById("deptFilter");
+
+  const prevDate = dateSelect.value;
+  const prevBranch = branchSelect.value;
+  const prevDept = deptSelect.value;
+
+  // Extract unique months
+  const monthMap = new Map();
+  rows.forEach(r => {
+    const key = `${r.date.getFullYear()}-${String(r.date.getMonth()+1).padStart(2,"0")}`;
+    const label = r.date.toLocaleDateString("en-US", { month: "short", year: "numeric" });
+    monthMap.set(key, label);
+  });
+  const sortedMonths = [...monthMap.entries()].sort((a,b) => a[0].localeCompare(b[0]));
+
+  const dates = rows.map(r => r.date).sort((a,b) => a - b);
+  const minDateFmt = dates[0] ? dates[0].toLocaleDateString("en-GB", { month: "short", year: "numeric" }) : "";
+  const maxDateFmt = dates[dates.length-1] ? dates[dates.length-1].toLocaleDateString("en-GB", { month: "short", year: "numeric" }) : "";
+  
+  dateSelect.innerHTML = `<option value="ALL">▣ All Periods (${minDateFmt} - ${maxDateFmt})</option>` +
+    sortedMonths.map(([val, name]) => `<option value="${val}">▣ ${name}</option>`).join("");
+
+  // Extract unique branches
+  const branches = [...new Set(rows.map(r => r.branch || "Unspecified"))].filter(Boolean).sort();
+  branchSelect.innerHTML = `<option value="ALL">All Branches (${branches.length})</option>` +
+    branches.map(b => `<option value="${safe(b)}">${safe(b)}</option>`).join("");
+
+  // Extract unique departments
+  const departments = [...new Set(rows.map(r => r.department || "Unspecified"))].filter(Boolean).sort();
+  deptSelect.innerHTML = `<option value="ALL">All Departments (${departments.length})</option>` +
+    departments.map(d => `<option value="${safe(d)}">${safe(d)}</option>`).join("");
+
+  // Restore previous selections if valid
+  if ([...dateSelect.options].some(o => o.value === prevDate)) dateSelect.value = prevDate;
+  if ([...branchSelect.options].some(o => o.value === prevBranch)) branchSelect.value = prevBranch;
+  if ([...deptSelect.options].some(o => o.value === prevDept)) deptSelect.value = prevDept;
+}
+
+function applyFiltersAndRender() {
+  const selectedDate = document.getElementById("dateFilter").value;
+  const selectedBranch = document.getElementById("branchFilter").value;
+  const selectedDept = document.getElementById("deptFilter").value;
+
+  const filtered = currentDataset.filter(r => {
+    const monthKey = `${r.date.getFullYear()}-${String(r.date.getMonth()+1).padStart(2,"0")}`;
+    const matchesDate = (selectedDate === "ALL" || monthKey === selectedDate);
+    const matchesBranch = (selectedBranch === "ALL" || r.branch === selectedBranch);
+    const matchesDept = (selectedDept === "ALL" || r.department === selectedDept);
+    return matchesDate && matchesBranch && matchesDept;
+  });
+
+  renderDashboardView(filtered, currentFileName, selectedDept, selectedBranch, selectedDate);
+}
+
+function setKpi(cardIndex, label, value, change, note, isBad=false) {
+  const card = document.querySelectorAll(".cards5 .kpi")[cardIndex];
+  if (!card) return;
+  card.querySelector(".lbl").textContent = label;
+  card.querySelector(".val").textContent = value;
+  const sub = card.querySelector(".sub");
+  sub.classList.toggle("red", isBad);
+  sub.innerHTML = `${safe(change)} &nbsp; <span style="color:#b9cce0;font-weight:400">${safe(note)}</span>`;
+}
+
+function groupRows(rows, key) {
+  const map = new Map();
+  rows.forEach(r => {
+    const name = key(r);
+    const x = map.get(name) || { name, budget: 0, actual: 0, forecast: 0, count: 0 };
+    x.budget += r.budget; x.actual += r.actual; x.forecast += r.forecast; x.count++;
+    map.set(name, x);
+  });
+  return [...map.values()];
+}
+
+function renderDashboardView(rows, fileName, deptFilterVal, branchFilterVal, dateFilterVal) {
+  if (!rows || rows.length === 0) {
+    setKpi(0,"Total Budget","₹ 0","0.0%","No data matches filter");
+    setKpi(1,"Total Actual","₹ 0","0.0%","No data matches filter");
+    setKpi(2,"Variance","₹ 0","0.0%","No data");
+    setKpi(3,"Budget Utilization","0.0%","0.0%","No data");
+    setKpi(4,"Forecast (EOM)","₹ 0","0.0%","No data");
+    document.querySelector(".row1 .panel:nth-child(3) table").innerHTML = "<tr><th>Particulars</th><th>Budget (₹)</th><th>Actual (₹)</th><th>Variance (₹)</th><th>Utilization</th></tr><tr><td colspan='5' style='text-align:center;padding:15px;color:#9fb4cf;'>No records match the selected filter criteria.</td></tr>";
+    document.querySelector(".dlegend").innerHTML = "<div style='color:#9fb4cf;padding:10px;'>No allocation data</div>";
+    document.querySelector(".insights").innerHTML = "<div>No data available for current selection. Try changing the Department, Branch, or Date filter.</div>";
+    document.querySelector(".quickgrid").innerHTML = "";
+    return;
+  }
+
+  const total = rows.reduce((a,r) => ({
+    budget: a.budget + r.budget,
+    actual: a.actual + r.actual,
+    forecast: a.forecast + r.forecast
+  }), { budget: 0, actual: 0, forecast: 0 });
+
+  const variance = total.budget - total.actual;
+  const utilization = total.budget ? (total.actual / total.budget * 100) : 0;
+
+  setKpi(0, "Total Budget", money(total.budget), "Active Scope", `${rows.length} budget line items`);
+  setKpi(1, "Total Actual", money(total.actual), pct(utilization), "of allocated budget", utilization > 100);
+  setKpi(2, "Variance", money(Math.abs(variance)), variance >= 0 ? "Under budget" : "Over budget", variance >= 0 ? "surplus available" : "deficit", variance < 0);
+  setKpi(3, "Budget Utilization", pct(utilization), utilization <= 100 ? "Within target" : "Exceeded target", "actual ÷ budget", utilization > 100);
+  setKpi(4, "Forecast (EOM)", money(total.forecast), pct(total.budget ? (total.forecast - total.budget) / total.budget * 100 : 0), "vs. budget", total.forecast > total.budget);
+
+  // Categories Breakdown
+  const categories = groupRows(rows, r => r.category).sort((a,b) => b.budget - a.budget);
+  const smallCards = document.querySelectorAll(".smallcards .small");
+  smallCards.forEach((card, i) => {
+    const c = categories[i];
+    card.style.display = c ? "block" : "none";
+    if (!c) return;
+    card.querySelector(".sl").textContent = c.name;
+    card.querySelector(".sv").textContent = money(c.budget);
+    card.querySelector(".used").textContent = `${pct(c.budget ? c.actual / c.budget * 100 : 0)} used`;
+  });
+
+  // Performance Table
+  const perf = document.querySelector(".row1 .panel:nth-child(3) table");
+  perf.querySelectorAll("tr:not(:first-child)").forEach(r => r.remove());
+  categories.forEach(c => {
+    const catVar = c.budget - c.actual;
+    const catUse = c.budget ? (c.actual / c.budget * 100) : 0;
+    const tr = document.createElement("tr");
+    tr.innerHTML = `<td>${safe(c.name)}</td><td>${plainMoney(c.budget)}</td><td>${plainMoney(c.actual)}</td><td class="${catVar < 0 ? 'redtxt' : 'greentxt'}">${catVar < 0 ? '-' : ''}${plainMoney(Math.abs(catVar))}</td><td class="${catUse > 100 ? 'redtxt' : 'greentxt'}">${pct(catUse)}</td>`;
+    perf.appendChild(tr);
+  });
+  const totalRow = document.createElement("tr");
+  totalRow.className = "total";
+  totalRow.innerHTML = `<td>Total</td><td>${plainMoney(total.budget)}</td><td>${plainMoney(total.actual)}</td><td>${variance < 0 ? '-' : ''}${plainMoney(Math.abs(variance))}</td><td>${pct(utilization)}</td>`;
+  perf.appendChild(totalRow);
+
+  // Donut Chart
+  const colors = ["#1987ff", "#18cf99", "#ffa926", "#9b4fff", "#3ee0cf", "#8898b0"];
+  let angle = 0;
+  const stops = [];
+  categories.slice(0, 6).forEach((c, i) => {
+    const start = angle;
+    angle += total.budget ? (c.budget / total.budget * 100) : 0;
+    stops.push(`${colors[i]} ${start}% ${angle}%`);
+  });
+  const donut = document.querySelector(".donut");
+  donut.style.background = `conic-gradient(${stops.join(",")})`;
+  const legend = document.querySelector(".dlegend");
+  legend.innerHTML = categories.slice(0, 6).map((c, i) =>
+    `<div><span style="color:${colors[i]}">●</span> ${safe(c.name)} <b>${pct(total.budget ? c.budget / total.budget * 100 : 0)} &nbsp; ${money(c.budget)}</b></div>`
+  ).join("");
+  document.documentElement.style.setProperty("--donut-total", `"${money(total.budget)}"`);
+  if (!document.getElementById("dynamicDonutStyle")) {
+    document.head.insertAdjacentHTML("beforeend", '<style id="dynamicDonutStyle">.donut:after{content:"Total Budget\\A " var(--donut-total)!important}</style>');
+  }
+
+  // Monthly Trends
+  const months = groupRows(rows, r => `${r.date.getFullYear()}-${String(r.date.getMonth()+1).padStart(2,"0")}`).sort((a,b) => a.name.localeCompare(b.name));
+  const labels = months.map(m => new Date(m.name + "-01T00:00:00").toLocaleDateString("en-US", { month: "short", year: "numeric" }));
+  renderBarChart(document.querySelector(".row1 .panel:first-child .chart"), months, labels, "actual");
+  renderBarChart(document.querySelector(".row2 .panel:nth-child(4) .chart"), months, labels, "forecast");
+  renderUtilization(months, labels);
+  renderVarianceLists(categories);
+
+  // Quick Stats
+  const deptCount = new Set(rows.map(r => r.department)).size;
+  const branchCount = new Set(rows.map(r => r.branch)).size;
+  const quick = [
+    ["Avg. Monthly Spend", money(months.length ? total.actual / months.length : 0)],
+    ["Active Departments", String(deptCount)],
+    ["Filtered Records", String(rows.length)],
+    ["Branches Covered", String(branchCount)]
+  ];
+  document.querySelector(".quickgrid").innerHTML = quick.map(x =>
+    `<div class="q">${safe(x[0])}<div class="qv">${safe(x[1])}</div><div class="up">Interactive filter</div></div>`
+  ).join("");
+
+  // Key Insights
+  const over = categories.filter(c => c.actual > c.budget).sort((a,b) => (b.actual - b.budget) - (a.actual - a.budget))[0];
+  const saving = categories.filter(c => c.actual < c.budget).sort((a,b) => (b.budget - b.actual) - (a.budget - a.actual))[0];
+  const insights = [
+    `Current filtered spend is ${pct(Math.abs(100 - utilization))} ${utilization <= 100 ? 'lower' : 'higher'} than budgeted.`,
+    deptFilterVal !== "ALL" ? `Focused on ${deptFilterVal} across ${branchFilterVal}.` : `Aggregated across all ${deptCount} active departments.`,
+    over ? `${over.name} has the largest overrun at ${pct((over.actual - over.budget) / over.budget * 100)}.` : "All categories are performing strictly within budget.",
+    saving ? `${saving.name} generated maximum savings of ${money(saving.budget - saving.actual)}.` : "No significant category savings recorded.",
+    `Forecast is ${pct(Math.abs((total.forecast - total.budget) / (total.budget || 1) * 100))} ${total.forecast > total.budget ? 'above' : 'below'} planned target.`
+  ];
+  document.querySelector(".insights").innerHTML = insights.map(x => `<div>${safe(x)}</div>`).join("");
+
+  // Recent changes table filtered by department if selected
+  const changesTable = document.getElementById("changesTable");
+  changesTable.querySelectorAll("tr:not(:first-child)").forEach(r => r.remove());
+  const filteredChanges = SAMPLE_CHANGES.filter(c => deptFilterVal === "ALL" || c.dept === deptFilterVal);
+  (filteredChanges.length ? filteredChanges : SAMPLE_CHANGES).forEach(val => {
+    const row = document.createElement("tr");
+    row.innerHTML = `<td>${safe(val.date)}</td><td>${safe(val.particular)}</td><td class="${val.type==='Increase'?'greentxt':val.type==='Decrease'?'redtxt':''}">${safe(val.type)}</td><td>${plainMoney(val.amount)}</td>`;
+    changesTable.appendChild(row);
+  });
+
+  document.getElementById("fileMeta").textContent = `${fileName} • ${rows.length} rows selected • Live Filter Active`;
+  document.querySelector(".updated").innerHTML = `<span class="dot"></span>Last Updated<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${new Date().toLocaleString("en-GB")}`;
+}
+
+function renderBarChart(chart, months, labels, field) {
+  const bars = chart.querySelector(".bars");
+  const monthsEl = chart.querySelector(".months");
+  bars.innerHTML = "";
+  monthsEl.innerHTML = "";
+  if (!months.length) return;
+  const max = Math.max(1, ...months.flatMap(m => [m.budget, m[field]]));
+  months.forEach((m, i) => {
+    const bh = Math.min(95, (m.budget / max * 85));
+    const ah = Math.min(95, (m[field] / max * 85));
+    bars.insertAdjacentHTML("beforeend", `
+      <div class="month">
+        <div class="bar g" style="height:${bh}%"></div>
+        <span class="barlabel" style="bottom:${bh}%">${(m.budget/100000).toFixed(1)}L</span>
+        <div class="bar r" style="height:${ah}%"></div>
+        <span class="barlabel" style="left:63%;bottom:${ah}%">${(m[field]/100000).toFixed(1)}L</span>
+      </div>
+    `);
+    monthsEl.insertAdjacentHTML("beforeend", `<span>${safe(labels[i])}</span>`);
+  });
+}
+
+function renderUtilization(months, labels) {
+  const wrap = document.querySelector(".linechart");
+  if (!months.length) { wrap.innerHTML = "<div style='color:#9fb4cf;padding:20px;text-align:center;'>No monthly data</div>"; return; }
+  const values = months.map(m => m.budget ? (m.actual / m.budget * 100) : 0);
+  const points = values.map((v, i) => `${20 + i * (270 / Math.max(1, values.length - 1))},${120 - Math.min(110, v)}`).join(" ");
+  wrap.innerHTML = `
+    <svg viewBox="0 0 320 140">
+      <defs>
+        <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#20dc9c" stop-opacity=".35"/>
+          <stop offset="1" stop-color="#20dc9c" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <polyline points="${points}" fill="none" stroke="#20df9e" stroke-width="3"/>
+      ${points.split(' ').map(p => { const [x,y] = p.split(','); return `<circle cx="${x}" cy="${y}" r="5" fill="#20df9e" stroke="white" stroke-width="1.5"/>`; }).join('')}
+    </svg>
+    <div class="months" style="left:40px">${labels.map(x => `<span>${safe(x)}</span>`).join('')}</div>
+  `;
+}
+
+function renderVarianceLists(categories) {
+  const fill = (panel, items, isSaving) => {
+    panel.querySelectorAll(".item").forEach(x => x.remove());
+    if (!items.length) {
+      panel.insertAdjacentHTML("beforeend", `<div class="item" style="color:#9fb4cf;font-size:11px;">No records</div>`);
+      return;
+    }
+    const max = Math.max(1, ...items.map(x => Math.abs(x.actual - x.budget)));
+    items.slice(0, 5).forEach(c => {
+      const amount = Math.abs(c.actual - c.budget);
+      const rate = c.budget ? (amount / c.budget * 100) : 0;
+      panel.insertAdjacentHTML("beforeend", `
+        <div class="item">
+          <span class="name">${safe(c.name)}</span>
+          <span class="val">${plainMoney(amount)} &nbsp; <b class="${isSaving ? 'greentxt' : 'redtxt'}">${pct(rate)}</b></span>
+          <div class="track"><div class="fill" style="width:${Math.min(100, amount / max * 100)}%"></div></div>
+        </div>
+      `);
+    });
+  };
+  fill(document.querySelector(".row2 .panel:nth-child(2)"), categories.filter(c => c.actual > c.budget).sort((a,b) => (b.actual - b.budget) - (a.actual - a.budget)), false);
+  fill(document.querySelector(".row2 .panel:nth-child(3)"), categories.filter(c => c.actual < c.budget).sort((a,b) => (b.budget - b.actual) - (a.budget - a.actual)), true);
+}
+
+function exportFilteredData() {
+  const selectedDate = document.getElementById("dateFilter").value;
+  const selectedBranch = document.getElementById("branchFilter").value;
+  const selectedDept = document.getElementById("deptFilter").value;
+  const filtered = currentDataset.filter(r => {
+    const monthKey = `${r.date.getFullYear()}-${String(r.date.getMonth()+1).padStart(2,"0")}`;
+    return (selectedDate === "ALL" || monthKey === selectedDate) &&
+           (selectedBranch === "ALL" || r.branch === selectedBranch) &&
+           (selectedDept === "ALL" || r.department === selectedDept);
+  });
+
+  const exportRows = filtered.map(r => ({
+    Date: r.date.toISOString().slice(0,10),
+    Branch: r.branch,
+    Department: r.department,
+    Category: r.category,
+    Budget: r.budget,
+    Actual: r.actual,
+    Variance: r.budget - r.actual,
+    Forecast: r.forecast
+  }));
+
+  const ws = XLSX.utils.json_to_sheet(exportRows);
+  const wb = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, ws, "Filtered_Budget");
+  XLSX.writeFile(wb, `Budget_Report_${selectedDept}_${selectedDate}.xlsx`);
+}
+
+// Event Listeners for Filters
+document.getElementById("dateFilter").addEventListener("change", applyFiltersAndRender);
+document.getElementById("branchFilter").addEventListener("change", applyFiltersAndRender);
+document.getElementById("deptFilter").addEventListener("change", applyFiltersAndRender);
+
+// Excel Upload Handler
+const modal = document.getElementById("uploadModal");
+const input = document.getElementById("fileInput");
+const drop = document.getElementById("dropzone");
+const status = document.getElementById("uploadStatus");
+
+document.getElementById("uploadBtn").onclick = () => modal.classList.remove("hidden");
+document.getElementById("closeUpload").onclick = () => modal.classList.add("hidden");
+modal.addEventListener("click", e => { if (e.target === modal) modal.classList.add("hidden"); });
+drop.addEventListener("dragover", e => { e.preventDefault(); drop.classList.add("drag"); });
+drop.addEventListener("dragleave", () => drop.classList.remove("drag"));
+drop.addEventListener("drop", e => { e.preventDefault(); drop.classList.remove("drag"); if (e.dataTransfer.files[0]) loadExcel(e.dataTransfer.files[0]); });
+input.addEventListener("change", () => { if (input.files[0]) loadExcel(input.files[0]); });
+
+function readBudgetWorkbook(buffer) {
+  const workbook = XLSX.read(buffer, { type: "array", cellDates: true });
+  const sheetName = workbook.SheetNames.find(n => normal(n) === "budget") || workbook.SheetNames[0];
+  const rawRows = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName], { defval: null, raw: true });
+  if (!rawRows.length) throw new Error("The workbook has no data rows.");
+  const headers = Object.keys(rawRows[0]);
+  const lookup = Object.fromEntries(headers.map(h => [normal(h), h]));
+  const aliases = {
+    date: ["date", "month", "period"], category: ["category", "particulars", "expense category"],
+    budget: ["budget", "budget amount", "budgeted"], actual: ["actual", "actual amount", "spent", "spend"],
+    forecast: ["forecast", "forecast amount", "eom forecast"], branch: ["branch", "location"], department: ["department", "dept"]
+  };
+  const cols = {};
+  for (const [field, names] of Object.entries(aliases)) cols[field] = names.map(n => lookup[n]).find(Boolean) || null;
+  const missing = ["date", "category", "budget", "actual"].filter(k => !cols[k]);
+  if (missing.length) throw new Error(`Missing required column(s): ${missing.join(", ")}.`);
+
+  const rows = rawRows.map((r, index) => ({
+    date: parseDate(r[cols.date]),
+    category: String(r[cols.category] ?? "").trim(),
+    budget: Number(String(r[cols.budget] ?? 0).replace(/[^0-9.-]/g, "")),
+    actual: Number(String(r[cols.actual] ?? 0).replace(/[^0-9.-]/g, "")),
+    forecast: cols.forecast ? Number(String(r[cols.forecast] ?? 0).replace(/[^0-9.-]/g, "")) : null,
+    branch: cols.branch ? String(r[cols.branch] ?? "Headquarters").trim() : "Headquarters",
+    department: cols.department ? String(r[cols.department] ?? "General").trim() : "General",
+    sourceRow: index + 2
+  })).filter(r => r.date && r.category && Number.isFinite(r.budget) && Number.isFinite(r.actual));
+
+  if (!rows.length) throw new Error("No valid rows found. Check the dates and numeric amounts.");
+  rows.forEach(r => { if (!Number.isFinite(r.forecast) || r.forecast === 0) r.forecast = r.actual; });
+  return rows;
+}
+
+function loadExcel(file) {
+  status.className = "upload-status";
+  status.textContent = "Reading workbook…";
+  const reader = new FileReader();
+  reader.onload = e => {
+    try {
+      const rows = readBudgetWorkbook(e.target.result);
+      currentDataset = rows;
+      currentFileName = file.name;
+      populateFilterDropdowns(currentDataset);
+      applyFiltersAndRender();
+      status.textContent = `Loaded ${rows.length} valid rows successfully.`;
+      setTimeout(() => modal.classList.add("hidden"), 900);
+    } catch (err) {
+      status.className = "upload-status error";
+      status.textContent = err.message;
+    }
+  };
+  reader.onerror = () => {
+    status.className = "upload-status error";
+    status.textContent = "The file could not be read.";
+  };
+  reader.readAsArrayBuffer(file);
+}
+
+// Initial Run
+populateFilterDropdowns(currentDataset);
+applyFiltersAndRender();
+</script>
+</body>
+</html>
