@@ -11,63 +11,271 @@
   --purple:#7b49ff; --orange:#f4a62a; --teal:#15c8b1; --nav:#06162b;
 }
 *{box-sizing:border-box}
-body{margin:0;background:radial-gradient(circle at 72% 0%,#082449 0,#031326 33%,#021020 100%);color:var(--text);font-family:Inter,Segoe UI,Arial,sans-serif}
-.dashboard{width:1536px;min-height:1024px;margin:0 auto;display:grid;grid-template-columns:222px 1fr;background:linear-gradient(180deg,#06162c 0,#031326 100%)}
-.sidebar{position:relative;background:linear-gradient(180deg,#04162b,#021122);border-right:1px solid #133456;padding:18px 10px 14px}
-.brand{display:flex;gap:12px;align-items:center;padding:0 8px 16px;border-bottom:1px solid #112d4b}
-.logo{width:42px;height:42px;border-radius:10px;background:linear-gradient(135deg,#473cff,#0cd6f1);clip-path:polygon(0 8%,45% 8%,62% 48%,77% 8%,100% 8%,82% 90%,50% 90%,34% 52%,20% 90%,0 90%)}
-.brand h2{font-size:18px;margin:0}.brand small{font-size:10px;color:#b4c1d5}
-.nav{margin-top:10px}.nav-item{height:42px;display:flex;align-items:center;gap:14px;padding:0 12px;border-radius:7px;color:#eaf1fb;font-size:13px;margin:1px 0}
-.nav-item .ic{width:20px;text-align:center;font-size:18px}.nav-item.active{background:linear-gradient(90deg,#1778ff,#6d3fff);box-shadow:0 0 20px #244eff55}
-.side-card{position:absolute;left:14px;right:14px;bottom:110px;border:1px solid #194978;border-radius:9px;padding:18px;background:linear-gradient(145deg,#071a31,#061528)}
-.side-card .target{font-size:31px;color:#2d8cff}.side-card div{font-size:14px;line-height:1.45}.side-card .arrow{position:absolute;right:12px;bottom:16px;font-size:48px;color:#1b79ff}
-.updated{position:absolute;left:24px;bottom:50px;color:#96adc6;font-size:11px}.dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:#22e2a5;margin-right:10px}
-.main{padding:14px 14px 28px}
-.topbar{height:58px;display:flex;align-items:flex-start;justify-content:space-between}
-.titlewrap{display:flex;gap:16px;align-items:center}.titleicon{font-size:38px;color:#2b82ff}.titlewrap h1{font-size:28px;margin:0;line-height:1}.titlewrap p{font-size:12px;margin:7px 0;color:#c4d0df}
-.filters{display:flex;gap:10px;align-items:center;flex-wrap:nowrap}
+body{
+  margin:0;
+  background:radial-gradient(circle at 72% 0%,#082449 0,#031326 33%,#021020 100%);
+  color:var(--text);
+  font-family:Inter,Segoe UI,-apple-system,BlinkMacSystemFont,Roboto,sans-serif;
+  overflow-x:hidden;
+}
+.dashboard{
+  width:100%;
+  min-height:100vh;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:210px minmax(0, 1fr);
+  background:linear-gradient(180deg,#06162c 0,#031326 100%);
+}
+.sidebar{
+  position:relative;
+  background:linear-gradient(180deg,#04162b,#021122);
+  border-right:1px solid #133456;
+  padding:16px 10px 14px;
+  display:flex;
+  flex-direction:column;
+}
+.brand{display:flex;gap:10px;align-items:center;padding:0 6px 14px;border-bottom:1px solid #112d4b}
+.logo{
+  width:38px;height:38px;border-radius:10px;
+  background:linear-gradient(135deg,#473cff,#0cd6f1);
+  clip-path:polygon(0 8%,45% 8%,62% 48%,77% 8%,100% 8%,82% 90%,50% 90%,34% 52%,20% 90%,0 90%);
+  flex-shrink:0;
+}
+.brand h2{font-size:16px;margin:0;font-weight:700}.brand small{font-size:10px;color:#b4c1d5;display:block}
+.nav{margin-top:10px;display:flex;flex-direction:column;gap:2px}
+.nav-item{
+  height:38px;display:flex;align-items:center;gap:12px;padding:0 12px;border-radius:7px;
+  color:#cbd5e1;font-size:12.5px;cursor:pointer;transition:all .2s;
+}
+.nav-item:hover{background:rgba(255,255,255,0.05);color:#fff}
+.nav-item .ic{width:18px;text-align:center;font-size:16px}
+.nav-item.active{background:linear-gradient(90deg,#1778ff,#6d3fff);box-shadow:0 0 16px rgba(36,78,255,0.35);color:#fff;font-weight:600}
+
+.side-card{
+  margin-top:auto;
+  margin-bottom:14px;
+  border:1px solid #194978;
+  border-radius:9px;
+  padding:14px;
+  background:linear-gradient(145deg,#071a31,#061528);
+  position:relative;
+}
+.side-card .target{font-size:24px;color:#2d8cff;margin-bottom:4px}
+.side-card div{font-size:12px;line-height:1.4;color:#d8e5f8}
+.side-card .arrow{position:absolute;right:10px;bottom:10px;font-size:32px;color:#1b79ff;opacity:0.6}
+.updated{color:#96adc6;font-size:10.5px;line-height:1.4;padding:0 4px}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#22e2a5;margin-right:6px}
+
+.main{padding:14px 16px 24px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.titlewrap{display:flex;gap:12px;align-items:center}
+.titleicon{font-size:32px;color:#2b82ff;display:grid;place-items:center}
+.titlewrap h1{font-size:24px;margin:0;line-height:1;font-weight:700}
+.titlewrap p{font-size:11.5px;margin:4px 0 0;color:#c4d0df}
+
+.filters{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
 .filter-select{
-  height:38px;border:1px solid #1d4776;border-radius:7px;padding:0 10px;display:flex;align-items:center;
-  color:#eef4ff;background:#07182e;font-size:12px;cursor:pointer;outline:none;font-family:inherit;
-  transition:border-color .2s,box-shadow .2s;
+  height:35px;border:1px solid #1d4776;border-radius:7px;padding:0 10px;
+  color:#eef4ff;background:#07182e;font-size:11.5px;cursor:pointer;outline:none;
+  font-family:inherit;font-weight:500;transition:all .2s;max-width:240px;
 }
 .filter-select:hover,.filter-select:focus{border-color:#2688ff;box-shadow:0 0 10px rgba(38,136,255,0.3)}
 .filter-select option{background:#07182e;color:#eef4ff;padding:6px 10px}
-.user{display:flex;align-items:center;gap:10px;margin-left:4px}.avatar{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:#186dff;font-weight:700}.user small{display:block;color:#a9bdd5}
-.cards5{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:14px}
-.kpi{height:118px;border:1px solid;border-radius:10px;padding:17px 16px;position:relative;overflow:hidden;background:linear-gradient(135deg,#0b243b,#061d35)}
+.upload-btn{
+  height:35px;border:0;border-radius:7px;padding:0 14px;
+  background:linear-gradient(90deg,#1778ff,#6d3fff);color:#fff;
+  font-size:11.5px;font-weight:700;cursor:pointer;white-space:nowrap;transition:filter .2s;
+}
+.upload-btn:hover{filter:brightness(1.15)}
+.user{display:flex;align-items:center;gap:8px;margin-left:2px}
+.avatar{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#186dff;font-weight:700;font-size:13px}
+.user small{display:block;color:#a9bdd5;font-size:10px}
+
+/* KPI CARDS (Row of 5) */
+.cards5{display:grid;grid-template-columns:repeat(5, minmax(0, 1fr));gap:10px}
+.kpi{
+  min-height:102px;border:1px solid;border-radius:9px;padding:12px 12px 10px;
+  position:relative;overflow:hidden;background:linear-gradient(135deg,#0b243b,#061d35);
+  display:flex;flex-direction:column;justify-content:space-between;
+}
 .kpi.green{border-color:#11a775;background:linear-gradient(135deg,#0b3c3d,#0a2237)}
 .kpi.pink{border-color:#c22961;background:linear-gradient(135deg,#3a1737,#0c2137)}
 .kpi.blue{border-color:#2378e9;background:linear-gradient(135deg,#0c3d78,#091b36)}
 .kpi.purple{border-color:#6336dc;background:linear-gradient(135deg,#342064,#0c1e39)}
 .kpi.cyan{border-color:#198fa3;background:linear-gradient(135deg,#0b4654,#0a2038)}
-.kpi .iconcircle{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;position:absolute;left:14px;top:16px;font-size:22px;background:#12bd8a}
-.kpi.pink .iconcircle{background:#d83b67}.kpi.blue .iconcircle{background:#1b75df}.kpi.purple .iconcircle{background:#7b43eb}.kpi.cyan .iconcircle{background:#18a9b6}
-.kpi .lbl{margin-left:64px;font-size:13px;margin-top:10px}.kpi .val{margin-left:64px;font-size:24px;font-weight:700;margin-top:8px}.kpi .sub{position:absolute;left:16px;bottom:16px;color:#18e2a0;font-weight:700;font-size:13px}.kpi .sub.red{color:#ff5a79}.kpi .mini{position:absolute;right:15px;bottom:13px;font-size:46px;color:#17dc9a}
-.smallcards{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:13px}.small{height:95px;border:1px solid #147b8f;border-radius:10px;padding:16px;background:linear-gradient(135deg,#083941,#071b35);position:relative}.small:nth-child(2){border-color:#2768c6;background:linear-gradient(135deg,#102948,#071a33)}.small:nth-child(3){border-color:#9e6b23;background:linear-gradient(135deg,#493215,#0a1b31)}.small:nth-child(4){border-color:#b32965;background:linear-gradient(135deg,#4c1d3c,#0b1b34)}.small:nth-child(5){border-color:#1599a3}.small:nth-child(6){border-color:#2d65c7}
-.small .sicon{float:left;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:#0f9f99;font-size:20px;margin-right:12px}.small:nth-child(2) .sicon{background:#2d68c9}.small:nth-child(3) .sicon{background:#a56c15}.small:nth-child(4) .sicon{background:#bb3a69}.small:nth-child(5) .sicon{background:#11a9a7}.small:nth-child(6) .sicon{background:#2468da}
-.small .sl{font-size:12px;color:#d9eff8}.small .sv{font-size:18px;font-weight:700;margin-top:8px}.small .used{text-align:center;margin-top:12px;font-weight:700;font-size:12px;color:#9cf1e4}
-.row1{display:grid;grid-template-columns:1.7fr 1fr 1fr;gap:12px;margin-top:13px}.row2{display:grid;grid-template-columns:1fr 1.15fr 1.15fr 1.2fr;gap:12px;margin-top:13px}.row3{display:grid;grid-template-columns:1.1fr 1fr 1.2fr 1.2fr;gap:12px;margin-top:13px}
-.panel{border:1px solid #174a77;border-radius:9px;background:linear-gradient(180deg,#071d34,#06182c);padding:12px 13px;min-height:255px}.panel h3{font-size:14px;margin:0 0 12px;display:flex;align-items:center;gap:8px}.panel h3 .pi{color:#2f8cff}
-.chart{height:205px;position:relative}.gridlines{position:absolute;inset:15px 8px 25px 36px;background:repeating-linear-gradient(to bottom,transparent 0,transparent 39px,#1a3856 40px)}
-.ylabels{position:absolute;left:0;top:10px;bottom:28px;width:32px;font-size:10px;color:#c3d4e8;display:flex;flex-direction:column;justify-content:space-between}
-.bars{position:absolute;left:44px;right:10px;bottom:28px;top:15px;display:flex;justify-content:space-around;align-items:flex-end}.month{width:17%;height:100%;display:flex;align-items:flex-end;justify-content:center;gap:6px;position:relative}.bar{width:28px;border-radius:3px 3px 0 0;box-shadow:0 0 18px #00ffa822}.bar.g{background:linear-gradient(#2de5a3,#0f9a72)}.bar.r{background:linear-gradient(#ff6b87,#c93f5d)}.barlabel{position:absolute;color:#fff;font-size:10px;transform:translateY(-6px)}.months{position:absolute;left:42px;right:8px;bottom:0;display:flex;justify-content:space-around;font-size:10px;color:#d6e0ed}
-.line{position:absolute;left:43px;right:10px;bottom:60px;height:40px}.line svg{width:100%;height:100%}
-.legend{position:absolute;right:8px;top:-32px;font-size:10px;color:#d5e1ef}.legend span{margin-left:12px}.legend i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:4px}
-.donutwrap{display:flex;align-items:center;gap:12px}.donut{width:150px;height:150px;border-radius:50%;background:conic-gradient(#1987ff 0 32.9%,#18cf99 32.9% 73.5%,#ffa926 73.5% 82.6%,#9b4fff 82.6% 90.6%,#3ee0cf 90.6% 95.7%,#8898b0 95.7%);display:grid;place-items:center}.donut:after{content:"Total Budget\A ₹ 35,00,000";white-space:pre;text-align:center;display:grid;place-items:center;width:86px;height:86px;border-radius:50%;background:#07192c;font-size:11px;line-height:1.5}.dlegend{font-size:10px;line-height:2}.dlegend b{float:right;margin-left:14px;color:#dbe6f5}
-table{width:100%;border-collapse:collapse;font-size:10px}th,td{padding:6px;border-bottom:1px solid #173956;text-align:right}th:first-child,td:first-child{text-align:left}th{color:#dbe8f5;font-weight:600}tr.total{background:#0a6c61;color:#fff;font-weight:700}.redtxt{color:#ff5878;font-weight:700}.greentxt{color:#1de4a3;font-weight:700}
-.sparklist .item{margin:8px 0}.sparklist .name{font-size:10px}.sparklist .val{float:right;font-size:10px}.track{height:9px;background:#12365e;border-radius:20px;margin-top:4px;overflow:hidden}.fill{height:100%;border-radius:20px;background:linear-gradient(90deg,#ff4f79,#ff7792)}.save .fill{background:linear-gradient(90deg,#14d9a1,#26e9b3)}
-.linechart{height:175px;position:relative}.linechart svg{position:absolute;left:36px;right:10px;bottom:28px;width:calc(100% - 46px);height:130px}.insights{font-size:10px;line-height:2.35}.insights div:before{content:"✓";display:inline-grid;place-items:center;width:16px;height:16px;border-radius:50%;background:#21d999;color:#fff;margin-right:10px}.quickgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.q{border:1px solid #173f67;border-radius:8px;padding:8px 10px;height:72px}.q .qv{font-size:18px;font-weight:700}.q .up{color:#1de4a3;font-size:12px;margin-top:5px}.promo{background:linear-gradient(145deg,#2b2067,#0d4ab3 62%,#143276);position:relative;overflow:hidden}.promo h2{font-size:18px;margin:10px 0 5px}.promo p{font-size:11px;color:#d3dbf3}.btn{display:inline-block;margin-top:12px;background:#2780ff;border-radius:18px;padding:11px 18px;font-size:11px;cursor:pointer}.promo .bigarrow{position:absolute;right:22px;bottom:22px;font-size:72px;color:#11e4ff}
-.upload-btn{height:38px;border:0;border-radius:7px;padding:0 15px;background:linear-gradient(90deg,#1778ff,#6d3fff);color:#fff;font-weight:700;cursor:pointer;white-space:nowrap}.upload-btn:hover{filter:brightness(1.12)}
-.upload-modal{position:fixed;inset:0;z-index:1000;background:#010916dd;display:grid;place-items:center;padding:20px}.upload-modal.hidden{display:none}.upload-box{width:min(620px,95vw);border:1px solid #2378e9;border-radius:14px;background:#071b32;padding:22px;box-shadow:0 24px 80px #0009}.upload-head{display:flex;justify-content:space-between;align-items:center}.upload-head h2{margin:0;font-size:20px}.close-btn{border:0;background:transparent;color:#fff;font-size:22px;cursor:pointer}.upload-copy{color:#b9cce0;font-size:13px;line-height:1.55}.columns{background:#041426;border:1px solid #174b7b;border-radius:8px;padding:11px;color:#79dcff;font:12px/1.6 monospace}.dropzone{margin-top:14px;border:2px dashed #2688ff;border-radius:10px;padding:28px;text-align:center;color:#c9d8ec;cursor:pointer}.dropzone:hover,.dropzone.drag{background:#0a2a50}.upload-status{min-height:20px;margin-top:12px;font-size:12px;color:#16e3a1}.upload-status.error{color:#ff6485}.file-meta{position:fixed;right:16px;bottom:14px;z-index:20;background:#071b32dd;border:1px solid #174b7b;border-radius:8px;padding:7px 10px;color:#9fb4cf;font-size:10px}
-@media(max-width:1200px){.dashboard{transform-origin:top left;transform:scale(calc(100vw / 1536));}}
+.kpi-top{display:flex;align-items:flex-start;gap:10px}
+.kpi .iconcircle{
+  width:36px;height:36px;border-radius:50%;display:grid;place-items:center;
+  font-size:17px;background:#12bd8a;flex-shrink:0;color:#fff;
+}
+.kpi.pink .iconcircle{background:#d83b67}
+.kpi.blue .iconcircle{background:#1b75df}
+.kpi.purple .iconcircle{background:#7b43eb}
+.kpi.cyan .iconcircle{background:#18a9b6}
+.kpi-text{overflow:hidden}
+.kpi .lbl{font-size:11.5px;color:#cbd5e1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kpi .val{font-size:20px;font-weight:700;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kpi .sub{color:#18e2a0;font-weight:700;font-size:11px;margin-top:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kpi .sub.red{color:#ff5a79}
+.kpi .mini{position:absolute;right:8px;bottom:4px;font-size:32px;opacity:0.35;pointer-events:none}
+
+/* SMALL CATEGORY CARDS (Row of 6) */
+.smallcards{display:grid;grid-template-columns:repeat(6, minmax(0, 1fr));gap:10px}
+.small{
+  min-height:86px;border:1px solid #147b8f;border-radius:9px;padding:10px 11px;
+  background:linear-gradient(135deg,#083941,#071b35);display:flex;flex-direction:column;justify-content:space-between;
+}
+.small:nth-child(2){border-color:#2768c6;background:linear-gradient(135deg,#102948,#071a33)}
+.small:nth-child(3){border-color:#9e6b23;background:linear-gradient(135deg,#493215,#0a1b31)}
+.small:nth-child(4){border-color:#b32965;background:linear-gradient(135deg,#4c1d3c,#0b1b34)}
+.small:nth-child(5){border-color:#1599a3;background:linear-gradient(135deg,#0b4654,#0a2038)}
+.small:nth-child(6){border-color:#2d65c7;background:linear-gradient(135deg,#16305a,#071a33)}
+.small-head{display:flex;align-items:center;gap:8px}
+.small .sicon{
+  width:32px;height:32px;border-radius:50%;display:grid;place-items:center;
+  background:#0f9f99;font-size:14px;flex-shrink:0;color:#fff;
+}
+.small:nth-child(2) .sicon{background:#2d68c9}
+.small:nth-child(3) .sicon{background:#a56c15}
+.small:nth-child(4) .sicon{background:#bb3a69}
+.small:nth-child(5) .sicon{background:#11a9a7}
+.small:nth-child(6) .sicon{background:#2468da}
+.small .sl{font-size:11px;color:#d9eff8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.small .sv{font-size:15px;font-weight:700;margin-top:2px;white-space:nowrap}
+.small .used{text-align:right;font-weight:700;font-size:11px;color:#9cf1e4}
+
+/* SECTION ROWS */
+.row1{display:grid;grid-template-columns:1.5fr 1.15fr 1.35fr;gap:10px}
+.row2{display:grid;grid-template-columns:1fr 1fr 1fr 1.15fr;gap:10px}
+.row3{display:grid;grid-template-columns:1.1fr 1fr 1.25fr 1.1fr;gap:10px}
+
+.panel{
+  border:1px solid #174a77;border-radius:9px;background:linear-gradient(180deg,#071d34,#06182c);
+  padding:12px 14px;min-height:245px;display:flex;flex-direction:column;
+}
+.panel h3{font-size:13px;margin:0 0 10px;display:flex;align-items:center;gap:6px;font-weight:600}
+.panel h3 .pi{color:#2f8cff}
+
+/* CHARTS */
+.chart{height:185px;position:relative;margin-top:auto;width:100%}
+.gridlines{position:absolute;inset:10px 8px 22px 34px;background:repeating-linear-gradient(to bottom,transparent 0,transparent 35px,#1a3856 36px)}
+.ylabels{position:absolute;left:0;top:8px;bottom:22px;width:30px;font-size:9.5px;color:#c3d4e8;display:flex;flex-direction:column;justify-content:space-between}
+.bars{position:absolute;left:38px;right:6px;bottom:24px;top:10px;display:flex;justify-content:space-around;align-items:flex-end}
+.month{width:16%;height:100%;display:flex;align-items:flex-end;justify-content:center;gap:4px;position:relative}
+.bar{width:16px;border-radius:3px 3px 0 0;box-shadow:0 0 14px rgba(0,255,168,0.15)}
+.bar.g{background:linear-gradient(#2de5a3,#0f9a72)}
+.bar.r{background:linear-gradient(#ff6b87,#c93f5d)}
+.barlabel{position:absolute;color:#fff;font-size:9px;transform:translateY(-5px);white-space:nowrap}
+.months{position:absolute;left:38px;right:6px;bottom:0;display:flex;justify-content:space-around;font-size:9.5px;color:#d6e0ed}
+.legend{position:absolute;right:4px;top:-26px;font-size:9.5px;color:#d5e1ef;display:flex;gap:8px}
+.legend span{display:flex;align-items:center;gap:4px}
+.legend i{display:inline-block;width:8px;height:8px;border-radius:50%}
+
+/* DONUT */
+.donutwrap{display:flex;align-items:center;gap:14px;margin-top:auto;margin-bottom:auto}
+.donut{
+  width:130px;height:130px;border-radius:50%;
+  background:conic-gradient(#1987ff 0 32.9%,#18cf99 32.9% 73.5%,#ffa926 73.5% 82.6%,#9b4fff 82.6% 90.6%,#3ee0cf 90.6% 95.7%,#8898b0 95.7%);
+  display:grid;place-items:center;flex-shrink:0;position:relative;
+}
+.donut:after{
+  content:"Total Budget\A " var(--donut-total, "₹ 38,18,000");
+  white-space:pre;text-align:center;display:grid;place-items:center;
+  width:78px;height:78px;border-radius:50%;background:#07192c;
+  font-size:9.5px;line-height:1.4;color:#f6f8ff;font-weight:600;
+}
+.dlegend{font-size:10.5px;flex:1;display:flex;flex-direction:column;gap:5px}
+.dlegend-row{display:flex;align-items:center;justify-content:space-between;gap:6px;white-space:nowrap}
+.dlegend-title{display:flex;align-items:center;gap:5px;overflow:hidden;text-overflow:ellipsis;color:#cbd5e1}
+.dlegend-values{font-weight:700;color:#dbe6f5;font-size:10.5px}
+
+/* TABLES */
+table{width:100%;border-collapse:collapse;font-size:10px;table-layout:fixed}
+th,td{padding:5px 4px;border-bottom:1px solid #173956;text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+th:first-child,td:first-child{text-align:left}
+th{color:#dbe8f5;font-weight:600;font-size:9.5px}
+tr.total{background:#0a6c61;color:#fff;font-weight:700}
+.redtxt{color:#ff5878;font-weight:700}
+.greentxt{color:#1de4a3;font-weight:700}
+
+/* SPARKLISTS */
+.sparklist .item{margin:6px 0}
+.sparklist .item-head{display:flex;justify-content:space-between;font-size:10px;margin-bottom:2px}
+.sparklist .name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#d9eff8}
+.sparklist .val{white-space:nowrap;margin-left:8px}
+.track{height:7px;background:#12365e;border-radius:20px;overflow:hidden}
+.fill{height:100%;border-radius:20px;background:linear-gradient(90deg,#ff4f79,#ff7792);transition:width .4s ease}
+.save .fill{background:linear-gradient(90deg,#14d9a1,#26e9b3)}
+
+/* LINE CHART */
+.linechart{height:165px;position:relative;margin-top:auto;width:100%}
+.linechart svg{position:absolute;left:25px;right:6px;bottom:22px;width:calc(100% - 30px);height:130px}
+
+/* ROW 3 PANELS */
+.insights{font-size:10px;line-height:2.1;color:#d3e2f5}
+.insights div{display:flex;align-items:flex-start;gap:6px;margin-bottom:3px}
+.insights div:before{
+  content:"✓";display:inline-grid;place-items:center;width:14px;height:14px;
+  border-radius:50%;background:#21d999;color:#fff;font-size:9px;flex-shrink:0;margin-top:3px;
+}
+.quickgrid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:auto;margin-bottom:auto}
+.q{border:1px solid #173f67;border-radius:7px;padding:6px 8px;min-height:60px;display:flex;flex-direction:column;justify-content:space-between;background:#05162a}
+.q-label{font-size:9.5px;color:#9fb4cf}
+.q .qv{font-size:15px;font-weight:700;color:#fff}
+.q .up{color:#1de4a3;font-size:10px;font-weight:600}
+
+.promo{background:linear-gradient(145deg,#2b2067,#0d4ab3 62%,#143276);position:relative;overflow:hidden;justify-content:center}
+.promo h2{font-size:16px;margin:0 0 4px;font-weight:700}
+.promo p{font-size:10.5px;color:#d3dbf3;margin:0 0 10px;line-height:1.4}
+.btn{
+  display:inline-block;background:#2780ff;border-radius:18px;padding:8px 14px;
+  font-size:10.5px;font-weight:600;cursor:pointer;width:fit-content;transition:all .2s;
+  box-shadow:0 0 12px rgba(39,128,255,0.4);
+}
+.btn:hover{filter:brightness(1.15);transform:translateY(-1px)}
+.promo .bigarrow{position:absolute;right:14px;bottom:12px;font-size:54px;color:#11e4ff;opacity:0.4;pointer-events:none}
+
+/* BOTTOM STATUS BAR */
+.status-bar{
+  display:flex;align-items:center;justify-content:space-between;
+  background:#041426;border:1px solid #174b7b;border-radius:7px;
+  padding:6px 12px;color:#9fb4cf;font-size:10.5px;
+}
+
+/* UPLOAD MODAL */
+.upload-modal{position:fixed;inset:0;z-index:1000;background:#010916dd;display:grid;place-items:center;padding:20px}
+.upload-modal.hidden{display:none}
+.upload-box{width:min(580px,95vw);border:1px solid #2378e9;border-radius:12px;background:#071b32;padding:20px;box-shadow:0 24px 80px rgba(0,0,0,0.6)}
+.upload-head{display:flex;justify-content:space-between;align-items:center}
+.upload-head h2{margin:0;font-size:18px}
+.close-btn{border:0;background:transparent;color:#fff;font-size:22px;cursor:pointer}
+.upload-copy{color:#b9cce0;font-size:12px;line-height:1.5;margin:10px 0}
+.columns{background:#041426;border:1px solid #174b7b;border-radius:7px;padding:9px;color:#79dcff;font:11px/1.5 monospace}
+.dropzone{margin-top:12px;border:2px dashed #2688ff;border-radius:9px;padding:24px;text-align:center;color:#c9d8ec;cursor:pointer;display:block}
+.dropzone:hover,.dropzone.drag{background:#0a2a50}
+.upload-status{min-height:18px;margin-top:10px;font-size:11px;color:#16e3a1}
+.upload-status.error{color:#ff6485}
+
+@media(max-width:1440px){
+  .row1{grid-template-columns:1.4fr 1.2fr 1.4fr}
+  .row2{grid-template-columns:1fr 1fr 1fr 1fr}
+  .row3{grid-template-columns:1.1fr 1fr 1.2fr 1fr}
+}
+@media(max-width:1200px){
+  .cards5{grid-template-columns:repeat(3, 1fr)}
+  .smallcards{grid-template-columns:repeat(3, 1fr)}
+  .row1,.row2,.row3{grid-template-columns:1fr}
+}
 </style>
 <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
 </head>
 <body>
 <div class="dashboard">
 <aside class="sidebar">
-  <div class="brand"><div class="logo"></div><div><h2>DV Analytics</h2><small>Data Drives Better Decisions</small></div></div>
+  <div class="brand">
+    <div class="logo"></div>
+    <div><h2>DV Analytics</h2><small>Data Drives Better Decisions</small></div>
+  </div>
   <div class="nav">
     <div class="nav-item"><span class="ic">⌂</span>Dashboard</div>
     <div class="nav-item"><span class="ic">▥</span>Profit &amp; Loss</div>
@@ -81,22 +289,28 @@ table{width:100%;border-collapse:collapse;font-size:10px}th,td{padding:6px;borde
     <div class="nav-item"><span class="ic">⌁</span>Analytics</div>
     <div class="nav-item"><span class="ic">⚙</span>Settings</div>
   </div>
-  <div class="side-card"><div class="target">◎</div><div>Better Data<br>Better Decisions<br>Bigger Growth</div><div class="arrow">↗</div></div>
-  <div class="updated"><span class="dot"></span>Last Updated<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;14 Sep 2026, 10:24 AM</div>
+  <div class="side-card">
+    <div class="target">◎</div>
+    <div>Better Data<br>Better Decisions<br>Bigger Growth</div>
+    <div class="arrow">↗</div>
+  </div>
+  <div class="updated"><span class="dot"></span>Last Updated<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="lastUpdatedTime">14 Sep 2026, 10:24 AM</span></div>
 </aside>
 
 <main class="main">
+  <!-- TOP HEADER & FILTERS -->
   <div class="topbar">
-    <div class="titlewrap"><div class="titleicon">▣</div><div><h1>Budget</h1><p>Plan smarter, control spending and achieve your financial goals</p></div></div>
+    <div class="titlewrap">
+      <div class="titleicon">▣</div>
+      <div>
+        <h1>Budget</h1>
+        <p>Plan smarter, control spending and achieve your financial goals</p>
+      </div>
+    </div>
     <div class="filters">
       <!-- Interactive Date Period Filter -->
       <select class="filter-select" id="dateFilter" title="Select Date Period">
         <option value="ALL">▣ All Periods (Apr 2025 - Aug 2025)</option>
-        <option value="2025-04">▣ Apr 2025</option>
-        <option value="2025-05">▣ May 2025</option>
-        <option value="2025-06">▣ Jun 2025</option>
-        <option value="2025-07">▣ Jul 2025</option>
-        <option value="2025-08">▣ Aug 2025</option>
       </select>
       
       <!-- Interactive Branch Filter -->
@@ -110,70 +324,172 @@ table{width:100%;border-collapse:collapse;font-size:10px}th,td{padding:6px;borde
       </select>
 
       <button class="upload-btn" id="uploadBtn">↑ Upload Excel</button>
-      <div class="user"><div class="avatar">S</div><div>Sajid<small>Data Analyst</small></div>⌄</div>
+      <div class="user"><div class="avatar">S</div><div>Sajid<small>Data Analyst</small></div></div>
     </div>
   </div>
 
+  <!-- TOP 5 KPI CARDS -->
   <section class="cards5">
-    <div class="kpi green"><div class="iconcircle">◉</div><div class="lbl">Total Budget</div><div class="val">₹ 35,00,000</div><div class="sub">↑ 8.2% &nbsp; <span style="color:#b9cce0;font-weight:400">vs. previous period</span></div><div class="mini">↗</div></div>
-    <div class="kpi pink"><div class="iconcircle">▭</div><div class="lbl">Total Actual</div><div class="val">₹ 32,48,750</div><div class="sub red">↑ 12.5% &nbsp; <span style="color:#b9cce0;font-weight:400">vs. previous period</span></div><div class="mini" style="color:#ff4e77">↗</div></div>
-    <div class="kpi blue"><div class="iconcircle">▥</div><div class="lbl">Variance</div><div class="val">₹ 2,51,250</div><div class="sub">↑ 35.6% &nbsp; <span style="color:#b9cce0;font-weight:400">vs. previous period</span></div><div class="mini" style="color:#2084ff">↗</div></div>
-    <div class="kpi purple"><div class="iconcircle">%</div><div class="lbl">Budget Utilization</div><div class="val">92.8%</div><div class="sub">↑ 4.1% &nbsp; <span style="color:#b9cce0;font-weight:400">vs. previous period</span></div><div class="mini" style="color:#8048ff">↗</div></div>
-    <div class="kpi cyan"><div class="iconcircle">◎</div><div class="lbl">Forecast (EOM)</div><div class="val">₹ 38,20,000</div><div class="sub red">↑ 9.7% &nbsp; <span style="color:#b9cce0;font-weight:400">vs. budget</span></div></div>
+    <div class="kpi green">
+      <div class="kpi-top">
+        <div class="iconcircle">◉</div>
+        <div class="kpi-text"><div class="lbl">Total Budget</div><div class="val" id="kpi-budget">₹ 38,18,000</div></div>
+      </div>
+      <div class="sub" id="kpi-budget-sub">Active Scope &nbsp; <span style="color:#b9cce0;font-weight:400">30 budget line items</span></div>
+      <div class="mini">↗</div>
+    </div>
+    <div class="kpi pink">
+      <div class="kpi-top">
+        <div class="iconcircle">▭</div>
+        <div class="kpi-text"><div class="lbl">Total Actual</div><div class="val" id="kpi-actual">₹ 34,87,750</div></div>
+      </div>
+      <div class="sub" id="kpi-actual-sub">91.4% &nbsp; <span style="color:#b9cce0;font-weight:400">of allocated budget</span></div>
+      <div class="mini" style="color:#ff4e77">↗</div>
+    </div>
+    <div class="kpi blue">
+      <div class="kpi-top">
+        <div class="iconcircle">▥</div>
+        <div class="kpi-text"><div class="lbl">Variance</div><div class="val" id="kpi-variance">₹ 3,30,250</div></div>
+      </div>
+      <div class="sub" id="kpi-variance-sub">Under budget &nbsp; <span style="color:#b9cce0;font-weight:400">surplus available</span></div>
+      <div class="mini" style="color:#2084ff">↗</div>
+    </div>
+    <div class="kpi purple">
+      <div class="kpi-top">
+        <div class="iconcircle">%</div>
+        <div class="kpi-text"><div class="lbl">Budget Utilization</div><div class="val" id="kpi-utilization">91.4%</div></div>
+      </div>
+      <div class="sub" id="kpi-utilization-sub">Within target &nbsp; <span style="color:#b9cce0;font-weight:400">actual ÷ budget</span></div>
+      <div class="mini" style="color:#8048ff">↗</div>
+    </div>
+    <div class="kpi cyan">
+      <div class="kpi-top">
+        <div class="iconcircle">◎</div>
+        <div class="kpi-text"><div class="lbl">Forecast (EOM)</div><div class="val" id="kpi-forecast">₹ 40,42,000</div></div>
+      </div>
+      <div class="sub" id="kpi-forecast-sub">↑ 5.9% &nbsp; <span style="color:#b9cce0;font-weight:400">vs. budget</span></div>
+      <div class="mini" style="color:#18a9b6">↗</div>
+    </div>
   </section>
 
-  <section class="smallcards">
-    <div class="small"><div class="sicon">⚙</div><div class="sl">Operating Expenses</div><div class="sv">₹ 14,20,000</div><div class="used">91.4% used</div></div>
-    <div class="small"><div class="sicon">♟</div><div class="sl">Salaries &amp; Wages</div><div class="sv">₹ 11,50,000</div><div class="used">95.6% used</div></div>
-    <div class="small"><div class="sicon">◁</div><div class="sl">Marketing</div><div class="sv">₹ 3,20,000</div><div class="used" style="color:#f6bd52">78.1% used</div></div>
-    <div class="small"><div class="sicon">⌂</div><div class="sl">Rent &amp; Utilities</div><div class="sv">₹ 2,80,000</div><div class="used" style="color:#ff7794">88.7% used</div></div>
-    <div class="small"><div class="sicon">▭</div><div class="sl">Technology &amp; Software</div><div class="sv">₹ 1,80,000</div><div class="used">76.9% used</div></div>
-    <div class="small"><div class="sicon">•••</div><div class="sl">Other Expenses</div><div class="sv">₹ 1,50,000</div><div class="used">89.3% used</div></div>
+  <!-- 6 CATEGORY SUMMARY CARDS -->
+  <section class="smallcards" id="categoryCards">
+    <div class="small"><div class="small-head"><div class="sicon">⚙</div><div class="sl">Operating Expenses</div></div><div class="sv">₹ 14,20,000</div><div class="used">91.4% used</div></div>
+    <div class="small"><div class="small-head"><div class="sicon">♟</div><div class="sl">Salaries &amp; Wages</div></div><div class="sv">₹ 11,50,000</div><div class="used">95.7% used</div></div>
+    <div class="small"><div class="small-head"><div class="sicon">◁</div><div class="sl">Marketing</div></div><div class="sv">₹ 3,95,000</div><div class="used">78.8% used</div></div>
+    <div class="small"><div class="small-head"><div class="sicon">⌂</div><div class="sl">Rent &amp; Utilities</div></div><div class="sv">₹ 3,38,000</div><div class="used">104.1% used</div></div>
+    <div class="small"><div class="small-head"><div class="sicon">▭</div><div class="sl">Technology &amp; Software</div></div><div class="sv">₹ 2,60,000</div><div class="used">77.9% used</div></div>
+    <div class="small"><div class="small-head"><div class="sicon">•••</div><div class="sl">Other Expenses</div></div><div class="sv">₹ 2,55,000</div><div class="used">87.5% used</div></div>
   </section>
 
+  <!-- ROW 1: TRENDS, ALLOCATION, PERFORMANCE TABLE -->
   <section class="row1">
     <div class="panel">
       <h3><span class="pi">↗</span>Budget vs Actual Trend</h3>
-      <div class="chart"><div class="legend"><span><i style="background:#26dda2"></i>Budget</span><span><i style="background:#ff4e75"></i>Actual</span></div>
-        <div class="gridlines"></div><div class="ylabels"><span>15L</span><span>12L</span><span>9L</span><span>6L</span><span>3L</span><span>0</span></div>
-        <div class="bars"></div>
-        <div class="months"></div>
+      <div class="chart">
+        <div class="legend"><span><i style="background:#26dda2"></i>Budget</span><span><i style="background:#ff4e75"></i>Actual</span></div>
+        <div class="gridlines"></div>
+        <div class="ylabels"><span>15L</span><span>12L</span><span>9L</span><span>6L</span><span>3L</span><span>0</span></div>
+        <div class="bars" id="trendBars"></div>
+        <div class="months" id="trendMonths"></div>
       </div>
     </div>
 
-    <div class="panel"><h3><span class="pi">◉</span>Budget Allocation</h3><div class="donutwrap"><div class="donut"></div><div class="dlegend"></div></div></div>
+    <div class="panel">
+      <h3><span class="pi">◉</span>Budget Allocation</h3>
+      <div class="donutwrap">
+        <div class="donut"></div>
+        <div class="dlegend" id="donutLegend"></div>
+      </div>
+    </div>
 
-    <div class="panel"><h3><span class="pi">▤</span>Budget Performance Summary</h3><table>
-      <tr><th>Particulars</th><th>Budget (₹)</th><th>Actual (₹)</th><th>Variance (₹)</th><th>Utilization</th></tr>
-    </table></div>
+    <div class="panel">
+      <h3><span class="pi">▤</span>Budget Performance Summary</h3>
+      <table id="perfTable">
+        <thead>
+          <tr><th style="width:34%">Particulars</th><th style="width:20%">Budget (₹)</th><th style="width:20%">Actual (₹)</th><th style="width:14%">Variance</th><th style="width:12%">Util.</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
   </section>
 
+  <!-- ROW 2: UTILIZATION, TOP OVERRUNS, TOP SAVINGS, FORECAST -->
   <section class="row2">
-    <div class="panel"><h3><span class="pi">◔</span>Monthly Budget Utilization</h3><div class="linechart"></div></div>
-    <div class="panel sparklist"><h3><span class="pi" style="color:#ff5375">▲</span>Top Variance (Over Budget)</h3></div>
-    <div class="panel sparklist save"><h3><span class="pi" style="color:#19e0a1">👍</span>Top Savings (Under Budget)</h3></div>
-    <div class="panel"><h3><span class="pi">💡</span>Forecast vs Budget</h3><div class="chart"><div class="gridlines"></div><div class="ylabels"><span>15L</span><span>12L</span><span>9L</span><span>6L</span><span>3L</span><span>0</span></div><div class="bars"></div><div class="months"></div></div></div>
+    <div class="panel">
+      <h3><span class="pi">◔</span>Monthly Budget Utilization</h3>
+      <div class="linechart" id="utilChart"></div>
+    </div>
+    <div class="panel sparklist" id="overrunPanel">
+      <h3><span class="pi" style="color:#ff5375">▲</span>Top Variance (Over Budget)</h3>
+    </div>
+    <div class="panel sparklist save" id="savingsPanel">
+      <h3><span class="pi" style="color:#19e0a1">👍</span>Top Savings (Under Budget)</h3>
+    </div>
+    <div class="panel">
+      <h3><span class="pi">💡</span>Forecast vs Budget</h3>
+      <div class="chart">
+        <div class="legend"><span><i style="background:#26dda2"></i>Budget</span><span><i style="background:#ff4e75"></i>Forecast</span></div>
+        <div class="gridlines"></div>
+        <div class="ylabels"><span>15L</span><span>12L</span><span>9L</span><span>6L</span><span>3L</span><span>0</span></div>
+        <div class="bars" id="forecastBars"></div>
+        <div class="months" id="forecastMonths"></div>
+      </div>
+    </div>
   </section>
 
+  <!-- ROW 3: INSIGHTS, QUICK STATS, RECENT CHANGES, ACTION CTA -->
   <section class="row3">
-    <div class="panel" style="min-height:170px"><h3><span class="pi">💡</span>Key Insights</h3><div class="insights"></div></div>
-    <div class="panel" style="min-height:170px"><h3><span class="pi">◉</span>Quick Stats</h3><div class="quickgrid"></div></div>
-    <div class="panel" style="min-height:170px"><h3><span class="pi">♟</span>Recent Budget Changes <span style="margin-left:auto;font-size:9px;color:#6bb4ff">View All →</span></h3><table id="changesTable"><tr><th>Date</th><th>Particulars</th><th>Type</th><th>Amount (₹)</th></tr></table></div>
-    <div class="panel promo" style="min-height:170px"><h2>Plan Better.<br>Spend Smarter.</h2><p>Turn your budget into<br>bigger possibilities.</p><span class="btn" onclick="exportFilteredData()">Export Filtered Data ↓</span><div class="bigarrow">↗</div></div>
+    <div class="panel" style="min-height:165px">
+      <h3><span class="pi">💡</span>Key Insights</h3>
+      <div class="insights" id="insightsList"></div>
+    </div>
+    <div class="panel" style="min-height:165px">
+      <h3><span class="pi">◉</span>Quick Stats</h3>
+      <div class="quickgrid" id="quickGrid"></div>
+    </div>
+    <div class="panel" style="min-height:165px">
+      <h3><span class="pi">♟</span>Recent Budget Changes</h3>
+      <table id="changesTable">
+        <thead><tr><th style="width:25%">Date</th><th style="width:38%">Particulars</th><th style="width:17%">Type</th><th style="width:20%">Amount (₹)</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div class="panel promo" style="min-height:165px">
+      <h2>Plan Better.<br>Spend Smarter.</h2>
+      <p>Turn your financial plan into bigger business results.</p>
+      <span class="btn" onclick="exportFilteredData()">Export Filtered Data ↓</span>
+      <div class="bigarrow">↗</div>
+    </div>
   </section>
+
+  <!-- BOTTOM STATUS -->
+  <div class="status-bar">
+    <div id="fileMeta">Sample budget data • 30 records active</div>
+    <div>Engine: SheetJS In-Browser Parser • 100% Client-Side Privacy</div>
+  </div>
 </main>
 </div>
 
+<!-- EXCEL UPLOAD MODAL -->
 <div class="upload-modal hidden" id="uploadModal">
   <div class="upload-box">
-    <div class="upload-head"><h2>Upload Budget Workbook</h2><button class="close-btn" id="closeUpload" aria-label="Close">×</button></div>
-    <p class="upload-copy">Choose an Excel file. The dashboard recalculates and populates all filters completely in your browser.</p>
-    <div class="columns"><b>Required columns:</b> Date, Category, Budget, Actual<br><b>Optional columns:</b> Branch, Department, Forecast</div>
-    <label class="dropzone" id="dropzone">Drop .xlsx/.xls here or click to browse<input type="file" id="fileInput" accept=".xlsx,.xls,.xlsm" hidden></label>
+    <div class="upload-head">
+      <h2>Upload Budget Workbook</h2>
+      <button class="close-btn" id="closeUpload" aria-label="Close">×</button>
+    </div>
+    <p class="upload-copy">Choose an Excel file (.xlsx, .xls, .xlsm). The dashboard recalculates and populates all filters completely in your browser.</p>
+    <div class="columns">
+      <b>Required columns:</b> Date, Category, Budget, Actual<br>
+      <b>Optional columns:</b> Branch, Department, Forecast
+    </div>
+    <label class="dropzone" id="dropzone">
+      Drop .xlsx/.xls file here or click to browse
+      <input type="file" id="fileInput" accept=".xlsx,.xls,.xlsm" hidden>
+    </label>
     <div class="upload-status" id="uploadStatus"></div>
   </div>
 </div>
-<div class="file-meta" id="fileMeta">Sample budget data</div>
 
 <script>
 /* ================================================================
@@ -302,14 +618,13 @@ function applyFiltersAndRender() {
   renderDashboardView(filtered, currentFileName, selectedDept, selectedBranch, selectedDate);
 }
 
-function setKpi(cardIndex, label, value, change, note, isBad=false) {
-  const card = document.querySelectorAll(".cards5 .kpi")[cardIndex];
-  if (!card) return;
-  card.querySelector(".lbl").textContent = label;
-  card.querySelector(".val").textContent = value;
-  const sub = card.querySelector(".sub");
-  sub.classList.toggle("red", isBad);
-  sub.innerHTML = `${safe(change)} &nbsp; <span style="color:#b9cce0;font-weight:400">${safe(note)}</span>`;
+function setKpiCard(idVal, idSub, value, change, note, isBad=false) {
+  const valEl = document.getElementById(idVal);
+  const subEl = document.getElementById(idSub);
+  if (!valEl || !subEl) return;
+  valEl.textContent = value;
+  subEl.classList.toggle("red", isBad);
+  subEl.innerHTML = `${safe(change)} &nbsp; <span style="color:#b9cce0;font-weight:400">${safe(note)}</span>`;
 }
 
 function groupRows(rows, key) {
@@ -325,15 +640,18 @@ function groupRows(rows, key) {
 
 function renderDashboardView(rows, fileName, deptFilterVal, branchFilterVal, dateFilterVal) {
   if (!rows || rows.length === 0) {
-    setKpi(0,"Total Budget","₹ 0","0.0%","No data matches filter");
-    setKpi(1,"Total Actual","₹ 0","0.0%","No data matches filter");
-    setKpi(2,"Variance","₹ 0","0.0%","No data");
-    setKpi(3,"Budget Utilization","0.0%","0.0%","No data");
-    setKpi(4,"Forecast (EOM)","₹ 0","0.0%","No data");
-    document.querySelector(".row1 .panel:nth-child(3) table").innerHTML = "<tr><th>Particulars</th><th>Budget (₹)</th><th>Actual (₹)</th><th>Variance (₹)</th><th>Utilization</th></tr><tr><td colspan='5' style='text-align:center;padding:15px;color:#9fb4cf;'>No records match the selected filter criteria.</td></tr>";
-    document.querySelector(".dlegend").innerHTML = "<div style='color:#9fb4cf;padding:10px;'>No allocation data</div>";
-    document.querySelector(".insights").innerHTML = "<div>No data available for current selection. Try changing the Department, Branch, or Date filter.</div>";
-    document.querySelector(".quickgrid").innerHTML = "";
+    setKpiCard("kpi-budget", "kpi-budget-sub", "₹ 0", "0.0%", "No matching records");
+    setKpiCard("kpi-actual", "kpi-actual-sub", "₹ 0", "0.0%", "No matching records");
+    setKpiCard("kpi-variance", "kpi-variance-sub", "₹ 0", "0.0%", "No data");
+    setKpiCard("kpi-utilization", "kpi-utilization-sub", "0.0%", "0.0%", "No data");
+    setKpiCard("kpi-forecast", "kpi-forecast-sub", "₹ 0", "0.0%", "No data");
+    document.querySelector("#perfTable tbody").innerHTML = "<tr><td colspan='5' style='text-align:center;padding:16px;color:#9fb4cf;'>No records match the selected filter criteria.</td></tr>";
+    document.getElementById("donutLegend").innerHTML = "<div style='color:#9fb4cf;padding:10px;'>No allocation data</div>";
+    document.getElementById("insightsList").innerHTML = "<div>No data available for current selection. Try changing the Department, Branch, or Date filter.</div>";
+    document.getElementById("quickGrid").innerHTML = "";
+    document.getElementById("trendBars").innerHTML = "";
+    document.getElementById("forecastBars").innerHTML = "";
+    document.getElementById("utilChart").innerHTML = "<div style='color:#9fb4cf;text-align:center;padding:20px;'>No data to plot</div>";
     return;
   }
 
@@ -345,39 +663,43 @@ function renderDashboardView(rows, fileName, deptFilterVal, branchFilterVal, dat
 
   const variance = total.budget - total.actual;
   const utilization = total.budget ? (total.actual / total.budget * 100) : 0;
+  const forecastVar = total.budget ? ((total.forecast - total.budget) / total.budget * 100) : 0;
 
-  setKpi(0, "Total Budget", money(total.budget), "Active Scope", `${rows.length} budget line items`);
-  setKpi(1, "Total Actual", money(total.actual), pct(utilization), "of allocated budget", utilization > 100);
-  setKpi(2, "Variance", money(Math.abs(variance)), variance >= 0 ? "Under budget" : "Over budget", variance >= 0 ? "surplus available" : "deficit", variance < 0);
-  setKpi(3, "Budget Utilization", pct(utilization), utilization <= 100 ? "Within target" : "Exceeded target", "actual ÷ budget", utilization > 100);
-  setKpi(4, "Forecast (EOM)", money(total.forecast), pct(total.budget ? (total.forecast - total.budget) / total.budget * 100 : 0), "vs. budget", total.forecast > total.budget);
+  setKpiCard("kpi-budget", "kpi-budget-sub", money(total.budget), "Active Scope", `${rows.length} line items`);
+  setKpiCard("kpi-actual", "kpi-actual-sub", money(total.actual), pct(utilization), "of allocated budget", utilization > 100);
+  setKpiCard("kpi-variance", "kpi-variance-sub", money(Math.abs(variance)), variance >= 0 ? "Under budget" : "Over budget", variance >= 0 ? "surplus available" : "deficit", variance < 0);
+  setKpiCard("kpi-utilization", "kpi-utilization-sub", pct(utilization), utilization <= 100 ? "Within target" : "Exceeded target", "actual ÷ budget", utilization > 100);
+  setKpiCard("kpi-forecast", "kpi-forecast-sub", money(total.forecast), `${forecastVar >= 0 ? '↑ ' : '↓ '}${pct(Math.abs(forecastVar))}`, "vs. budget", total.forecast > total.budget);
 
   // Categories Breakdown
   const categories = groupRows(rows, r => r.category).sort((a,b) => b.budget - a.budget);
-  const smallCards = document.querySelectorAll(".smallcards .small");
+  const smallCards = document.querySelectorAll("#categoryCards .small");
   smallCards.forEach((card, i) => {
     const c = categories[i];
-    card.style.display = c ? "block" : "none";
+    card.style.display = c ? "flex" : "none";
     if (!c) return;
     card.querySelector(".sl").textContent = c.name;
     card.querySelector(".sv").textContent = money(c.budget);
-    card.querySelector(".used").textContent = `${pct(c.budget ? c.actual / c.budget * 100 : 0)} used`;
+    const use = c.budget ? (c.actual / c.budget * 100) : 0;
+    const usedEl = card.querySelector(".used");
+    usedEl.textContent = `${pct(use)} used`;
+    usedEl.style.color = use > 100 ? "#ff5a79" : use > 85 ? "#9cf1e4" : "#f6bd52";
   });
 
   // Performance Table
-  const perf = document.querySelector(".row1 .panel:nth-child(3) table");
-  perf.querySelectorAll("tr:not(:first-child)").forEach(r => r.remove());
+  const perfTbody = document.querySelector("#perfTable tbody");
+  perfTbody.innerHTML = "";
   categories.forEach(c => {
     const catVar = c.budget - c.actual;
     const catUse = c.budget ? (c.actual / c.budget * 100) : 0;
     const tr = document.createElement("tr");
     tr.innerHTML = `<td>${safe(c.name)}</td><td>${plainMoney(c.budget)}</td><td>${plainMoney(c.actual)}</td><td class="${catVar < 0 ? 'redtxt' : 'greentxt'}">${catVar < 0 ? '-' : ''}${plainMoney(Math.abs(catVar))}</td><td class="${catUse > 100 ? 'redtxt' : 'greentxt'}">${pct(catUse)}</td>`;
-    perf.appendChild(tr);
+    perfTbody.appendChild(tr);
   });
   const totalRow = document.createElement("tr");
   totalRow.className = "total";
   totalRow.innerHTML = `<td>Total</td><td>${plainMoney(total.budget)}</td><td>${plainMoney(total.actual)}</td><td>${variance < 0 ? '-' : ''}${plainMoney(Math.abs(variance))}</td><td>${pct(utilization)}</td>`;
-  perf.appendChild(totalRow);
+  perfTbody.appendChild(totalRow);
 
   // Donut Chart
   const colors = ["#1987ff", "#18cf99", "#ffa926", "#9b4fff", "#3ee0cf", "#8898b0"];
@@ -385,25 +707,31 @@ function renderDashboardView(rows, fileName, deptFilterVal, branchFilterVal, dat
   const stops = [];
   categories.slice(0, 6).forEach((c, i) => {
     const start = angle;
-    angle += total.budget ? (c.budget / total.budget * 100) : 0;
+    const share = total.budget ? (c.budget / total.budget * 100) : 0;
+    angle += share;
     stops.push(`${colors[i]} ${start}% ${angle}%`);
   });
   const donut = document.querySelector(".donut");
   donut.style.background = `conic-gradient(${stops.join(",")})`;
-  const legend = document.querySelector(".dlegend");
-  legend.innerHTML = categories.slice(0, 6).map((c, i) =>
-    `<div><span style="color:${colors[i]}">●</span> ${safe(c.name)} <b>${pct(total.budget ? c.budget / total.budget * 100 : 0)} &nbsp; ${money(c.budget)}</b></div>`
-  ).join("");
+  
+  const legend = document.getElementById("donutLegend");
+  legend.innerHTML = categories.slice(0, 6).map((c, i) => {
+    const share = total.budget ? (c.budget / total.budget * 100) : 0;
+    return `
+      <div class="dlegend-row">
+        <span class="dlegend-title"><span style="color:${colors[i]};font-size:12px">●</span> ${safe(c.name)}</span>
+        <span class="dlegend-values">${pct(share)} &nbsp; ${money(c.budget)}</span>
+      </div>
+    `;
+  }).join("");
   document.documentElement.style.setProperty("--donut-total", `"${money(total.budget)}"`);
-  if (!document.getElementById("dynamicDonutStyle")) {
-    document.head.insertAdjacentHTML("beforeend", '<style id="dynamicDonutStyle">.donut:after{content:"Total Budget\\A " var(--donut-total)!important}</style>');
-  }
 
   // Monthly Trends
   const months = groupRows(rows, r => `${r.date.getFullYear()}-${String(r.date.getMonth()+1).padStart(2,"0")}`).sort((a,b) => a.name.localeCompare(b.name));
   const labels = months.map(m => new Date(m.name + "-01T00:00:00").toLocaleDateString("en-US", { month: "short", year: "numeric" }));
-  renderBarChart(document.querySelector(".row1 .panel:first-child .chart"), months, labels, "actual");
-  renderBarChart(document.querySelector(".row2 .panel:nth-child(4) .chart"), months, labels, "forecast");
+  
+  renderBarChart("trendBars", "trendMonths", months, labels, "actual");
+  renderBarChart("forecastBars", "forecastMonths", months, labels, "forecast");
   renderUtilization(months, labels);
   renderVarianceLists(categories);
 
@@ -416,8 +744,8 @@ function renderDashboardView(rows, fileName, deptFilterVal, branchFilterVal, dat
     ["Filtered Records", String(rows.length)],
     ["Branches Covered", String(branchCount)]
   ];
-  document.querySelector(".quickgrid").innerHTML = quick.map(x =>
-    `<div class="q">${safe(x[0])}<div class="qv">${safe(x[1])}</div><div class="up">Interactive filter</div></div>`
+  document.getElementById("quickGrid").innerHTML = quick.map(x =>
+    `<div class="q"><div class="q-label">${safe(x[0])}</div><div class="qv">${safe(x[1])}</div><div class="up">Live filter</div></div>`
   ).join("");
 
   // Key Insights
@@ -425,43 +753,44 @@ function renderDashboardView(rows, fileName, deptFilterVal, branchFilterVal, dat
   const saving = categories.filter(c => c.actual < c.budget).sort((a,b) => (b.budget - b.actual) - (a.budget - a.actual))[0];
   const insights = [
     `Current filtered spend is ${pct(Math.abs(100 - utilization))} ${utilization <= 100 ? 'lower' : 'higher'} than budgeted.`,
-    deptFilterVal !== "ALL" ? `Focused on ${deptFilterVal} across ${branchFilterVal}.` : `Aggregated across all ${deptCount} active departments.`,
-    over ? `${over.name} has the largest overrun at ${pct((over.actual - over.budget) / over.budget * 100)}.` : "All categories are performing strictly within budget.",
-    saving ? `${saving.name} generated maximum savings of ${money(saving.budget - saving.actual)}.` : "No significant category savings recorded.",
-    `Forecast is ${pct(Math.abs((total.forecast - total.budget) / (total.budget || 1) * 100))} ${total.forecast > total.budget ? 'above' : 'below'} planned target.`
+    deptFilterVal !== "ALL" ? `Department focused: ${deptFilterVal} in ${branchFilterVal}.` : `Aggregated across all ${deptCount} active departments.`,
+    over ? `${over.name} has the highest overrun at ${pct((over.actual - over.budget) / over.budget * 100)}.` : "All categories are performing strictly within allocated budget.",
+    saving ? `${saving.name} generated largest saving of ${money(saving.budget - saving.actual)}.` : "No significant category savings recorded.",
+    `Forecasted spend is ${pct(Math.abs(forecastVar))} ${forecastVar > 0 ? 'above' : 'below'} planned target.`
   ];
-  document.querySelector(".insights").innerHTML = insights.map(x => `<div>${safe(x)}</div>`).join("");
+  document.getElementById("insightsList").innerHTML = insights.map(x => `<div><span>${safe(x)}</span></div>`).join("");
 
-  // Recent changes table filtered by department if selected
-  const changesTable = document.getElementById("changesTable");
-  changesTable.querySelectorAll("tr:not(:first-child)").forEach(r => r.remove());
+  // Recent changes table
+  const changesTbody = document.querySelector("#changesTable tbody");
+  changesTbody.innerHTML = "";
   const filteredChanges = SAMPLE_CHANGES.filter(c => deptFilterVal === "ALL" || c.dept === deptFilterVal);
   (filteredChanges.length ? filteredChanges : SAMPLE_CHANGES).forEach(val => {
     const row = document.createElement("tr");
     row.innerHTML = `<td>${safe(val.date)}</td><td>${safe(val.particular)}</td><td class="${val.type==='Increase'?'greentxt':val.type==='Decrease'?'redtxt':''}">${safe(val.type)}</td><td>${plainMoney(val.amount)}</td>`;
-    changesTable.appendChild(row);
+    changesTbody.appendChild(row);
   });
 
   document.getElementById("fileMeta").textContent = `${fileName} • ${rows.length} rows selected • Live Filter Active`;
-  document.querySelector(".updated").innerHTML = `<span class="dot"></span>Last Updated<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${new Date().toLocaleString("en-GB")}`;
+  document.getElementById("lastUpdatedTime").textContent = new Date().toLocaleString("en-GB", {day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'});
 }
 
-function renderBarChart(chart, months, labels, field) {
-  const bars = chart.querySelector(".bars");
-  const monthsEl = chart.querySelector(".months");
+function renderBarChart(barsId, monthsId, months, labels, field) {
+  const bars = document.getElementById(barsId);
+  const monthsEl = document.getElementById(monthsId);
+  if (!bars || !monthsEl) return;
   bars.innerHTML = "";
   monthsEl.innerHTML = "";
   if (!months.length) return;
   const max = Math.max(1, ...months.flatMap(m => [m.budget, m[field]]));
   months.forEach((m, i) => {
-    const bh = Math.min(95, (m.budget / max * 85));
-    const ah = Math.min(95, (m[field] / max * 85));
+    const bh = Math.min(90, Math.max(8, (m.budget / max * 80)));
+    const ah = Math.min(90, Math.max(8, (m[field] / max * 80)));
     bars.insertAdjacentHTML("beforeend", `
       <div class="month">
         <div class="bar g" style="height:${bh}%"></div>
         <span class="barlabel" style="bottom:${bh}%">${(m.budget/100000).toFixed(1)}L</span>
         <div class="bar r" style="height:${ah}%"></div>
-        <span class="barlabel" style="left:63%;bottom:${ah}%">${(m[field]/100000).toFixed(1)}L</span>
+        <span class="barlabel" style="left:55%;bottom:${ah}%">${(m[field]/100000).toFixed(1)}L</span>
       </div>
     `);
     monthsEl.insertAdjacentHTML("beforeend", `<span>${safe(labels[i])}</span>`);
@@ -469,30 +798,33 @@ function renderBarChart(chart, months, labels, field) {
 }
 
 function renderUtilization(months, labels) {
-  const wrap = document.querySelector(".linechart");
+  const wrap = document.getElementById("utilChart");
+  if (!wrap) return;
   if (!months.length) { wrap.innerHTML = "<div style='color:#9fb4cf;padding:20px;text-align:center;'>No monthly data</div>"; return; }
   const values = months.map(m => m.budget ? (m.actual / m.budget * 100) : 0);
-  const points = values.map((v, i) => `${20 + i * (270 / Math.max(1, values.length - 1))},${120 - Math.min(110, v)}`).join(" ");
+  const points = values.map((v, i) => `${20 + i * (260 / Math.max(1, values.length - 1))},${110 - Math.min(95, Math.max(10, v * 0.95))}`).join(" ");
   wrap.innerHTML = `
-    <svg viewBox="0 0 320 140">
+    <svg viewBox="0 0 300 130">
       <defs>
         <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0" stop-color="#20dc9c" stop-opacity=".35"/>
           <stop offset="1" stop-color="#20dc9c" stop-opacity="0"/>
         </linearGradient>
       </defs>
-      <polyline points="${points}" fill="none" stroke="#20df9e" stroke-width="3"/>
-      ${points.split(' ').map(p => { const [x,y] = p.split(','); return `<circle cx="${x}" cy="${y}" r="5" fill="#20df9e" stroke="white" stroke-width="1.5"/>`; }).join('')}
+      <polyline points="${points}" fill="none" stroke="#20df9e" stroke-width="2.5"/>
+      ${points.split(' ').map(p => { const [x,y] = p.split(','); return `<circle cx="${x}" cy="${y}" r="4" fill="#20df9e" stroke="white" stroke-width="1.2"/>`; }).join('')}
     </svg>
-    <div class="months" style="left:40px">${labels.map(x => `<span>${safe(x)}</span>`).join('')}</div>
+    <div class="months" style="left:25px">${labels.map(x => `<span>${safe(x)}</span>`).join('')}</div>
   `;
 }
 
 function renderVarianceLists(categories) {
-  const fill = (panel, items, isSaving) => {
+  const fill = (panelId, items, isSaving) => {
+    const panel = document.getElementById(panelId);
+    if (!panel) return;
     panel.querySelectorAll(".item").forEach(x => x.remove());
     if (!items.length) {
-      panel.insertAdjacentHTML("beforeend", `<div class="item" style="color:#9fb4cf;font-size:11px;">No records</div>`);
+      panel.insertAdjacentHTML("beforeend", `<div class="item" style="color:#9fb4cf;font-size:11px;padding:8px 0;">No records in this scope</div>`);
       return;
     }
     const max = Math.max(1, ...items.map(x => Math.abs(x.actual - x.budget)));
@@ -501,15 +833,17 @@ function renderVarianceLists(categories) {
       const rate = c.budget ? (amount / c.budget * 100) : 0;
       panel.insertAdjacentHTML("beforeend", `
         <div class="item">
-          <span class="name">${safe(c.name)}</span>
-          <span class="val">${plainMoney(amount)} &nbsp; <b class="${isSaving ? 'greentxt' : 'redtxt'}">${pct(rate)}</b></span>
-          <div class="track"><div class="fill" style="width:${Math.min(100, amount / max * 100)}%"></div></div>
+          <div class="item-head">
+            <span class="name">${safe(c.name)}</span>
+            <span class="val">${plainMoney(amount)} &nbsp; <b class="${isSaving ? 'greentxt' : 'redtxt'}">${pct(rate)}</b></span>
+          </div>
+          <div class="track"><div class="fill" style="width:${Math.min(100, Math.max(4, amount / max * 100))}%"></div></div>
         </div>
       `);
     });
   };
-  fill(document.querySelector(".row2 .panel:nth-child(2)"), categories.filter(c => c.actual > c.budget).sort((a,b) => (b.actual - b.budget) - (a.actual - a.budget)), false);
-  fill(document.querySelector(".row2 .panel:nth-child(3)"), categories.filter(c => c.actual < c.budget).sort((a,b) => (b.budget - b.actual) - (a.budget - a.actual)), true);
+  fill("overrunPanel", categories.filter(c => c.actual > c.budget).sort((a,b) => (b.actual - b.budget) - (a.actual - a.budget)), false);
+  fill("savingsPanel", categories.filter(c => c.actual < c.budget).sort((a,b) => (b.budget - b.actual) - (a.budget - a.actual)), true);
 }
 
 function exportFilteredData() {
@@ -540,7 +874,7 @@ function exportFilteredData() {
   XLSX.writeFile(wb, `Budget_Report_${selectedDept}_${selectedDate}.xlsx`);
 }
 
-// Event Listeners for Filters
+// Event Listeners for Live Interactive Filters
 document.getElementById("dateFilter").addEventListener("change", applyFiltersAndRender);
 document.getElementById("branchFilter").addEventListener("change", applyFiltersAndRender);
 document.getElementById("deptFilter").addEventListener("change", applyFiltersAndRender);
@@ -617,7 +951,7 @@ function loadExcel(file) {
   reader.readAsArrayBuffer(file);
 }
 
-// Initial Run
+// Initial Boot
 populateFilterDropdowns(currentDataset);
 applyFiltersAndRender();
 </script>
