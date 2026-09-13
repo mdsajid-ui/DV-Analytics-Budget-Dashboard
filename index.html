@@ -1253,12 +1253,30 @@ const sum = (rows, k) => rows.reduce((a, r) => a + (Number(r[k]) || 0), 0);
 const last = rows => rows[rows.length - 1] || {};
 
 function parseDate(v) {
-  if (v instanceof Date && !isNaN(v)) return v;
+  if (v instanceof Date && !isNaN(v.getTime())) return v;
   if (typeof v === "number") return new Date(Math.round((v - 25569) * 86400 * 1000));
+  if (typeof v === "string") {
+    const parts = v.trim().split(/[-/T ]/);
+    if (parts.length >= 3) {
+      const yr = parseInt(parts[0], 10);
+      const mo = parseInt(parts[1], 10) - 1;
+      const day = parseInt(parts[2], 10);
+      if (!isNaN(yr) && !isNaN(mo) && !isNaN(day)) {
+        return new Date(yr, mo, day);
+      }
+    }
+  }
   const d = new Date(v);
-  return isNaN(d) ? null : d;
+  return (d && !isNaN(d.getTime())) ? d : null;
 }
-const labelDate = d => d.toLocaleDateString("en-US", { month: "short", year: "numeric" });
+function ensureDate(v) {
+  const d = parseDate(v);
+  return (d && !isNaN(d.getTime())) ? d : new Date();
+}
+const labelDate = d => {
+  const dt = ensureDate(d);
+  return dt.toLocaleDateString("en-US", { month: "short", year: "numeric" });
+};
 
 /* ================================================================
    ENTERPRISE DATASETS FOR ALL 11 FIELDS
@@ -1426,13 +1444,18 @@ const DATASETS = {
 };
 
 
+// Normalize all dates across all datasets immediately
+Object.keys(DATASETS).forEach(k => {
+  DATASETS[k] = (DATASETS[k] || []).map(r => ({ ...r, date: ensureDate(r.date) }));
+});
+
 // Load Daily Transactions from LocalStorage if available
 try {
   const savedDaily = localStorage.getItem("dv_daily_transactions_v2");
   if (savedDaily) {
     const parsed = JSON.parse(savedDaily);
     if (Array.isArray(parsed) && parsed.length > 0) {
-      DATASETS.daily = parsed.map(r => ({ ...r, date: parseDate(r.date) }));
+      DATASETS.daily = parsed.map(r => ({ ...r, date: ensureDate(r.date) }));
     }
   }
 } catch (e) {
@@ -1441,21 +1464,21 @@ try {
 
 // Preserve pristine baseline datasets for dynamic double-entry re-calculations
 const BASELINE_DATASETS = {
-  pnl: JSON.parse(JSON.stringify(DATASETS.pnl)).map(r => ({ ...r, date: parseDate(r.date) })),
-  balance: JSON.parse(JSON.stringify(DATASETS.balance)).map(r => ({ ...r, date: parseDate(r.date) })),
-  cashflow: JSON.parse(JSON.stringify(DATASETS.cashflow)).map(r => ({ ...r, date: parseDate(r.date) })),
-  budget: JSON.parse(JSON.stringify(DATASETS.budget)).map(r => ({ ...r, date: parseDate(r.date) }))
+  pnl: JSON.parse(JSON.stringify(DATASETS.pnl)).map(r => ({ ...r, date: ensureDate(r.date) })),
+  balance: JSON.parse(JSON.stringify(DATASETS.balance)).map(r => ({ ...r, date: ensureDate(r.date) })),
+  cashflow: JSON.parse(JSON.stringify(DATASETS.cashflow)).map(r => ({ ...r, date: ensureDate(r.date) })),
+  budget: JSON.parse(JSON.stringify(DATASETS.budget)).map(r => ({ ...r, date: ensureDate(r.date) }))
 };
 
-// Filter daily transactions
+// Filter daily transactions with safe date handling
 function getFilteredDailyRows() {
-  const dVal = document.getElementById("dateFilter").value;
-  const bVal = document.getElementById("branchFilter").value;
-  const deptVal = document.getElementById("deptFilter").value;
+  const dVal = (document.getElementById("dateFilter") || {}).value || "ALL";
+  const bVal = (document.getElementById("branchFilter") || {}).value || "ALL";
+  const deptVal = (document.getElementById("deptFilter") || {}).value || "ALL";
 
-  return DATASETS.daily.filter(r => {
-    if (!r.date) return false;
-    const mKey = `${r.date.getFullYear()}-${String(r.date.getMonth() + 1).padStart(2, "0")}`;
+  return DATASETS.daily.map(r => ({ ...r, date: ensureDate(r.date) })).filter(r => {
+    const d = r.date;
+    const mKey = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}`;
     const mDate = dVal === "ALL" || mKey === dVal;
     const mBranch = bVal === "ALL" || r.branch === bVal;
     const mDept = deptVal === "ALL" || r.department === deptVal;
@@ -1465,6 +1488,8 @@ function getFilteredDailyRows() {
 
 // Universal Double-Entry Propagation Engine
 function recalculateFinancialsFromDaily() {
+  DATASETS.daily = (DATASETS.daily || []).map(t => ({ ...t, date: ensureDate(t.date) }));
+
   // Save daily to LocalStorage
   try {
     localStorage.setItem("dv_daily_transactions_v2", JSON.stringify(DATASETS.daily));
@@ -1475,8 +1500,8 @@ function recalculateFinancialsFromDaily() {
   // Group daily transactions by Month (YYYY-MM)
   const monthMap = {};
   DATASETS.daily.forEach(t => {
-    if (!t.date) return;
-    const mKey = `${t.date.getFullYear()}-${String(t.date.getMonth() + 1).padStart(2, "0")}`;
+    const d = ensureDate(t.date);
+    const mKey = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}`;
     if (!monthMap[mKey]) {
       monthMap[mKey] = {
         salesInflow: 0,
@@ -1532,7 +1557,8 @@ function recalculateFinancialsFromDaily() {
   let runningRetainedEarnings = 580000;
 
   DATASETS.pnl = BASELINE_DATASETS.pnl.map(base => {
-    const mKey = `${base.date.getFullYear()}-${String(base.date.getMonth() + 1).padStart(2, "0")}`;
+    const dDate = ensureDate(base.date);
+    const mKey = `${dDate.getFullYear()}-${String(dDate.getMonth() + 1).padStart(2, "0")}`;
     const d = monthMap[mKey] || { salesInflow: 0, otherInflow: 0, cogsOutflow: 0, salaryOutflow: 0, opexOutflow: 0, taxOutflow: 0 };
     
     // Add real-time daily operational inflows and overheads
@@ -1543,6 +1569,7 @@ function recalculateFinancialsFromDaily() {
     
     return {
       ...base,
+      date: dDate,
       revenue: Math.round(rev),
       cogs: Math.round(cogs),
       operatingExpenses: Math.round(opex),
@@ -1551,7 +1578,8 @@ function recalculateFinancialsFromDaily() {
   });
 
   DATASETS.cashflow = BASELINE_DATASETS.cashflow.map(base => {
-    const mKey = `${base.date.getFullYear()}-${String(base.date.getMonth() + 1).padStart(2, "0")}`;
+    const dDate = ensureDate(base.date);
+    const mKey = `${dDate.getFullYear()}-${String(dDate.getMonth() + 1).padStart(2, "0")}`;
     const d = monthMap[mKey] || { totReceipts: 0, totPayments: 0, salesInflow: 0, debtorInflow: 0, opexOutflow: 0, salaryOutflow: 0, cogsOutflow: 0, vendorOutflow: 0, taxOutflow: 0, capexOutflow: 0, capitalInflow: 0, loanInflow: 0, loanRepayOutflow: 0 };
 
     const opInflow = d.salesInflow + d.debtorInflow + d.otherInflow;
@@ -1564,6 +1592,7 @@ function recalculateFinancialsFromDaily() {
 
     return {
       ...base,
+      date: dDate,
       operating: Math.round(operating),
       investing: Math.round(investing),
       financing: Math.round(financing),
@@ -1573,6 +1602,7 @@ function recalculateFinancialsFromDaily() {
   });
 
   DATASETS.balance = BASELINE_DATASETS.balance.map((base, idx) => {
+    const dDate = ensureDate(base.date);
     const cf = DATASETS.cashflow[idx] || {};
     const pnl = DATASETS.pnl[idx] || {};
     const netPat = (pnl.revenue || 0) - (pnl.expenses || 0);
@@ -1597,6 +1627,7 @@ function recalculateFinancialsFromDaily() {
 
     return {
       ...base,
+      date: dDate,
       cash: Math.round(cash),
       receivables: Math.round(runningReceivables),
       currentAssets: curAssets,
@@ -1613,12 +1644,14 @@ function recalculateFinancialsFromDaily() {
 
   // Update budget actuals with departmental payments
   DATASETS.budget = BASELINE_DATASETS.budget.map(base => {
-    const mKey = `${base.date.getFullYear()}-${String(base.date.getMonth() + 1).padStart(2, "0")}`;
+    const dDate = ensureDate(base.date);
+    const mKey = `${dDate.getFullYear()}-${String(dDate.getMonth() + 1).padStart(2, "0")}`;
     const d = monthMap[mKey];
     const extraSpend = (d && d.deptSpends[base.department]) ? (d.deptSpends[base.department] * 0.25) : 0;
     const actual = Math.round(base.actual + extraSpend);
     return {
       ...base,
+      date: dDate,
       actual: actual,
       forecast: Math.max(actual, base.forecast)
     };
@@ -1627,11 +1660,6 @@ function recalculateFinancialsFromDaily() {
 
 // Initial calculation run
 recalculateFinancialsFromDaily();
-
-// Normalize dates
-Object.keys(DATASETS).forEach(k => {
-  DATASETS[k] = DATASETS[k].map(r => ({ ...r, date: parseDate(r.date) }));
-});
 
 let currentMode = "budget"; // Default view
 let fileSources = {
@@ -1823,13 +1851,14 @@ function populateFilters() {
 function getFilteredRows(modeKey) {
   const k = modeKey || currentMode;
   const rows = DATASETS[k] || [];
-  const dVal = document.getElementById("dateFilter").value;
-  const bVal = document.getElementById("branchFilter").value;
-  const deptVal = document.getElementById("deptFilter").value;
+  const dVal = (document.getElementById("dateFilter") || {}).value || "ALL";
+  const bVal = (document.getElementById("branchFilter") || {}).value || "ALL";
+  const deptVal = (document.getElementById("deptFilter") || {}).value || "ALL";
 
-  return rows.filter(r => {
+  return rows.map(r => ({ ...r, date: ensureDate(r.date) })).filter(r => {
     if (!r.date) return true;
-    const mKey = `${r.date.getFullYear()}-${String(r.date.getMonth() + 1).padStart(2, "0")}`;
+    const d = r.date;
+    const mKey = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}`;
     const mDate = dVal === "ALL" || mKey === dVal;
     const mBranch = bVal === "ALL" || r.branch === bVal;
     const mDept = deptVal === "ALL" || r.department === deptVal;
