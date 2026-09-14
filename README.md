@@ -59,7 +59,12 @@ The navigation menu places **Profit & Loss**, **Balance Sheet**, and **Daily Tra
   - Drag & drop `.xlsx` / `.xls` / `.csv` files for instant browser-based parsing with zero server upload.
   - Automatic column detection: auto-routes uploaded sheets into Daily Ledger, P&L, Balance Sheet, or Budget views.
 - **Universal LocalStorage Persistence**:
-  - Daily transactions and user modifications are safely retained in browser `localStorage`.
+  - Daily transactions, user modifications, and active visual theme preferences are safely retained in browser `localStorage`.
+- **Dynamic Multi-Theme Engine (4 Themes) — *NEW***:
+  - 🌙 **Midnight Navy (Default)**: Deep midnight navy glassmorphism with vivid cyan and green neon accents.
+  - ☀️ **Executive Light (Pro)**: High-contrast, clean daylight corporate theme with crisp white cards, slate typography, and subtle shadows.
+  - 💎 **Emerald Onyx (Wealth)**: Bloomberg Terminal / wealth management theme in deep obsidian forest green with mint accents.
+  - 🔮 **Obsidian Violet (Cosmic)**: High-contrast midnight black and royal amethyst violet with electric cyber highlights.
 - **One-Click Multi-Format Export**:
   - Download individual statement reports or the entire multi-tab master audit dossier with formatted columns and formulas.
 

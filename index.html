@@ -7,7 +7,26 @@
 <!-- SheetJS In-Browser Excel Processing -->
 <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
 <style>
-:root {
+:root, [data-theme="navy"] {
+  --bg-app: radial-gradient(circle at 80% 0, #08234a, #031329 38%, #021020);
+  --body-bg: #021022;
+  --sidebar-bg: #031225;
+  --sidebar-border: #14375e;
+  --brand-border: #153451;
+  --nav-color: #cbd7e8;
+  --nav-hover: rgba(255, 255, 255, 0.07);
+  --motto-bg: linear-gradient(145deg, #071a31, #061528);
+  --motto-border: #194b7d;
+  --filter-bg: #071a32;
+  --filter-border: #1b4775;
+  --filter-color: #eef4ff;
+  --panel-bg: linear-gradient(145deg, #092442, #06192e);
+  --card-bg: linear-gradient(145deg, #092442, #06192e);
+  --qcard-bg: #05182d;
+  --qcard-border: #174b7b;
+  --status-bg: #041426;
+  --status-border: #174b7b;
+
   --bg: #031329;
   --panel: #071c36;
   --panel2: #0a213d;
@@ -21,13 +40,120 @@
   --cyan: #16cfd4;
   --orange: #ffad2f;
 }
+
+/* EXECUTIVE LIGHT THEME */
+[data-theme="light"] {
+  --bg-app: linear-gradient(135deg, #edf2f8, #f8fafc 40%, #e9eff7);
+  --body-bg: #edf2f7;
+  --sidebar-bg: #ffffff;
+  --sidebar-border: #cbd5e1;
+  --brand-border: #e2e8f0;
+  --nav-color: #475569;
+  --nav-hover: rgba(0, 0, 0, 0.05);
+  --motto-bg: linear-gradient(145deg, #f8fafc, #eef2f6);
+  --motto-border: #cbd5e1;
+  --filter-bg: #ffffff;
+  --filter-border: #cbd5e1;
+  --filter-color: #0f172a;
+  --panel-bg: #ffffff;
+  --card-bg: #ffffff;
+  --qcard-bg: #f8fafc;
+  --qcard-border: #cbd5e1;
+  --status-bg: #ffffff;
+  --status-border: #cbd5e1;
+
+  --bg: #f8fafc;
+  --panel: #ffffff;
+  --panel2: #f1f5f9;
+  --line: #cbd5e1;
+  --text: #0f172a;
+  --muted: #64748b;
+  --green: #0d9488;
+  --pink: #e11d48;
+  --blue: #2563eb;
+  --purple: #7c3aed;
+  --cyan: #0284c7;
+  --orange: #d97706;
+}
+
+/* EMERALD ONYX (WEALTH / BLOOMBERG TERMINAL) */
+[data-theme="emerald"] {
+  --bg-app: radial-gradient(circle at 80% 0, #0a2920, #03140e 38%, #010a07);
+  --body-bg: #010a07;
+  --sidebar-bg: #020c09;
+  --sidebar-border: #0e382b;
+  --brand-border: #124434;
+  --nav-color: #a7f3d0;
+  --nav-hover: rgba(16, 185, 129, 0.1);
+  --motto-bg: linear-gradient(145deg, #072118, #04140e);
+  --motto-border: #144e3d;
+  --filter-bg: #072219;
+  --filter-border: #155743;
+  --filter-color: #ecfdf5;
+  --panel-bg: linear-gradient(145deg, #08291f, #041711);
+  --card-bg: linear-gradient(145deg, #08291f, #041711);
+  --qcard-bg: #041912;
+  --qcard-border: #144e3d;
+  --status-bg: #020e0a;
+  --status-border: #124838;
+
+  --bg: #03140e;
+  --panel: #062219;
+  --panel2: #082b20;
+  --line: #144e3d;
+  --text: #ecfdf5;
+  --muted: #6ee7b7;
+  --green: #10b981;
+  --pink: #f43f5e;
+  --blue: #06b6d4;
+  --purple: #8b5cf6;
+  --cyan: #14b8a6;
+  --orange: #f59e0b;
+}
+
+/* OBSIDIAN VIOLET (COSMIC PURPLE / GOLD) */
+[data-theme="obsidian"] {
+  --bg-app: radial-gradient(circle at 80% 0, #220e3d, #0b0517 38%, #05020a);
+  --body-bg: #05020a;
+  --sidebar-bg: #080312;
+  --sidebar-border: #261344;
+  --brand-border: #321959;
+  --nav-color: #d8b4fe;
+  --nav-hover: rgba(168, 85, 247, 0.1);
+  --motto-bg: linear-gradient(145deg, #160a2b, #0c0517);
+  --motto-border: #381d63;
+  --filter-bg: #140929;
+  --filter-border: #3d1f6d;
+  --filter-color: #faf5ff;
+  --panel-bg: linear-gradient(145deg, #1a0d36, #0e061f);
+  --card-bg: linear-gradient(145deg, #1a0d36, #0e061f);
+  --qcard-bg: #0f0621;
+  --qcard-border: #381d63;
+  --status-bg: #090314;
+  --status-border: #311857;
+
+  --bg: #0b0517;
+  --panel: #140a2b;
+  --panel2: #1c0e3b;
+  --line: #381d63;
+  --text: #faf5ff;
+  --muted: #c084fc;
+  --green: #22c55e;
+  --pink: #f43f5e;
+  --blue: #38bdf8;
+  --purple: #a855f7;
+  --cyan: #06b6d4;
+  --orange: #fbbf24;
+}
+
 * { box-sizing: border-box; }
 body {
   margin: 0;
-  background: #021022;
+  background: var(--body-bg, #021022);
   color: var(--text);
   font-family: Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Arial, sans-serif;
   overflow-x: hidden;
+  transition: background-color 0.25s, color 0.25s;
 }
 .app {
   width: 100%;
@@ -35,24 +161,26 @@ body {
   margin: auto;
   display: grid;
   grid-template-columns: 225px 1fr;
-  background: radial-gradient(circle at 80% 0, #08234a, #031329 38%, #021020);
+  background: var(--bg-app);
+  transition: background 0.25s;
 }
 
 /* SIDEBAR */
 aside {
   position: relative;
-  border-right: 1px solid #14375e;
+  border-right: 1px solid var(--sidebar-border, #14375e);
   padding: 18px 10px 14px;
-  background: #031225;
+  background: var(--sidebar-bg, #031225);
   display: flex;
   flex-direction: column;
+  transition: background 0.25s, border-color 0.25s;
 }
 .brand {
   display: flex;
   gap: 12px;
   align-items: center;
   padding: 0 8px 16px;
-  border-bottom: 1px solid #153451;
+  border-bottom: 1px solid var(--brand-border, #153451);
 }
 .logo {
   width: 38px;
@@ -1146,6 +1274,197 @@ tr.highlight-total {
   .gstin-checker-box { grid-template-columns: 1fr; }
 }
 
+/* ================================================================
+   THEME SWITCHER STYLES & RICH THEME OVERRIDES
+   ================================================================ */
+.theme-selector-wrap {
+  position: relative;
+  display: inline-block;
+}
+.btn-theme {
+  height: 35px;
+  border: 1px solid var(--filter-border, #1b4775);
+  background: var(--filter-bg, #071a32);
+  color: var(--filter-color, #eef4ff);
+  padding: 0 11px;
+  border-radius: 7px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s;
+  white-space: nowrap;
+  font-family: inherit;
+}
+.btn-theme:hover {
+  border-color: var(--blue);
+  box-shadow: 0 0 10px rgba(37, 135, 255, 0.3);
+}
+.theme-menu {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  width: 195px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 6px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
+  z-index: 2500;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.theme-menu.hidden { display: none; }
+.theme-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.15s;
+  user-select: none;
+}
+.theme-item:hover {
+  background: var(--nav-hover, rgba(255, 255, 255, 0.08));
+  color: var(--blue);
+}
+.theme-item.active {
+  background: rgba(37, 135, 255, 0.18);
+  color: var(--blue);
+  font-weight: 700;
+}
+.theme-swatch {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  border: 2px solid;
+  flex-shrink: 0;
+}
+
+/* ----------------------------------------------------------------
+   EXECUTIVE LIGHT THEME OVERRIDES (CRISP HIGH-CONTRAST LIGHT MODE)
+   ---------------------------------------------------------------- */
+[data-theme="light"] body { background: #edf2f7; color: #0f172a; }
+[data-theme="light"] aside { background: #ffffff; border-right: 1px solid #cbd5e1; }
+[data-theme="light"] .brand b { color: #0f172a; }
+[data-theme="light"] .brand small { color: #64748b; }
+[data-theme="light"] .nav div { color: #475569; }
+[data-theme="light"] .nav div:hover { background: #f1f5f9; color: #0f172a; }
+[data-theme="light"] .nav div.active { color: #ffffff; }
+[data-theme="light"] .motto { background: #f8fafc; border-color: #cbd5e1; color: #334155; }
+[data-theme="light"] .updated { color: #64748b; }
+[data-theme="light"] .heading h1 { color: #0f172a; }
+[data-theme="light"] .heading p { color: #64748b; }
+[data-theme="light"] .user div { color: #0f172a; }
+[data-theme="light"] .user small { color: #64748b; }
+
+[data-theme="light"] .kpi {
+  background: #ffffff !important;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.05);
+}
+[data-theme="light"] .kpi small { color: #64748b !important; }
+[data-theme="light"] .kpi strong { color: #0f172a !important; }
+[data-theme="light"] .kpi.card-1 { border-color: #059669 !important; }
+[data-theme="light"] .kpi.card-2 { border-color: #e11d48 !important; }
+[data-theme="light"] .kpi.card-3 { border-color: #2563eb !important; }
+[data-theme="light"] .kpi.card-4 { border-color: #7c3aed !important; }
+[data-theme="light"] .kpi.card-5 { border-color: #0284c7 !important; }
+
+[data-theme="light"] .small {
+  background: #ffffff !important;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+  border-color: #cbd5e1 !important;
+}
+[data-theme="light"] .small small { color: #64748b !important; }
+[data-theme="light"] .small strong { color: #0f172a !important; }
+
+[data-theme="light"] .panel {
+  background: #ffffff !important;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.05);
+  border-color: #cbd5e1 !important;
+}
+[data-theme="light"] .panel-head h3 { color: #0f172a !important; }
+
+[data-theme="light"] .bars {
+  border-bottom: 1px solid #cbd5e1 !important;
+  background: repeating-linear-gradient(to bottom, transparent 0, transparent 32px, #f1f5f9 33px) !important;
+}
+[data-theme="light"] .bargrp label { color: #64748b !important; }
+
+[data-theme="light"] .donut > div { background: #ffffff !important; color: #0f172a !important; }
+[data-theme="light"] .donutlegend span { color: #0f172a !important; }
+[data-theme="light"] .donutlegend p { color: #475569 !important; }
+
+[data-theme="light"] table th { color: #334155 !important; border-bottom: 1px solid #e2e8f0 !important; }
+[data-theme="light"] table td { color: #0f172a !important; border-bottom: 1px solid #e2e8f0 !important; }
+[data-theme="light"] tr.highlight-total { background: #e0f2fe !important; color: #0369a1 !important; }
+
+[data-theme="light"] .insights p { color: #334155 !important; }
+[data-theme="light"] .qcard { background: #f8fafc !important; border-color: #cbd5e1 !important; }
+[data-theme="light"] .qcard .q-lbl { color: #64748b !important; }
+[data-theme="light"] .qcard .q-val { color: #0f172a !important; }
+[data-theme="light"] .status-bar { background: #ffffff !important; border-color: #cbd5e1 !important; color: #64748b !important; }
+
+[data-theme="light"] .report-card { background: #ffffff !important; border-color: #cbd5e1 !important; box-shadow: 0 2px 10px rgba(15, 23, 42, 0.05); }
+[data-theme="light"] .report-card h4 { color: #0f172a !important; }
+[data-theme="light"] .report-card p { color: #475569 !important; }
+
+[data-theme="light"] .gst-hub-box { background: #ffffff !important; border-color: #cbd5e1 !important; box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06); }
+[data-theme="light"] .gst-nav-header { background: #f8fafc !important; border-color: #e2e8f0 !important; }
+[data-theme="light"] .gst-tab-btn { background: #ffffff !important; border-color: #cbd5e1 !important; color: #475569 !important; }
+[data-theme="light"] .gst-tab-btn:hover { background: #f1f5f9 !important; color: #0f172a !important; }
+[data-theme="light"] .gst-tab-btn.active { color: #ffffff !important; }
+[data-theme="light"] .gst-rule-box { background: #f8fafc !important; border-color: #cbd5e1 !important; color: #334155 !important; }
+[data-theme="light"] .gst-rule-box small { color: #64748b !important; }
+[data-theme="light"] .code-preview-box { background: #f8fafc !important; border-color: #cbd5e1 !important; color: #0f172a !important; }
+[data-theme="light"] .offset-matrix-table th { background: #f8fafc !important; color: #334155 !important; border-bottom: 1px solid #e2e8f0 !important; }
+[data-theme="light"] .offset-matrix-table td { border-bottom: 1px solid #e2e8f0 !important; color: #0f172a !important; }
+[data-theme="light"] .offset-matrix-table tr.total-row td { background: #e0f2fe !important; color: #0369a1 !important; }
+[data-theme="light"] .ledger-search-box { background: #ffffff !important; border-color: #cbd5e1 !important; color: #0f172a !important; }
+[data-theme="light"] .ledger-filter-select { background: #ffffff !important; border-color: #cbd5e1 !important; color: #0f172a !important; }
+[data-theme="light"] .ledger-table th { background: #f8fafc !important; color: #334155 !important; border-bottom: 1px solid #e2e8f0 !important; }
+[data-theme="light"] .ledger-table td { border-bottom: 1px solid #e2e8f0 !important; color: #0f172a !important; }
+[data-theme="light"] .box { background: #ffffff !important; border-color: #cbd5e1 !important; color: #0f172a !important; box-shadow: 0 20px 60px rgba(0,0,0,0.15) !important; }
+[data-theme="light"] .box p { color: #475569 !important; }
+[data-theme="light"] .form-input, [data-theme="light"] .form-select, [data-theme="light"] .form-textarea {
+  background: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+}
+[data-theme="light"] .form-label { color: #475569 !important; }
+[data-theme="light"] .cols { background: #f8fafc !important; border-color: #cbd5e1 !important; color: #0f172a !important; }
+[data-theme="light"] .drop { border-color: #2563eb !important; color: #475569 !important; }
+[data-theme="light"] .drop:hover { background: #eff6ff !important; }
+
+/* ----------------------------------------------------------------
+   EMERALD ONYX (BLOOMBERG WEALTH / TERMINAL) OVERRIDES
+   ---------------------------------------------------------------- */
+[data-theme="emerald"] .kpi.card-1 { border-color: #10b981 !important; background: linear-gradient(145deg, #062b1e, #041710) !important; }
+[data-theme="emerald"] .kpi.card-2 { border-color: #f43f5e !important; background: linear-gradient(145deg, #330b17, #041710) !important; }
+[data-theme="emerald"] .kpi.card-3 { border-color: #06b6d4 !important; background: linear-gradient(145deg, #082930, #041710) !important; }
+[data-theme="emerald"] .kpi.card-4 { border-color: #8b5cf6 !important; background: linear-gradient(145deg, #231245, #041710) !important; }
+[data-theme="emerald"] .kpi.card-5 { border-color: #14b8a6 !important; background: linear-gradient(145deg, #092c27, #041710) !important; }
+[data-theme="emerald"] .logo { background: linear-gradient(135deg, #059669, #10b981) !important; }
+[data-theme="emerald"] .offset-matrix-table th { background: #052118; border-color: #0e3b2e; }
+[data-theme="emerald"] .offset-matrix-table td { border-color: #0e3b2e; }
+
+/* ----------------------------------------------------------------
+   OBSIDIAN VIOLET (COSMIC PURPLE / GOLD) OVERRIDES
+   ---------------------------------------------------------------- */
+[data-theme="obsidian"] .kpi.card-1 { border-color: #22c55e !important; background: linear-gradient(145deg, #0c2b18, #0e061f) !important; }
+[data-theme="obsidian"] .kpi.card-2 { border-color: #f43f5e !important; background: linear-gradient(145deg, #380d1a, #0e061f) !important; }
+[data-theme="obsidian"] .kpi.card-3 { border-color: #38bdf8 !important; background: linear-gradient(145deg, #0c2742, #0e061f) !important; }
+[data-theme="obsidian"] .kpi.card-4 { border-color: #a855f7 !important; background: linear-gradient(145deg, #2b114d, #0e061f) !important; }
+[data-theme="obsidian"] .kpi.card-5 { border-color: #06b6d4 !important; background: linear-gradient(145deg, #0c2c36, #0e061f) !important; }
+[data-theme="obsidian"] .logo { background: linear-gradient(135deg, #7c3aed, #ec4899) !important; }
+[data-theme="obsidian"] .offset-matrix-table th { background: #150a2b; border-color: #2c164f; }
+[data-theme="obsidian"] .offset-matrix-table td { border-color: #2c164f; }
 </style>
 </head>
 <body>
@@ -1219,6 +1538,33 @@ tr.highlight-total {
 
         <button class="btn-record" id="quickRecordBtn" title="Record Daily Receipt or Payment"><span>+</span> Record Payment / Receipt</button>
         <button class="upload" id="uploadBtn">↑ Upload Excel</button>
+        
+        <!-- Interactive Theme Switcher -->
+        <div class="theme-selector-wrap" id="themeSelectorWrap">
+          <button class="btn-theme" id="themeBtn" title="Switch Visual Theme">
+            <span id="themeIcon">🌙</span>
+            <span id="themeLabel">Navy</span>
+            <span style="font-size:9px;opacity:0.75;">▾</span>
+          </button>
+          <div class="theme-menu hidden" id="themeMenu">
+            <div class="theme-item active" data-theme="navy">
+              <span class="theme-swatch" style="background:#08234a; border-color:#2587ff;"></span>
+              <span>Midnight Navy (Dark)</span>
+            </div>
+            <div class="theme-item" data-theme="light">
+              <span class="theme-swatch" style="background:#ffffff; border-color:#94a3b8;"></span>
+              <span>Executive Light (Pro)</span>
+            </div>
+            <div class="theme-item" data-theme="emerald">
+              <span class="theme-swatch" style="background:#08291f; border-color:#10b981;"></span>
+              <span>Emerald Onyx (Wealth)</span>
+            </div>
+            <div class="theme-item" data-theme="obsidian">
+              <span class="theme-swatch" style="background:#1a0d36; border-color:#a855f7;"></span>
+              <span>Obsidian Violet (Cosmic)</span>
+            </div>
+          </div>
+        </div>
         
         <div class="user">
           <div class="avatar">S</div>
@@ -5678,6 +6024,68 @@ document.addEventListener("DOMContentLoaded", () => {
       populateFilters();
       renderCurrentView();
       showToast(id ? "Transaction updated and books re-balanced!" : "New transaction posted to books!");
+    });
+  }
+});
+
+// ================================================================
+// DYNAMIC THEME ENGINE (NAVY, LIGHT, EMERALD, OBSIDIAN)
+// ================================================================
+const THEMES = {
+  navy: { name: "Midnight Navy", icon: "🌙" },
+  light: { name: "Executive Light", icon: "☀️" },
+  emerald: { name: "Emerald Onyx", icon: "💎" },
+  obsidian: { name: "Obsidian Violet", icon: "🔮" }
+};
+
+window.applyTheme = function(themeKey, save = true) {
+  if (!THEMES[themeKey]) themeKey = "navy";
+  document.documentElement.setAttribute("data-theme", themeKey);
+  const iconEl = document.getElementById("themeIcon");
+  const labelEl = document.getElementById("themeLabel");
+  if (iconEl) iconEl.textContent = THEMES[themeKey].icon;
+  if (labelEl) labelEl.textContent = THEMES[themeKey].name.split(" ")[0];
+
+  document.querySelectorAll(".theme-item").forEach(el => {
+    el.classList.toggle("active", el.dataset.theme === themeKey);
+  });
+
+  if (save) {
+    try { localStorage.setItem("dv_theme", themeKey); } catch (e) {}
+  }
+};
+
+// Initialize Theme immediately to prevent theme flash
+(function initTheme() {
+  let savedTheme = "navy";
+  try { savedTheme = localStorage.getItem("dv_theme") || "navy"; } catch (e) {}
+  applyTheme(savedTheme, false);
+})();
+
+// Bind Theme Switcher Events
+document.addEventListener("DOMContentLoaded", () => {
+  const themeBtn = document.getElementById("themeBtn");
+  const themeMenu = document.getElementById("themeMenu");
+
+  if (themeBtn && themeMenu) {
+    themeBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      themeMenu.classList.toggle("hidden");
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!themeMenu.contains(e.target) && e.target !== themeBtn) {
+        themeMenu.classList.add("hidden");
+      }
+    });
+
+    document.querySelectorAll(".theme-item").forEach(item => {
+      item.addEventListener("click", () => {
+        const t = item.dataset.theme;
+        applyTheme(t);
+        themeMenu.classList.add("hidden");
+        showToast(`Theme switched to ${THEMES[t].name}!`);
+      });
     });
   }
 });
