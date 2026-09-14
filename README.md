@@ -60,9 +60,12 @@ The navigation menu places **Profit & Loss**, **Balance Sheet**, and **Daily Tra
   - Automatic column detection: auto-routes uploaded sheets into Daily Ledger, P&L, Balance Sheet, or Budget views.
 - **Universal LocalStorage Persistence**:
   - Daily transactions, user modifications, and active visual theme preferences are safely retained in browser `localStorage`.
-- **Dynamic Multi-Theme Engine (4 Themes) — *NEW***:
+- **Dynamic Multi-Theme Engine (7 Rich Themes) — *ENHANCED***:
   - 🌙 **Midnight Navy (Default)**: Deep midnight navy glassmorphism with vivid cyan and green neon accents.
   - ☀️ **Executive Light (Pro)**: High-contrast, clean daylight corporate theme with crisp white cards, slate typography, and subtle shadows.
+  - ⚫ **Pitch Black (OLED Stealth) — *NEW***: True pure `#000000` pitch black background designed for OLED displays, battery efficiency, and monochrome stealth focus.
+  - ⚪ **Pure White (Swiss Minimal) — *NEW***: Minimalist snow-white paper aesthetic with razor-sharp charcoal typography and clean borders.
+  - 👑 **Black & Gold (Sovereign Luxury) — *NEW***: Ultra-luxurious obsidian black canvas paired with brushed 24K gold borders, champagne accents, and amber halos.
   - 💎 **Emerald Onyx (Wealth)**: Bloomberg Terminal / wealth management theme in deep obsidian forest green with mint accents.
   - 🔮 **Obsidian Violet (Cosmic)**: High-contrast midnight black and royal amethyst violet with electric cyber highlights.
 - **One-Click Multi-Format Export**:

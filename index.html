@@ -146,6 +146,111 @@
   --orange: #fbbf24;
 }
 
+/* PITCH BLACK (OLED STEALTH / MONOCHROME MINIMAL) */
+[data-theme="black"] {
+  --bg-app: #000000;
+  --body-bg: #000000;
+  --sidebar-bg: #050505;
+  --sidebar-border: #1f1f1f;
+  --brand-border: #222222;
+  --nav-color: #a3a3a3;
+  --nav-hover: rgba(255, 255, 255, 0.08);
+  --motto-bg: linear-gradient(145deg, #0f0f0f, #050505);
+  --motto-border: #262626;
+  --filter-bg: #0d0d0d;
+  --filter-border: #2a2a2a;
+  --filter-color: #ffffff;
+  --panel-bg: linear-gradient(145deg, #0e0e0e, #050505);
+  --card-bg: linear-gradient(145deg, #0e0e0e, #050505);
+  --qcard-bg: #0a0a0a;
+  --qcard-border: #262626;
+  --status-bg: #050505;
+  --status-border: #1f1f1f;
+
+  --bg: #000000;
+  --panel: #0a0a0a;
+  --panel2: #121212;
+  --line: #262626;
+  --text: #ffffff;
+  --muted: #a3a3a3;
+  --green: #22c55e;
+  --pink: #ef4444;
+  --blue: #38bdf8;
+  --purple: #a855f7;
+  --cyan: #06b6d4;
+  --orange: #f59e0b;
+}
+
+/* PURE WHITE (ULTRA-MINIMAL / SWISS PAPER) */
+[data-theme="white"] {
+  --bg-app: #ffffff;
+  --body-bg: #ffffff;
+  --sidebar-bg: #fafafa;
+  --sidebar-border: #e5e5e5;
+  --brand-border: #e5e5e5;
+  --nav-color: #525252;
+  --nav-hover: rgba(0, 0, 0, 0.05);
+  --motto-bg: linear-gradient(145deg, #f5f5f5, #ebebeb);
+  --motto-border: #d4d4d4;
+  --filter-bg: #ffffff;
+  --filter-border: #d4d4d4;
+  --filter-color: #171717;
+  --panel-bg: #ffffff;
+  --card-bg: #ffffff;
+  --qcard-bg: #fafafa;
+  --qcard-border: #e5e5e5;
+  --status-bg: #fafafa;
+  --status-border: #e5e5e5;
+
+  --bg: #ffffff;
+  --panel: #ffffff;
+  --panel2: #fafafa;
+  --line: #e5e5e5;
+  --text: #171717;
+  --muted: #737373;
+  --green: #15803d;
+  --pink: #dc2626;
+  --blue: #2563eb;
+  --purple: #7c3aed;
+  --cyan: #0891b2;
+  --orange: #d97706;
+}
+
+/* BLACK AND GOLD (SOVEREIGN WEALTH / 24K LUXURY) */
+[data-theme="black-gold"] {
+  --bg-app: radial-gradient(circle at 80% 0, #221a08, #0a0804 38%, #030201);
+  --body-bg: #050402;
+  --sidebar-bg: #090703;
+  --sidebar-border: #3b2e0e;
+  --brand-border: #4d3c13;
+  --nav-color: #fef08a;
+  --nav-hover: rgba(234, 179, 8, 0.12);
+  --motto-bg: linear-gradient(145deg, #1f1707, #0d0a04);
+  --motto-border: #523f14;
+  --filter-bg: #140f05;
+  --filter-border: #5a4616;
+  --filter-color: #fffbeb;
+  --panel-bg: linear-gradient(145deg, #1c1507, #0a0803);
+  --card-bg: linear-gradient(145deg, #1c1507, #0a0803);
+  --qcard-bg: #120e05;
+  --qcard-border: #4f3d14;
+  --status-bg: #0a0803;
+  --status-border: #3d2f0f;
+
+  --bg: #0a0804;
+  --panel: #140f05;
+  --panel2: #1e1708;
+  --line: #4f3d14;
+  --text: #fffbeb;
+  --muted: #eab308;
+  --green: #22c55e;
+  --pink: #f43f5e;
+  --blue: #fbbf24;
+  --purple: #f59e0b;
+  --cyan: #facc15;
+  --orange: #d97706;
+}
+
 * { box-sizing: border-box; }
 body {
   margin: 0;
@@ -1465,6 +1570,208 @@ tr.highlight-total {
 [data-theme="obsidian"] .logo { background: linear-gradient(135deg, #7c3aed, #ec4899) !important; }
 [data-theme="obsidian"] .offset-matrix-table th { background: #150a2b; border-color: #2c164f; }
 [data-theme="obsidian"] .offset-matrix-table td { border-color: #2c164f; }
+
+/* ----------------------------------------------------------------
+   PITCH BLACK (OLED STEALTH / MONOCHROME MINIMAL) OVERRIDES
+   ---------------------------------------------------------------- */
+[data-theme="black"] body { background: #000000; color: #ffffff; }
+[data-theme="black"] aside { background: #050505; border-right: 1px solid #1f1f1f; }
+[data-theme="black"] .brand b { color: #ffffff; }
+[data-theme="black"] .brand small { color: #888888; }
+[data-theme="black"] .nav div { color: #a3a3a3; }
+[data-theme="black"] .nav div:hover { background: #171717; color: #ffffff; }
+[data-theme="black"] .nav div.active { color: #ffffff; background: linear-gradient(90deg, #2563eb, #3b82f6); }
+[data-theme="black"] .motto { background: #0a0a0a; border-color: #262626; color: #d4d4d4; }
+[data-theme="black"] .kpi {
+  background: #080808 !important;
+  border-color: #222222 !important;
+}
+[data-theme="black"] .kpi small { color: #888888 !important; }
+[data-theme="black"] .kpi strong { color: #ffffff !important; }
+[data-theme="black"] .kpi.card-1 { border-color: #22c55e !important; background: #080808 !important; }
+[data-theme="black"] .kpi.card-2 { border-color: #ef4444 !important; background: #080808 !important; }
+[data-theme="black"] .kpi.card-3 { border-color: #38bdf8 !important; background: #080808 !important; }
+[data-theme="black"] .kpi.card-4 { border-color: #a855f7 !important; background: #080808 !important; }
+[data-theme="black"] .kpi.card-5 { border-color: #06b6d4 !important; background: #080808 !important; }
+[data-theme="black"] .small { background: #080808 !important; border-color: #222222 !important; }
+[data-theme="black"] .small small { color: #888888 !important; }
+[data-theme="black"] .small strong { color: #ffffff !important; }
+[data-theme="black"] .panel { background: #080808 !important; border-color: #222222 !important; }
+[data-theme="black"] .panel-head h3 { color: #ffffff !important; }
+[data-theme="black"] .bars {
+  border-bottom: 1px solid #222222 !important;
+  background: repeating-linear-gradient(to bottom, transparent 0, transparent 32px, #141414 33px) !important;
+}
+[data-theme="black"] .bargrp label { color: #888888 !important; }
+[data-theme="black"] .donut > div { background: #000000 !important; color: #ffffff !important; }
+[data-theme="black"] .donutlegend span { color: #ffffff !important; }
+[data-theme="black"] .donutlegend p { color: #a3a3a3 !important; }
+[data-theme="black"] table th { color: #d4d4d4 !important; border-bottom: 1px solid #222222 !important; }
+[data-theme="black"] table td { color: #ffffff !important; border-bottom: 1px solid #1a1a1a !important; }
+[data-theme="black"] tr.highlight-total { background: #1e293b !important; color: #38bdf8 !important; }
+[data-theme="black"] .qcard { background: #0a0a0a !important; border-color: #222222 !important; }
+[data-theme="black"] .qcard .q-val { color: #ffffff !important; }
+[data-theme="black"] .status-bar { background: #050505 !important; border-color: #1f1f1f !important; color: #888888 !important; }
+[data-theme="black"] .report-card { background: #080808 !important; border-color: #222222 !important; }
+[data-theme="black"] .gst-hub-box { background: #080808 !important; border-color: #222222 !important; }
+[data-theme="black"] .gst-nav-header { background: #0a0a0a !important; border-color: #1f1f1f !important; }
+[data-theme="black"] .gst-tab-btn { background: #0d0d0d !important; border-color: #262626 !important; color: #a3a3a3 !important; }
+[data-theme="black"] .gst-tab-btn:hover { background: #171717 !important; color: #ffffff !important; }
+[data-theme="black"] .gst-rule-box { background: #0a0a0a !important; border-color: #222222 !important; color: #d4d4d4 !important; }
+[data-theme="black"] .code-preview-box { background: #050505 !important; border-color: #1f1f1f !important; color: #ffffff !important; }
+[data-theme="black"] .offset-matrix-table th { background: #0a0a0a !important; color: #d4d4d4 !important; border-bottom: 1px solid #222222 !important; }
+[data-theme="black"] .offset-matrix-table td { border-bottom: 1px solid #1a1a1a !important; color: #ffffff !important; }
+[data-theme="black"] .logo { background: linear-gradient(135deg, #ffffff, #a3a3a3) !important; color: #000000 !important; }
+[data-theme="black"] .box { background: #0a0a0a !important; border-color: #333333 !important; color: #ffffff !important; }
+
+/* ----------------------------------------------------------------
+   PURE WHITE (ULTRA-MINIMAL / SWISS PAPER) OVERRIDES
+   ---------------------------------------------------------------- */
+[data-theme="white"] body { background: #ffffff; color: #171717; }
+[data-theme="white"] aside { background: #fafafa; border-right: 1px solid #e5e5e5; }
+[data-theme="white"] .brand b { color: #171717; }
+[data-theme="white"] .brand small { color: #737373; }
+[data-theme="white"] .nav div { color: #525252; }
+[data-theme="white"] .nav div:hover { background: #f5f5f5; color: #171717; }
+[data-theme="white"] .nav div.active { color: #ffffff; background: linear-gradient(90deg, #171717, #404040); }
+[data-theme="white"] .motto { background: #f5f5f5; border-color: #e5e5e5; color: #262626; }
+[data-theme="white"] .kpi {
+  background: #ffffff !important;
+  border-color: #e5e5e5 !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+[data-theme="white"] .kpi small { color: #737373 !important; }
+[data-theme="white"] .kpi strong { color: #171717 !important; }
+[data-theme="white"] .kpi.card-1 { border-color: #15803d !important; }
+[data-theme="white"] .kpi.card-2 { border-color: #dc2626 !important; }
+[data-theme="white"] .kpi.card-3 { border-color: #2563eb !important; }
+[data-theme="white"] .kpi.card-4 { border-color: #7c3aed !important; }
+[data-theme="white"] .kpi.card-5 { border-color: #0891b2 !important; }
+[data-theme="white"] .small {
+  background: #ffffff !important;
+  border-color: #e5e5e5 !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+[data-theme="white"] .small small { color: #737373 !important; }
+[data-theme="white"] .small strong { color: #171717 !important; }
+[data-theme="white"] .panel {
+  background: #ffffff !important;
+  border-color: #e5e5e5 !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+[data-theme="white"] .panel-head h3 { color: #171717 !important; }
+[data-theme="white"] .heading h1 { color: #171717 !important; }
+[data-theme="white"] .heading p { color: #737373 !important; }
+[data-theme="white"] .user div { color: #171717 !important; }
+[data-theme="white"] .user small { color: #737373 !important; }
+[data-theme="white"] .bars {
+  border-bottom: 1px solid #e5e5e5 !important;
+  background: repeating-linear-gradient(to bottom, transparent 0, transparent 32px, #fafafa 33px) !important;
+}
+[data-theme="white"] .bargrp label { color: #737373 !important; }
+[data-theme="white"] .donut > div { background: #ffffff !important; color: #171717 !important; }
+[data-theme="white"] .donutlegend span { color: #171717 !important; }
+[data-theme="white"] .donutlegend p { color: #525252 !important; }
+[data-theme="white"] table th { color: #525252 !important; border-bottom: 1px solid #e5e5e5 !important; }
+[data-theme="white"] table td { color: #171717 !important; border-bottom: 1px solid #e5e5e5 !important; }
+[data-theme="white"] tr.highlight-total { background: #f0fdf4 !important; color: #166534 !important; }
+[data-theme="white"] .insights p { color: #262626 !important; }
+[data-theme="white"] .qcard { background: #fafafa !important; border-color: #e5e5e5 !important; }
+[data-theme="white"] .qcard .q-lbl { color: #737373 !important; }
+[data-theme="white"] .qcard .q-val { color: #171717 !important; }
+[data-theme="white"] .status-bar { background: #fafafa !important; border-color: #e5e5e5 !important; color: #737373 !important; }
+[data-theme="white"] .report-card { background: #ffffff !important; border-color: #e5e5e5 !important; box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04); }
+[data-theme="white"] .report-card h4 { color: #171717 !important; }
+[data-theme="white"] .report-card p { color: #525252 !important; }
+[data-theme="white"] .gst-hub-box { background: #ffffff !important; border-color: #e5e5e5 !important; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); }
+[data-theme="white"] .gst-nav-header { background: #fafafa !important; border-color: #e5e5e5 !important; }
+[data-theme="white"] .gst-tab-btn { background: #ffffff !important; border-color: #e5e5e5 !important; color: #525252 !important; }
+[data-theme="white"] .gst-tab-btn:hover { background: #f5f5f5 !important; color: #171717 !important; }
+[data-theme="white"] .gst-tab-btn.active { color: #ffffff !important; background: #171717 !important; }
+[data-theme="white"] .gst-rule-box { background: #fafafa !important; border-color: #e5e5e5 !important; color: #262626 !important; }
+[data-theme="white"] .code-preview-box { background: #fafafa !important; border-color: #e5e5e5 !important; color: #171717 !important; }
+[data-theme="white"] .offset-matrix-table th { background: #fafafa !important; color: #525252 !important; border-bottom: 1px solid #e5e5e5 !important; }
+[data-theme="white"] .offset-matrix-table td { border-bottom: 1px solid #e5e5e5 !important; color: #171717 !important; }
+[data-theme="white"] .ledger-search-box { background: #ffffff !important; border-color: #d4d4d4 !important; color: #171717 !important; }
+[data-theme="white"] .ledger-filter-select { background: #ffffff !important; border-color: #d4d4d4 !important; color: #171717 !important; }
+[data-theme="white"] .ledger-table th { background: #fafafa !important; color: #525252 !important; border-bottom: 1px solid #e5e5e5 !important; }
+[data-theme="white"] .ledger-table td { border-bottom: 1px solid #e5e5e5 !important; color: #171717 !important; }
+[data-theme="white"] .box { background: #ffffff !important; border-color: #e5e5e5 !important; color: #171717 !important; box-shadow: 0 10px 40px rgba(0,0,0,0.1) !important; }
+[data-theme="white"] .form-input, [data-theme="white"] .form-select, [data-theme="white"] .form-textarea {
+  background: #ffffff !important;
+  border-color: #d4d4d4 !important;
+  color: #171717 !important;
+}
+
+/* ----------------------------------------------------------------
+   BLACK AND GOLD (SOVEREIGN WEALTH / 24K LUXURY) OVERRIDES
+   ---------------------------------------------------------------- */
+[data-theme="black-gold"] body { background: #050402; color: #fffbeb; }
+[data-theme="black-gold"] aside { background: #090703; border-right: 1px solid #3b2e0e; }
+[data-theme="black-gold"] .brand b { color: #fef08a; }
+[data-theme="black-gold"] .brand small { color: #ca8a04; }
+[data-theme="black-gold"] .nav div { color: #fef08a; }
+[data-theme="black-gold"] .nav div:hover { background: rgba(234, 179, 8, 0.12); color: #ffffff; }
+[data-theme="black-gold"] .nav div.active { color: #000000; background: linear-gradient(90deg, #eab308, #ca8a04); font-weight: 700; }
+[data-theme="black-gold"] .motto { background: linear-gradient(145deg, #1f1707, #0d0a04); border-color: #523f14; color: #fef08a; }
+[data-theme="black-gold"] .kpi {
+  background: linear-gradient(145deg, #1c1507, #0a0803) !important;
+  border-color: #4f3d14 !important;
+}
+[data-theme="black-gold"] .kpi small { color: #d4af37 !important; }
+[data-theme="black-gold"] .kpi strong { color: #fffbeb !important; }
+[data-theme="black-gold"] .kpi.card-1 { border-color: #eab308 !important; background: linear-gradient(145deg, #261c07, #0a0803) !important; }
+[data-theme="black-gold"] .kpi.card-2 { border-color: #f43f5e !important; background: linear-gradient(145deg, #330b14, #0a0803) !important; }
+[data-theme="black-gold"] .kpi.card-3 { border-color: #f59e0b !important; background: linear-gradient(145deg, #2c1e08, #0a0803) !important; }
+[data-theme="black-gold"] .kpi.card-4 { border-color: #d97706 !important; background: linear-gradient(145deg, #241607, #0a0803) !important; }
+[data-theme="black-gold"] .kpi.card-5 { border-color: #fbbf24 !important; background: linear-gradient(145deg, #2a1f09, #0a0803) !important; }
+[data-theme="black-gold"] .small {
+  background: linear-gradient(145deg, #1c1507, #0a0803) !important;
+  border-color: #4f3d14 !important;
+}
+[data-theme="black-gold"] .small small { color: #d4af37 !important; }
+[data-theme="black-gold"] .small strong { color: #fffbeb !important; }
+[data-theme="black-gold"] .panel {
+  background: linear-gradient(145deg, #1c1507, #0a0803) !important;
+  border-color: #4f3d14 !important;
+}
+[data-theme="black-gold"] .panel-head h3 { color: #fef08a !important; }
+[data-theme="black-gold"] .heading h1 { color: #fef08a !important; }
+[data-theme="black-gold"] .heading p { color: #d4af37 !important; }
+[data-theme="black-gold"] .logo { background: linear-gradient(135deg, #b45309, #f59e0b, #fef08a) !important; color: #000000 !important; }
+[data-theme="black-gold"] .bars {
+  border-bottom: 1px solid #4f3d14 !important;
+  background: repeating-linear-gradient(to bottom, transparent 0, transparent 32px, #2a200a 33px) !important;
+}
+[data-theme="black-gold"] .bargrp label { color: #d4af37 !important; }
+[data-theme="black-gold"] .donut > div { background: #0f0b04 !important; color: #fef08a !important; }
+[data-theme="black-gold"] .donutlegend span { color: #fffbeb !important; }
+[data-theme="black-gold"] .donutlegend p { color: #d4af37 !important; }
+[data-theme="black-gold"] table th { color: #fef08a !important; border-bottom: 1px solid #3d2f0f !important; }
+[data-theme="black-gold"] table td { color: #fffbeb !important; border-bottom: 1px solid #2e230b !important; }
+[data-theme="black-gold"] tr.highlight-total { background: #3b2e0e !important; color: #fef08a !important; }
+[data-theme="black-gold"] .insights p { color: #fef08a !important; }
+[data-theme="black-gold"] .qcard { background: #120e05 !important; border-color: #4f3d14 !important; }
+[data-theme="black-gold"] .qcard .q-lbl { color: #ca8a04 !important; }
+[data-theme="black-gold"] .qcard .q-val { color: #fffbeb !important; }
+[data-theme="black-gold"] .status-bar { background: #0a0803 !important; border-color: #3d2f0f !important; color: #ca8a04 !important; }
+[data-theme="black-gold"] .report-card { background: linear-gradient(145deg, #1c1507, #0a0803) !important; border-color: #4f3d14 !important; }
+[data-theme="black-gold"] .report-card h4 { color: #fef08a !important; }
+[data-theme="black-gold"] .report-card p { color: #d4af37 !important; }
+[data-theme="black-gold"] .gst-hub-box { background: linear-gradient(145deg, #1c1507, #0a0803) !important; border-color: #4f3d14 !important; }
+[data-theme="black-gold"] .gst-nav-header { background: #140f05 !important; border-color: #3d2f0f !important; }
+[data-theme="black-gold"] .gst-tab-btn { background: #1a1407 !important; border-color: #4f3d14 !important; color: #fef08a !important; }
+[data-theme="black-gold"] .gst-tab-btn:hover { background: #261e0a !important; color: #ffffff !important; }
+[data-theme="black-gold"] .gst-tab-btn.active { color: #000000 !important; background: linear-gradient(90deg, #eab308, #ca8a04) !important; }
+[data-theme="black-gold"] .gst-rule-box { background: #140f05 !important; border-color: #3d2f0f !important; color: #fef08a !important; }
+[data-theme="black-gold"] .code-preview-box { background: #0f0b04 !important; border-color: #3d2f0f !important; color: #fef08a !important; }
+[data-theme="black-gold"] .offset-matrix-table th { background: #140f05 !important; color: #fef08a !important; border-bottom: 1px solid #3d2f0f !important; }
+[data-theme="black-gold"] .offset-matrix-table td { border-bottom: 1px solid #2e230b !important; color: #fffbeb !important; }
+[data-theme="black-gold"] .ledger-search-box { background: #140f05 !important; border-color: #4f3d14 !important; color: #fffbeb !important; }
+[data-theme="black-gold"] .ledger-filter-select { background: #140f05 !important; border-color: #4f3d14 !important; color: #fffbeb !important; }
+[data-theme="black-gold"] .ledger-table th { background: #140f05 !important; color: #fef08a !important; border-bottom: 1px solid #3d2f0f !important; }
+[data-theme="black-gold"] .ledger-table td { border-bottom: 1px solid #2e230b !important; color: #fffbeb !important; }
+[data-theme="black-gold"] .box { background: #140f05 !important; border-color: #d4af37 !important; color: #fffbeb !important; }
 </style>
 </head>
 <body>
@@ -1552,8 +1859,20 @@ tr.highlight-total {
               <span>Midnight Navy (Dark)</span>
             </div>
             <div class="theme-item" data-theme="light">
-              <span class="theme-swatch" style="background:#ffffff; border-color:#94a3b8;"></span>
+              <span class="theme-swatch" style="background:#edf2f7; border-color:#cbd5e1;"></span>
               <span>Executive Light (Pro)</span>
+            </div>
+            <div class="theme-item" data-theme="black">
+              <span class="theme-swatch" style="background:#000000; border-color:#555555;"></span>
+              <span>Pitch Black (OLED)</span>
+            </div>
+            <div class="theme-item" data-theme="white">
+              <span class="theme-swatch" style="background:#ffffff; border-color:#171717;"></span>
+              <span>Pure White (Minimal)</span>
+            </div>
+            <div class="theme-item" data-theme="black-gold">
+              <span class="theme-swatch" style="background:#0a0804; border-color:#eab308;"></span>
+              <span>Black &amp; Gold (Luxury)</span>
             </div>
             <div class="theme-item" data-theme="emerald">
               <span class="theme-swatch" style="background:#08291f; border-color:#10b981;"></span>
@@ -6029,13 +6348,16 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // ================================================================
-// DYNAMIC THEME ENGINE (NAVY, LIGHT, EMERALD, OBSIDIAN)
+// DYNAMIC THEME ENGINE (7 RICH THEMES)
 // ================================================================
 const THEMES = {
-  navy: { name: "Midnight Navy", icon: "🌙" },
-  light: { name: "Executive Light", icon: "☀️" },
-  emerald: { name: "Emerald Onyx", icon: "💎" },
-  obsidian: { name: "Obsidian Violet", icon: "🔮" }
+  navy: { name: "Midnight Navy", icon: "🌙", label: "Navy" },
+  light: { name: "Executive Light", icon: "☀️", label: "Light" },
+  black: { name: "Pitch Black", icon: "⚫", label: "Black" },
+  white: { name: "Pure White", icon: "⚪", label: "White" },
+  "black-gold": { name: "Black & Gold", icon: "👑", label: "Gold" },
+  emerald: { name: "Emerald Onyx", icon: "💎", label: "Emerald" },
+  obsidian: { name: "Obsidian Violet", icon: "🔮", label: "Violet" }
 };
 
 window.applyTheme = function(themeKey, save = true) {
@@ -6044,7 +6366,7 @@ window.applyTheme = function(themeKey, save = true) {
   const iconEl = document.getElementById("themeIcon");
   const labelEl = document.getElementById("themeLabel");
   if (iconEl) iconEl.textContent = THEMES[themeKey].icon;
-  if (labelEl) labelEl.textContent = THEMES[themeKey].name.split(" ")[0];
+  if (labelEl) labelEl.textContent = THEMES[themeKey].label;
 
   document.querySelectorAll(".theme-item").forEach(el => {
     el.classList.toggle("active", el.dataset.theme === themeKey);
