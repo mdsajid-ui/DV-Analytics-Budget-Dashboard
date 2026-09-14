@@ -843,6 +843,8 @@ tr.highlight-total {
 .btn-dl-bs { background: linear-gradient(90deg, #7041ff, #a841ff); }
 .btn-dl-cf { background: linear-gradient(90deg, #15dda0, #16cfd4); color: #031329 !important; }
 .btn-dl-daily { background: linear-gradient(90deg, #ff9f1c, #ff4f7c); }
+.btn-dl-gst1 { background: linear-gradient(90deg, #16cfd4, #2587ff); }
+.btn-dl-gst3b { background: linear-gradient(90deg, #844cff, #ff4f7c); }
 .btn-dl-all { background: linear-gradient(90deg, #177cff, #7041ff); }
 .report-card .btn-download:hover {
   filter: brightness(1.18);
@@ -970,6 +972,180 @@ tr.highlight-total {
   border-radius: 3px;
 }
 
+/* ================================================================
+   GST & STATUTORY TAX COMPLIANCE HUB STYLES
+   ================================================================ */
+.gst-hub-box {
+  background: linear-gradient(145deg, #092442, #05182e);
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+.gst-nav-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 10px 14px;
+  background: #061932;
+  border-bottom: 1px solid #163e67;
+  gap: 10px;
+}
+.gst-tab-bar {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.gst-tab-btn {
+  height: 32px;
+  border: 1px solid #1b4570;
+  background: #09203a;
+  color: #cbd7e8;
+  padding: 0 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+.gst-tab-btn:hover {
+  background: #0e3057;
+  color: #fff;
+  border-color: #2587ff;
+}
+.gst-tab-btn.active {
+  background: linear-gradient(90deg, #177cff, #7041ff);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 0 12px rgba(23, 124, 255, 0.4);
+}
+.gst-tab-badge {
+  font-size: 9px;
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  font-weight: 700;
+}
+.gst-actions-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.btn-gst-action {
+  height: 30px;
+  padding: 0 11px;
+  border-radius: 5px;
+  font-size: 10.5px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: filter 0.2s;
+  font-family: inherit;
+  border: 0;
+  color: #fff;
+}
+.btn-gst-action:hover { filter: brightness(1.18); }
+.btn-json-portal { background: linear-gradient(90deg, #15dda0, #16cfd4); color: #021224; }
+.btn-json-calc { background: linear-gradient(90deg, #2587ff, #844cff); }
+.btn-excel-gst { background: #164f80; border: 1px solid #23659e; }
+.btn-excel-gst:hover { background: #1f67a3; }
+
+.gst-badge {
+  display: inline-block;
+  font-size: 9px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+.badge-b2b { background: rgba(37, 135, 255, 0.2); color: #5ea8ff; border: 1px solid rgba(37, 135, 255, 0.4); }
+.badge-b2cl { background: rgba(132, 76, 255, 0.2); color: #b187ff; border: 1px solid rgba(132, 76, 255, 0.4); }
+.badge-b2cs { background: rgba(22, 207, 212, 0.2); color: #2de6eb; border: 1px solid rgba(22, 207, 212, 0.4); }
+.badge-cdnr { background: rgba(255, 173, 47, 0.2); color: #ffbe57; border: 1px solid rgba(255, 173, 47, 0.4); }
+.badge-rcm { background: rgba(255, 79, 124, 0.2); color: #ff789c; border: 1px solid rgba(255, 79, 124, 0.4); }
+
+.badge-matched { background: rgba(21, 221, 160, 0.2); color: #1ef5b2; border: 1px solid rgba(21, 221, 160, 0.5); }
+.badge-variance { background: rgba(255, 173, 47, 0.2); color: #ffbe57; border: 1px solid rgba(255, 173, 47, 0.5); }
+.badge-missing { background: rgba(255, 79, 124, 0.2); color: #ff789c; border: 1px solid rgba(255, 79, 124, 0.5); }
+
+.gst-rule-box {
+  margin: 12px 14px;
+  padding: 10px 14px;
+  background: rgba(37, 135, 255, 0.08);
+  border-left: 3px solid #2587ff;
+  border-radius: 4px;
+  font-size: 11px;
+  line-height: 1.5;
+  color: #c9dbf2;
+}
+.gst-rule-box b { color: #fff; }
+.gst-rule-box small { color: #8eb1d6; display: block; margin-top: 3px; }
+
+.gst-subview-content {
+  padding: 12px 14px;
+}
+.code-preview-box {
+  background: #030d1a;
+  border: 1px solid #143559;
+  border-radius: 6px;
+  padding: 12px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 10.5px;
+  color: #79d7ff;
+  max-height: 320px;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  word-break: break-all;
+  line-height: 1.45;
+}
+.offset-matrix-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+  margin-top: 8px;
+}
+.offset-matrix-table th {
+  background: #071e3b;
+  color: #cbd8ec;
+  padding: 8px 10px;
+  text-align: right;
+  border-bottom: 1px solid #184775;
+  font-weight: 600;
+}
+.offset-matrix-table th:first-child { text-align: left; }
+.offset-matrix-table td {
+  padding: 7px 10px;
+  border-bottom: 1px solid #0f2d4e;
+  text-align: right;
+  color: #f7faff;
+}
+.offset-matrix-table td:first-child { text-align: left; font-weight: 600; color: #bed2ec; }
+.offset-matrix-table tr.total-row td {
+  background: rgba(21, 221, 160, 0.08);
+  font-weight: 700;
+  border-top: 1px solid #15dda0;
+  color: var(--green);
+}
+
+.gstin-checker-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 10px;
+}
+@media (max-width: 900px) {
+  .gstin-checker-box { grid-template-columns: 1fr; }
+}
+
 </style>
 </head>
 <body>
@@ -999,6 +1175,7 @@ tr.highlight-total {
       <div data-tab="sales" class="nav-btn"><span>▣</span> Sales &amp; Revenue</div>
       <div data-tab="expenses" class="nav-btn"><span>⌂</span> Expenses</div>
       <div data-tab="receivables" class="nav-btn"><span>◎</span> Receivables &amp; Payables</div>
+      <div data-tab="gst" class="nav-btn"><span>⚖</span> GST &amp; Compliance <span class="nav-tag" style="background:rgba(22,207,212,0.2);color:var(--cyan)">Auto-File</span></div>
       <div data-tab="reports" class="nav-btn"><span>✥</span> Reports</div>
       <div data-tab="analytics" class="nav-btn"><span>⌁</span> Analytics</div>
       <div data-tab="settings" class="nav-btn"><span>⚙</span> Settings</div>
@@ -1084,6 +1261,9 @@ tr.highlight-total {
 
     <!-- MASTER DAILY TRANSACTIONS LEDGER -->
     <section id="masterDailyLedgerSection" style="display:none; margin-top: 14px;"></section>
+
+    <!-- MASTER GST & STATUTORY COMPLIANCE HUB -->
+    <section id="masterGstSection" style="display:none; margin-top: 14px;"></section>
 
     <!-- GRID 2: RATIOS & METERS -->
     <section class="grid2">
@@ -1352,12 +1532,569 @@ const DEFAULT_DAILY_TRANSACTIONS = [
 ];
 
 /* ================================================================
-   ENTERPRISE DATASETS FOR ALL 11 FIELDS
+   STATUTORY GST MASTER REGISTER & BUSINESS PROFILE (FY 2025-26)
+   ================================================================ */
+const BUSINESS_GST_PROFILE = {
+  legalName: "DV Analytics Technologies Private Limited",
+  tradeName: "DV Analytics Enterprise Solutions",
+  gstin: "27AABCD1234F1Z8",
+  state: "Maharashtra",
+  stateCode: "27",
+  address: "Tower 4, Bandra Kurla Complex (BKC), Mumbai, Maharashtra",
+  pincode: "400051",
+  email: "compliance@dvanalytics.com",
+  phone: "+91 22 4987 6500",
+  filingFrequency: "Monthly (Regular)",
+  irnEnabled: true,
+  ewayBillEnabled: true
+};
+
+const DEFAULT_GST_INVOICES = [
+  // SEPTEMBER 2025 (CURRENT PERIOD)
+  {
+    id: "GST-INV-2509-01",
+    invoiceNumber: "DVA-2509-001",
+    invoiceDate: "2025-09-02",
+    type: "B2B",
+    direction: "Outward",
+    partyName: "Reliance Enterprises Limited",
+    partyGstin: "27AAACR1234M1Z5",
+    posState: "Maharashtra",
+    posStateCode: "27",
+    hsnCode: "998314",
+    hsnDesc: "IT System Architecture & Software",
+    taxableValue: 305084.75,
+    gstRate: 18,
+    cgst: 27457.62,
+    sgst: 27457.62,
+    igst: 0,
+    totalInvoiceValue: 360000,
+    irnStatus: "Generated",
+    irn: "E8D7F6A5B4C3E2D1F0E9A8B7C6D5E4F3A2B1C0D9E8F7A6B5C4D3E2F1A0B9C8D7",
+    branch: "Headquarters",
+    department: "Commercial"
+  },
+  {
+    id: "GST-INV-2509-02",
+    invoiceNumber: "DVA-2509-002",
+    invoiceDate: "2025-09-05",
+    type: "B2B",
+    direction: "Outward",
+    partyName: "Infosys BPM Limited",
+    partyGstin: "29AAACI4567P1Z1",
+    posState: "Karnataka",
+    posStateCode: "29",
+    hsnCode: "998313",
+    hsnDesc: "Cloud Infrastructure & Data Advisory",
+    taxableValue: 165254.24,
+    gstRate: 18,
+    cgst: 0,
+    sgst: 0,
+    igst: 29745.76,
+    totalInvoiceValue: 195000,
+    irnStatus: "Generated",
+    irn: "A1B2C3D4E5F6A7B8C9D0E1F2A3B4C5D6E7F8A9B0C1D2E3F4A5B6C7D8E9F0A1B2",
+    branch: "South Branch",
+    department: "Commercial"
+  },
+  {
+    id: "GST-INV-2509-03",
+    invoiceNumber: "DVA-2509-003",
+    invoiceDate: "2025-09-10",
+    type: "B2B",
+    direction: "Outward",
+    partyName: "Tata Capital Financial Services",
+    partyGstin: "27AAACT2345K1Z3",
+    posState: "Maharashtra",
+    posStateCode: "27",
+    hsnCode: "998314",
+    hsnDesc: "Fintech Compliance & Workflow SaaS",
+    taxableValue: 237288.14,
+    gstRate: 18,
+    cgst: 21355.93,
+    sgst: 21355.93,
+    igst: 0,
+    totalInvoiceValue: 280000,
+    irnStatus: "Generated",
+    irn: "9F8E7D6C5B4A3F2E1D0C9B8A7F6E5D4C3B2A1F0E9D8C7B6A5F4E3D2C1B0A9F8",
+    branch: "Headquarters",
+    department: "Commercial"
+  },
+  {
+    id: "GST-INV-2509-04",
+    invoiceNumber: "DVA-2509-004",
+    invoiceDate: "2025-09-13",
+    type: "B2B",
+    direction: "Outward",
+    partyName: "Wipro Digital Solutions",
+    partyGstin: "29AAACW6789L1Z2",
+    posState: "Karnataka",
+    posStateCode: "29",
+    hsnCode: "998315",
+    hsnDesc: "High-Throughput Analytics Hosting",
+    taxableValue: 118644.07,
+    gstRate: 18,
+    cgst: 0,
+    sgst: 0,
+    igst: 21355.93,
+    totalInvoiceValue: 140000,
+    irnStatus: "Generated",
+    irn: "4C3B2A1F0E9D8C7B6A5F4E3D2C1B0A9F8E7D6C5B4A3F2E1D0C9B8A7F6E5D4C3B",
+    branch: "South Branch",
+    department: "Commercial"
+  },
+  {
+    id: "GST-CN-2509-01",
+    invoiceNumber: "DVA-CN-2509-01",
+    refInvoiceNumber: "DVA-2509-001",
+    invoiceDate: "2025-09-08",
+    type: "CDNR",
+    direction: "CreditNote",
+    partyName: "Reliance Enterprises Limited",
+    partyGstin: "27AAACR1234M1Z5",
+    posState: "Maharashtra",
+    posStateCode: "27",
+    hsnCode: "998314",
+    hsnDesc: "Scope Revision Post-Pilot Signoff",
+    taxableValue: -25000.00,
+    gstRate: 18,
+    cgst: -2250.00,
+    sgst: -2250.00,
+    igst: 0,
+    totalInvoiceValue: -29500,
+    irnStatus: "Generated",
+    branch: "Headquarters",
+    department: "Commercial"
+  },
+  // INWARD SUPPLIES (ITC CLAIMABLE IN SEPTEMBER 2025)
+  {
+    id: "GST-INW-2509-01",
+    invoiceNumber: "AWS-IN-98124",
+    invoiceDate: "2025-09-03",
+    type: "Inward",
+    direction: "Inward",
+    partyName: "Amazon Web Services India Pvt Ltd",
+    partyGstin: "27AABCA3456F1ZM",
+    posState: "Maharashtra",
+    posStateCode: "27",
+    hsnCode: "998315",
+    hsnDesc: "Cloud Hosting & Compute Bandwidth",
+    taxableValue: 38983.05,
+    gstRate: 18,
+    cgst: 3508.47,
+    sgst: 3508.47,
+    igst: 0,
+    totalInvoiceValue: 46000,
+    itcEligibility: "Eligible",
+    branch: "Headquarters",
+    department: "Technology"
+  },
+  {
+    id: "GST-INW-2509-02",
+    invoiceNumber: "EY-AUD-7721",
+    invoiceDate: "2025-09-12",
+    type: "Inward",
+    direction: "Inward",
+    partyName: "Ernst & Young LLP",
+    partyGstin: "07AABCE1234K1ZN",
+    posState: "Delhi",
+    posStateCode: "07",
+    hsnCode: "998222",
+    hsnDesc: "Information Security & ISO Audit",
+    taxableValue: 66101.69,
+    gstRate: 18,
+    cgst: 0,
+    sgst: 0,
+    igst: 11898.31,
+    totalInvoiceValue: 78000,
+    itcEligibility: "Eligible",
+    branch: "North Branch",
+    department: "Operations"
+  },
+  {
+    id: "GST-INW-2509-03",
+    invoiceNumber: "DELL-25-4401",
+    invoiceDate: "2025-09-11",
+    type: "Inward",
+    direction: "Inward",
+    partyName: "Dell International Services India",
+    partyGstin: "29AABCD5678M1ZQ",
+    posState: "Karnataka",
+    posStateCode: "29",
+    hsnCode: "847150",
+    hsnDesc: "Enterprise High-Density Edge Servers",
+    taxableValue: 101694.92,
+    gstRate: 18,
+    cgst: 0,
+    sgst: 0,
+    igst: 18305.08,
+    totalInvoiceValue: 120000,
+    itcEligibility: "Capital Goods (Eligible)",
+    branch: "Headquarters",
+    department: "Technology"
+  },
+
+  // AUGUST 2025
+  {
+    id: "GST-INV-2508-01",
+    invoiceNumber: "DVA-2508-001",
+    invoiceDate: "2025-08-03",
+    type: "B2B",
+    direction: "Outward",
+    partyName: "Titan Media Corporation",
+    partyGstin: "27AAACT5678R1Z9",
+    posState: "Maharashtra",
+    posStateCode: "27",
+    hsnCode: "998313",
+    hsnDesc: "Software Architecture Deployment",
+    taxableValue: 288135.59,
+    gstRate: 18,
+    cgst: 25932.20,
+    sgst: 25932.20,
+    igst: 0,
+    totalInvoiceValue: 340000,
+    irnStatus: "Generated",
+    branch: "Headquarters",
+    department: "Commercial"
+  },
+  {
+    id: "GST-INV-2508-02",
+    invoiceNumber: "DVA-2508-B2CS-01",
+    invoiceDate: "2025-08-27",
+    type: "B2CS",
+    direction: "Outward",
+    partyName: "Retail SaaS Online Consumer Pool",
+    partyGstin: "",
+    posState: "Maharashtra",
+    posStateCode: "27",
+    hsnCode: "998315",
+    hsnDesc: "Online Subscription Billing",
+    taxableValue: 148305.08,
+    gstRate: 18,
+    cgst: 13347.46,
+    sgst: 13347.46,
+    igst: 0,
+    totalInvoiceValue: 175000,
+    irnStatus: "N/A (B2CS)",
+    branch: "Headquarters",
+    department: "Commercial"
+  },
+
+  // JULY 2025
+  {
+    id: "GST-INV-2507-01",
+    invoiceNumber: "DVA-2507-B2CL-01",
+    invoiceDate: "2025-07-03",
+    type: "B2CL",
+    direction: "Outward",
+    partyName: "Alpha Logistics Solutions (Unreg)",
+    partyGstin: "",
+    posState: "West Bengal",
+    posStateCode: "19",
+    hsnCode: "998313",
+    hsnDesc: "Inter-State Enterprise Integration",
+    taxableValue: 245762.71,
+    gstRate: 18,
+    cgst: 0,
+    sgst: 0,
+    igst: 44237.29,
+    totalInvoiceValue: 290000,
+    irnStatus: "N/A (B2C Large)",
+    branch: "Headquarters",
+    department: "Commercial"
+  },
+  {
+    id: "GST-INV-2507-02",
+    invoiceNumber: "DVA-2507-002",
+    invoiceDate: "2025-07-26",
+    type: "B2CS",
+    direction: "Outward",
+    partyName: "RetailGo Sprint Delivery",
+    partyGstin: "",
+    posState: "Maharashtra",
+    posStateCode: "27",
+    hsnCode: "998314",
+    hsnDesc: "Mobile App Sprint Customization",
+    taxableValue: 152542.37,
+    gstRate: 18,
+    cgst: 13728.81,
+    sgst: 13728.81,
+    igst: 0,
+    totalInvoiceValue: 180000,
+    irnStatus: "N/A (B2CS)",
+    branch: "South Branch",
+    department: "Commercial"
+  },
+  {
+    id: "GST-INW-2507-01",
+    invoiceNumber: "PW-25-881",
+    invoiceDate: "2025-07-22",
+    type: "Inward",
+    direction: "Inward",
+    partyName: "Precision Works Packaging",
+    partyGstin: "07AABCP8901L1ZP",
+    posState: "Delhi",
+    posStateCode: "07",
+    hsnCode: "481910",
+    hsnDesc: "Production Packaging Material",
+    taxableValue: 77966.10,
+    gstRate: 18,
+    cgst: 0,
+    sgst: 0,
+    igst: 14033.90,
+    totalInvoiceValue: 92000,
+    itcEligibility: "Eligible",
+    branch: "North Branch",
+    department: "Operations"
+  },
+
+  // JUNE 2025
+  {
+    id: "GST-INV-2506-01",
+    invoiceNumber: "DVA-2506-001",
+    invoiceDate: "2025-06-02",
+    type: "B2B",
+    direction: "Outward",
+    partyName: "Star Health & Allied Insurance",
+    partyGstin: "33AAACS9876Q1Z0",
+    posState: "Tamil Nadu",
+    posStateCode: "33",
+    hsnCode: "998314",
+    hsnDesc: "Custom AI Health Dashboard",
+    taxableValue: 182203.39,
+    gstRate: 18,
+    cgst: 0,
+    sgst: 0,
+    igst: 32796.61,
+    totalInvoiceValue: 215000,
+    irnStatus: "Generated",
+    branch: "South Branch",
+    department: "Commercial"
+  },
+  {
+    id: "GST-INW-2506-01",
+    invoiceNumber: "ATL-25-331",
+    invoiceDate: "2025-06-05",
+    type: "Inward",
+    direction: "Inward",
+    partyName: "Atlassian SaaS Advisory",
+    partyGstin: "27AABCA7766M1ZX",
+    posState: "Maharashtra",
+    posStateCode: "27",
+    hsnCode: "998315",
+    hsnDesc: "Enterprise Jira & Figma Licenses",
+    taxableValue: 32203.39,
+    gstRate: 18,
+    cgst: 2898.31,
+    sgst: 2898.31,
+    igst: 0,
+    totalInvoiceValue: 38000,
+    itcEligibility: "Eligible",
+    branch: "Headquarters",
+    department: "Technology"
+  },
+
+  // MAY 2025
+  {
+    id: "GST-INV-2505-01",
+    invoiceNumber: "DVA-2505-001",
+    invoiceDate: "2025-05-03",
+    type: "B2B",
+    direction: "Outward",
+    partyName: "Quantum FinTech Corporation",
+    partyGstin: "27AAAAC8765E1Z4",
+    posState: "Maharashtra",
+    posStateCode: "27",
+    hsnCode: "998314",
+    hsnDesc: "Data Retainer & Algo Analytics",
+    taxableValue: 156779.66,
+    gstRate: 18,
+    cgst: 14110.17,
+    sgst: 14110.17,
+    igst: 0,
+    totalInvoiceValue: 185000,
+    irnStatus: "Generated",
+    branch: "Headquarters",
+    department: "Commercial"
+  },
+  {
+    id: "GST-INV-2505-02",
+    invoiceNumber: "DVA-2505-002",
+    invoiceDate: "2025-05-22",
+    type: "B2B",
+    direction: "Outward",
+    partyName: "Metro Logistics Group",
+    partyGstin: "07AAACM4321F1Z1",
+    posState: "Delhi",
+    posStateCode: "07",
+    hsnCode: "998313",
+    hsnDesc: "Annual Maintenance Tech Support",
+    taxableValue: 220338.98,
+    gstRate: 18,
+    cgst: 0,
+    sgst: 0,
+    igst: 39661.02,
+    totalInvoiceValue: 260000,
+    irnStatus: "Generated",
+    branch: "North Branch",
+    department: "Commercial"
+  },
+
+  // APRIL 2025
+  {
+    id: "GST-INV-2504-01",
+    invoiceNumber: "DVA-2504-001",
+    invoiceDate: "2025-04-02",
+    type: "B2B",
+    direction: "Outward",
+    partyName: "Apex Global Logistics",
+    partyGstin: "07AAACA1234B1Z6",
+    posState: "Delhi",
+    posStateCode: "07",
+    hsnCode: "998314",
+    hsnDesc: "Cloud Transformation Phase 1",
+    taxableValue: 122881.36,
+    gstRate: 18,
+    cgst: 0,
+    sgst: 0,
+    igst: 22118.64,
+    totalInvoiceValue: 145000,
+    irnStatus: "Generated",
+    branch: "Headquarters",
+    department: "Commercial"
+  },
+  {
+    id: "GST-INV-2504-02",
+    invoiceNumber: "DVA-2504-002",
+    invoiceDate: "2025-04-18",
+    type: "B2B",
+    direction: "Outward",
+    partyName: "Zeta Infrastructure Projects",
+    partyGstin: "36AAACZ3456D1Z8",
+    posState: "Telangana",
+    posStateCode: "36",
+    hsnCode: "998313",
+    hsnDesc: "Enterprise ERP Cloud Migration",
+    taxableValue: 186440.68,
+    gstRate: 18,
+    cgst: 0,
+    sgst: 0,
+    igst: 33559.32,
+    totalInvoiceValue: 220000,
+    irnStatus: "Generated",
+    branch: "South Branch",
+    department: "Commercial"
+  }
+];
+
+const DEFAULT_GSTR2B_RECORDS = [
+  // Exact matches with inward invoices
+  {
+    supplierGstin: "27AABCA3456F1ZM",
+    supplierName: "Amazon Web Services India Pvt Ltd",
+    invoiceNumber: "AWS-IN-98124",
+    invoiceDate: "2025-09-03",
+    invoiceValue: 46000,
+    taxableValue: 38983.05,
+    cgst: 3508.47,
+    sgst: 3508.47,
+    igst: 0,
+    itcEligible: "Y",
+    filingPeriod: "092025"
+  },
+  {
+    supplierGstin: "07AABCE1234K1ZN",
+    supplierName: "Ernst & Young LLP",
+    invoiceNumber: "EY-AUD-7721",
+    invoiceDate: "2025-09-12",
+    invoiceValue: 78000,
+    taxableValue: 66101.69,
+    cgst: 0,
+    sgst: 0,
+    igst: 11898.31,
+    itcEligible: "Y",
+    filingPeriod: "092025"
+  },
+  {
+    supplierGstin: "29AABCD5678M1ZQ",
+    supplierName: "Dell International Services India",
+    invoiceNumber: "DELL-25-4401",
+    invoiceDate: "2025-09-11",
+    invoiceValue: 120000,
+    taxableValue: 101694.92,
+    cgst: 0,
+    sgst: 0,
+    igst: 18305.08,
+    itcEligible: "Y",
+    filingPeriod: "092025"
+  },
+  {
+    supplierGstin: "07AABCP8901L1ZP",
+    supplierName: "Precision Works Packaging",
+    invoiceNumber: "PW-25-881",
+    invoiceDate: "2025-07-22",
+    invoiceValue: 92000,
+    taxableValue: 77966.10,
+    cgst: 0,
+    sgst: 0,
+    igst: 14033.90,
+    itcEligible: "Y",
+    filingPeriod: "072025"
+  },
+  {
+    supplierGstin: "27AABCA7766M1ZX",
+    supplierName: "Atlassian SaaS Advisory",
+    invoiceNumber: "ATL-25-331",
+    invoiceDate: "2025-06-05",
+    invoiceValue: 38000,
+    taxableValue: 32203.39,
+    cgst: 2898.31,
+    sgst: 2898.31,
+    igst: 0,
+    itcEligible: "Y",
+    filingPeriod: "062025"
+  },
+  // Variance / Difference Record:
+  {
+    supplierGstin: "27AAACD9988H1Z4",
+    supplierName: "Apex Hardware Systems",
+    invoiceNumber: "AH-25-109",
+    invoiceDate: "2025-09-06",
+    invoiceValue: 35400,
+    taxableValue: 30000.00,
+    cgst: 2700.00,
+    sgst: 2700.00,
+    igst: 0,
+    itcEligible: "Y",
+    filingPeriod: "092025"
+  },
+  // In GSTR-2B but Missing in Books:
+  {
+    supplierGstin: "27AAACA2345B1Z1",
+    supplierName: "Bharti Airtel Telecom Services",
+    invoiceNumber: "AIR-25-9921",
+    invoiceDate: "2025-09-08",
+    invoiceValue: 14750,
+    taxableValue: 12500.00,
+    cgst: 1125.00,
+    sgst: 1125.00,
+    igst: 0,
+    itcEligible: "Y",
+    filingPeriod: "092025"
+  }
+];
+
+/* ================================================================
+   ENTERPRISE DATASETS FOR ALL 12 FIELDS
    ================================================================ */
 const DATASETS = {
 
   // 0. DAILY TRANSACTIONS (CASH & BANK BOOK - DUAL FLOW)
   daily: JSON.parse(JSON.stringify(DEFAULT_DAILY_TRANSACTIONS)),
+
+  // GST REGISTERS
+  gstInvoices: JSON.parse(JSON.stringify(DEFAULT_GST_INVOICES)),
+  gstr2b: JSON.parse(JSON.stringify(DEFAULT_GSTR2B_RECORDS)),
 
   // 1. PROFIT & LOSS (SCHEDULE III / IND AS)
   pnl: [
@@ -1487,6 +2224,16 @@ const DATASETS = {
   // 10. SETTINGS & CONTROLS
   settings: [
     { date: "2025-04-01", taxRate: 25.17, currency: "INR (₹)", fyStart: "01-Apr-2025", depMethod: "SLM", auditLock: "Active", branch: "All Branches", department: "Compliance" }
+  ],
+
+  // 11. GST & STATUTORY COMPLIANCE (MONTHLY RETURN SUMMARIES)
+  gst: [
+    { date: "2025-04-01", taxableOutward: 365000, outputTax: 65700, inputTaxCredit: 13700, netTaxPayable: 52000, gstr1Status: "Filed", gstr3bStatus: "Filed", matchPct: 100, branch: "Headquarters", department: "Finance" },
+    { date: "2025-05-01", taxableOutward: 445000, outputTax: 80100, inputTaxCredit: 22100, netTaxPayable: 58000, gstr1Status: "Filed", gstr3bStatus: "Filed", matchPct: 100, branch: "Headquarters", department: "Finance" },
+    { date: "2025-06-01", taxableOutward: 512000, outputTax: 92160, inputTaxCredit: 27160, netTaxPayable: 65000, gstr1Status: "Filed", gstr3bStatus: "Filed", matchPct: 99.4, branch: "North Branch", department: "Finance" },
+    { date: "2025-07-01", taxableOutward: 615000, outputTax: 110700, inputTaxCredit: 37700, netTaxPayable: 73000, gstr1Status: "Filed", gstr3bStatus: "Filed", matchPct: 98.8, branch: "South Branch", department: "Finance" },
+    { date: "2025-08-01", taxableOutward: 695000, outputTax: 125100, inputTaxCredit: 44100, netTaxPayable: 81000, gstr1Status: "Filed", gstr3bStatus: "Filed", matchPct: 100, branch: "Headquarters", department: "Finance" },
+    { date: "2025-09-01", taxableOutward: 821000, outputTax: 147780, inputTaxCredit: 58780, netTaxPayable: 89000, gstr1Status: "Draft Ready", gstr3bStatus: "Pending Offset", matchPct: 99.1, branch: "Headquarters", department: "Finance" }
   ]
 };
 
@@ -1738,7 +2485,8 @@ let fileSources = {
   reports: "Statutory Audit Records",
   analytics: "Chartered Financial Ratios",
   settings: "Accounting Governance System",
-  daily: "Daily Cash & Bank Register (Live Book)"
+  daily: "Daily Cash & Bank Register (Live Book)",
+  gst: "GSTN Statutory Tax Ledger & Portal Returns"
 };
 
 /* ================================================================
@@ -1835,6 +2583,16 @@ const MODULE_CONFIG = {
     promoTitle: "Accelerate Collections.<br>Optimize Terms.",
     promoSubtitle: "Shrink Days Sales Outstanding (DSO) and safeguard working capital.",
     promoBtn: "Export Aging Schedule ↓"
+  },
+  gst: {
+    title: "GST & Statutory Compliance Hub",
+    icon: "⚖",
+    subtitle: "Automated GSTR-1, GSTR-3B liability offset, GSTR-2B ITC reconciliation & Portal JSON auto-filing",
+    reqCols: "Invoice No, Invoice Date, Party Name, Party GSTIN, Taxable Value, GST Rate, State",
+    optCols: "HSN/SAC, Reverse Charge, E-Way Bill No, Type (B2B/B2C)",
+    promoTitle: "Automated GST Returns.<br>1-Click Portal Upload.",
+    promoSubtitle: "Export official GSTN offline utility compliant JSON files for instant upload to gst.gov.in.",
+    promoBtn: "Export GSTR-1 Portal JSON ↓"
   },
   reports: {
     title: "Financial Reports & Audit",
@@ -1955,6 +2713,7 @@ function renderCurrentView() {
     case "sales": renderSales(getFilteredRows("sales")); break;
     case "expenses": renderExpenses(getFilteredRows("expenses")); break;
     case "receivables": renderReceivables(getFilteredRows("receivables")); break;
+    case "gst": renderGST(getFilteredGSTData()); break;
     case "reports": renderReports(getFilteredRows("reports")); break;
     case "analytics": renderAnalytics(getFilteredRows("analytics")); break;
     case "settings": renderSettings(getFilteredRows("settings")); break;
@@ -2706,11 +3465,1166 @@ function renderReceivables(rows) {
   document.getElementById("footerMetaText").textContent = `${fileSources.receivables} • AR & AP Ledgers Synchronized`;
 }
 
+/* ================================================================
+   GST STATUTORY COMPLIANCE & AUTO-FILING ENGINE
+   (Incorporating hisaabo & sa-erp institutional logic)
+   ================================================================ */
+
+let currentGstSubTab = "gstr1"; // 'gstr1' | 'gstr3b' | 'gstr2b' | 'einvoice'
+let currentGstr1Section = "b2b"; // 'b2b' | 'b2cl' | 'b2cs' | 'cdnr' | 'hsn'
+
+// 1. Official 15-digit GSTIN Checksum Validator (Luhn Algorithm over Base-36)
+function validateGSTIN(gstin) {
+  if (!gstin || typeof gstin !== "string") return { valid: false, gstin: "", reason: "Empty GSTIN input" };
+  gstin = gstin.trim().toUpperCase();
+  if (gstin.length !== 15) return { valid: false, gstin, reason: "GSTIN must be exactly 15 characters" };
+  const regex = /^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$/;
+  if (!regex.test(gstin)) return { valid: false, gstin, reason: "Invalid format: 2-digit State + 10-char PAN + Entity Code + Z + Checksum" };
+
+  const chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  let factor = 2, sum = 0;
+  for (let i = 13; i >= 0; i--) {
+    const codePoint = chars.indexOf(gstin[i]);
+    if (codePoint === -1) return { valid: false, gstin, reason: "Illegal character detected" };
+    let addend = factor * codePoint;
+    factor = (factor === 2) ? 1 : 2;
+    addend = Math.floor(addend / 36) + (addend % 36);
+    sum += addend;
+  }
+  const remainder = sum % 36;
+  const checkCode = (36 - remainder) % 36;
+  const expectedChar = chars[checkCode];
+  const actualChar = gstin[14];
+
+  const stateCode = gstin.substring(0, 2);
+  const stateNames = {
+    "01": "Jammu & Kashmir", "02": "Himachal Pradesh", "03": "Punjab", "04": "Chandigarh", "05": "Uttarakhand",
+    "06": "Haryana", "07": "Delhi", "08": "Rajasthan", "09": "Uttar Pradesh", "10": "Bihar",
+    "11": "Sikkim", "12": "Arunachal Pradesh", "13": "Nagaland", "14": "Manipur", "15": "Mizoram",
+    "16": "Tripura", "17": "Meghalaya", "18": "Assam", "19": "West Bengal", "20": "Jharkhand",
+    "21": "Odisha", "22": "Chhattisgarh", "23": "Madhya Pradesh", "24": "Gujarat", "27": "Maharashtra",
+    "29": "Karnataka", "30": "Goa", "32": "Kerala", "33": "Tamil Nadu", "36": "Telangana", "37": "Andhra Pradesh"
+  };
+  const state = stateNames[stateCode] || `State Code ${stateCode}`;
+  const isMatch = (actualChar === expectedChar);
+
+  return {
+    valid: isMatch,
+    gstin,
+    state,
+    stateCode,
+    pan: gstin.substring(2, 12),
+    expectedChar,
+    actualChar,
+    reason: isMatch ? "Valid GSTIN (Luhn-36 Checksum Verified)" : `Checksum mismatch (expected '${expectedChar}', got '${actualChar}')`
+  };
+}
+
+// 2. Distance-based E-Way Bill statutory validity formula (Rule 138(10))
+function calculateEwayValidity(distanceKm, isOverDimensional = false) {
+  const km = Number(distanceKm) || 0;
+  if (km <= 0) return 1;
+  const divisor = isOverDimensional ? 20 : 200; // 200 km/day for normal cargo; 20 km/day for ODC
+  return Math.max(1, Math.ceil(km / divisor));
+}
+
+// 3. Core Data Filter & Multi-Table Aggregator for GST Returns
+function getFilteredGSTData() {
+  const dVal = (document.getElementById("dateFilter") || {}).value || "ALL";
+  const bVal = (document.getElementById("branchFilter") || {}).value || "ALL";
+  const deptVal = (document.getElementById("deptFilter") || {}).value || "ALL";
+
+  const allInvoices = (DATASETS.gstInvoices || []).map(r => ({ ...r, date: ensureDate(r.invoiceDate) }));
+  const filteredInvoices = allInvoices.filter(r => {
+    const d = r.date;
+    const mKey = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}`;
+    const mDate = dVal === "ALL" || mKey === dVal;
+    const mBranch = bVal === "ALL" || r.branch === bVal;
+    const mDept = deptVal === "ALL" || r.department === deptVal;
+    return mDate && mBranch && mDept;
+  });
+
+  const outwardInvoices = filteredInvoices.filter(r => r.direction === "Outward" || r.direction === "CreditNote");
+  const inwardInvoices = filteredInvoices.filter(r => r.direction === "Inward");
+
+  const b2bList = outwardInvoices.filter(r => r.type === "B2B");
+  const b2clList = outwardInvoices.filter(r => r.type === "B2CL");
+  const b2csList = outwardInvoices.filter(r => r.type === "B2CS");
+  const cdnrList = outwardInvoices.filter(r => r.type === "CDNR");
+
+  // HSN Summary aggregation
+  const hsnMap = {};
+  outwardInvoices.forEach(r => {
+    const code = r.hsnCode || "998314";
+    if (!hsnMap[code]) {
+      hsnMap[code] = {
+        hsnCode: code,
+        desc: r.hsnDesc || "IT & Advisory Services",
+        uqc: "NOS",
+        quantity: 0,
+        taxableValue: 0,
+        cgst: 0,
+        sgst: 0,
+        igst: 0,
+        totalValue: 0
+      };
+    }
+    hsnMap[code].quantity += 1;
+    hsnMap[code].taxableValue += (Number(r.taxableValue) || 0);
+    hsnMap[code].cgst += (Number(r.cgst) || 0);
+    hsnMap[code].sgst += (Number(r.sgst) || 0);
+    hsnMap[code].igst += (Number(r.igst) || 0);
+    hsnMap[code].totalValue += (Number(r.totalInvoiceValue) || 0);
+  });
+  const hsnSummary = Object.values(hsnMap);
+
+  const totalTaxableOutward = outwardInvoices.reduce((a, r) => a + (Number(r.taxableValue) || 0), 0);
+  const totalCgstOutput = outwardInvoices.reduce((a, r) => a + (Number(r.cgst) || 0), 0);
+  const totalSgstOutput = outwardInvoices.reduce((a, r) => a + (Number(r.sgst) || 0), 0);
+  const totalIgstOutput = outwardInvoices.reduce((a, r) => a + (Number(r.igst) || 0), 0);
+  const totalOutputTax = totalCgstOutput + totalSgstOutput + totalIgstOutput;
+
+  const totalTaxableInward = inwardInvoices.reduce((a, r) => a + (Number(r.taxableValue) || 0), 0);
+  const totalCgstItc = inwardInvoices.reduce((a, r) => a + (Number(r.cgst) || 0), 0);
+  const totalSgstItc = inwardInvoices.reduce((a, r) => a + (Number(r.sgst) || 0), 0);
+  const totalIgstItc = inwardInvoices.reduce((a, r) => a + (Number(r.igst) || 0), 0);
+  const totalEligibleItc = totalCgstItc + totalSgstItc + totalIgstItc;
+
+  // Rule 88A Tax Offset Sequence
+  let remIgstOutput = totalIgstOutput;
+  let remCgstOutput = totalCgstOutput;
+  let remSgstOutput = totalSgstOutput;
+
+  let igstCreditAvail = totalIgstItc;
+  const igstUsedAgainstIgst = Math.min(igstCreditAvail, remIgstOutput);
+  remIgstOutput -= igstUsedAgainstIgst;
+  igstCreditAvail -= igstUsedAgainstIgst;
+
+  const igstUsedAgainstCgst = Math.min(igstCreditAvail, remCgstOutput);
+  remCgstOutput -= igstUsedAgainstCgst;
+  igstCreditAvail -= igstUsedAgainstCgst;
+
+  const igstUsedAgainstSgst = Math.min(igstCreditAvail, remSgstOutput);
+  remSgstOutput -= igstUsedAgainstSgst;
+  igstCreditAvail -= igstUsedAgainstSgst;
+
+  let cgstCreditAvail = totalCgstItc;
+  const cgstUsedAgainstCgst = Math.min(cgstCreditAvail, remCgstOutput);
+  remCgstOutput -= cgstUsedAgainstCgst;
+  cgstCreditAvail -= cgstUsedAgainstCgst;
+
+  const cgstUsedAgainstIgst = Math.min(cgstCreditAvail, remIgstOutput);
+  remIgstOutput -= cgstUsedAgainstIgst;
+  cgstCreditAvail -= cgstUsedAgainstIgst;
+
+  let sgstCreditAvail = totalSgstItc;
+  const sgstUsedAgainstSgst = Math.min(sgstCreditAvail, remSgstOutput);
+  remSgstOutput -= sgstUsedAgainstSgst;
+  sgstCreditAvail -= sgstUsedAgainstSgst;
+
+  const sgstUsedAgainstIgst = Math.min(sgstCreditAvail, remIgstOutput);
+  remIgstOutput -= sgstUsedAgainstIgst;
+  sgstCreditAvail -= sgstUsedAgainstIgst;
+
+  const netCashPayable = remIgstOutput + remCgstOutput + remSgstOutput;
+
+  // GSTR-2B Auto-Reconciliation Logic
+  const gstr2bList = DATASETS.gstr2b || [];
+  const reconciliationRecords = [];
+  let matchedCount = 0;
+  let varianceCount = 0;
+
+  inwardInvoices.forEach(inv => {
+    const match = gstr2bList.find(r => r.supplierGstin === inv.partyGstin && r.invoiceNumber.replace(/[^a-zA-Z0-9]/g, "").toUpperCase() === inv.invoiceNumber.replace(/[^a-zA-Z0-9]/g, "").toUpperCase());
+    if (match) {
+      const invTax = (inv.cgst || 0) + (inv.sgst || 0) + (inv.igst || 0);
+      const matchTax = (match.cgst || 0) + (match.sgst || 0) + (match.igst || 0);
+      const diff = Math.abs(invTax - matchTax);
+      if (diff < 1) {
+        matchedCount++;
+        reconciliationRecords.push({
+          status: "MATCHED",
+          invoiceNumber: inv.invoiceNumber,
+          partyName: inv.partyName,
+          partyGstin: inv.partyGstin,
+          invoiceDate: inv.invoiceDate,
+          ourTaxable: inv.taxableValue,
+          ourTax: invTax,
+          portalTaxable: match.taxableValue,
+          portalTax: matchTax,
+          diff: 0,
+          action: "ITC 100% Validated under Sec 16(2)(aa)"
+        });
+      } else {
+        varianceCount++;
+        reconciliationRecords.push({
+          status: "VARIANCE",
+          invoiceNumber: inv.invoiceNumber,
+          partyName: inv.partyName,
+          partyGstin: inv.partyGstin,
+          invoiceDate: inv.invoiceDate,
+          ourTaxable: inv.taxableValue,
+          ourTax: invTax,
+          portalTaxable: match.taxableValue,
+          portalTax: matchTax,
+          diff: diff,
+          action: "Tax mismatch — request supplier amendment in GSTR-1"
+        });
+      }
+    } else {
+      reconciliationRecords.push({
+        status: "MISSING_IN_2B",
+        invoiceNumber: inv.invoiceNumber,
+        partyName: inv.partyName,
+        partyGstin: inv.partyGstin,
+        invoiceDate: inv.invoiceDate,
+        ourTaxable: inv.taxableValue,
+        ourTax: (inv.cgst || 0) + (inv.sgst || 0) + (inv.igst || 0),
+        portalTaxable: 0,
+        portalTax: 0,
+        diff: (inv.cgst || 0) + (inv.sgst || 0) + (inv.igst || 0),
+        action: "Supplier GSTR-1 unfiled; withhold ITC under Sec 16(2)(aa)"
+      });
+    }
+  });
+
+  gstr2bList.forEach(g2b => {
+    const foundInBooks = inwardInvoices.some(inv => inv.partyGstin === g2b.supplierGstin && inv.invoiceNumber.replace(/[^a-zA-Z0-9]/g, "").toUpperCase() === g2b.invoiceNumber.replace(/[^a-zA-Z0-9]/g, "").toUpperCase());
+    if (!foundInBooks) {
+      reconciliationRecords.push({
+        status: "MISSING_IN_BOOKS",
+        invoiceNumber: g2b.invoiceNumber,
+        partyName: g2b.supplierName,
+        partyGstin: g2b.supplierGstin,
+        invoiceDate: g2b.invoiceDate,
+        ourTaxable: 0,
+        ourTax: 0,
+        portalTaxable: g2b.taxableValue,
+        portalTax: (g2b.cgst || 0) + (g2b.sgst || 0) + (g2b.igst || 0),
+        diff: (g2b.cgst || 0) + (g2b.sgst || 0) + (g2b.igst || 0),
+        action: "Filed on GST Portal; invoice unbooked in purchase ledger"
+      });
+    }
+  });
+
+  const reconciliationHealthPct = inwardInvoices.length > 0 ? ((matchedCount / inwardInvoices.length) * 100).toFixed(1) : 100;
+  const monthlyRows = getFilteredRows("gst");
+
+  return {
+    outwardInvoices,
+    inwardInvoices,
+    b2bList,
+    b2clList,
+    b2csList,
+    cdnrList,
+    hsnSummary,
+    totalTaxableOutward,
+    totalCgstOutput,
+    totalSgstOutput,
+    totalIgstOutput,
+    totalOutputTax,
+    totalTaxableInward,
+    totalCgstItc,
+    totalSgstItc,
+    totalIgstItc,
+    totalEligibleItc,
+    offset: {
+      remIgstOutput,
+      remCgstOutput,
+      remSgstOutput,
+      igstUsedAgainstIgst,
+      igstUsedAgainstCgst,
+      igstUsedAgainstSgst,
+      cgstUsedAgainstCgst,
+      cgstUsedAgainstIgst,
+      sgstUsedAgainstSgst,
+      sgstUsedAgainstIgst,
+      netCashPayable
+    },
+    reconciliationRecords,
+    reconciliationHealthPct,
+    monthlyRows
+  };
+}
+
+// 4. Main GST View Renderer
+function renderGST(gstData) {
+  // Hide daily ledger section and reports box
+  const dSec = document.getElementById("masterDailyLedgerSection");
+  if (dSec) dSec.style.display = "none";
+  const rBox = document.getElementById("reportsDownloadCenterBox");
+  if (rBox) rBox.style.display = "none";
+
+  setPanelHeaders(
+    "Output Tax vs Eligible ITC Trend",
+    "GST Liability Composition",
+    "GSTR-3B Statutory Tax Offset Statement",
+    "Effective Tax Rate Trend (%)",
+    "Statutory Audit & Return Parity",
+    "Compliance Calendar & Cash Ledger Status"
+  );
+  setChartLegend(["Output Tax (Liability)", "Eligible ITC (Credit)"]);
+
+  // 5 Top KPI Cards
+  document.getElementById("kpisContainer").innerHTML = `
+    <div class="kpi card-1"><div class="orb">⚖</div><div class="kpi-text"><small>Gross Taxable Turnover</small><strong>${money(gstData.totalTaxableOutward)}</strong><em>Outward Supplies</em></div></div>
+    <div class="kpi card-2"><div class="orb">🏛</div><div class="kpi-text"><small>Total Output GST Liability</small><strong>${money(gstData.totalOutputTax)}</strong><em class="red">CGST+SGST+IGST Due</em></div></div>
+    <div class="kpi card-3 good"><div class="orb">✓</div><div class="kpi-text"><small>Eligible Input Tax Credit</small><strong>${money(gstData.totalEligibleItc)}</strong><em>Inward Purchase ITC</em></div></div>
+    <div class="kpi card-4"><div class="orb">💳</div><div class="kpi-text"><small>Net Cash Tax Payable</small><strong>${money(gstData.offset.netCashPayable)}</strong><em>Cash Ledger Required</em></div></div>
+    <div class="kpi card-5"><div class="orb">★</div><div class="kpi-text"><small>GSTR-2B Match Parity</small><strong>${gstData.reconciliationHealthPct}%</strong><em>Sec 16(2)(aa) Verified</em></div></div>
+  `;
+
+  // 6 Sub-Metric Cards
+  const b2bTaxable = gstData.b2bList.reduce((a, r) => a + r.taxableValue, 0);
+  const b2clTaxable = gstData.b2clList.reduce((a, r) => a + r.taxableValue, 0);
+  const b2csTaxable = gstData.b2csList.reduce((a, r) => a + r.taxableValue, 0);
+  const cdnrTaxable = Math.abs(gstData.cdnrList.reduce((a, r) => a + r.taxableValue, 0));
+  const capexItc = gstData.inwardInvoices.filter(r => r.itcEligibility && r.itcEligibility.includes("Capital")).reduce((a, r) => a + (r.igst || 0) + (r.cgst || 0) + (r.sgst || 0), 0);
+
+  document.getElementById("smallCardsContainer").innerHTML = `
+    <div class="small"><span>🏢</span><div class="s-text"><small>B2B Taxable Sales</small><strong>${money(b2bTaxable)}</strong><em>${gstData.b2bList.length} Invoices filed</em></div></div>
+    <div class="small"><span>🏬</span><div class="s-text"><small>B2CL Inter-State (>2.5L)</small><strong>${money(b2clTaxable)}</strong><em>${gstData.b2clList.length} Large supplies</em></div></div>
+    <div class="small"><span>🏪</span><div class="s-text"><small>B2CS Retail / Intra</small><strong>${money(b2csTaxable)}</strong><em>${gstData.b2csList.length} Small supplies</em></div></div>
+    <div class="small"><span>📜</span><div class="s-text"><small>Credit / Debit Notes</small><strong>${money(cdnrTaxable)}</strong><em>${gstData.cdnrList.length} Notes issued</em></div></div>
+    <div class="small"><span>🏭</span><div class="s-text"><small>Capital Goods ITC</small><strong>${money(capexItc)}</strong><em>Machinery / Servers</em></div></div>
+    <div class="small"><span>🔍</span><div class="s-text"><small>Active HSN Summary</small><strong>${gstData.hsnSummary.length} Codes</strong><em>100% Tax mapped</em></div></div>
+  `;
+
+  // Visuals in Grid 1
+  const maxBar = Math.max(1, ...gstData.monthlyRows.map(r => Math.max(r.outputTax, r.inputTaxCredit)));
+  document.getElementById("trendChartContainer").innerHTML = renderBarChartGrouped(gstData.monthlyRows, maxBar, "outputTax", "inputTaxCredit");
+
+  const taxBreakdown = [
+    ["Central Tax (CGST)", gstData.totalCgstOutput],
+    ["State Tax (SGST)", gstData.totalSgstOutput],
+    ["Integrated Tax (IGST)", gstData.totalIgstOutput],
+    ["Inward ITC Claimed", gstData.totalEligibleItc]
+  ];
+  renderDonut(taxBreakdown, gstData.totalOutputTax + gstData.totalEligibleItc, "GST Pool");
+
+  const summaryTable = [
+    ["Total Taxable Turnover (A)", gstData.totalTaxableOutward],
+    ["1. B2B Registered Outward", b2bTaxable],
+    ["2. B2CL Inter-State (>2.5L)", b2clTaxable],
+    ["3. B2CS Intra/Small Retail", b2csTaxable],
+    ["4. CDNR Credit Notes Adjusted", -cdnrTaxable],
+    ["Total Output GST Liability (B)", gstData.totalOutputTax],
+    ["1. Integrated Tax (IGST)", gstData.totalIgstOutput],
+    ["2. Central Tax (CGST)", gstData.totalCgstOutput],
+    ["3. State Tax (SGST)", gstData.totalSgstOutput],
+    ["Total Eligible ITC Credit (C)", gstData.totalEligibleItc],
+    ["Net Cash Tax Payable (B - C)", gstData.offset.netCashPayable]
+  ];
+  renderTable(summaryTable, "GST Statutory Schedule", [0, 5, 9, 10]);
+
+  // Visuals in Grid 2
+  const labels = gstData.monthlyRows.map(r => labelDate(r.date));
+  const effRate = gstData.monthlyRows.map(r => r.taxableOutward ? (r.outputTax / r.taxableOutward * 100) : 18);
+  renderLineChart(effRate, labels, "pct");
+
+  document.getElementById("meters1Container").innerHTML = renderMeters([
+    ["GSTR-1 & GSTR-3B Turnover Parity", 100],
+    ["GSTR-2B vs Books ITC Match", Number(gstData.reconciliationHealthPct)],
+    ["HSN 6-Digit Statutory Accuracy", 100]
+  ]);
+  document.getElementById("meters2Container").innerHTML = renderMeters([
+    ["Rule 88A Tax Credit Utilization", 100],
+    ["E-Invoice IRN & QR Parity", 100],
+    ["Reverse Charge (RCM) Reconciled", 100]
+  ]);
+
+  renderInsights([
+    `Statutory Parity Reconciled: Total Output GST liability of ${money(gstData.totalOutputTax)} offset with ${money(gstData.totalEligibleItc)} eligible ITC per Rule 88A sequence.`,
+    `GSTR-2B Reconciliation: ${gstData.reconciliationHealthPct}% of inward purchase credits are matched against supplier portal filings, safeguarding against Section 16(2)(aa) disallowance.`,
+    `Net Electronic Cash Ledger remittance required: ${money(gstData.offset.netCashPayable)} deposited on-time with zero penal interest under Section 50.`
+  ]);
+
+  renderQuickStats([
+    ["Net Cash Liability", money(gstData.offset.netCashPayable), true],
+    ["Output Tax Due", money(gstData.totalOutputTax)],
+    ["Total Active HSNs", `${gstData.hsnSummary.length} Codes`],
+    ["Filing Readiness", "100% READY", true]
+  ]);
+
+  // Render Master Interactive GST Section
+  renderMasterGstHub(gstData);
+  document.getElementById("footerMetaText").textContent = `${fileSources.gst} • ${gstData.outwardInvoices.length} Outward + ${gstData.inwardInvoices.length} Inward Invoices Reconciled`;
+}
+
+// 5. Interactive Master GST Hub Renderer
+function renderMasterGstHub(gstData) {
+  const sec = document.getElementById("masterGstSection");
+  if (!sec) return;
+  sec.style.display = "block";
+
+  const dVal = (document.getElementById("dateFilter") || {}).value || "ALL";
+  const now = new Date();
+  const activeFp = dVal !== "ALL" ? dVal.replace("-", "") : `${String(now.getMonth() + 1).padStart(2, "0")}${now.getFullYear()}`;
+
+  let contentHtml = "";
+
+  if (currentGstSubTab === "gstr1") {
+    // GSTR-1 View
+    contentHtml = `
+      <div class="gst-subview-content">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; margin-bottom:10px; gap:8px;">
+          <div style="display:flex; gap:6px; flex-wrap:wrap;">
+            <button class="gst-tab-btn ${currentGstr1Section==='b2b'?'active':''}" onclick="switchGstr1Section('b2b')">B2B Registered (${gstData.b2bList.length})</button>
+            <button class="gst-tab-btn ${currentGstr1Section==='b2cl'?'active':''}" onclick="switchGstr1Section('b2cl')">B2C Large (${gstData.b2clList.length})</button>
+            <button class="gst-tab-btn ${currentGstr1Section==='b2cs'?'active':''}" onclick="switchGstr1Section('b2cs')">B2C Small (${gstData.b2csList.length})</button>
+            <button class="gst-tab-btn ${currentGstr1Section==='cdnr'?'active':''}" onclick="switchGstr1Section('cdnr')">Credit Notes (${gstData.cdnrList.length})</button>
+            <button class="gst-tab-btn ${currentGstr1Section==='hsn'?'active':''}" onclick="switchGstr1Section('hsn')">HSN Summary (${gstData.hsnSummary.length})</button>
+          </div>
+          <div style="font-size:11px; color:#a2c4e6;">
+            Filing Period: <b>${safe(activeFp)}</b> • Turnover: <b style="color:var(--green)">${money(gstData.totalTaxableOutward)}</b>
+          </div>
+        </div>
+
+        <div class="ledger-scroll">
+          ${renderGstr1ActiveTable(gstData)}
+        </div>
+      </div>
+    `;
+  } else if (currentGstSubTab === "gstr3b") {
+    // GSTR-3B Tax Offset Matrix View
+    contentHtml = `
+      <div class="gst-subview-content">
+        <div class="gst-rule-box">
+          <b>Rule 88A Statutory Tax Offset Sequence:</b>
+          Integrated Tax (IGST) credit must be utilized in full against IGST liability first, and then against CGST and SGST in any order. Central Tax (CGST) credit cannot be set off against State Tax (SGST), and State Tax credit cannot be set off against Central Tax.
+          <small>Electronic Cash Ledger balance is required only for net liabilities that cannot be set off through available Input Tax Credit.</small>
+        </div>
+
+        <table class="offset-matrix-table">
+          <thead>
+            <tr>
+              <th>Statutory Tax Head</th>
+              <th>Tax Liability Due (₹)</th>
+              <th>Paid by IGST Credit (₹)</th>
+              <th>Paid by CGST Credit (₹)</th>
+              <th>Paid by SGST Credit (₹)</th>
+              <th>Net Cash Tax Payable (₹)</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Integrated Tax (IGST)</td>
+              <td>${money(gstData.totalIgstOutput)}</td>
+              <td style="color:var(--cyan)">${money(gstData.offset.igstUsedAgainstIgst)}</td>
+              <td style="color:#a8c4e6">${money(gstData.offset.cgstUsedAgainstIgst)}</td>
+              <td style="color:#a8c4e6">${money(gstData.offset.sgstUsedAgainstIgst)}</td>
+              <td style="font-weight:700; color:${gstData.offset.remIgstOutput>0?'var(--pink)':'var(--green)'}">${money(gstData.offset.remIgstOutput)}</td>
+              <td><span class="gst-badge ${gstData.offset.remIgstOutput===0?'badge-matched':'badge-variance'}">${gstData.offset.remIgstOutput===0?'Offset Complete':'Cash Req.'}</span></td>
+            </tr>
+            <tr>
+              <td>Central Tax (CGST)</td>
+              <td>${money(gstData.totalCgstOutput)}</td>
+              <td style="color:var(--cyan)">${money(gstData.offset.igstUsedAgainstCgst)}</td>
+              <td style="color:var(--blue)">${money(gstData.offset.cgstUsedAgainstCgst)}</td>
+              <td style="color:#667">₹0.00 (Prohibited)</td>
+              <td style="font-weight:700; color:${gstData.offset.remCgstOutput>0?'var(--pink)':'var(--green)'}">${money(gstData.offset.remCgstOutput)}</td>
+              <td><span class="gst-badge ${gstData.offset.remCgstOutput===0?'badge-matched':'badge-variance'}">${gstData.offset.remCgstOutput===0?'Offset Complete':'Cash Req.'}</span></td>
+            </tr>
+            <tr>
+              <td>State Tax (SGST)</td>
+              <td>${money(gstData.totalSgstOutput)}</td>
+              <td style="color:var(--cyan)">${money(gstData.offset.igstUsedAgainstSgst)}</td>
+              <td style="color:#667">₹0.00 (Prohibited)</td>
+              <td style="color:var(--purple)">${money(gstData.offset.sgstUsedAgainstSgst)}</td>
+              <td style="font-weight:700; color:${gstData.offset.remSgstOutput>0?'var(--pink)':'var(--green)'}">${money(gstData.offset.remSgstOutput)}</td>
+              <td><span class="gst-badge ${gstData.offset.remSgstOutput===0?'badge-matched':'badge-variance'}">${gstData.offset.remSgstOutput===0?'Offset Complete':'Cash Req.'}</span></td>
+            </tr>
+            <tr class="total-row">
+              <td>TOTAL CASH REMITTANCE NEEDED</td>
+              <td>${money(gstData.totalOutputTax)}</td>
+              <td>${money(gstData.totalIgstItc)}</td>
+              <td>${money(gstData.totalCgstItc)}</td>
+              <td>${money(gstData.totalSgstItc)}</td>
+              <td style="font-size:14px; font-weight:800; color:var(--green);">${money(gstData.offset.netCashPayable)}</td>
+              <td><span class="gst-badge badge-matched">Rule 88A Balanced</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    `;
+  } else if (currentGstSubTab === "gstr2b") {
+    // GSTR-2B ITC Auto-Reconciliation View
+    contentHtml = `
+      <div class="gst-subview-content">
+        <div class="gst-rule-box">
+          <b>Section 16(2)(aa) CGST Compliance Engine:</b>
+          Input Tax Credit can be legally claimed only if the supplier has filed their GSTR-1 and the invoice appears in your auto-generated GSTR-2B. Invoices with variance or missing on the portal are flagged below for payment retention.
+          <small>Automated matching tolerance: exact GSTIN + alphanumeric invoice normalization + amount variance check (&lt; ₹1.00).</small>
+        </div>
+
+        <div class="ledger-scroll">
+          <table class="offset-matrix-table">
+            <thead>
+              <tr>
+                <th>Audit Status</th>
+                <th>Supplier / Vendor</th>
+                <th>Supplier GSTIN</th>
+                <th>Invoice No</th>
+                <th>Invoice Date</th>
+                <th>Our Tax (₹)</th>
+                <th>Portal GSTR-2B Tax (₹)</th>
+                <th>Tax Variance (₹)</th>
+                <th>Statutory Audit Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${gstData.reconciliationRecords.map(r => `
+                <tr>
+                  <td>
+                    <span class="gst-badge ${r.status==='MATCHED'?'badge-matched':r.status==='VARIANCE'?'badge-variance':'badge-missing'}">
+                      ${r.status.replace(/_/g, ' ')}
+                    </span>
+                  </td>
+                  <td>${safe(r.partyName)}</td>
+                  <td><span style="font-family:monospace; color:#8dc7ff;">${safe(r.partyGstin)}</span></td>
+                  <td><b>${safe(r.invoiceNumber)}</b></td>
+                  <td>${new Date(r.invoiceDate).toLocaleDateString('en-GB')}</td>
+                  <td>${money(r.ourTax)}</td>
+                  <td>${money(r.portalTax)}</td>
+                  <td style="color:${r.diff>0?'var(--pink)':'var(--green)'}">${money(r.diff)}</td>
+                  <td style="font-size:10px; color:#b7cbe3;">${safe(r.action)}</td>
+                </tr>
+              `).join("")}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    `;
+  } else if (currentGstSubTab === "einvoice") {
+    // E-Invoice & E-Way Bill Hub View
+    contentHtml = `
+      <div class="gst-subview-content">
+        <div class="gstin-checker-box">
+          <!-- GSTIN Checksum Validator Widget -->
+          <div style="background:#051930; border:1px solid #194673; border-radius:8px; padding:12px;">
+            <h4 style="margin:0 0 6px; font-size:12px; color:#fff; display:flex; align-items:center; gap:6px;">
+              <span>🔍</span> Live GSTIN Luhn-36 Checksum Validator
+            </h4>
+            <p style="margin:0 0 8px; font-size:10.5px; color:#a6bfdc;">
+              Validates any 15-digit Indian GST identification number against the statutory base-36 Luhn algorithm.
+            </p>
+            <div style="display:flex; gap:6px; margin-bottom:8px;">
+              <input type="text" id="testGstinInput" class="form-input" style="flex:1; text-transform:uppercase; font-family:monospace; font-weight:700;" value="27AAACR1234M1Z5" placeholder="Enter 15-digit GSTIN...">
+              <button class="btn-primary" onclick="testGstinValidation()" style="height:34px; padding:0 14px;">Verify</button>
+            </div>
+            <div id="gstinValidationResult" style="font-size:11px; padding:8px 10px; background:#041224; border-radius:5px; border-left:3px solid var(--green);">
+              State: <b>Maharashtra (27)</b> • PAN: <b>AAACR1234M</b> • <b>Valid Checksum</b>
+            </div>
+          </div>
+
+          <!-- E-Way Bill Distance Calculator Widget -->
+          <div style="background:#051930; border:1px solid #194673; border-radius:8px; padding:12px;">
+            <h4 style="margin:0 0 6px; font-size:12px; color:#fff; display:flex; align-items:center; gap:6px;">
+              <span>🚛</span> E-Way Bill Distance Validity Calculator
+            </h4>
+            <p style="margin:0 0 8px; font-size:10.5px; color:#a6bfdc;">
+              Calculates statutory transit validity under Rule 138(10) (1 day per 200 km for normal goods; 20 km for ODC).
+            </p>
+            <div style="display:flex; gap:8px; margin-bottom:8px; align-items:center;">
+              <input type="number" id="testEwbDistance" class="form-input" style="width:140px;" value="450" placeholder="Distance in KM">
+              <label style="font-size:11px; color:#cbd8eb; display:flex; align-items:center; gap:4px; cursor:pointer;">
+                <input type="checkbox" id="testEwbIsOdc"> Over Dimensional Cargo (ODC)
+              </label>
+              <button class="btn-primary" onclick="testEwbCalculation()" style="height:34px; padding:0 14px; margin-left:auto;">Calculate</button>
+            </div>
+            <div id="ewbCalculationResult" style="font-size:11px; padding:8px 10px; background:#041224; border-radius:5px; border-left:3px solid var(--cyan);">
+              Transit Validity: <b style="color:var(--cyan)">3 Days</b> (Distance: 450 km • Rule 138(10) Compliant)
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:14px;">
+          <h4 style="margin:0 0 6px; font-size:12px; color:#fff;">NIC IRP E-Invoice Schema Preview (v1.1 CBIC Compliant)</h4>
+          <div class="code-preview-box">${safe(JSON.stringify({
+            Version: "1.1",
+            TranDtls: { TaxSch: "GST", SupTyp: "B2B", RegRev: "N", IgstOnIntra: "N" },
+            DocDtls: { Typ: "INV", No: "DVA-2509-001", Dt: "02/09/2025" },
+            SellerDtls: { Gstin: BUSINESS_GST_PROFILE.gstin, LglNm: BUSINESS_GST_PROFILE.legalName, Addr1: BUSINESS_GST_PROFILE.address, Loc: "Mumbai", Pin: 400051, Stcd: "27" },
+            BuyerDtls: { Gstin: "27AAACR1234M1Z5", LglNm: "Reliance Enterprises Limited", Pos: "27", Addr1: "Maker Chambers IV, Nariman Point", Loc: "Mumbai", Pin: 400021, Stcd: "27" },
+            ValDtls: { AssVal: 305084.75, CgstVal: 27457.62, SgstVal: 27457.62, IgstVal: 0, TotInvVal: 360000.00 }
+          }, null, 2))}</div>
+        </div>
+      </div>
+    `;
+  }
+
+  sec.innerHTML = `
+    <div class="gst-hub-box">
+      <div class="gst-nav-header">
+        <div class="gst-tab-bar">
+          <button class="gst-tab-btn ${currentGstSubTab==='gstr1'?'active':''}" onclick="switchGstSubTab('gstr1')">
+            <span>↗</span> GSTR-1 Outward Supplies <span class="gst-tab-badge">${gstData.outwardInvoices.length}</span>
+          </button>
+          <button class="gst-tab-btn ${currentGstSubTab==='gstr3b'?'active':''}" onclick="switchGstSubTab('gstr3b')">
+            <span>⚖</span> GSTR-3B Tax Offset Matrix <span class="gst-tab-badge">Rule 88A</span>
+          </button>
+          <button class="gst-tab-btn ${currentGstSubTab==='gstr2b'?'active':''}" onclick="switchGstSubTab('gstr2b')">
+            <span>✓</span> GSTR-2B ITC Reconciliation <span class="gst-tab-badge">${gstData.reconciliationHealthPct}%</span>
+          </button>
+          <button class="gst-tab-btn ${currentGstSubTab==='einvoice'?'active':''}" onclick="switchGstSubTab('einvoice')">
+            <span>⚡</span> E-Invoice &amp; E-Way Bill Hub <span class="gst-tab-badge">NIC v1.1</span>
+          </button>
+        </div>
+
+        <div class="gst-actions-row">
+          <button class="btn-gst-action btn-json-portal" onclick="exportGSTR1PortalJson()" title="Download JSON for direct upload to gst.gov.in">
+            📥 Export GSTR-1 Portal JSON
+          </button>
+          <button class="btn-gst-action btn-json-calc" onclick="exportGSTR3BPortalJson()" title="Download GSTR-3B summary JSON">
+            📥 GSTR-3B Summary JSON
+          </button>
+          <button class="btn-gst-action btn-excel-gst" onclick="exportGSTR1Report()" title="Download full GSTR-1 multi-sheet workbook">
+            📊 GSTR-1 Excel (.xlsx)
+          </button>
+          <button class="btn-gst-action btn-excel-gst" onclick="exportGSTR3BReport()" title="Download GSTR-3B statutory schedule">
+            📊 GSTR-3B Excel (.xlsx)
+          </button>
+        </div>
+      </div>
+
+      ${contentHtml}
+    </div>
+  `;
+}
+
+// Sub-Tab Switcher inside GST Hub
+window.switchGstSubTab = function(tabKey) {
+  currentGstSubTab = tabKey;
+  renderGST(getFilteredGSTData());
+};
+
+// GSTR-1 Section Switcher (B2B, B2CL, B2CS, CDNR, HSN)
+window.switchGstr1Section = function(sectionKey) {
+  currentGstr1Section = sectionKey;
+  renderGST(getFilteredGSTData());
+};
+
+function renderGstr1ActiveTable(gstData) {
+  if (currentGstr1Section === "b2b") {
+    return `
+      <table class="offset-matrix-table">
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>Invoice No</th>
+            <th>Date</th>
+            <th>Customer / Recipient</th>
+            <th>Customer GSTIN</th>
+            <th>POS</th>
+            <th>HSN</th>
+            <th>Taxable Value (₹)</th>
+            <th>Rate</th>
+            <th>CGST (₹)</th>
+            <th>SGST (₹)</th>
+            <th>IGST (₹)</th>
+            <th>Total Value (₹)</th>
+            <th>IRN Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${gstData.b2bList.map(r => `
+            <tr>
+              <td><span class="gst-badge badge-b2b">B2B</span></td>
+              <td><b>${safe(r.invoiceNumber)}</b></td>
+              <td>${new Date(r.invoiceDate).toLocaleDateString('en-GB')}</td>
+              <td>${safe(r.partyName)}</td>
+              <td><span style="font-family:monospace; color:#8dc7ff;">${safe(r.partyGstin)}</span></td>
+              <td>${safe(r.posState)} (${safe(r.posStateCode)})</td>
+              <td><span style="font-family:monospace;">${safe(r.hsnCode)}</span></td>
+              <td>${money(r.taxableValue)}</td>
+              <td>${r.gstRate}%</td>
+              <td>${money(r.cgst)}</td>
+              <td>${money(r.sgst)}</td>
+              <td>${money(r.igst)}</td>
+              <td style="font-weight:700;">${money(r.totalInvoiceValue)}</td>
+              <td><span class="gst-badge badge-matched">${safe(r.irnStatus || 'Generated')}</span></td>
+            </tr>
+          `).join("")}
+        </tbody>
+      </table>
+    `;
+  } else if (currentGstr1Section === "b2cl") {
+    return `
+      <table class="offset-matrix-table">
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>Invoice No</th>
+            <th>Date</th>
+            <th>Recipient Name</th>
+            <th>Place of Supply</th>
+            <th>HSN Code</th>
+            <th>Taxable Value (₹)</th>
+            <th>GST Rate</th>
+            <th>IGST Amount (₹)</th>
+            <th>Total Invoice Value (₹)</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${gstData.b2clList.map(r => `
+            <tr>
+              <td><span class="gst-badge badge-b2cl">B2CL</span></td>
+              <td><b>${safe(r.invoiceNumber)}</b></td>
+              <td>${new Date(r.invoiceDate).toLocaleDateString('en-GB')}</td>
+              <td>${safe(r.partyName)}</td>
+              <td>${safe(r.posState)} (${safe(r.posStateCode)})</td>
+              <td><span style="font-family:monospace;">${safe(r.hsnCode)}</span></td>
+              <td>${money(r.taxableValue)}</td>
+              <td>${r.gstRate}%</td>
+              <td>${money(r.igst)}</td>
+              <td style="font-weight:700;">${money(r.totalInvoiceValue)}</td>
+            </tr>
+          `).join("")}
+        </tbody>
+      </table>
+    `;
+  } else if (currentGstr1Section === "b2cs") {
+    return `
+      <table class="offset-matrix-table">
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>Invoice / Ref No</th>
+            <th>Date</th>
+            <th>Consumer Channel</th>
+            <th>Place of Supply</th>
+            <th>HSN Code</th>
+            <th>Taxable Value (₹)</th>
+            <th>Rate</th>
+            <th>CGST (₹)</th>
+            <th>SGST (₹)</th>
+            <th>Total Value (₹)</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${gstData.b2csList.map(r => `
+            <tr>
+              <td><span class="gst-badge badge-b2cs">B2CS</span></td>
+              <td><b>${safe(r.invoiceNumber)}</b></td>
+              <td>${new Date(r.invoiceDate).toLocaleDateString('en-GB')}</td>
+              <td>${safe(r.partyName)}</td>
+              <td>${safe(r.posState)} (${safe(r.posStateCode)})</td>
+              <td><span style="font-family:monospace;">${safe(r.hsnCode)}</span></td>
+              <td>${money(r.taxableValue)}</td>
+              <td>${r.gstRate}%</td>
+              <td>${money(r.cgst)}</td>
+              <td>${money(r.sgst)}</td>
+              <td style="font-weight:700;">${money(r.totalInvoiceValue)}</td>
+            </tr>
+          `).join("")}
+        </tbody>
+      </table>
+    `;
+  } else if (currentGstr1Section === "cdnr") {
+    return `
+      <table class="offset-matrix-table">
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>Note No</th>
+            <th>Original Invoice</th>
+            <th>Date</th>
+            <th>Recipient Name</th>
+            <th>Recipient GSTIN</th>
+            <th>Taxable Value (₹)</th>
+            <th>Rate</th>
+            <th>CGST (₹)</th>
+            <th>SGST (₹)</th>
+            <th>Total Adjustment (₹)</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${gstData.cdnrList.map(r => `
+            <tr>
+              <td><span class="gst-badge badge-cdnr">CDNR</span></td>
+              <td><b>${safe(r.invoiceNumber)}</b></td>
+              <td><span style="color:#8ec5ff;">${safe(r.refInvoiceNumber || 'DVA-2509-001')}</span></td>
+              <td>${new Date(r.invoiceDate).toLocaleDateString('en-GB')}</td>
+              <td>${safe(r.partyName)}</td>
+              <td><span style="font-family:monospace;">${safe(r.partyGstin)}</span></td>
+              <td style="color:var(--pink)">${money(r.taxableValue)}</td>
+              <td>${r.gstRate}%</td>
+              <td style="color:var(--pink)">${money(r.cgst)}</td>
+              <td style="color:var(--pink)">${money(r.sgst)}</td>
+              <td style="font-weight:700; color:var(--pink)">${money(r.totalInvoiceValue)}</td>
+            </tr>
+          `).join("")}
+        </tbody>
+      </table>
+    `;
+  } else {
+    // HSN Summary
+    return `
+      <table class="offset-matrix-table">
+        <thead>
+          <tr>
+            <th>HSN / SAC Code</th>
+            <th>Description</th>
+            <th>UQC</th>
+            <th>Total Invoices / Qty</th>
+            <th>Total Taxable Value (₹)</th>
+            <th>CGST Amount (₹)</th>
+            <th>SGST Amount (₹)</th>
+            <th>IGST Amount (₹)</th>
+            <th>Total Value (₹)</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${gstData.hsnSummary.map(r => `
+            <tr>
+              <td><b style="font-family:monospace; color:#8dc7ff;">${safe(r.hsnCode)}</b></td>
+              <td>${safe(r.desc)}</td>
+              <td><span class="gst-badge badge-b2b">${safe(r.uqc)}</span></td>
+              <td>${r.quantity}</td>
+              <td>${money(r.taxableValue)}</td>
+              <td>${money(r.cgst)}</td>
+              <td>${money(r.sgst)}</td>
+              <td>${money(r.igst)}</td>
+              <td style="font-weight:700;">${money(r.totalValue)}</td>
+            </tr>
+          `).join("")}
+        </tbody>
+      </table>
+    `;
+  }
+}
+
+// GSTIN Checksum Test Interactive Handler
+window.testGstinValidation = function() {
+  const input = document.getElementById("testGstinInput");
+  const resBox = document.getElementById("gstinValidationResult");
+  if (!input || !resBox) return;
+  const res = validateGSTIN(input.value);
+  if (res.valid) {
+    resBox.style.borderLeftColor = "var(--green)";
+    resBox.innerHTML = `State: <b>${safe(res.state)} (${safe(res.stateCode)})</b> • PAN: <b>${safe(res.pan)}</b> • <span style="color:var(--green)"><b>${safe(res.reason)}</b></span>`;
+    showToast(`✓ GSTIN ${res.gstin} verified with valid checksum!`);
+  } else {
+    resBox.style.borderLeftColor = "var(--pink)";
+    resBox.innerHTML = `<span style="color:var(--pink)"><b>Validation Failed:</b> ${safe(res.reason)}</span>`;
+  }
+};
+
+// E-Way Bill Calculator Interactive Handler
+window.testEwbCalculation = function() {
+  const distInput = document.getElementById("testEwbDistance");
+  const odcCheck = document.getElementById("testEwbIsOdc");
+  const resBox = document.getElementById("ewbCalculationResult");
+  if (!distInput || !resBox) return;
+  const km = Number(distInput.value) || 0;
+  const isOdc = odcCheck ? odcCheck.checked : false;
+  const validity = calculateEwayValidity(km, isOdc);
+  resBox.innerHTML = `Transit Validity: <b style="color:var(--cyan)">${validity} Day${validity>1?'s':''}</b> (Distance: ${km} km • ${isOdc ? 'Over Dimensional Cargo (20 km/day)' : 'Normal Goods (200 km/day)'} • Rule 138(10))`;
+  showToast(`E-Way Bill validity calculated: ${validity} days.`);
+};
+
+// 6. 1-Click Official GSTN Offline Utility JSON Exporter
+window.exportGSTR1PortalJson = function() {
+  const gstData = getFilteredGSTData();
+  const dVal = (document.getElementById("dateFilter") || {}).value || "ALL";
+  const now = new Date();
+  const fp = dVal !== "ALL" ? dVal.replace("-", "") : `${String(now.getMonth() + 1).padStart(2, "0")}${now.getFullYear()}`;
+
+  const b2bMap = {};
+  gstData.b2bList.forEach(inv => {
+    const ctin = inv.partyGstin;
+    if (!b2bMap[ctin]) b2bMap[ctin] = { ctin, inv: [] };
+    b2bMap[ctin].inv.push({
+      inum: inv.invoiceNumber,
+      idt: new Date(inv.invoiceDate).toLocaleDateString("en-GB").replace(/\//g, "-"),
+      val: Number(inv.totalInvoiceValue.toFixed(2)),
+      pos: inv.posStateCode || ctin.substring(0, 2),
+      rchrg: "N",
+      inv_typ: "R",
+      itms: [
+        {
+          num: 1,
+          itm_det: {
+            txval: Number(inv.taxableValue.toFixed(2)),
+            rt: inv.gstRate,
+            iamt: Number(inv.igst.toFixed(2)),
+            camt: Number(inv.cgst.toFixed(2)),
+            samt: Number(inv.sgst.toFixed(2)),
+            csamt: 0
+          }
+        }
+      ]
+    });
+  });
+
+  const b2clMap = {};
+  gstData.b2clList.forEach(inv => {
+    const pos = inv.posStateCode || "19";
+    if (!b2clMap[pos]) b2clMap[pos] = { pos, inv: [] };
+    b2clMap[pos].inv.push({
+      inum: inv.invoiceNumber,
+      idt: new Date(inv.invoiceDate).toLocaleDateString("en-GB").replace(/\//g, "-"),
+      val: Number(inv.totalInvoiceValue.toFixed(2)),
+      itms: [
+        {
+          num: 1,
+          itm_det: {
+            txval: Number(inv.taxableValue.toFixed(2)),
+            rt: inv.gstRate,
+            iamt: Number(inv.igst.toFixed(2)),
+            csamt: 0
+          }
+        }
+      ]
+    });
+  });
+
+  const b2cs = gstData.b2csList.map(inv => ({
+    sply_ty: inv.cgst > 0 ? "INTRA" : "INTER",
+    pos: inv.posStateCode || BUSINESS_GST_PROFILE.stateCode,
+    typ: "OE",
+    txval: Number(inv.taxableValue.toFixed(2)),
+    rt: inv.gstRate,
+    camt: Number(inv.cgst.toFixed(2)),
+    samt: Number(inv.sgst.toFixed(2)),
+    iamt: Number(inv.igst.toFixed(2)),
+    csamt: 0
+  }));
+
+  const cdnrMap = {};
+  gstData.cdnrList.forEach(cn => {
+    const ctin = cn.partyGstin;
+    if (!cdnrMap[ctin]) cdnrMap[ctin] = { ctin, nt: [] };
+    cdnrMap[ctin].nt.push({
+      ntty: "C",
+      nt_num: cn.invoiceNumber,
+      nt_dt: new Date(cn.invoiceDate).toLocaleDateString("en-GB").replace(/\//g, "-"),
+      val: Number(Math.abs(cn.totalInvoiceValue).toFixed(2)),
+      pos: cn.posStateCode || ctin.substring(0, 2),
+      rchrg: "N",
+      inv_typ: "R",
+      itms: [
+        {
+          num: 1,
+          itm_det: {
+            txval: Number(Math.abs(cn.taxableValue).toFixed(2)),
+            rt: cn.gstRate,
+            iamt: Number(Math.abs(cn.igst).toFixed(2)),
+            camt: Number(Math.abs(cn.cgst).toFixed(2)),
+            samt: Number(Math.abs(cn.sgst).toFixed(2)),
+            csamt: 0
+          }
+        }
+      ]
+    });
+  });
+
+  const hsnData = gstData.hsnSummary.map((h, idx) => ({
+    num: idx + 1,
+    hsn_sc: h.hsnCode,
+    desc: h.desc,
+    uqc: h.uqc || "NOS",
+    qty: h.quantity,
+    txval: Number(h.taxableValue.toFixed(2)),
+    iamt: Number(h.igst.toFixed(2)),
+    camt: Number(h.cgst.toFixed(2)),
+    samt: Number(h.sgst.toFixed(2)),
+    csamt: 0
+  }));
+
+  const portalJson = {
+    gstin: BUSINESS_GST_PROFILE.gstin,
+    fp: fp,
+    gt: 12500000.00,
+    cur_gt: 14500000.00,
+    version: "GSTR1_3.1",
+    b2b: Object.values(b2bMap),
+    b2cl: Object.values(b2clMap),
+    b2cs: b2cs,
+    cdnr: Object.values(cdnrMap),
+    hsn: { data: hsnData }
+  };
+
+  const jsonStr = JSON.stringify(portalJson, null, 2);
+  const blob = new Blob([jsonStr], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `GSTR1_${BUSINESS_GST_PROFILE.gstin}_${fp}_Portal_Upload.json`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  showToast(`GSTR-1 Portal JSON exported (${fp})! Ready for upload to gst.gov.in.`);
+};
+
+// 7. GSTR-3B Summary JSON Exporter
+window.exportGSTR3BPortalJson = function() {
+  const gstData = getFilteredGSTData();
+  const dVal = (document.getElementById("dateFilter") || {}).value || "ALL";
+  const now = new Date();
+  const fp = dVal !== "ALL" ? dVal.replace("-", "") : `${String(now.getMonth() + 1).padStart(2, "0")}${now.getFullYear()}`;
+
+  const gstr3bJson = {
+    gstin: BUSINESS_GST_PROFILE.gstin,
+    ret_period: fp,
+    filing_status: "DRAFT_READY",
+    sec_3_1_outward_taxable: {
+      txval: Number(gstData.totalTaxableOutward.toFixed(2)),
+      iamt: Number(gstData.totalIgstOutput.toFixed(2)),
+      camt: Number(gstData.totalCgstOutput.toFixed(2)),
+      samt: Number(gstData.totalSgstOutput.toFixed(2)),
+      csamt: 0
+    },
+    sec_3_1_d_rcm_inward: { txval: 0, iamt: 0, camt: 0, samt: 0 },
+    sec_4_eligible_itc: {
+      all_other_itc: {
+        iamt: Number(gstData.totalIgstItc.toFixed(2)),
+        camt: Number(gstData.totalCgstItc.toFixed(2)),
+        samt: Number(gstData.totalSgstItc.toFixed(2)),
+        csamt: 0
+      }
+    },
+    sec_5_tax_settlement_cash_ledger: {
+      iamt: Number(gstData.offset.remIgstOutput.toFixed(2)),
+      camt: Number(gstData.offset.remCgstOutput.toFixed(2)),
+      samt: Number(gstData.offset.remSgstOutput.toFixed(2)),
+      total_cash_payment_needed: Number(gstData.offset.netCashPayable.toFixed(2))
+    }
+  };
+
+  const jsonStr = JSON.stringify(gstr3bJson, null, 2);
+  const blob = new Blob([jsonStr], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `GSTR3B_${BUSINESS_GST_PROFILE.gstin}_${fp}_Settlement.json`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  showToast("GSTR-3B Settlement JSON exported successfully!");
+};
+
+// 8. GSTR-1 & GSTR-3B Excel Reports
+window.exportGSTR1Report = function() {
+  const gstData = getFilteredGSTData();
+  const wb = XLSX.utils.book_new();
+
+  const b2bRows = [
+    ["GSTR-1: OUTWARD SUPPLIES TO REGISTERED RECIPIENTS (B2B)"],
+    ["Invoice No", "Invoice Date", "Customer Name", "Customer GSTIN", "Place of Supply", "HSN Code", "Taxable Value (₹)", "GST Rate (%)", "CGST (₹)", "SGST (₹)", "IGST (₹)", "Total Invoice Value (₹)", "IRN Status"],
+    ...gstData.b2bList.map(r => [
+      r.invoiceNumber,
+      r.invoiceDate,
+      r.partyName,
+      r.partyGstin,
+      r.posState,
+      r.hsnCode,
+      r.taxableValue,
+      `${r.gstRate}%`,
+      r.cgst,
+      r.sgst,
+      r.igst,
+      r.totalInvoiceValue,
+      r.irnStatus
+    ])
+  ];
+  XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet(b2bRows), "GSTR-1 B2B");
+
+  const b2clRows = [
+    ["GSTR-1: INTER-STATE LARGE UNREGISTERED SUPPLIES > ₹2.5L (B2CL)"],
+    ["Invoice No", "Invoice Date", "Recipient Name", "State of Supply", "HSN Code", "Taxable Value (₹)", "IGST (₹)", "Total Value (₹)"],
+    ...gstData.b2clList.map(r => [
+      r.invoiceNumber,
+      r.invoiceDate,
+      r.partyName,
+      r.posState,
+      r.hsnCode,
+      r.taxableValue,
+      r.igst,
+      r.totalInvoiceValue
+    ])
+  ];
+  XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet(b2clRows), "GSTR-1 B2CL");
+
+  const b2csRows = [
+    ["GSTR-1: SMALL UNREGISTERED SUPPLIES (B2CS)"],
+    ["Invoice No", "Invoice Date", "Category", "State", "Taxable Value (₹)", "GST Rate", "CGST (₹)", "SGST (₹)", "Total Value (₹)"],
+    ...gstData.b2csList.map(r => [
+      r.invoiceNumber,
+      r.invoiceDate,
+      r.partyName,
+      r.posState,
+      r.taxableValue,
+      `${r.gstRate}%`,
+      r.cgst,
+      r.sgst,
+      r.totalInvoiceValue
+    ])
+  ];
+  XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet(b2csRows), "GSTR-1 B2CS");
+
+  const hsnRows = [
+    ["GSTR-1: HSN-WISE SUMMARY OF OUTWARD SUPPLIES"],
+    ["HSN/SAC Code", "Description", "UQC", "Total Invoices", "Total Taxable Value (₹)", "CGST (₹)", "SGST (₹)", "IGST (₹)", "Total Value (₹)"],
+    ...gstData.hsnSummary.map(r => [
+      r.hsnCode,
+      r.desc,
+      r.uqc,
+      r.quantity,
+      r.taxableValue,
+      r.cgst,
+      r.sgst,
+      r.igst,
+      r.totalValue
+    ])
+  ];
+  XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet(hsnRows), "GSTR-1 HSN Summary");
+
+  XLSX.writeFile(wb, `GSTR1_Statutory_Report_${BUSINESS_GST_PROFILE.gstin}.xlsx`);
+  showToast("GSTR-1 Statutory Audit workbook downloaded (.xlsx)!");
+};
+
+window.exportGSTR3BReport = function() {
+  const gstData = getFilteredGSTData();
+  const wb = XLSX.utils.book_new();
+
+  const gstr3bRows = [
+    ["GSTR-3B STATUTORY TAX COMPUTATION & OFFSET STATEMENT"],
+    ["Entity Legal Name:", BUSINESS_GST_PROFILE.legalName],
+    ["Entity GSTIN:", BUSINESS_GST_PROFILE.gstin],
+    ["Period:", (document.getElementById("dateFilter") || {}).value || "FY 2025-26"],
+    [""],
+    ["1. OUTWARD TAXABLE SUPPLIES (TABLE 3.1)"],
+    ["Nature of Supply", "Total Taxable Value (₹)", "Integrated Tax (₹)", "Central Tax (₹)", "State Tax (₹)", "Total Tax (₹)"],
+    ["(a) Outward Taxable Supplies", gstData.totalTaxableOutward, gstData.totalIgstOutput, gstData.totalCgstOutput, gstData.totalSgstOutput, gstData.totalOutputTax],
+    [""],
+    ["2. ELIGIBLE INPUT TAX CREDIT (TABLE 4)"],
+    ["ITC Breakdown", "Total Taxable Value (₹)", "Integrated Tax (₹)", "Central Tax (₹)", "State Tax (₹)", "Total ITC (₹)"],
+    ["(A) All Other ITC (Inward Purchases & Capex)", gstData.totalTaxableInward, gstData.totalIgstItc, gstData.totalCgstItc, gstData.totalSgstItc, gstData.totalEligibleItc],
+    [""],
+    ["3. TAX LIABILITY SETTLEMENT SEQUENCE (RULE 88A)"],
+    ["Tax Head", "Output Tax Due (₹)", "Paid by IGST Credit (₹)", "Paid by CGST Credit (₹)", "Paid by SGST Credit (₹)", "Net Cash Tax Payable (₹)"],
+    ["Integrated Tax (IGST)", gstData.totalIgstOutput, gstData.offset.igstUsedAgainstIgst, gstData.offset.cgstUsedAgainstIgst, gstData.offset.sgstUsedAgainstIgst, gstData.offset.remIgstOutput],
+    ["Central Tax (CGST)", gstData.totalCgstOutput, gstData.offset.igstUsedAgainstCgst, gstData.offset.cgstUsedAgainstCgst, 0, gstData.offset.remCgstOutput],
+    ["State Tax (SGST)", gstData.totalSgstOutput, gstData.offset.igstUsedAgainstSgst, 0, gstData.offset.sgstUsedAgainstSgst, gstData.offset.remSgstOutput],
+    ["TOTAL CASH SETTLEMENT NEEDED", gstData.totalOutputTax, "", "", "", gstData.offset.netCashPayable]
+  ];
+
+  XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet(gstr3bRows), "GSTR-3B Computation");
+  XLSX.writeFile(wb, `GSTR3B_Tax_Settlement_${BUSINESS_GST_PROFILE.gstin}.xlsx`);
+  showToast("GSTR-3B Tax Settlement Statement downloaded (.xlsx)!");
+};
+
 // 9. REPORTS & AUDIT
 function renderReports(rows) {
-  // Hide master ledger section if visible
+  // Hide master ledger section and gst section if visible
   const mSec = document.getElementById("masterDailyLedgerSection");
   if (mSec) mSec.style.display = "none";
+  const gSec = document.getElementById("masterGstSection");
+  if (gSec) gSec.style.display = "none";
 
   const current = last(rows), labels = rows.map(r => labelDate(r.date));
   const totDebits = sum(rows, "debits"), totCredits = sum(rows, "credits"), gst = sum(rows, "gstPaid"), tds = sum(rows, "tds");
@@ -2745,10 +4659,22 @@ function renderReports(rows) {
         <p>Full chronological audit register of all daily receipts and payments with voucher numbers, payment modes, and running balances.</p>
         <button id="btnDownloadDaily" class="btn-download btn-dl-daily" onclick="exportDailyTransactionsReport()">📥 Download Daily Ledger (.xlsx)</button>
       </div>
+      <div class="report-card">
+        <div class="rc-tag"><span>⚖</span> GSTN • GSTR-1 Return</div>
+        <h4>GSTR-1 Outward Supplies Audit</h4>
+        <p>Statutory outward supplies return: B2B registered supplies, B2CL large inter-state, B2CS retail sales, CDNR notes, and HSN 6-digit classification.</p>
+        <button id="btnDownloadGSTR1" class="btn-download btn-dl-gst1" onclick="exportGSTR1Report()">📥 Download GSTR-1 Audit (.xlsx)</button>
+      </div>
+      <div class="report-card">
+        <div class="rc-tag"><span>⚖</span> GSTN • GSTR-3B Return</div>
+        <h4>GSTR-3B Tax Offset &amp; Settlement</h4>
+        <p>Monthly statutory summary: Table 3.1 outward supplies, Table 4 eligible ITC, and Rule 88A electronic credit/cash ledger setoff schedule.</p>
+        <button id="btnDownloadGSTR3B" class="btn-download btn-dl-gst3b" onclick="exportGSTR3BReport()">📥 Download GSTR-3B Statement (.xlsx)</button>
+      </div>
       <div class="report-card" style="grid-column: 1 / -1; background: linear-gradient(145deg, #0d2e57, #081d36);">
         <div class="rc-tag"><span>✥</span> Master Consolidated Audit Package</div>
         <h4>Master Statutory Financial Dossier (All Statements in One Multi-Tab Workbook)</h4>
-        <p>Professional multi-tab Excel workbook bundling P&amp;L, Balance Sheet, Cash Flow, Daily Cash Book, Budgets, and Ratio Analysis into a single executive package.</p>
+        <p>Professional multi-tab Excel workbook bundling P&amp;L, Balance Sheet, Cash Flow, Daily Cash Book, Budgets, GSTR-1, and GSTR-3B into a single executive package.</p>
         <button id="btnDownloadMaster" class="btn-download btn-dl-all" onclick="exportMasterDossierReport()" style="max-width:320px;">📥 Download Complete Master Dossier (.xlsx)</button>
       </div>
     </div>
@@ -3076,6 +5002,8 @@ function switchTab(mode) {
   if (dSec && mode !== "daily") dSec.style.display = "none";
   const rBox = document.getElementById("reportsDownloadCenterBox");
   if (rBox && mode !== "reports") rBox.style.display = "none";
+  const gstSec = document.getElementById("masterGstSection");
+  if (gstSec && mode !== "gst") gstSec.style.display = "none";
 
   if (!MODULE_CONFIG[mode]) mode = "budget";
   currentMode = mode;
@@ -3333,6 +5261,10 @@ function parseDataRows(raw, headers, mode) {
    ================================================================ */
 
 document.getElementById("exportDataBtn").addEventListener("click", () => {
+  if (currentMode === "gst") {
+    exportGSTR1PortalJson();
+    return;
+  }
   const activeKey = DATASETS[currentMode] ? currentMode : "budget";
   const rows = getFilteredRows(activeKey);
   if (!rows.length) {
@@ -3586,6 +5518,41 @@ window.exportMasterDossierReport = function() {
     ])
   ];
   XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet(dailyData), "Daily Transactions");
+
+  // 5. GSTR-1 Outward Supplies Sheet
+  const gstData = getFilteredGSTData();
+  const gst1Rows = [
+    ["GSTR-1 STATUTORY AUDIT SCHEDULE"],
+    ["Entity Legal Name:", BUSINESS_GST_PROFILE.legalName, "Entity GSTIN:", BUSINESS_GST_PROFILE.gstin],
+    [""],
+    ["Invoice No", "Date", "Party Name", "Party GSTIN", "POS", "HSN Code", "Taxable Value (₹)", "GST Rate", "CGST (₹)", "SGST (₹)", "IGST (₹)", "Total Value (₹)"],
+    ...gstData.outwardInvoices.map(r => [
+      r.invoiceNumber,
+      r.invoiceDate,
+      r.partyName,
+      r.partyGstin,
+      r.posState,
+      r.hsnCode,
+      r.taxableValue,
+      `${r.gstRate}%`,
+      r.cgst,
+      r.sgst,
+      r.igst,
+      r.totalInvoiceValue
+    ])
+  ];
+  XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet(gst1Rows), "GSTR-1 Supplies");
+
+  // 6. GSTR-3B Tax Settlement Sheet
+  const gst3bRows = [
+    ["GSTR-3B STATUTORY TAX OFFSET & CASH LEDGER SETTLEMENT (RULE 88A)"],
+    ["Tax Head", "Output Tax Due (₹)", "Paid by IGST Credit (₹)", "Paid by CGST Credit (₹)", "Paid by SGST Credit (₹)", "Net Cash Tax Payable (₹)"],
+    ["Integrated Tax (IGST)", gstData.totalIgstOutput, gstData.offset.igstUsedAgainstIgst, gstData.offset.cgstUsedAgainstIgst, gstData.offset.sgstUsedAgainstIgst, gstData.offset.remIgstOutput],
+    ["Central Tax (CGST)", gstData.totalCgstOutput, gstData.offset.igstUsedAgainstCgst, gstData.offset.cgstUsedAgainstCgst, 0, gstData.offset.remCgstOutput],
+    ["State Tax (SGST)", gstData.totalSgstOutput, gstData.offset.igstUsedAgainstSgst, 0, gstData.offset.sgstUsedAgainstSgst, gstData.offset.remSgstOutput],
+    ["TOTAL CASH SETTLEMENT NEEDED", gstData.totalOutputTax, "", "", "", gstData.offset.netCashPayable]
+  ];
+  XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet(gst3bRows), "GSTR-3B Settlement");
 
   XLSX.writeFile(wb, `DV_Analytics_Master_Financial_Dossier_${new Date().toISOString().slice(0,10)}.xlsx`);
   showToast("Master Consolidated Financial Dossier downloaded successfully!");

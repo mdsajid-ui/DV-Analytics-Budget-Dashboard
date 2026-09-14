@@ -24,13 +24,27 @@ The navigation menu places **Profit & Loss**, **Balance Sheet**, and **Daily Tra
 5. **◉ Cash Flow Statement (`cashflow`)**:
    - **Metrics**: Operating Cash Flow, Investing Cash Flow, Financing Cash Flow, Net Cash Flow, Ending Cash Balance.
    - **Reconciliation**: 100% reconciled to the Balance Sheet cash and bank reserves.
-6. **✥ Reports & Download Center (`reports`) — *ENHANCED***:
+6. **⚖ GST & Statutory Compliance Hub (`gst`) — *NEW (Auto-File)***:
+   - **Metrics**: Gross Taxable Turnover, Total Output GST (CGST, SGST, IGST), Eligible Input Tax Credit (ITC), Net Cash Tax Liability (Rule 88A Electronic Cash Ledger), GSTR-2B Reconciliation Health %.
+   - **4-Sub-Tab Center Console**:
+     - **GSTR-1 Outward Supplies**: Multi-table registers for B2B Registered, B2CL Inter-State Large (>₹2.5L), B2CS Consumer Small, CDNR Credit/Debit Notes, and HSN 6-Digit Summary.
+     - **GSTR-3B Tax Offset Matrix (Rule 88A)**: Statutory cascading credit setoff sequence preventing illegal cross-utilization (IGST $\rightarrow$ CGST/SGST; CGST $\neq$ SGST) and computing exact challan cash liability.
+     - **GSTR-2B ITC Auto-Reconciliation (Section 16(2)(aa))**: Cross-verification of inward purchase invoices against portal 2B data to classify entries as `MATCHED`, `VARIANCE`, or `MISSING_IN_2B`.
+     - **E-Invoice & E-Way Bill Engine**: Interactive Luhn Mod-36 GSTIN checksum validator, Rule 138(10) transit validity calculator, and NIC v1.1 CBIC JSON schema generator.
+   - **Statutory Filing Exports**:
+     - 📥 **Export GSTR-1 Portal JSON**: Official GSTN offline tool JSON upload format ready for direct import to `gst.gov.in`.
+     - 📥 **Export GSTR-3B Summary JSON**: Standardized Table 3.1 & Table 4 tax offset settlement file.
+     - 📊 **Download GSTR-1 Audit (.xlsx)**: Comprehensive multi-sheet statutory return workbook.
+     - 📊 **Download GSTR-3B Statement (.xlsx)**: Formatted tax computation and cash ledger offset schedule.
+7. **✥ Reports & Download Center (`reports`) — *ENHANCED***:
    - **Dedicated Statutory Download Fields**:
      - 📥 **Download Profit & Loss Report (`.xlsx`)**: Professional Schedule III format with Revenue, COGS, OpEx, EBITDA, PBT, Tax, and PAT.
      - 📥 **Download Balance Sheet Report (`.xlsx`)**: Formatted Double-Entry Balance Sheet with Shareholders' Funds, Liabilities, Assets, and Balance Parity Check.
      - 📥 **Download Cash Flow Report (`.xlsx`)**: AS-3 Indirect Method covering Operating, Investing, and Financing activities.
      - 📥 **Download Daily Ledger (`.xlsx`)**: Full chronological Cash & Bank Book audit trail with voucher numbers and running balances.
-     - 📥 **Download Master Statutory Dossier (`.xlsx`)**: All financial statements consolidated into a single multi-tab workbook.
+     - 📥 **Download GSTR-1 Audit (`.xlsx`)**: Multi-sheet outward supplies audit register.
+     - 📥 **Download GSTR-3B Statement (`.xlsx`)**: Rule 88A tax credit offset and settlement statement.
+     - 📥 **Download Master Statutory Dossier (`.xlsx`)**: 6-sheet consolidated workbook bundling P&L, Balance Sheet, Cash Flow, Daily Cash Book, GSTR-1, and GSTR-3B.
 
 ---
 
